@@ -20,7 +20,24 @@ public class MainWindowController {
 	private Button _mainMenuQuit;
 	
 	@FXML
-	public void handleStatsMenuPlayClick() {
+	public void handlePlayMenuClick() {
+		Parent root = null;
+		try {
+			// Load root .fxml file for game view
+			root = FXMLLoader.load(getClass().getResource("GameWindow.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// Get current stage
+		Stage stage = (Stage) _mainMenuPlay.getScene().getWindow();
+		
+		Scene scene = new Scene(root); // Create new scene based off game view root
+		stage.setScene(scene); // Set current stage to show new game view scene
+		stage.show();
+	}
+	
+	@FXML
+	public void handleStatsMenuClick() {
 		Parent root = null;
 		try {
 			// Load root .fxml file for stats view

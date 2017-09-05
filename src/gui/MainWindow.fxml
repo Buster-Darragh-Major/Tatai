@@ -5,7 +5,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane id="menuButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainWindowController">
    <children>
       <Text fill="WHITE" layoutX="185.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tatai">
@@ -13,8 +12,8 @@
             <Font name="NanumGothic" size="90.0" />
          </font>
       </Text>
-      <JFXButton fx:id="_mainMenuPlay" layoutX="97.0" layoutY="262.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Play" textFill="WHITE" />
-      <JFXButton fx:id="_mainMenuStats" layoutX="253.0" layoutY="261.0" onAction="#handleStatsMenuPlayClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Statistics" textFill="WHITE" />
+      <JFXButton fx:id="_mainMenuPlay" layoutX="97.0" layoutY="262.0" onAction="#handlePlayMenuClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Play" textFill="WHITE" />
+      <JFXButton fx:id="_mainMenuStats" layoutX="253.0" layoutY="261.0" onAction="#handleStatsMenuClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Statistics" textFill="WHITE" />
       <JFXButton fx:id="_mainMenuQuit" layoutX="412.0" layoutY="262.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Quit" textFill="WHITE" />
    </children>
 </AnchorPane>

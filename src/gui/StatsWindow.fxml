@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StatsWindowController">
    <children>
       <Text fill="WHITE" layoutX="117.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics">
          <font>
             <Font name="NanumGothic" size="90.0" />
          </font>
       </Text>
+      <JFXButton fx:id="_statsViewBack" layoutX="14.0" layoutY="336.0" onAction="#handleBackStatsClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Main Menu" />
    </children>
 </AnchorPane>
