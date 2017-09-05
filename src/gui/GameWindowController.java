@@ -1,5 +1,5 @@
 package gui;
 
-public class GameWindowController {
+public class GameWindowController extends TataiController {
 
 }

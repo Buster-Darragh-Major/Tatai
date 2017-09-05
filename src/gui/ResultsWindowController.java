@@ -1,5 +1,5 @@
 package gui;
 
-public class ResultsWindowController {
+public class ResultsWindowController extends TataiController {
 
 }

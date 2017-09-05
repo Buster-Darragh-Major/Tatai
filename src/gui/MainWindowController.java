@@ -1,15 +1,10 @@
 package gui;
 
-import java.io.IOException;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class MainWindowController {
+public class MainWindowController extends TataiController {
 	
 	// Main Menu Buttons
 	@FXML
@@ -21,35 +16,13 @@ public class MainWindowController {
 	
 	@FXML
 	public void handlePlayMenuClick() {
-		Parent root = null;
-		try {
-			// Load root .fxml file for game view
-			root = FXMLLoader.load(getClass().getResource("GameWindow.fxml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// Get current stage
-		Stage stage = (Stage) _mainMenuPlay.getScene().getWindow();
-		
-		Scene scene = new Scene(root); // Create new scene based off game view root
-		stage.setScene(scene); // Set current stage to show new game view scene
-		stage.show();
+		Stage stage = (Stage) _mainMenuPlay.getScene().getWindow(); // Get current stage
+		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 	}
 	
 	@FXML
 	public void handleStatsMenuClick() {
-		Parent root = null;
-		try {
-			// Load root .fxml file for stats view
-			root = FXMLLoader.load(getClass().getResource("StatsWindow.fxml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// Get current stage
-		Stage stage = (Stage) _mainMenuStats.getScene().getWindow();
-		
-		Scene scene = new Scene(root); // Create new scene based off stats view root
-		stage.setScene(scene); // Set current stage to show new stats view scene
-		stage.show();
+		Stage stage = (Stage) _mainMenuStats.getScene().getWindow(); // Get Current stage
+		changeWindow("StatsWindow.fxml", stage);// Change to StatsWindow.fxml view
 	}
 }
