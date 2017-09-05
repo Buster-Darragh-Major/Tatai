@@ -17,14 +17,14 @@ public abstract class TataiController {
 	protected void changeWindow(String fxmlFile, Stage stage) {
 		Parent root = null;
 		try {
-			// Load root .fxml file for game view
+			// Load root .fxml file for new view
 			root = FXMLLoader.load(getClass().getResource(fxmlFile));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		Scene scene = new Scene(root); // Create new scene based off game view root
-		stage.setScene(scene); // Set current stage to show new game view scene
+		Scene scene = new Scene(root); // Create new scene based off new view root
+		stage.setScene(scene); // Set current stage to show new view scene
 		stage.show();
 	}
 	
