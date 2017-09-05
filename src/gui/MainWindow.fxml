@@ -14,6 +14,6 @@
       </Text>
       <JFXButton fx:id="_mainMenuPlay" layoutX="97.0" layoutY="262.0" onAction="#handlePlayMenuClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Play" textFill="WHITE" />
       <JFXButton fx:id="_mainMenuStats" layoutX="253.0" layoutY="261.0" onAction="#handleStatsMenuClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Statistics" textFill="WHITE" />
-      <JFXButton fx:id="_mainMenuQuit" layoutX="412.0" layoutY="262.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Quit" textFill="WHITE" />
+      <JFXButton fx:id="_mainMenuQuit" layoutX="412.0" layoutY="262.0" onAction="#handleQuitClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Quit" textFill="WHITE" />
    </children>
 </AnchorPane>

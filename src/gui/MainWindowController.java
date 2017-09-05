@@ -25,4 +25,12 @@ public class MainWindowController extends TataiController {
 		Stage stage = (Stage) _mainMenuStats.getScene().getWindow(); // Get Current stage
 		changeWindow("StatsWindow.fxml", stage);// Change to StatsWindow.fxml view
 	}
+	
+	/**
+	 * Allows the user to exit the application by clicking the quit button
+	 */
+	@FXML
+	public void handleQuitClick() {
+		System.exit(0);
+	}
 }
