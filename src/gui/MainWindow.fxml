@@ -7,7 +7,7 @@
 
 <AnchorPane id="menuButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainWindowController">
    <children>
-      <Text fill="WHITE" layoutX="185.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tatai">
+      <Text fill="WHITE" layoutX="185.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T&#x101;tai">
          <font>
             <Font name="NanumGothic" size="90.0" />
          </font>
