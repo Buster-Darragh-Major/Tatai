@@ -12,7 +12,7 @@ public interface StatisticHandler {
 	/**
 	 * @return The total number of questions answered
 	 */
-	public int totalPlayer();
+	public int totalPlayed();
 	
 	/**
 	 * @return The total number of questions that were incorrect.
@@ -37,5 +37,5 @@ public interface StatisticHandler {
 	 * @param correct questions correctly answered this session
 	 * 
 	 */
-	public void update(int played, int incorrect, int correct);
+	public void updateStats(int played, int incorrect, int correct);
 }
