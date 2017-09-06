@@ -1,9 +1,12 @@
-package creations.tatai;
+package testing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
+
+import creations.tatai.TataiTranslator;
+import creations.tatai.TranslatorException;
 
 /**
  * Test class for TataiTranslator
@@ -15,24 +18,28 @@ public class TestTataiTranslator {
 	@Test
 	public void testInvalidNo() {
 		try {
+			@SuppressWarnings("unused")
 			TataiTranslator t = new TataiTranslator(0);
 			fail();
 		} catch (TranslatorException e) {
 		}
 		
 		try {
+			@SuppressWarnings("unused")
 			TataiTranslator t = new TataiTranslator(100);
 			fail();
 		} catch (TranslatorException e) {
 		}
 		
 		try {
+			@SuppressWarnings("unused")
 			TataiTranslator t = new TataiTranslator(-40);
 			fail();
 		} catch (TranslatorException e) {
 		}
 		
 		try {
+			@SuppressWarnings("unused")
 			TataiTranslator t = new TataiTranslator(12684);
 			fail();
 		} catch (TranslatorException e) {
