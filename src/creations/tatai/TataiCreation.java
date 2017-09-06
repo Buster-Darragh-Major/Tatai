@@ -27,12 +27,12 @@ public class TataiCreation implements Creation {
 	};
 	
 	private Color[] _txtColors = new Color[] {
-			Color.web("#c20a0a"), // Dark Red
-			Color.web("#c24a0a"), // Dark Orange
-			Color.web("#1b9608"), // Dark Green
-			Color.web("#078d67"), // Dark Cyan
+			Color.web("#C20A0A"), // Dark Red
+			Color.web("#C24A0A"), // Dark Orange
+			Color.web("#1B9608"), // Dark Green
+			Color.web("#078D67"), // Dark Cyan
 			Color.web("#084891"), // Dark Blue
-			Color.web("#1a0891"), // Dark Deep Blue
+			Color.web("#1A0891"), // Dark Deep Blue
 			Color.web("#830726"), // Brown
 	};
 	
