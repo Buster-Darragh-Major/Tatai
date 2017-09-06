@@ -6,9 +6,9 @@ package creations.tatai;
  * 
  * Maori counting is structured fairly simply from 1 to 99. We will consider any 
  * number in this range to have 4 distinct components. A "multiplier", first in the
- * string telling how many tens there are, followed by "tens", in this case
+ * string telling the value of tens column there are, followed by "tens", in this case
  * represented by just "tekau", followed by "and", in this case "ma" and finally 
- * the value of the ones column.
+ * the value of the ones column, "ones".
  * For example: 
  * 84 = iwa-("multiplier") tekau-("tens") mā-("and") whā-("ones")
  *      iwa tekau mā whā
@@ -21,6 +21,10 @@ public class TataiTranslator {
 	private String _asMaori;
 	
 	public TataiTranslator(int val) {
+		if ((val > 99) || (val < 1)) {
+			throw new TranslatorException("Input value must be between 1 and 99");
+		}
+		
 		_val = val;
 		_asMaori = translate();
 	}
