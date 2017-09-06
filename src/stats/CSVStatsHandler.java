@@ -27,7 +27,6 @@ public class CSVStatsHandler implements StatisticHandler {
 	public static final int START_VALUE = 0;
 	
 	/* Fields */
-	
 	private Map<String, Integer> _valueMap;
 	
 	private final String[] _keys = {"totalPlayed", "totalCorrect", "totalIncorrect", "average"};
