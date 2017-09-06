@@ -37,5 +37,5 @@ public interface StatisticHandler {
 	 * @param correct questions correctly answered this session
 	 * 
 	 */
-	public void updateStats(int played, int incorrect, int correct);
+	public void updateStats(int played, int correct, int incorrect);
 }
