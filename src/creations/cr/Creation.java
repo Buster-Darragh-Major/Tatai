@@ -1,6 +1,7 @@
 package creations.cr;
 
-import java.io.File;
+import javafx.scene.paint.Color;
+
 /**
  * Interface to represent a type which can have various file operations executed on it.
  * 
@@ -28,12 +29,26 @@ public interface Creation {
 	 * 
 	 * @return String : creation name
 	 */
-	public String name();
+	public String maoriName();
 	
 	/**
-	 * Returns the File
+	 * Returns the integer number of the creation
 	 * 
-	 * @return File : the file being referenced.
+	 * @return int : creation number value
 	 */
-	public File file();
+	public int number();
+	
+	/**
+	 * Returns the color value corresponding to the text of the creation
+	 * 
+	 * @return Color : javafx color
+	 */
+	public Color textColor();
+	
+	/**
+	 * Returns the color value corresponding to the background of the creation
+	 * 
+	 * @return Color : javafx color
+	 */
+	public Color backgroundColor();
 }

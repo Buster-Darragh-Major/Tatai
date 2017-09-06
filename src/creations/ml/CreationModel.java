@@ -55,18 +55,6 @@ public abstract class CreationModel {
 	protected abstract void updateModel();
 	
 	/**
-	 * Get the file which the particular creation references.
-	 * 
-	 * @param creationName: the name of the creation
-	 * @return File: The file referenced.
-	 */
-	public File getCreationFile(String creationName) {
-		Creation creation = getCreation(creationName);
-		
-		return creation.file();
-	}
-	
-	/**
 	 * Delete a creation from the model.
 	 * 
 	 * @param creationName: the creation to be deleted

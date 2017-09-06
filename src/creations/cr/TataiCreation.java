@@ -1,17 +1,8 @@
-package creations.tatai;
+package creations.cr;
 
 import creations.cr.Creation;
-import creations.cr.CreationException;
 import javafx.scene.paint.Color;
 
-/**
- * This class holds the data needed for a creation object specific to the Tatai
- * learning aid. An object will hold an integer value, its corresponding Maori
- * word as a String, and colors for the background and foreground to be displayed
- * on the GUI/
- * 
- * @author Buster Major
- */
 public class TataiCreation implements Creation {
 	
 	// Approved colors for background - light, non-harsh
@@ -41,10 +32,6 @@ public class TataiCreation implements Creation {
 	private Color _txtColor;
 	
 	public TataiCreation(int num) {
-		if ((num > 99) || (num < 1)) {
-			throw new CreationException("Creation integer value must be between 1 and 99");
-		}
-		
 		_num = num;
 		_bgColor = _bgColors[(int) Math.round((_bgColors.length * Math.random())) - 1];
 		_txtColor = _txtColors[(int) Math.round((_txtColors.length * Math.random())) - 1];
