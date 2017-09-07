@@ -46,8 +46,8 @@ public class TataiCreation implements Creation {
 		}
 		
 		_num = num;
-		_bgColor = _bgColors[(int) Math.round((_bgColors.length * Math.random())) - 1];
-		_txtColor = _txtColors[(int) Math.round((_txtColors.length * Math.random())) - 1];
+		_bgColor = _bgColors[(int) Math.floor((_bgColors.length * Math.random()))];
+		_txtColor = _txtColors[(int) Math.floor((_txtColors.length * Math.random()))];
 	}
 
 	@Override

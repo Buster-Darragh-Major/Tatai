@@ -32,14 +32,14 @@ public class TataiCreationBuilder {
 		// Create list of numbers in order 1 to 10
 		List<Integer> nums = new ArrayList<Integer>();
 		for (int i = 0; i < 10; i++) {
-			nums.set(i, i + 1);
+			nums.add(i, i + 1);
 		}
 		
 		// Randomize order of numbers
 		Collections.shuffle(nums);
 		
 		// Populate TataiCreationModel
-		for (int i = 0; i < 10; i ++) {
+		for (int i = 0; i < 10; i++) {
 			TataiCreation c = new TataiCreation(nums.get(i));
 			list.add(c);
 		}

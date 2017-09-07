@@ -1,12 +1,7 @@
 package gui;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.jfoenix.controls.JFXHamburger;
 
-import creations.tatai.TataiCreation;
 import creations.tatai.TataiCreationBuilder.Level;
 import creations.tatai.TataiCreationModel;
 import javafx.fxml.FXML;
@@ -32,16 +27,28 @@ public class LevelSelectWindowController extends TataiController {
 	
 	@FXML
 	public void handleLevel1Click() {
+		Context.getInstance().newGame();
+		Context.getInstance().currentGame().setLevel(Level.Level1);
+		
 		_model = new TataiCreationModel();
 		_model.setLevel(Level.Level1);
 		_model.populateModel();
+		
+		Stage stage = (Stage) _level1.getScene().getWindow(); // Get current stage
+		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
 	}
 	
 	@FXML
 	public void handleLevel2Click() {
+		Context.getInstance().newGame();
+		Context.getInstance().currentGame().setLevel(Level.Level2);
+		
 		_model = new TataiCreationModel();
 		_model.setLevel(Level.Level2);
 		_model.populateModel();
+		
+		Stage stage = (Stage) _level2.getScene().getWindow(); // Get current stage
+		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
 	}
 	
 }

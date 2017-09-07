@@ -7,9 +7,9 @@
 
 <AnchorPane id="menuButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainWindowController">
    <children>
-      <Text fill="WHITE" layoutX="185.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T&#x101;tai">
+      <Text fill="WHITE" layoutX="182.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tātai" AnchorPane.leftAnchor="182.15" AnchorPane.rightAnchor="182.22998962402346">
          <font>
-            <Font name="NanumGothic" size="90.0" />
+            <Font name="Noto Sans CJK SC Black" size="90.0" />
          </font>
       </Text>
       <JFXButton fx:id="_mainMenuPlay" layoutX="97.0" layoutY="262.0" onAction="#handlePlayMenuClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Play" textFill="WHITE" />
