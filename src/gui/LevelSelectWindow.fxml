@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LevelSelectWindowController">
+   <children>
+      <JFXButton fx:id="_level1" layoutX="252.0" layoutY="117.0" onAction="#handleLevel1Click" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Level 1" />
+      <JFXButton fx:id="_level2" layoutX="251.0" layoutY="231.0" onAction="#handleLevel2Click" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Level 2" />
+      <JFXHamburger fx:id="_mainMenu" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleMainMenuCLick" />
+   </children>
+</AnchorPane>

@@ -5,6 +5,7 @@ package creations.tatai;
  * 
  * @author Buster Major
  */
+@SuppressWarnings("serial")
 public class TranslatorException extends RuntimeException {
 	public TranslatorException(String msg) {
 		super(msg);

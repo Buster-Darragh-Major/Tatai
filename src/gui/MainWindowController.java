@@ -17,7 +17,7 @@ public class MainWindowController extends TataiController {
 	@FXML
 	public void handlePlayMenuClick() {
 		Stage stage = (Stage) _mainMenuPlay.getScene().getWindow(); // Get current stage
-		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
 	}
 	
 	@FXML

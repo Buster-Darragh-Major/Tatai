@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -12,6 +12,6 @@
             <Font name="NanumGothic" size="90.0" />
          </font>
       </Text>
-      <JFXButton fx:id="_statsViewBack" layoutX="14.0" layoutY="336.0" onAction="#handleBackStatsClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Main Menu" />
+      <JFXHamburger fx:id="_statsViewBack" layoutX="14.0" layoutY="18.0" onMouseClicked="#handleBackStatsClick" />
    </children>
 </AnchorPane>
