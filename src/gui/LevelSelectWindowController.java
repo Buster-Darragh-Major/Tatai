@@ -25,6 +25,7 @@ public class LevelSelectWindowController extends TataiController {
 		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml view
 	}
 	
+	// TODO: move model creation and population to levelselectionconfirmation window
 	@FXML
 	public void handleLevel1Click() {
 		Context.getInstance().newGame();
