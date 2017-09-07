@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
  * This class holds the data needed for a creation object specific to the Tatai
  * learning aid. An object will hold an integer value, its corresponding Maori
  * word as a String, and colors for the background and foreground to be displayed
- * on the GUI/
+ * on the GUI
  * 
  * @author Buster Major
  */
@@ -39,7 +39,12 @@ public class TataiCreation implements Creation {
 	private int _num;
 	private Color _bgColor;
 	private Color _txtColor;
+	private String _maoriName;
 	
+	/**
+	 * Constructor
+	 * @param num
+	 */
 	public TataiCreation(int num) {
 		if ((num > 99) || (num < 1)) {
 			throw new CreationException("Creation integer value must be between 1 and 99");
@@ -48,44 +53,60 @@ public class TataiCreation implements Creation {
 		_num = num;
 		_bgColor = _bgColors[(int) Math.floor((_bgColors.length * Math.random()))];
 		_txtColor = _txtColors[(int) Math.floor((_txtColors.length * Math.random()))];
-	}
-
-	@Override
-	public void create() {
-		// TODO Auto-generated method stub
 		
+		TataiTranslator t = new TataiTranslator(num);
+		_maoriName = t.asMaori();
 	}
 
-	@Override
-	public void play() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String maoriName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/**
+	 * Retrieves the integer value stored in the creation
+	 */
 	@Override
 	public int number() {
 		return _num;
 	}
 
+	/**
+	 * Retrieves the text color stored in the creation
+	 */
 	@Override
 	public Color textColor() {
 		return _txtColor;
 	}
 
+	/**
+	 * Retrieves the background color stored in the creation
+	 */
 	@Override
 	public Color backgroundColor() {
 		return _bgColor;
+	}
+	
+	/**
+	 * Retrieves the Maori name of the number stored in the object
+	 */
+	@Override
+	public String maoriName() {
+		return _maoriName;
+	}
+	
+	@Override
+	public void create() {
+		// Not relevant
+		
+	}
+
+	@Override
+	public void play() {
+		// Not relevant
+		
+	}
+
+	@Override
+	public void delete() {
+		// Not relevant
+		
 	}
 }

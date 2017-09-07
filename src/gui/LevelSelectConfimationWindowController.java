@@ -50,7 +50,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML
 	public void handleMainMenuClick() {
 		Stage stage = (Stage) _mainMenu.getScene().getWindow(); // Get current stage
-		changeWindow("MainWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
+		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml view
 	}
 
 	@Override

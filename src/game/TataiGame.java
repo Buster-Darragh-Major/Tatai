@@ -14,6 +14,14 @@ import creations.tatai.TataiCreationBuilder.Level;
 public class TataiGame {
 	
 	private Level _level = Level.Level1;
+	private int _questionNo;
+	
+	/**
+	 * Constructor
+	 */
+	public TataiGame() {
+		_questionNo = 1;
+	}
 	
 	/**
 	 * Sets the current level difficulty for the game object.
@@ -24,11 +32,27 @@ public class TataiGame {
 	}
 	
 	/**
-	 * Gets the current level difficulty for the game objet.
+	 * Gets the current level difficulty for the game object.
 	 * @returns Level : level
 	 */
 	public Level getLevel() {
 		return _level;
+	}
+	
+	/**
+	 * Gets the current question number for the game object
+	 * 
+	 * @return int : Question Number
+	 */
+	public int getQuestionNo() {
+		return _questionNo;
+	}
+	
+	/**
+	 * Increments question number for next question in quiz
+	 */
+	public void nextQuestion() {
+		_questionNo++;
 	}
 	
 	/**
