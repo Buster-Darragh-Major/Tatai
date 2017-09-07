@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import creations.tatai.TataiCreationBuilder.Level;
 
@@ -21,6 +21,14 @@ public class TataiGame {
 	 */
 	public void setLevel(Level level) {
 		_level = level;
+	}
+	
+	/**
+	 * Gets the current level difficulty for the game objet.
+	 * @returns Level : level
+	 */
+	public Level getLevel() {
+		return _level;
 	}
 	
 	/**

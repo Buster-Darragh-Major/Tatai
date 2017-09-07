@@ -11,11 +11,6 @@ public class TataiCreationModel extends CreationModel{
 	
 	private List<Creation> _creations = new ArrayList<Creation>();
 	private Level _level;
-	
-	// Constructor, default sets to level 1
-	public TataiCreationModel() {
-		_level = Level.Level1;
-	}
 
 	public void setLevel(Level level) {
 		_level = level;
