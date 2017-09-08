@@ -2,7 +2,7 @@ package gui;
 
 import com.jfoenix.controls.JFXHamburger;
 
-import creations.tatai.TataiCreationBuilder.Level;
+import creations.tatai.Level;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;

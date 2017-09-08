@@ -5,7 +5,6 @@ import java.util.List;
 
 import creations.cr.Creation;
 import creations.ml.CreationModel;
-import creations.tatai.TataiCreationBuilder.Level;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of

@@ -1,6 +1,6 @@
 package game;
 
-import creations.tatai.TataiCreationBuilder.Level;
+import creations.tatai.Level;
 
 /**
  * Class that deals with the abstract parameters of the game itself, i.e. the current
