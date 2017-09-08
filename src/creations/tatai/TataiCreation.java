@@ -55,9 +55,9 @@ public class TataiCreation implements Creation {
 	private int _num;
 	private Color _bgColor;
 	private Color _txtColor;
-	private String _maoriName;
 	
 	public TataiCreation(int number, Color backgroundColor, Color fontColor) {
+		// TODO is this needed??? reduces options for creating creations
 		if ((number > 99) || (number < 1)) {
 			throw new CreationException("Creation integer value must be between 1 and 99");
 		}
