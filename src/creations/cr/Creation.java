@@ -9,20 +9,11 @@ import javafx.scene.paint.Color;
  *
  */
 public interface Creation {
-	/**
-	 * Creates the file
-	 */
-	public void create();
 	
 	/**
 	 * Plays the file
 	 */
 	public void play();
-	
-	/**
-	 * Deletes the file
-	 */
-	public void delete();
 	
 	/**
 	 * Returns the name of the file

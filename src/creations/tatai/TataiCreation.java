@@ -107,21 +107,9 @@ public class TataiCreation implements Creation {
 	public String maoriName() {
 		return _maoriName;
 	}
-	
-	@Override
-	public void create() {
-		// Not relevant
-		
-	}
 
 	@Override
 	public void play() {
-		// Not relevant
-		
-	}
-
-	@Override
-	public void delete() {
 		// Not relevant
 		
 	}
