@@ -57,24 +57,14 @@ public class TataiCreation implements Creation {
 	private Color _txtColor;
 	private String _maoriName;
 	
-	/**
-	 * Constructor
-	 * @param num
-	 */
-	public TataiCreation(int num) {
-		if ((num > 99) || (num < 1)) {
+	public TataiCreation(int number, Color backgroundColor, Color fontColor) {
+		if ((number > 99) || (number < 1)) {
 			throw new CreationException("Creation integer value must be between 1 and 99");
 		}
-		
-		_num = num;
-		_bgColor = _bgColors[(int) Math.floor((_bgColors.length * Math.random()))];
-		_txtColor = _txtColors[(int) Math.floor((_txtColors.length * Math.random()))];
-		
-		TataiTranslator t = new TataiTranslator(num);
-		_maoriName = t.asMaori();
+		_num = number;
+		_bgColor = backgroundColor;
+		_txtColor = fontColor;
 	}
-
-	
 
 	/**
 	 * Retrieves the integer value stored in the creation
@@ -98,14 +88,6 @@ public class TataiCreation implements Creation {
 	@Override
 	public Color backgroundColor() {
 		return _bgColor;
-	}
-	
-	/**
-	 * Retrieves the Maori name of the number stored in the object
-	 */
-	@Override
-	public String maoriName() {
-		return _maoriName;
 	}
 
 	@Override

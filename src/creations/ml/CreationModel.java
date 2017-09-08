@@ -33,22 +33,6 @@ public abstract class CreationModel {
 	}
 	
 	/**
-	 * Add a creation to the model
-	 * 
-	 * @param creation: the creation to be added
-	 */
-	public abstract void addCreation(Creation creation);
-	
-	/**
-	 * Add a creation to the model.
-	 * A creation should be constructed in this method in
-	 * order to correctly add it to the model.
-	 * 
-	 * @param creationName: the name of the creation to be created and added.
-	 */
-	public abstract void addCreation(String creationName);
-	
-	/**
 	 * update the model
 	 */
 	protected abstract void updateModel();

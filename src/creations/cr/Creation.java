@@ -16,13 +16,6 @@ public interface Creation {
 	public void play();
 	
 	/**
-	 * Returns the name of the file
-	 * 
-	 * @return String : creation name
-	 */
-	public String maoriName();
-	
-	/**
 	 * Returns the integer number of the creation
 	 * 
 	 * @return int : creation number value
