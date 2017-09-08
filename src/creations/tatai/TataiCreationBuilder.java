@@ -5,7 +5,12 @@ import java.util.Collections;
 import java.util.List;
 
 import creations.cr.Creation;
-
+/**
+ * 
+ * @author Nathan Cairns
+ * @author Buster Darragh-Major
+ *
+ */
 public class TataiCreationBuilder {
 
 	public enum Level {
@@ -62,5 +67,4 @@ public class TataiCreationBuilder {
 		
 		return list;
 	}
-	
 }
