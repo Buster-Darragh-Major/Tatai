@@ -17,7 +17,7 @@ public class Level1RandomNumberGenerator implements RandomNumberGenerator {
 	@Override
 	public int generateNumber() {
 		
-		return (int) Math.round((Math.random() * MAX - MIN)) + MIN;
+		return (int) Math.round((Math.random() * MAX)) + MIN;
 	}
 
 }

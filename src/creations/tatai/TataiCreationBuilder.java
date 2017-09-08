@@ -5,14 +5,22 @@ import java.util.Collections;
 import java.util.List;
 
 import creations.cr.Creation;
+import creations.tatai.numbergenerator.Level1RandomNumberGenerator;
+import creations.tatai.numbergenerator.Level2RandomNumberGenerator;
+import creations.tatai.numbergenerator.RandomNumberGenerator;
 import javafx.scene.paint.Color;
 /**
+ * This class deals with generating creations
  * 
  * @author Nathan Cairns
  * @author Buster Darragh-Major
  *
  */
 public class TataiCreationBuilder {
+	/*MACROS*/
+	public static final int NUMBER_OF_CREATIONS = 10;
+	
+	private RandomNumberGenerator _randomNumberStrategy;
 	
 	// Approved colors for background - light, non-harsh
 	private Color[] _bgColors = new Color[] {
@@ -52,54 +60,39 @@ public class TataiCreationBuilder {
 			Color.web("#910094")  // Richer Violet
 	};
 	
+	/**
+	 * Create a list of creations corresponding to the current level
+	 * 
+	 * @param level The level to generate creations for.
+	 * 
+	 * @return The generated list of creations
+	 */
 	public List<Creation> populateList(Level level) {
-		if (level == Level.Level1) {
-			return populateLevel1();
-		} else if (level == Level.Level2) {
-			return populateLevel2();
+		switch (level) {
+		case Level1: _randomNumberStrategy = new Level1RandomNumberGenerator();
+			break;
+		case Level2: _randomNumberStrategy = new Level2RandomNumberGenerator();
+			break;
 		}
 		
-		return null;
+		return generateCreation();
 	}
 	
 	/**
-	 * Populate TataiCreationModel list with 10 creations randomly generated with numbers
-	 * 1 to 10, no number appears twice.
+	 * Generates 10 creations.
+	 * 
+	 * @return the 10 creations.
 	 */
-	private List<Creation> populateLevel1() {
-		List<Creation> list = new ArrayList<Creation>();
+	private List<Creation> generateCreation() {
+		List<Creation> creationList = new ArrayList<Creation>();
 		
-		// Create list of numbers in order 1 to 10
-		List<Integer> nums = new ArrayList<Integer>();
-		for (int i = 0; i < 10; i++) {
-			nums.add(i, i + 1);
+		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
+			int number = _randomNumberStrategy.generateNumber();
+			Creation creation = new TataiCreation(number);
+			creationList.add(creation);
 		}
 		
-		// Randomize order of numbers
-		Collections.shuffle(nums);
+		return creationList;
 		
-		// Populate TataiCreationModel
-		for (int i = 0; i < 10; i++) {
-			TataiCreation c = new TataiCreation(nums.get(i));
-			list.add(c);
-		}
-		
-		return list;
-	}
-	
-	/**
-	 * Populate TataiCreationModel with 10 creations randomly generated with numbers
-	 * 1 to 99, numbers may appear twice.
-	 */
-	private List<Creation> populateLevel2() {
-		List<Creation> list = new ArrayList<Creation>();
-		
-		for (int i = 0; i < 10; i++) {
-			int rand = (int) Math.round(Math.random() * 98) + 1;
-			TataiCreation c = new TataiCreation(rand);
-			list.add(c);
-		}
-		
-		return list;
 	}
 }
