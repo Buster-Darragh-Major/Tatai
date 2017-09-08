@@ -52,17 +52,7 @@ public abstract class CreationModel {
 	 * update the model
 	 */
 	protected abstract void updateModel();
-	
-	/**
-	 * Delete a creation from the model.
-	 * 
-	 * @param creationName: the creation to be deleted
-	 */
-	public void deleteCreation(String creationName) {
-		Creation creationToDelete = getCreation(creationName);
-		creationToDelete.delete(); // delete the creation
-		_creations.remove(creationName); // remove it from the model
-	}
+
 	
 	/**
 	 * Return the names of the creations stored in the model as a 
