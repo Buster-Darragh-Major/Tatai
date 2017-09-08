@@ -5,6 +5,9 @@ import java.util.List;
 
 import creations.cr.Creation;
 import creations.ml.CreationModel;
+import creations.tatai.numbergenerator.Level1RandomNumberGenerator;
+import creations.tatai.numbergenerator.Level2RandomNumberGenerator;
+import creations.tatai.numbergenerator.RandomNumberGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of
@@ -14,7 +17,10 @@ import creations.ml.CreationModel;
  * @author Buster Major
  */
 public class TataiCreationModel extends CreationModel{
+	/*MACROS*/
+	public static final int NUMBER_OF_CREATIONS = 10;
 	
+	private RandomNumberGenerator _randomNumberStrategy;
 	private List<Creation> _creations = new ArrayList<Creation>();
 	private Level _level;
 
@@ -26,15 +32,6 @@ public class TataiCreationModel extends CreationModel{
 	 */
 	public void setLevel(Level level) {
 		_level = level;
-	}
-	
-	/**
-	 * Populates the model of the creations and adds them to _creations list. Behavior
-	 * of list population depends on the current level difficulty set in the model object.
-	 */
-	public void populateModel() {
-		TataiCreationBuilder b = new TataiCreationBuilder();
-		_creations.addAll(b.populateList(_level));
 	}
 	
 	/**
@@ -55,6 +52,41 @@ public class TataiCreationModel extends CreationModel{
 	@Override
 	public void addCreation(Creation creation) {
 		_creations.add(creation);
+	}
+	
+	/**
+	 * Create a list of creations corresponding to the current level
+	 * 
+	 * @param level The level to generate creations for.
+	 * 
+	 * @return The generated list of creations
+	 */
+	public void populateModel() {
+		switch (_level) {
+		case Level1: _randomNumberStrategy = new Level1RandomNumberGenerator();
+			break;
+		case Level2: _randomNumberStrategy = new Level2RandomNumberGenerator();
+			break;
+		}
+		
+		_creations = generateCreation();
+	}
+	
+	/**
+	 * Generates 10 creations.
+	 * 
+	 * @return the 10 creations.
+	 */
+	private List<Creation> generateCreation() {
+		List<Creation> creationList = new ArrayList<Creation>();
+		
+		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
+			int number = _randomNumberStrategy.generateNumber();
+			Creation creation = new TataiCreation(number);
+			creationList.add(creation);
+		}
+		
+		return creationList;	
 	}
 
 	/**

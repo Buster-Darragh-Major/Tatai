@@ -1,13 +1,5 @@
 package creations.tatai;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import creations.cr.Creation;
-import creations.tatai.numbergenerator.Level1RandomNumberGenerator;
-import creations.tatai.numbergenerator.Level2RandomNumberGenerator;
-import creations.tatai.numbergenerator.RandomNumberGenerator;
 import javafx.scene.paint.Color;
 /**
  * This class deals with generating creations
@@ -18,9 +10,9 @@ import javafx.scene.paint.Color;
  */
 public class TataiCreationBuilder {
 	/*MACROS*/
-	public static final int NUMBER_OF_CREATIONS = 10;
+
 	
-	private RandomNumberGenerator _randomNumberStrategy;
+	
 	
 	// Approved colors for background - light, non-harsh
 	private Color[] _bgColors = new Color[] {
@@ -59,40 +51,6 @@ public class TataiCreationBuilder {
 			Color.web("#944F00"), // Richer Orange
 			Color.web("#910094")  // Richer Violet
 	};
+		
 	
-	/**
-	 * Create a list of creations corresponding to the current level
-	 * 
-	 * @param level The level to generate creations for.
-	 * 
-	 * @return The generated list of creations
-	 */
-	public List<Creation> populateList(Level level) {
-		switch (level) {
-		case Level1: _randomNumberStrategy = new Level1RandomNumberGenerator();
-			break;
-		case Level2: _randomNumberStrategy = new Level2RandomNumberGenerator();
-			break;
-		}
-		
-		return generateCreation();
-	}
-	
-	/**
-	 * Generates 10 creations.
-	 * 
-	 * @return the 10 creations.
-	 */
-	private List<Creation> generateCreation() {
-		List<Creation> creationList = new ArrayList<Creation>();
-		
-		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
-			int number = _randomNumberStrategy.generateNumber();
-			Creation creation = new TataiCreation(number);
-			creationList.add(creation);
-		}
-		
-		return creationList;
-		
-	}
 }
