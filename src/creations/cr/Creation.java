@@ -8,31 +8,47 @@ import javafx.scene.paint.Color;
  * @author Nathan Cairns
  *
  */
-public interface Creation {
+public abstract class Creation {
+	
+	protected String _label;
+	protected Color _bgColor;
+	protected Color _txtColor;
+	
+	public Creation (String label, Color backgroundColor, Color fontColor) {
+		_label = label;
+		_bgColor = backgroundColor;
+		_txtColor = fontColor;
+	}
 	
 	/**
 	 * Plays the file
 	 */
-	public void play();
+	public abstract void play();
 	
 	/**
 	 * Returns the integer number of the creation
 	 * 
 	 * @return int : creation number value
 	 */
-	public int number();
+	public String number() {
+		return _label;
+	}
 	
 	/**
 	 * Returns the color value corresponding to the text of the creation
 	 * 
 	 * @return Color : javafx color
 	 */
-	public Color textColor();
+	public Color textColor() {
+		return _txtColor;
+	}
 	
 	/**
 	 * Returns the color value corresponding to the background of the creation
 	 * 
 	 * @return Color : javafx color
 	 */
-	public Color backgroundColor();
+	public Color backgroundColor() {
+		return _bgColor;
+	}
 }

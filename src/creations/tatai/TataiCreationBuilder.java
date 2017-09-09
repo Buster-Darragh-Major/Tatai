@@ -1,14 +1,15 @@
 package creations.tatai;
 
+import creations.ml.CreationFactory;
 import javafx.scene.paint.Color;
 /**
  * This class deals with generating creations
  * 
  * @author Nathan Cairns
- * @author Buster Darragh-Major
+ * @author Buster Major
  *
  */
-public class TataiCreationBuilder {
+public class TataiCreationBuilder extends CreationFactory {
 	/*MACROS*/
 	
 	/*Fields*/
