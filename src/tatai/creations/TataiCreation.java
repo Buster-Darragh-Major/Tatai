@@ -27,10 +27,6 @@ public class TataiCreation extends Creation {
 		try {
 			int num = Integer.parseInt(number);
 
-			if ((num > 99) || (num < 1)) {
-				throw new CreationException("Creation integer value must be between 1 and 99");
-			}
-
 		} catch (NumberFormatException e) {
 			throw new CreationException("Label must be a number between 1 and 99");
 		}

@@ -62,7 +62,6 @@ public class TataiCreationModel extends CreationModel{
 	};
 	
 	private RandomNumberGenerator _randomNumberStrategy;
-	private List<Creation> _creations = new ArrayList<Creation>();
 	private Level _level;
 
 	/**
@@ -97,12 +96,14 @@ public class TataiCreationModel extends CreationModel{
 	public void populateModel() {
 		switch (_level) {
 		case Level1: _randomNumberStrategy = new Level1RandomNumberGenerator();
+			updateModel(TataiCreation.class);
 			break;
 		case Level2: _randomNumberStrategy = new Level2RandomNumberGenerator();
+			updateModel(TataiCreation.class);
 			break;
 		}
 		
-		_creations = generateCreation();
+		
 	}
 	
 	private Color generateBackgroundColor() {
@@ -112,13 +113,9 @@ public class TataiCreationModel extends CreationModel{
 	private Color generateFontColor() {
 		return FONT_COLORS[(int) Math.floor((FONT_COLORS.length * Math.random()))];
 	}
-	
-	/**
-	 * Generates 10 creations.
-	 * 
-	 * @return the 10 creations.
-	 */
-	private List<Creation> generateCreation() {
+
+	@Override
+	public <T extends Creation> void updateModel(Class<T> creationClass) {
 		List<Creation> creationList = new ArrayList<Creation>();
 		
 		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
@@ -129,20 +126,12 @@ public class TataiCreationModel extends CreationModel{
 			Creation creation = new CreationBuilder().number("" + number)
 					.backgroundColor(bgColor)
 					.fontColor(fontColor)
-					.build(TataiCreation.class);
+					.build(creationClass);
 			
 			creationList.add(creation);
 		}
 		
-		return creationList;	
-	}
-
-	/**
-	 * Not particularly relevant to Tatai
-	 */
-	@Override
-	protected void updateModel() {
-		// Not relevant
+		_creations = creationList;
 	}
 
 }
