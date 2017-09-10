@@ -17,17 +17,17 @@ public class TataiCreation extends Creation {
 	/**
 	 * Constructor
 	 * 
-	 * @param number
+	 * @param label
 	 * @param backgroundColor
 	 * @param fontColor
 	 */
-	public TataiCreation(String number, Color backgroundColor, Color fontColor) {
-		super(number, backgroundColor, fontColor);
+	public TataiCreation(String label, Color backgroundColor, Color fontColor) {
+		super(label, backgroundColor, fontColor);
 	}
 
 	@Override
 	public void play() {
-		// Not relevant
-
-	}
+		// TODO Auto-generated method stub
+		
+	}	
 }

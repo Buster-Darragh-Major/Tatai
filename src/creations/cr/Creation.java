@@ -20,9 +20,6 @@ public abstract class Creation {
 		_fontColor = fontColor;
 	}
 	
-	/**
-	 * Plays the file
-	 */
 	public abstract void play();
 	
 	/**
