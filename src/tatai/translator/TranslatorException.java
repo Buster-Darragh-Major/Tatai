@@ -1,4 +1,4 @@
-package tatai.creations;
+package tatai.translator;
 
 /**
  * An exception for errors in the translator class
