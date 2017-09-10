@@ -28,31 +28,4 @@ public abstract class Creation {
 	 * @param label to be displayed in.
 	 */
 	public abstract void display(Label label, Pane pane);
-	
-	/**
-	 * Returns the integer number of the creation
-	 * 
-	 * @return int : creation number value
-	 */
-	public String label() {
-		return _label;
-	}
-	
-	/**
-	 * Returns the color value corresponding to the text of the creation
-	 * 
-	 * @return Color : javafx color
-	 */
-	public Color textColor() {
-		return _fontColor;
-	}
-	
-	/**
-	 * Returns the color value corresponding to the background of the creation
-	 * 
-	 * @return Color : javafx color
-	 */
-	public Color backgroundColor() {
-		return _bgColor;
-	}
 }
