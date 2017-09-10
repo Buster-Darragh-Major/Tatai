@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import creations.cr.Creation;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 /**
  * This class allows a creation type object to be easily
@@ -31,7 +33,18 @@ public abstract class CreationModel {
 	 * @param <T>
 	 */
 	public abstract <T extends Creation> void updateModel(Class<T> creationClass);
-
+	
+	/**
+	 * Display a creation from the list.
+	 * 
+	 * @param index
+	 * @param label
+	 * @param pane
+	 */
+	public void displayCreation(int index, Label label, Pane pane) {
+		Creation creation = _creations.get(index);
+		creation.display(label, pane);
+	}
 	
 	/**
 	 * Return the names of the creations stored in the model as a 

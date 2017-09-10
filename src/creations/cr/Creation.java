@@ -1,5 +1,7 @@
 package creations.cr;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 /**
@@ -20,7 +22,12 @@ public abstract class Creation {
 		_fontColor = fontColor;
 	}
 	
-	public abstract void play();
+	/**
+	 * Display the creation in a javafx label.
+	 * 
+	 * @param label to be displayed in.
+	 */
+	public abstract void display(Label label, Pane pane);
 	
 	/**
 	 * Returns the integer number of the creation

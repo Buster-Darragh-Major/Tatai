@@ -1,7 +1,9 @@
 package tatai.creations;
 
 import creations.cr.Creation;
-import creations.cr.CreationException;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 /**
@@ -26,8 +28,14 @@ public class TataiCreation extends Creation {
 	}
 
 	@Override
-	public void play() {
-		// TODO Auto-generated method stub
+	public void display(Label label, Pane pane) {
+		label.setText(_label);
+		label.setTextFill(_fontColor);
+		label.setAlignment(Pos.CENTER);
 		
+		String bgColor = _bgColor.toString();
+		bgColor = bgColor.substring(2, bgColor.length() - 2);
+		
+		pane.setStyle("-fx-background-color: #" + bgColor);
 	}	
 }

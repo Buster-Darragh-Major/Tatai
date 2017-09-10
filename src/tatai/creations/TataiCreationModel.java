@@ -63,7 +63,17 @@ public class TataiCreationModel extends CreationModel{
 	
 	private LabelGenerator _labelStrategy;
 	private Level _level;
-
+	
+	public TataiCreationModel() {
+		super();
+		
+		_labelStrategy = new Level1RandomNumberLabelGenerator();
+	}
+	
+	public void setLabelingStrategy(LabelGenerator lg) {
+		_labelStrategy = lg;
+	}
+	
 	/**
 	 * Sets the difficulty level of the current population creation model. The difficulty
 	 * will effect the model by determining what range of numbers are set to creations.
@@ -86,6 +96,7 @@ public class TataiCreationModel extends CreationModel{
 		return _creations.get(questionNo - 1);
 	}
 	
+	// TODO move this method to TataiGame and make TataiGame contain a CreationModel
 	/**
 	 * Create a list of creations corresponding to the current level
 	 * @param <T>
@@ -138,7 +149,7 @@ public class TataiCreationModel extends CreationModel{
 		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
 			String label = _labelStrategy.generateLabel();
 			Color bgColor = generateBackgroundColor();
-			Color fontColor =generateFontColor();
+			Color fontColor = generateFontColor();
 			
 			Creation creation = new CreationBuilder().number("" + label)
 					.backgroundColor(bgColor)

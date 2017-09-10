@@ -29,15 +29,8 @@ public class GameWindowController extends TataiController implements Initializab
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// This is a bit messy isnt it
-		// TODO: Clean it up
 		int questionNo = Context.getInstance().currentGame().getQuestionNo();
-		String bgColor = Context.getInstance().currentCreationModel().getCreation(questionNo).backgroundColor().toString();
-		bgColor = bgColor.substring(2, bgColor.length() - 2);
 		
-		_intLabel.setAlignment(Pos.CENTER);
-		_intLabel.setText(Context.getInstance().currentCreationModel().getCreation(questionNo).label() + "");
-		_intLabel.setTextFill(Context.getInstance().currentCreationModel().getCreation(questionNo).textColor());
-		_pane.setStyle("-fx-background-color: #" + bgColor);
+		Context.getInstance().currentCreationModel().displayCreation(questionNo, _intLabel, _pane);
 	}
 }
