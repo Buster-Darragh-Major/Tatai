@@ -1,4 +1,4 @@
-package creations.tatai;
+package tatai.creations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import creations.cr.Creation;
 import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
-import creations.tatai.numbergenerator.Level1RandomNumberGenerator;
-import creations.tatai.numbergenerator.Level2RandomNumberGenerator;
-import creations.tatai.numbergenerator.RandomNumberGenerator;
 import javafx.scene.paint.Color;
 import sun.awt.image.PixelConverter.Bgrx;
+import tatai.creations.numbergenerator.Level1RandomNumberGenerator;
+import tatai.creations.numbergenerator.Level2RandomNumberGenerator;
+import tatai.creations.numbergenerator.RandomNumberGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of

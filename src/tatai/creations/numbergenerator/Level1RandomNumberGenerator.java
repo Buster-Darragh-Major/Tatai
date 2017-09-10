@@ -1,4 +1,4 @@
-package creations.tatai.numbergenerator;
+package tatai.creations.numbergenerator;
 /**
  * Generates a number for level one.
  * The range is 1 - 10.

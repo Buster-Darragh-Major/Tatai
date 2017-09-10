@@ -5,8 +5,8 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import creations.tatai.TataiTranslator;
-import creations.tatai.TranslatorException;
+import tatai.creations.TataiTranslator;
+import tatai.creations.TranslatorException;
 
 /**
  * Test class for TataiTranslator

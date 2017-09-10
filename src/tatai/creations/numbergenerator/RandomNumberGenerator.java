@@ -1,4 +1,4 @@
-package creations.tatai.numbergenerator;
+package tatai.creations.numbergenerator;
 
 /**
  * An interface which allows a user to generate a random number.

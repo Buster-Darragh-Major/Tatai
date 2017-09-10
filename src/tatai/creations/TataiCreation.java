@@ -1,4 +1,4 @@
-package creations.tatai;
+package tatai.creations;
 
 import creations.cr.Creation;
 import creations.cr.CreationException;

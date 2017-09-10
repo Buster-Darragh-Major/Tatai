@@ -1,7 +1,7 @@
 package gui;
 
-import creations.tatai.TataiCreationModel;
-import game.TataiGame;
+import tatai.creations.TataiCreationModel;
+import tatai.game.TataiGame;
 
 /**
  * Singleton class concerned with the 'context' of the program running, i.e. the
