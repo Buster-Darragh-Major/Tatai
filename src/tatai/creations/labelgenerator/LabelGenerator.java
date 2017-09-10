@@ -1,4 +1,4 @@
-package tatai.creations.numbergenerator;
+package tatai.creations.labelgenerator;
 
 /**
  * An interface which allows a user to generate a random number.
@@ -7,11 +7,11 @@ package tatai.creations.numbergenerator;
  * @author Nathan Cairns
  *
  */
-public interface RandomNumberGenerator {
+public interface LabelGenerator {
 	
 	/**
 	 * Generate a random number
 	 * @return randomly generated number
 	 */
-	public int generateNumber();
+	public String generateLabel();
 }

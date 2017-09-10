@@ -7,9 +7,9 @@ import creations.cr.Creation;
 import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
-import tatai.creations.numbergenerator.Level1RandomNumberGenerator;
-import tatai.creations.numbergenerator.Level2RandomNumberGenerator;
-import tatai.creations.numbergenerator.RandomNumberGenerator;
+import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
+import tatai.creations.labelgenerator.Level2RandomNumberLabelGenerator;
+import tatai.creations.labelgenerator.LabelGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of
@@ -61,7 +61,7 @@ public class TataiCreationModel extends CreationModel{
 			Color.web("#910094")  // Richer Violet
 	};
 	
-	private RandomNumberGenerator _randomNumberStrategy;
+	private LabelGenerator _labelStrategy;
 	private Level _level;
 
 	/**
@@ -88,42 +88,59 @@ public class TataiCreationModel extends CreationModel{
 	
 	/**
 	 * Create a list of creations corresponding to the current level
+	 * @param <T>
 	 * 
 	 * @param level The level to generate creations for.
 	 * 
 	 * @return The generated list of creations
 	 */
-	public void populateModel() {
+	@SuppressWarnings("unchecked")
+	public <T extends Creation> void populateModel() {
+		Class<T> creationClass = null;
+		
 		switch (_level) {
-		case Level1: _randomNumberStrategy = new Level1RandomNumberGenerator();
-			updateModel(TataiCreation.class);
+		case Level1: _labelStrategy = new Level1RandomNumberLabelGenerator();
+			creationClass = (Class<T>) TataiCreation.class;
 			break;
-		case Level2: _randomNumberStrategy = new Level2RandomNumberGenerator();
-			updateModel(TataiCreation.class);
+		case Level2: _labelStrategy = new Level2RandomNumberLabelGenerator();
+			creationClass = (Class<T>) TataiCreation.class;
 			break;
 		}
 		
-		
+		updateModel(creationClass);
 	}
 	
+	/**
+	 * Generate a color from the background color list.
+	 * 
+	 * @return
+	 */
 	private Color generateBackgroundColor() {
 		return BACKGROUND_COLORS[(int) Math.floor((BACKGROUND_COLORS.length * Math.random()))];
 	}
 	
+	/**
+	 * Generate a color from the font color list.
+	 * 
+	 * @return
+	 */
 	private Color generateFontColor() {
 		return FONT_COLORS[(int) Math.floor((FONT_COLORS.length * Math.random()))];
 	}
-
+	
+	/**l
+	 * This method populates the model with the required number of creations.
+	 */
 	@Override
 	public <T extends Creation> void updateModel(Class<T> creationClass) {
 		List<Creation> creationList = new ArrayList<Creation>();
 		
 		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
-			int number = _randomNumberStrategy.generateNumber();
+			String label = _labelStrategy.generateLabel();
 			Color bgColor = generateBackgroundColor();
 			Color fontColor =generateFontColor();
 			
-			Creation creation = new CreationBuilder().number("" + number)
+			Creation creation = new CreationBuilder().number("" + label)
 					.backgroundColor(bgColor)
 					.fontColor(fontColor)
 					.build(creationClass);

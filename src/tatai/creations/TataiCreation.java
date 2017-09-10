@@ -23,14 +23,6 @@ public class TataiCreation extends Creation {
 	 */
 	public TataiCreation(String number, Color backgroundColor, Color fontColor) {
 		super(number, backgroundColor, fontColor);
-
-		try {
-			int num = Integer.parseInt(number);
-
-		} catch (NumberFormatException e) {
-			throw new CreationException("Label must be a number between 1 and 99");
-		}
-
 	}
 
 	@Override

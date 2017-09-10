@@ -1,4 +1,4 @@
-package tatai.creations.numbergenerator;
+package tatai.creations.labelgenerator;
 /**
  * Generates a number for level one.
  * The range is 1 - 10.
@@ -6,7 +6,7 @@ package tatai.creations.numbergenerator;
  * @author Nathan Cairns
  *
  */
-public class Level1RandomNumberGenerator implements RandomNumberGenerator {
+public class Level1RandomNumberLabelGenerator implements LabelGenerator {
 	/*MACROS*/
 	public static final int MAX = 10;
 	public static final int MIN = 1;
@@ -15,9 +15,9 @@ public class Level1RandomNumberGenerator implements RandomNumberGenerator {
 	 * generate a random number between 1 and 10
 	 */
 	@Override
-	public int generateNumber() {
+	public String generateLabel() {
 		
-		return (int) Math.round((Math.random() * MAX)) + MIN;
+		return "" + (int) Math.round((Math.random() * MAX)) + MIN;
 	}
 
 }
