@@ -14,6 +14,12 @@ public abstract class Creation {
 	protected Color _bgColor;
 	protected Color _fontColor;
 	
+	public Creation(String label, Color bgColor, Color fontColor) {
+		_label = label;
+		_bgColor = bgColor;
+		_fontColor = fontColor;
+	}
+	
 	/**
 	 * Plays the file
 	 */
@@ -24,7 +30,7 @@ public abstract class Creation {
 	 * 
 	 * @return int : creation number value
 	 */
-	public String number() {
+	public String label() {
 		return _label;
 	}
 	

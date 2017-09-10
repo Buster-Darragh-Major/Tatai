@@ -36,7 +36,7 @@ public class GameWindowController extends TataiController implements Initializab
 		bgColor = bgColor.substring(2, bgColor.length() - 2);
 		
 		_intLabel.setAlignment(Pos.CENTER);
-		_intLabel.setText(Context.getInstance().currentCreationModel().getCreation(questionNo).number() + "");
+		_intLabel.setText(Context.getInstance().currentCreationModel().getCreation(questionNo).label() + "");
 		_intLabel.setTextFill(Context.getInstance().currentCreationModel().getCreation(questionNo).textColor());
 		_pane.setStyle("-fx-background-color: #" + bgColor);
 	}

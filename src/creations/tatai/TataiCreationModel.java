@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import creations.cr.Creation;
+import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import creations.tatai.numbergenerator.Level1RandomNumberGenerator;
 import creations.tatai.numbergenerator.Level2RandomNumberGenerator;
@@ -126,10 +127,10 @@ public class TataiCreationModel extends CreationModel{
 			Color bgColor = generateBackgroundColor();
 			Color fontColor =generateFontColor();
 			
-			Creation creation = new TataiCreationBuilder().number(number)
+			Creation creation = new CreationBuilder().number("" + number)
 					.backgroundColor(bgColor)
 					.fontColor(fontColor)
-					.build();
+					.build(TataiCreation.class);
 			
 			creationList.add(creation);
 		}
