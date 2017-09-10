@@ -6,7 +6,7 @@ package tatai.creations.labelgenerator;
  * @author Nathan Cairns
  *
  */
-public class Level2RandomNumberLabelGenerator implements LabelGenerator{
+public class Level2RandomNumberLabelGenerator extends Level1RandomNumberLabelGenerator{
 	/*MACROS*/
 	public static final int MAX = 100;
 	public static final int MIN = 1;
@@ -16,7 +16,9 @@ public class Level2RandomNumberLabelGenerator implements LabelGenerator{
 	 */
 	@Override
 	public String generateLabel() {
-		return "" + (int) Math.round((Math.random() * MAX - MIN)) + MIN;
+		int number = getRandomInteger(MAX, MIN);
+		
+		return "" + number;
 	}
 
 }

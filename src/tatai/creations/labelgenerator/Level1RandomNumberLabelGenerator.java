@@ -16,8 +16,13 @@ public class Level1RandomNumberLabelGenerator implements LabelGenerator {
 	 */
 	@Override
 	public String generateLabel() {
+		int number = getRandomInteger(MAX, MIN);
 		
-		return "" + (int) Math.round((Math.random() * MAX)) + MIN;
+		return "" + number;
+	}
+	
+	public int getRandomInteger(int maximum, int minimum) {
+		return ((int) (Math.random()*(maximum))) + minimum;
 	}
 
 }
