@@ -7,7 +7,6 @@ import creations.cr.Creation;
 import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
-import sun.awt.image.PixelConverter.Bgrx;
 import tatai.creations.numbergenerator.Level1RandomNumberGenerator;
 import tatai.creations.numbergenerator.Level2RandomNumberGenerator;
 import tatai.creations.numbergenerator.RandomNumberGenerator;
