@@ -12,13 +12,7 @@ public abstract class Creation {
 	
 	protected String _label;
 	protected Color _bgColor;
-	protected Color _txtColor;
-	
-	public Creation (String label, Color backgroundColor, Color fontColor) {
-		_label = label;
-		_bgColor = backgroundColor;
-		_txtColor = fontColor;
-	}
+	protected Color _fontColor;
 	
 	/**
 	 * Plays the file
@@ -40,7 +34,7 @@ public abstract class Creation {
 	 * @return Color : javafx color
 	 */
 	public Color textColor() {
-		return _txtColor;
+		return _fontColor;
 	}
 	
 	/**

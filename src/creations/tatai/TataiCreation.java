@@ -14,10 +14,6 @@ import javafx.scene.paint.Color;
  */
 public class TataiCreation extends Creation {
 	
-	private int _num;
-	private Color _bgColor;
-	private Color _txtColor;
-	
 	/**
 	 * Constructor 
 	 * 
@@ -26,15 +22,15 @@ public class TataiCreation extends Creation {
 	 * @param fontColor
 	 */
 	public TataiCreation(int number, Color backgroundColor, Color fontColor) {
-		super(numberCheck(number), backgroundColor, fontColor);
-	}
-	
-	private static String numberCheck(int number) {
+		super();
+		
 		if ((number > 99) || (number < 1)) {
 			throw new CreationException("Creation integer value must be between 1 and 99");
 		}
 		
-		return "" + number;
+		_label = "" + number;
+		_bgColor = backgroundColor;
+		_fontColor = fontColor;
 	}
 
 	@Override
