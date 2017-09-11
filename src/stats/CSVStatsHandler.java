@@ -30,7 +30,6 @@ public class CSVStatsHandler implements StatisticHandler {
 
 	/* Fields */
 	private Map<String, String> _valueMap;
-
 	private final String[] _keys = { "totalPlayed", "totalCorrect", "totalIncorrect", "average" };
 
 	/**
@@ -41,6 +40,7 @@ public class CSVStatsHandler implements StatisticHandler {
 
 		createStatsFolder();
 
+		// Try to read stats file, if fails create a new one.
 		try {
 			readCSVFile();
 		} catch (Exception e) {
@@ -57,9 +57,9 @@ public class CSVStatsHandler implements StatisticHandler {
 	private void writeToFile() {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
-
+		
 		createStatsFile();
-
+		
 		try {
 			fw = new FileWriter(STATS_FILE.getAbsolutePath(), true);
 			bw = new BufferedWriter(fw);
@@ -80,20 +80,16 @@ public class CSVStatsHandler implements StatisticHandler {
 			sb.append("\n");
 			bw.append(sb.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-
 			try {
-
-				if (bw != null)
+				if (bw != null) {
 					bw.close();
-
-				if (fw != null)
+				}
+				if (fw != null) {
 					fw.close();
-
+				}
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
 		}
@@ -201,9 +197,6 @@ public class CSVStatsHandler implements StatisticHandler {
 		return Double.parseDouble(_valueMap.get(_keys[3]));
 	}
 
-	/**
-	 *
-	 */
 	@Override
 	public void updateStats(int played, int correct, int incorrect) {
 		if (played > 10) {
@@ -225,6 +218,11 @@ public class CSVStatsHandler implements StatisticHandler {
 		writeToFile();
 	}
 
+	/**
+	 * Calculate the average score from games the played and question correct.
+	 * 
+	 * @return the average
+	 */
 	private double calculateAverage() {
 		double average = (double) totalCorrect() / totalPlayed() * 10;
 		
