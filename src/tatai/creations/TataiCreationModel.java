@@ -21,7 +21,7 @@ import tatai.creations.labelgenerator.LabelGenerator;
  */
 public class TataiCreationModel extends CreationModel{
 	/*MACROS*/
-	public static final int NUMBER_OF_CREATIONS = 10;
+	public static final int DEFAULT_NUMBER_OF_CREATIONS = 10;
 	
 	// Approved colors for background - light, non-harsh
 	private static final Color[] BACKGROUND_COLORS = new Color[] {
@@ -62,15 +62,42 @@ public class TataiCreationModel extends CreationModel{
 	};
 	
 	private LabelGenerator _labelStrategy;
+	private int _numberOfCreations;
 	
 	public TataiCreationModel() {
-		super();
-		
-		_labelStrategy = new Level1RandomNumberLabelGenerator();
+		this(new Level1RandomNumberLabelGenerator(), DEFAULT_NUMBER_OF_CREATIONS);
 	}
 	
+	public TataiCreationModel(int numberOfCreations) {
+		this (new Level1RandomNumberLabelGenerator(), numberOfCreations);
+	}
+	
+	public TataiCreationModel(LabelGenerator labelGenerator) {
+		this (labelGenerator, DEFAULT_NUMBER_OF_CREATIONS);
+	}
+	
+	public TataiCreationModel(LabelGenerator labelGenerator, int numberOfCreations) {
+		super();
+		_labelStrategy = labelGenerator;
+		_numberOfCreations = numberOfCreations;
+	}
+	
+	/**
+	 * Set the way creations are labeled.
+	 * 
+	 * @param lg label generator to use.
+	 */
 	public void setLabelingStrategy(LabelGenerator lg) {
 		_labelStrategy = lg;
+	}
+	
+	/**
+	 * Set the number of creations generated when calling updateModel().
+	 * s
+	 * @param numberOfCreations
+	 */
+	public void setNumberOfCreations(int numberOfCreations) {
+		_numberOfCreations = numberOfCreations;
 	}
 	
 	/**
@@ -98,7 +125,7 @@ public class TataiCreationModel extends CreationModel{
 	public <T extends Creation> void updateModel(Class<T> creationClass) {
 		List<Creation> creationList = new ArrayList<Creation>();
 		
-		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
+		for (int i = 0; i < _numberOfCreations; i++) {
 			String label = _labelStrategy.generateLabel();
 			Color bgColor = generateBackgroundColor();
 			Color fontColor = generateFontColor();
