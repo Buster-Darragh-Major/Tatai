@@ -84,7 +84,7 @@ public class CSVStatsHandlerTests {
 
 		assertEquals(0, _statsHandler.totalIncorrect());
 
-		assertEquals(0, _statsHandler.average());
+		
 	}
 		
 	private void deleteFile(String filename) {
