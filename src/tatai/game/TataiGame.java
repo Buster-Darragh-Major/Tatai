@@ -1,6 +1,8 @@
 package tatai.game;
 
 import creations.cr.Creation;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
@@ -42,7 +44,7 @@ public class TataiGame {
 	 * Gets the current level difficulty for the game object.
 	 * @returns Level : level
 	 */
-	public Level getLevel() {
+	public Level currentLevel() {
 		return _level;
 	}
 	
@@ -51,8 +53,15 @@ public class TataiGame {
 	 * 
 	 * @return int : Question Number
 	 */
-	public int getQuestionNo() {
+	public int currentQuestion() {
 		return _questionNo;
+	}
+	
+	/**
+	 * Display the current question
+	 */
+	public void displayCurrentQuestion(Label label, Pane pane) {
+		_creationModel.displayCreation(_questionNo, label, pane);
 	}
 	
 	/**

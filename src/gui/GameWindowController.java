@@ -28,8 +28,6 @@ public class GameWindowController extends TataiController implements Initializab
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		int questionNo = Context.getInstance().currentGame().getQuestionNo();
-		
-		Context.getInstance().currentCreationModel().displayCreation(questionNo, _intLabel, _pane);
+		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
 	}
 }

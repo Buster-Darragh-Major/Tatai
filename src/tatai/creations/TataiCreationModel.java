@@ -62,7 +62,6 @@ public class TataiCreationModel extends CreationModel{
 	};
 	
 	private LabelGenerator _labelStrategy;
-	private Level _level;
 	
 	public TataiCreationModel() {
 		super();
@@ -75,16 +74,6 @@ public class TataiCreationModel extends CreationModel{
 	}
 	
 	/**
-	 * Sets the difficulty level of the current population creation model. The difficulty
-	 * will effect the model by determining what range of numbers are set to creations.
-	 * 
-	 * @param level
-	 */
-	public void setLevel(Level level) {
-		_level = level;
-	}
-	
-	/**
 	 * Returns the creation needed for the corresponding question number. Returns the
 	 * creation placed in the list for a specific question in the quiz.
 	 * 
@@ -94,31 +83,6 @@ public class TataiCreationModel extends CreationModel{
 	public Creation getCreation(int questionNo) {
 		// Questions go from 1-10, list indexes go from 0-9
 		return _creations.get(questionNo - 1);
-	}
-	
-	// TODO move this method to TataiGame and make TataiGame contain a CreationModel
-	/**
-	 * Create a list of creations corresponding to the current level
-	 * @param <T>
-	 * 
-	 * @param level The level to generate creations for.
-	 * 
-	 * @return The generated list of creations
-	 */
-	@SuppressWarnings("unchecked")
-	public <T extends Creation> void populateModel() {
-		Class<T> creationClass = null;
-		
-		switch (_level) {
-		case Level1: _labelStrategy = new Level1RandomNumberLabelGenerator();
-			creationClass = (Class<T>) TataiCreation.class;
-			break;
-		case Level2: _labelStrategy = new Level2RandomNumberLabelGenerator();
-			creationClass = (Class<T>) TataiCreation.class;
-			break;
-		}
-		
-		updateModel(creationClass);
 	}
 	
 	/**
@@ -139,7 +103,7 @@ public class TataiCreationModel extends CreationModel{
 		return FONT_COLORS[(int) Math.floor((FONT_COLORS.length * Math.random()))];
 	}
 	
-	/**l
+	/**
 	 * This method populates the model with the required number of creations.
 	 */
 	@Override

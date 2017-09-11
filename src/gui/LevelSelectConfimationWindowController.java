@@ -26,16 +26,14 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	
 	@FXML
 	public void handleStartClick() {
-		// Create new TataiCreationModel instance in singleton class
-		Context.getInstance().newTataiCreationModel();
 		
 		// Set level of TataiCreationModel to be level defined in current game object
 		// also stored in singleton Context object
-		Context.getInstance().currentCreationModel().setLevel(
-				Context.getInstance().currentGame().getLevel());
+		Context.getInstance().currentGame().setLevel(
+				Context.getInstance().currentGame().currentLevel());
 		
 		// Populate TataiCreationModel object in singleton
-		Context.getInstance().currentCreationModel().populateModel();
+		Context.getInstance().currentGame().populateModel();
 		
 		Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
 		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
