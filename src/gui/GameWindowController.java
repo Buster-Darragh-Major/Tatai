@@ -84,7 +84,8 @@ public class GameWindowController extends TataiController implements Initializab
 	
 	@FXML
 	public void handleNextQuestionClick() {
-		Context.getInstance().currentGame().nextQuestion();
+		// TODO BUSTER CHANGE THIS
+		//Context.getInstance().currentGame().nextQuestion();
 		Stage stage = (Stage) _nextQuestionButton.getScene().getWindow(); //Get current stage
 		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 	}

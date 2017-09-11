@@ -24,7 +24,8 @@ import tatai.translator.Translator;
  * @author Nathan Cairns
  */
 public class TataiGame {
-
+	public static final int TOTAL_NUMBER_OF_QUESTIONS = 10;
+	
 	private Level _level = Level.Level1;
 	private int _questionNo;
 	private TataiCreationModel _creationModel;
@@ -33,11 +34,17 @@ public class TataiGame {
 	private StatisticHandler _statsHandler;
 	private int _correct;
 	private int _incorrect;
+	private boolean _firstAttempt;
 
 	/**
 	 * Constructor
 	 */
 	public TataiGame() {
+		_correct = 0;
+		_incorrect = 0;
+		_questionNo = 0;
+		_firstAttempt = false;
+		
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
 		_statsHandler = new CSVStatsHandler();
@@ -94,8 +101,9 @@ public class TataiGame {
 	/**
 	 * Increments question number for next question in quiz
 	 */
-	public void nextQuestion() {
-		if (_questionNo < 10 && _questionNo > 0) {
+	private void nextQuestion() {
+		_firstAttempt = false;
+		if (_questionNo < TOTAL_NUMBER_OF_QUESTIONS && _questionNo > 0) {
 			_questionNo++;
 		} else {
 			endGame();
@@ -150,6 +158,7 @@ public class TataiGame {
 			_incorrect = 0;
 			_questionNo = 1;
 			_hasStarted = true;
+			_firstAttempt = false;
 			
 		} else {
 			throw new GameException("Game has already started");
@@ -162,6 +171,47 @@ public class TataiGame {
 	public void restartGame() {
 		endGame();
 		startGame();
+	}
+	
+	/**
+	 * Get amount you got correct
+	 */
+	public int questionsCorrect() {
+		return _correct;
+	}
+	
+	/**
+	 * Get amount you got incorrect
+	 */
+	public int questionIncorrect() {
+		return _incorrect;
+	}
+	
+	/**
+	 * Answer the current question 
+	 * THIS IS A STUB
+	 */
+	public boolean answerQuestion(boolean answer) {
+		boolean wasCorrect;
+		if (answer) {
+			_correct++;
+			wasCorrect = true;
+		} else {
+			_incorrect++;
+			wasCorrect = false;
+		}
+		
+		if (_firstAttempt || wasCorrect) {
+			nextQuestion();
+		} else {
+			_firstAttempt = true;
+		}
+		
+		return wasCorrect;
+	}
+	
+	public boolean getAttempted() {
+		return _firstAttempt;
 	}
 	
 	/**
