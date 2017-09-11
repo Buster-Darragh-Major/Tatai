@@ -1,6 +1,5 @@
 package gui;
 
-import tatai.creations.TataiCreationModel;
 import tatai.game.TataiGame;
 
 /**
@@ -18,7 +17,6 @@ public class Context {
 	
 	// Objects singleton is keeping track of
 	private TataiGame _game;
-	private TataiCreationModel _model;
 	
 	/**
 	 * Returns instance of singleton object
@@ -53,31 +51,5 @@ public class Context {
 	 */
 	public TataiGame currentGame() {
 		return _game;
-	}
-	
-	
-	
-	/**
-	 * Creates a new TataiCreationModel object for singleton to hold reference to.
-	 */
-	public void newTataiCreationModel() {
-		_model = new TataiCreationModel();
-	}
-	
-	/**
-	 * Creates a reference in singleton Context object to an already existing 
-	 * TataiCreationModel object
-	 */
-	public void newTataiCreationModel(TataiCreationModel model) {
-		_model = model;
-	}
-	
-	/**
-	 * Returns the current model object stored in the singleton instance,
-	 * this corresponds to the current model defined in the singleton.
-	 * @return
-	 */
-	public TataiCreationModel currentCreationModel() {
-		return _model;
 	}
 }

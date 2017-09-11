@@ -27,7 +27,7 @@ public interface StatisticHandler {
 	/**
 	 * @return The average score
 	 */
-	public int average();
+	public double average();
 	
 	/**
 	 * Update the players statistics

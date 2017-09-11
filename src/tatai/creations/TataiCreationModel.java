@@ -7,9 +7,8 @@ import creations.cr.Creation;
 import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
-import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
-import tatai.creations.labelgenerator.Level2RandomNumberLabelGenerator;
 import tatai.creations.labelgenerator.LabelGenerator;
+import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of
@@ -21,7 +20,7 @@ import tatai.creations.labelgenerator.LabelGenerator;
  */
 public class TataiCreationModel extends CreationModel{
 	/*MACROS*/
-	public static final int NUMBER_OF_CREATIONS = 10;
+	public static final int DEFAULT_NUMBER_OF_CREATIONS = 10;
 	
 	// Approved colors for background - light, non-harsh
 	private static final Color[] BACKGROUND_COLORS = new Color[] {
@@ -62,63 +61,42 @@ public class TataiCreationModel extends CreationModel{
 	};
 	
 	private LabelGenerator _labelStrategy;
-	private Level _level;
+	private int _numberOfCreations;
 	
 	public TataiCreationModel() {
-		super();
-		
-		_labelStrategy = new Level1RandomNumberLabelGenerator();
+		this(new Level1RandomNumberLabelGenerator(), DEFAULT_NUMBER_OF_CREATIONS);
 	}
 	
+	public TataiCreationModel(int numberOfCreations) {
+		this (new Level1RandomNumberLabelGenerator(), numberOfCreations);
+	}
+	
+	public TataiCreationModel(LabelGenerator labelGenerator) {
+		this (labelGenerator, DEFAULT_NUMBER_OF_CREATIONS);
+	}
+	
+	public TataiCreationModel(LabelGenerator labelGenerator, int numberOfCreations) {
+		super();
+		_labelStrategy = labelGenerator;
+		_numberOfCreations = numberOfCreations;
+	}
+	
+	/**
+	 * Set the way creations are labeled.
+	 * 
+	 * @param lg label generator to use.
+	 */
 	public void setLabelingStrategy(LabelGenerator lg) {
 		_labelStrategy = lg;
 	}
 	
 	/**
-	 * Sets the difficulty level of the current population creation model. The difficulty
-	 * will effect the model by determining what range of numbers are set to creations.
-	 * 
-	 * @param level
+	 * Set the number of creations generated when calling updateModel().
+	 * s
+	 * @param numberOfCreations
 	 */
-	public void setLevel(Level level) {
-		_level = level;
-	}
-	
-	/**
-	 * Returns the creation needed for the corresponding question number. Returns the
-	 * creation placed in the list for a specific question in the quiz.
-	 * 
-	 * @param questionNo
-	 * @return Creation : TataiCreation
-	 */
-	public Creation getCreation(int questionNo) {
-		// Questions go from 1-10, list indexes go from 0-9
-		return _creations.get(questionNo - 1);
-	}
-	
-	// TODO move this method to TataiGame and make TataiGame contain a CreationModel
-	/**
-	 * Create a list of creations corresponding to the current level
-	 * @param <T>
-	 * 
-	 * @param level The level to generate creations for.
-	 * 
-	 * @return The generated list of creations
-	 */
-	@SuppressWarnings("unchecked")
-	public <T extends Creation> void populateModel() {
-		Class<T> creationClass = null;
-		
-		switch (_level) {
-		case Level1: _labelStrategy = new Level1RandomNumberLabelGenerator();
-			creationClass = (Class<T>) TataiCreation.class;
-			break;
-		case Level2: _labelStrategy = new Level2RandomNumberLabelGenerator();
-			creationClass = (Class<T>) TataiCreation.class;
-			break;
-		}
-		
-		updateModel(creationClass);
+	public void setNumberOfCreations(int numberOfCreations) {
+		_numberOfCreations = numberOfCreations;
 	}
 	
 	/**
@@ -139,14 +117,14 @@ public class TataiCreationModel extends CreationModel{
 		return FONT_COLORS[(int) Math.floor((FONT_COLORS.length * Math.random()))];
 	}
 	
-	/**l
+	/**
 	 * This method populates the model with the required number of creations.
 	 */
 	@Override
 	public <T extends Creation> void updateModel(Class<T> creationClass) {
 		List<Creation> creationList = new ArrayList<Creation>();
 		
-		for (int i = 0; i < NUMBER_OF_CREATIONS; i++) {
+		for (int i = 0; i < _numberOfCreations; i++) {
 			String label = _labelStrategy.generateLabel();
 			Color bgColor = generateBackgroundColor();
 			Color fontColor = generateFontColor();
@@ -161,5 +139,4 @@ public class TataiCreationModel extends CreationModel{
 		
 		_creations = creationList;
 	}
-
 }

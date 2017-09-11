@@ -29,23 +29,23 @@ public class CSVStatsHandler implements StatisticHandler {
 	public static final int START_VALUE = 0;
 
 	/* Fields */
-	private Map<String, Integer> _valueMap;
-
+	private Map<String, String> _valueMap;
 	private final String[] _keys = { "totalPlayed", "totalCorrect", "totalIncorrect", "average" };
 
 	/**
 	 * Default Constructor
 	 */
 	public CSVStatsHandler() {
-		_valueMap = new HashMap<String, Integer>();
+		_valueMap = new HashMap<String, String>();
 
 		createStatsFolder();
 
+		// Try to read stats file, if fails create a new one.
 		try {
 			readCSVFile();
 		} catch (Exception e) {
 			for (String key : _keys) {
-				_valueMap.put(key, START_VALUE);
+				_valueMap.put(key, "" + START_VALUE);
 			}
 			writeToFile();
 		}
@@ -57,9 +57,9 @@ public class CSVStatsHandler implements StatisticHandler {
 	private void writeToFile() {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
-
+		
 		createStatsFile();
-
+		
 		try {
 			fw = new FileWriter(STATS_FILE.getAbsolutePath(), true);
 			bw = new BufferedWriter(fw);
@@ -68,7 +68,7 @@ public class CSVStatsHandler implements StatisticHandler {
 			StringBuilder sb = new StringBuilder();
 
 			for (String key : _keys) {
-				int value = _valueMap.get(key);
+				String value = _valueMap.get(key);
 				if (!first) {
 					sb.append(SEPARATOR);
 				}
@@ -80,20 +80,16 @@ public class CSVStatsHandler implements StatisticHandler {
 			sb.append("\n");
 			bw.append(sb.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-
 			try {
-
-				if (bw != null)
+				if (bw != null) {
 					bw.close();
-
-				if (fw != null)
+				}
+				if (fw != null) {
 					fw.close();
-
+				}
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
 		}
@@ -123,7 +119,8 @@ public class CSVStatsHandler implements StatisticHandler {
 
 	/**
 	 * Reads the stats from the csv file.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	private void readCSVFile() throws Exception {
 		BufferedReader br = null;
@@ -162,47 +159,50 @@ public class CSVStatsHandler implements StatisticHandler {
 			throw new StatsException("Invalid data format in " + FILENAME);
 		}
 
-		for (int i = 0; i < stats.length; i++) {
+		for (int i = 0; i < stats.length - 1; i++) {
 			String value = stats[i];
 			if (value.matches("^-?\\d+$")) {
-				Integer valueAsInteger = Integer.parseInt(value);
-				_valueMap.put(_keys[i], valueAsInteger);
+				_valueMap.put(_keys[i], value);
 			} else {
 				throw new StatsException("Invalid data format in " + FILENAME);
 			}
+		}
+
+		String value = stats[3];
+		if (value.matches("^\\d+(\\.\\d{1,2})?$")) {
+			_valueMap.put(_keys[3], value);
+		} else {
+			throw new StatsException("Invalid data format in " + FILENAME);
 		}
 
 	}
 
 	@Override
 	public int totalPlayed() {
-		return _valueMap.get(_keys[0]);
+		return Integer.parseInt(_valueMap.get(_keys[0]));
 	}
 
 	@Override
 	public int totalCorrect() {
-		return _valueMap.get(_keys[1]);
+		return Integer.parseInt(_valueMap.get(_keys[1]));
 	}
 
 	@Override
 	public int totalIncorrect() {
-		return _valueMap.get(_keys[2]);
+		return Integer.parseInt(_valueMap.get(_keys[2]));
 	}
 
 	@Override
-	public int average() {
-		return _valueMap.get(_keys[3]);
+	public double average() {
+		return Double.parseDouble(_valueMap.get(_keys[3]));
 	}
 
-	/**
-	 *
-	 */
 	@Override
 	public void updateStats(int played, int correct, int incorrect) {
 		if (played > 10) {
 			throw new StatsException("You can not have answered more than 10 questions in a session");
 		}
-		
+
 		if (played < 0 || correct < 0 || incorrect < 0) {
 			throw new StatsException("Scores cannot be negative!");
 		}
@@ -210,18 +210,25 @@ public class CSVStatsHandler implements StatisticHandler {
 			throw new StatsException("The number of question you got correct and the number of questions you "
 					+ "got wrong must be consistent with the number of questions you answered");
 		}
-		_valueMap.put(_keys[0], played + totalPlayed());
-		_valueMap.put(_keys[1], correct + totalCorrect());
-		_valueMap.put(_keys[2], incorrect + totalIncorrect());
-		_valueMap.put(_keys[3], calculateAverage());
-		
+		_valueMap.put(_keys[0], "" + (played + totalPlayed()));
+		_valueMap.put(_keys[1], "" + (correct + totalCorrect()));
+		_valueMap.put(_keys[2], "" + (incorrect + totalIncorrect()));
+		_valueMap.put(_keys[3], "" + calculateAverage());
+
 		writeToFile();
 	}
-	
-	private int calculateAverage() {
+
+	/**
+	 * Calculate the average score from games the played and question correct.
+	 * 
+	 * @return the average
+	 */
+	private double calculateAverage() {
 		double average = (double) totalCorrect() / totalPlayed() * 10;
 		
-		return (int)Math.floor(average);
+		average = Double.parseDouble(String.format("%.2f", average));
+		
+		return average;
 	}
 
 }

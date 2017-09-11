@@ -42,7 +42,7 @@ public abstract class CreationModel {
 	 * @param pane
 	 */
 	public void displayCreation(int index, Label label, Pane pane) {
-		Creation creation = _creations.get(index);
+		Creation creation = _creations.get(index - 1);
 		creation.display(label, pane);
 	}
 	
@@ -55,6 +55,16 @@ public abstract class CreationModel {
 	public List<Creation> listCreations() {
 		
 		return _creations;
+	}
+	
+	/**
+	 * Get the label of a creation at a specific index.
+	 * 
+	 * @param index index of the creation in list
+	 * @return the label of the creation at that index
+	 */
+	public String getCreationLabel(int index) {
+		return _creations.get(index - 1).label(); 
 	}
 	
 }

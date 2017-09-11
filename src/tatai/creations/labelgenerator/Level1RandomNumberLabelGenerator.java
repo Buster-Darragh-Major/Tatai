@@ -8,7 +8,7 @@ package tatai.creations.labelgenerator;
  */
 public class Level1RandomNumberLabelGenerator implements LabelGenerator {
 	/*MACROS*/
-	public static final int MAX = 10;
+	public static final int MAX = 9;
 	public static final int MIN = 1;
 	
 	/**
