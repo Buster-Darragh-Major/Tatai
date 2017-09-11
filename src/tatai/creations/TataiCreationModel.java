@@ -74,18 +74,6 @@ public class TataiCreationModel extends CreationModel{
 	}
 	
 	/**
-	 * Returns the creation needed for the corresponding question number. Returns the
-	 * creation placed in the list for a specific question in the quiz.
-	 * 
-	 * @param questionNo
-	 * @return Creation : TataiCreation
-	 */
-	public Creation getCreation(int questionNo) {
-		// Questions go from 1-10, list indexes go from 0-9
-		return _creations.get(questionNo - 1);
-	}
-	
-	/**
 	 * Generate a color from the background color list.
 	 * 
 	 * @return

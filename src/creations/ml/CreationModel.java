@@ -42,7 +42,7 @@ public abstract class CreationModel {
 	 * @param pane
 	 */
 	public void displayCreation(int index, Label label, Pane pane) {
-		Creation creation = _creations.get(index);
+		Creation creation = _creations.get(index - 1);
 		creation.display(label, pane);
 	}
 	
