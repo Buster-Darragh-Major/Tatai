@@ -131,7 +131,7 @@ public class TataiGame {
 	 */
 	public String getLevelDescription() {
 		if (_level == Level.Level1) {
-			return ("Ten questions ranging from numbers 1-10");
+			return ("Ten questions ranging from numbers 1-9");
 		} else if (_level == Level.Level2) {
 			return ("Ten questions ranging from numbers 1-99");
 		}
