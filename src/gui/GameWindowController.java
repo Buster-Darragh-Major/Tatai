@@ -19,7 +19,7 @@ public class GameWindowController extends TataiController implements Initializab
 	private static final String CORRECT_GREEN = "#00d10a";
 	private static final String WHITE = "#ffffff";
 	
-	private boolean _finalAttempt = false;
+
 	
 	@FXML
 	private Label _intLabel;
@@ -54,27 +54,30 @@ public class GameWindowController extends TataiController implements Initializab
 		_tryAgainButton.setVisible(true);
 
 		
-		if (_finalAttempt) {
+		if (Context.getInstance().currentGame().getAttempted()) {
 			_skipButton.setVisible(false);
 			_tryAgainButton.setVisible(false);
 			
-			_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
+			_translatedLabel.setVisible(true);
 			
 			_nextQuestionButton.setTextFill(Color.web(INCORRECT_RED));
 			_nextQuestionButton.setStyle("-fx-background-color: " + WHITE);
 			_nextQuestionButton.setVisible(true);
 		}
-		_finalAttempt = true;
+		
+		Context.getInstance().currentGame().answerQuestion(false);
 	}
 	
 	@FXML
 	public void handleCorrectClick() {
+		Context.getInstance().currentGame().answerQuestion(true);
+		
 		_skipButton.setVisible(false);
 		_tryAgainButton.setVisible(false);
+		_translatedLabel.setVisible(true);
 		
 		_pane.setStyle("-fx-background-color: " + CORRECT_GREEN);
 		_intLabel.setTextFill(Color.WHITE);
-		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
 		_questionNoLabel.setTextFill(Color.WHITE);
 		
 		_nextQuestionButton.setTextFill(Color.web(CORRECT_GREEN));
@@ -101,6 +104,8 @@ public class GameWindowController extends TataiController implements Initializab
 		_skipButton.setVisible(false);
 		_tryAgainButton.setVisible(false);
 		_nextQuestionButton.setVisible(false);
+		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
+		_translatedLabel.setVisible(false);
 		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
 		
 		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
