@@ -15,14 +15,22 @@ import javafx.stage.Stage;
 
 public class GameWindowController extends TataiController implements Initializable{
 	
+	private static final String INCORRECT_RED = "#f73333";
+	private static final String CORRECT_GREEN = "#00d10a";
+	private static final String WHITE = "#ffffff";
+	
+	private boolean _finalAttempt = false;
+	
 	@FXML
 	private Label _intLabel;
 	@FXML
 	private Label _translatedLabel;
 	@FXML
 	private Label _questionNoLabel;
+	
 	@FXML
 	private Pane _pane;
+	
 	@FXML
 	private JFXHamburger _mainMenuButton;
 	@FXML
@@ -31,35 +39,52 @@ public class GameWindowController extends TataiController implements Initializab
 	private Button _incorretButton;
 	@FXML
 	private Button _nextQuestionButton;
+	@FXML
+	private Button _tryAgainButton;
+	@FXML
+	private Button _skipButton;
 	
 	@FXML 
 	public void handleIncorrectClick() {
-		_pane.setStyle("-fx-background-color: #f73333");
+		_pane.setStyle("-fx-background-color: " + INCORRECT_RED);
 		_intLabel.setTextFill(Color.WHITE);
 		_questionNoLabel.setTextFill(Color.WHITE);
 		
-		_nextQuestionButton.setTextFill(Color.web("#f73333"));
-		_nextQuestionButton.setStyle("-fx-background-color: #ffffff");
-		_nextQuestionButton.setVisible(true);
+		_skipButton.setVisible(true);
+		_tryAgainButton.setVisible(true);
+
 		
-		Context.getInstance().currentGame().nextQuestion();
+		if (_finalAttempt) {
+			_skipButton.setVisible(false);
+			_tryAgainButton.setVisible(false);
+			
+			_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
+			
+			_nextQuestionButton.setTextFill(Color.web(INCORRECT_RED));
+			_nextQuestionButton.setStyle("-fx-background-color: " + WHITE);
+			_nextQuestionButton.setVisible(true);
+		}
+		_finalAttempt = true;
 	}
 	
 	@FXML
 	public void handleCorrectClick() {
-		_pane.setStyle("-fx-background-color: #00d10a");
+		_skipButton.setVisible(false);
+		_tryAgainButton.setVisible(false);
+		
+		_pane.setStyle("-fx-background-color: " + CORRECT_GREEN);
 		_intLabel.setTextFill(Color.WHITE);
+		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
 		_questionNoLabel.setTextFill(Color.WHITE);
 		
-		_nextQuestionButton.setTextFill(Color.web("#00d10a"));
-		_nextQuestionButton.setStyle("-fx-background-color: #ffffff");
+		_nextQuestionButton.setTextFill(Color.web(CORRECT_GREEN));
+		_nextQuestionButton.setStyle("-fx-background-color: " + WHITE);
 		_nextQuestionButton.setVisible(true);
-
-		Context.getInstance().currentGame().nextQuestion();
 	}
 	
 	@FXML
 	public void handleNextQuestionClick() {
+		Context.getInstance().currentGame().nextQuestion();
 		Stage stage = (Stage) _nextQuestionButton.getScene().getWindow(); //Get current stage
 		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 	}
@@ -72,6 +97,8 @@ public class GameWindowController extends TataiController implements Initializab
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		_skipButton.setVisible(false);
+		_tryAgainButton.setVisible(false);
 		_nextQuestionButton.setVisible(false);
 		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
 		
