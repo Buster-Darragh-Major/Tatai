@@ -3,9 +3,11 @@ package testing;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import tatai.translator.TataiTranslator;
+import tatai.translator.Translator;
 import tatai.translator.TranslatorException;
 
 /**
@@ -15,32 +17,45 @@ import tatai.translator.TranslatorException;
  */
 public class TestTataiTranslator {
 	
+	Translator _translator;
+	
+	@Before
+	public void setup() {
+		_translator = new TataiTranslator();
+	}
+	
+	@SuppressWarnings("unused")
 	@Test
 	public void testInvalidNo() {
 		try {
-			@SuppressWarnings("unused")
-			TataiTranslator t = new TataiTranslator(0);
+			String ans = _translator.translate("0");
 			fail();
 		} catch (TranslatorException e) {
 		}
 		
 		try {
 			@SuppressWarnings("unused")
-			TataiTranslator t = new TataiTranslator(100);
+			String ans = _translator.translate("100");
 			fail();
 		} catch (TranslatorException e) {
 		}
 		
 		try {
 			@SuppressWarnings("unused")
-			TataiTranslator t = new TataiTranslator(-40);
+			String ans = _translator.translate("-40");
 			fail();
 		} catch (TranslatorException e) {
 		}
 		
 		try {
 			@SuppressWarnings("unused")
-			TataiTranslator t = new TataiTranslator(12684);
+			String ans = _translator.translate("12684");
+			fail();
+		} catch (TranslatorException e) {
+		}
+		
+		try {
+			String ans = _translator.translate("hi");
 			fail();
 		} catch (TranslatorException e) {
 		}
@@ -48,97 +63,97 @@ public class TestTataiTranslator {
 	
 	@Test
 	public void testOne() {
-		TataiTranslator t = new TataiTranslator(1);
-		assertEquals("tahi", t.asMaori());
+		String ans = _translator.translate("1");
+		assertEquals("tahi", ans);
 	}
 	
 	@Test
 	public void testSix() {
-		TataiTranslator t = new TataiTranslator(6);
-		assertEquals("ono", t.asMaori());
+		String ans = _translator.translate("6");
+		assertEquals("ono", ans);
 	}
 	
 	@Test
 	public void testTen() {
-		TataiTranslator t = new TataiTranslator(10);
-		assertEquals("tekau", t.asMaori());
+		String ans = _translator.translate("10");
+		assertEquals("tekau", ans);
 	}
 	
 	@Test
 	public void testEleven() {
-		TataiTranslator t = new TataiTranslator(11);
-		assertEquals("tekau mā tahi", t.asMaori());
+		String ans = _translator.translate("11");
+		assertEquals("tekau mā tahi", ans);
 	}
 	
 	@Test
 	public void testSeventeen() {
-		TataiTranslator t = new TataiTranslator(17);
-		assertEquals("tekau mā whitu", t.asMaori());
+		String ans = _translator.translate("17");
+		assertEquals("tekau mā whitu", ans);
 	}
 	
 	@Test
 	public void testTwenty() {
-		TataiTranslator t = new TataiTranslator(20);
-		assertEquals("rua tekau", t.asMaori());
+		String ans = _translator.translate("20");
+		assertEquals("rua tekau", ans);
 	}
 	
 	@Test
 	public void testTwentyTwo() {
-		TataiTranslator t = new TataiTranslator(22);
-		assertEquals("rua tekau mā rua", t.asMaori());
+		String ans = _translator.translate("22");
+		assertEquals("rua tekau mā rua", ans);
 	}
 	
 	@Test
 	public void testThirty() {
-		TataiTranslator t = new TataiTranslator(30);
-		assertEquals("toru tekau", t.asMaori());
+		String ans = _translator.translate("30");
+		assertEquals("toru tekau", ans);
 	}
 	
 	@Test
 	public void testForty() {
-		TataiTranslator t = new TataiTranslator(40);
-		assertEquals("whā tekau", t.asMaori());
+		String ans = _translator.translate("40");
+		assertEquals("whā tekau", ans);
 	}
 	
 	@Test
 	public void testFifty() {
-		TataiTranslator t = new TataiTranslator(50);
-		assertEquals("rima tekau", t.asMaori());
+		String ans = _translator.translate("50");
+		assertEquals("rima tekau", ans);
 	}
 	
 	@Test
 	public void testSixty() {
-		TataiTranslator t = new TataiTranslator(60);
-		assertEquals("ono tekau", t.asMaori());
+		String ans = _translator.translate("60");
+		assertEquals("ono tekau", ans);
 	}
 	
 	@Test
 	public void testSeventy() {
-		TataiTranslator t = new TataiTranslator(70);
-		assertEquals("whitu tekau", t.asMaori());
+		String ans = _translator.translate("70");
+		assertEquals("whitu tekau", ans);
 	}
 	
 	@Test
 	public void testNinety() {
-		TataiTranslator t = new TataiTranslator(90);
-		assertEquals("iwa tekau", t.asMaori());
+		String ans = _translator.translate("90");
+		assertEquals("iwa tekau", ans);
 	}
 	
 	@Test
 	public void testNinetyNine() {
-		TataiTranslator t = new TataiTranslator(99);
-		assertEquals("iwa tekau mā iwa", t.asMaori());
+		String ans = _translator.translate("99");
+		assertEquals("iwa tekau mā iwa", ans);
 	}
 	
 	@Test
 	public void testSixtyFive() {
-		TataiTranslator t = new TataiTranslator(65);
-		assertEquals("ono tekau mā rima", t.asMaori());
+		String ans = _translator.translate("65");
+		assertEquals("ono tekau mā rima", ans);
 	}
 	
 	@Test
 	public void testFiftyFour() {
-		TataiTranslator t = new TataiTranslator(54);
-		assertEquals("rima tekau mā whā", t.asMaori());
+		String ans = _translator.translate("54");
+		assertEquals("rima tekau mā whā", ans);
 	}
 }
