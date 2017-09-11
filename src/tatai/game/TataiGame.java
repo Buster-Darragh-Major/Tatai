@@ -210,6 +210,11 @@ public class TataiGame {
 		return wasCorrect;
 	}
 	
+	/**
+	 * Return whether or not the question has already been attempted
+	 * 
+	 * @return true if already attempted, false otherwise
+	 */
 	public boolean getAttempted() {
 		return _firstAttempt;
 	}
