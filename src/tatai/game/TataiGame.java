@@ -37,6 +37,15 @@ public class TataiGame {
 	}
 	
 	/**
+	 * Provides a translation of the current question
+	 */
+	public String translateCurrentQuestion() {
+		String label = _creationModel.getCreationLabel(_questionNo);
+		
+		return _translator.translate(label);
+	}
+	
+	/**
 	 * Sets the current level difficulty for the game object.
 	 * @param level
 	 */

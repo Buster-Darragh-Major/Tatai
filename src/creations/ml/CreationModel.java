@@ -57,4 +57,14 @@ public abstract class CreationModel {
 		return _creations;
 	}
 	
+	/**
+	 * Get the label of a creation at a specific index.
+	 * 
+	 * @param index index of the creation in list
+	 * @return the label of the creation at that index
+	 */
+	public String getCreationLabel(int index) {
+		return _creations.get(index - 1).label(); 
+	}
+	
 }

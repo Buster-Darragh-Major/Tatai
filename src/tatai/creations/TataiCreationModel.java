@@ -113,5 +113,4 @@ public class TataiCreationModel extends CreationModel{
 		
 		_creations = creationList;
 	}
-
 }
