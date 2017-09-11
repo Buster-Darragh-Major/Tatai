@@ -3,6 +3,8 @@ package tatai.game;
 import creations.cr.Creation;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import stats.CSVStatsHandler;
+import stats.StatisticHandler;
 import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
@@ -12,55 +14,67 @@ import tatai.translator.TataiTranslator;
 import tatai.translator.Translator;
 
 /**
- * Class that deals with the abstract parameters of the game itself, i.e. the current
- * game state. This concerns things like current game difficulty level, any text 
- * relevant to a game / game level, amount of questions answered, amount correct, 
- * incorrect, references to the CreationModel storing the answered/unanswered 
- * creations, etc.
+ * Class that deals with the abstract parameters of the game itself, i.e. the
+ * current game state. This concerns things like current game difficulty level,
+ * any text relevant to a game / game level, amount of questions answered,
+ * amount correct, incorrect, references to the CreationModel storing the
+ * answered/unanswered creations, etc.
  * 
  * @author Buster Major
+ * @author Nathan Cairns
  */
 public class TataiGame {
-	
+
 	private Level _level = Level.Level1;
 	private int _questionNo;
 	private TataiCreationModel _creationModel;
 	private Translator _translator;
 	private boolean _hasStarted = false;
-	
+	private StatisticHandler _statsHandler;
+	private int _correct;
+	private int _incorrect;
+
 	/**
 	 * Constructor
 	 */
 	public TataiGame() {
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
+		_statsHandler = new CSVStatsHandler();
 	}
-	
+
 	/**
 	 * Provides a translation of the current question
 	 */
 	public String translateCurrentQuestion() {
 		String label = _creationModel.getCreationLabel(_questionNo);
-		
+
 		return _translator.translate(label);
 	}
-	
+
 	/**
 	 * Sets the current level difficulty for the game object.
+	 * 
 	 * @param level
 	 */
 	public void setLevel(Level level) {
-		_level = level;
+		if (!_hasStarted) {
+			_level = level;
+		} else {
+			throw new GameException("Cannot change the level in the middle of a game!");
+		}
+		
 	}
-	
+
 	/**
 	 * Gets the current level difficulty for the game object.
+	 * 
 	 * @returns Level : level
 	 */
 	public Level currentLevel() {
 		return _level;
 	}
-	
+
 	/**
 	 * Gets the current question number for the game object
 	 * 
@@ -69,14 +83,14 @@ public class TataiGame {
 	public int currentQuestion() {
 		return _questionNo;
 	}
-	
+
 	/**
 	 * Display the current question
 	 */
 	public void displayCurrentQuestion(Label label, Pane pane) {
 		_creationModel.displayCreation(_questionNo, label, pane);
 	}
-	
+
 	/**
 	 * Increments question number for next question in quiz
 	 */
@@ -87,9 +101,10 @@ public class TataiGame {
 			endGame();
 		}
 	}
-	
+
 	/**
 	 * Returns a header for the current set level difficulty.
+	 * 
 	 * @return String : header
 	 */
 	public String getLevelHeader() {
@@ -100,9 +115,10 @@ public class TataiGame {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Returns a description of the current set level difficulty.
+	 * 
 	 * @return String : description
 	 */
 	public String getLevelDescription() {
@@ -113,7 +129,7 @@ public class TataiGame {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Returns the game state.
 	 * 
@@ -122,32 +138,54 @@ public class TataiGame {
 	public boolean isActive() {
 		return _hasStarted;
 	}
+
+	/**
+	 * Start the game
+	 */
+	public void startGame() {
+		if (!_hasStarted) {
+			populateModel();
+			
+			_correct = 0;
+			_incorrect = 0;
+			_questionNo = 1;
+			_hasStarted = true;
+			
+		} else {
+			throw new GameException("Game has already started");
+		}
+	}
 	
 	/**
-	 * Create a list of creations corresponding to the current level
-	 * @param <T>
-	 * 
-	 * @param level The level to generate creations for.
-	 * 
-	 * @return The generated list of creations
+	 * Populate the creationModel with a list of creations with
+	 * appropriate labels for the current level.s
 	 */
-	public <T extends Creation> void startGame() {
+	private <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
-		
+
 		switch (_level) {
-		case Level1: _creationModel.setLabelingStrategy(new Level1RandomNumberLabelGenerator());
+		case Level1:
+			_creationModel.setLabelingStrategy(new Level1RandomNumberLabelGenerator());
 			break;
-		case Level2: _creationModel.setLabelingStrategy(new Level2RandomNumberLabelGenerator());
+		case Level2:
+			_creationModel.setLabelingStrategy(new Level2RandomNumberLabelGenerator());
 			break;
 		}
 		
 		_creationModel.updateModel(creationClass);
-		_questionNo = 1;
-		_hasStarted = true;
 	}
 	
+	/**
+	 * End the game
+	 */
 	public void endGame() {
-		_hasStarted = false;
+		if (_hasStarted) {
+			_statsHandler.updateStats(_questionNo, _correct, _incorrect);
+
+			_hasStarted = false;
+		} else {
+			throw new GameException("Game has already ended");
+		}
 	}
 }
