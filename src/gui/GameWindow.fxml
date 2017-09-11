@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,6 +13,19 @@
             <Font size="100.0" />
          </font>
       </Label>
-      <JFXHamburger fx:id="_mainMenu" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleMainMenuClick" />
+      <JFXHamburger fx:id="_mainMenuButton" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleMainMenuClick" />
+      <JFXButton fx:id="_correctButton" layoutX="358.0" layoutY="305.0" onAction="#handleCorrectClick" text="CorrectStub" />
+      <JFXButton fx:id="_incorretButton" layoutX="127.0" layoutY="311.0" onAction="#handleIncorrectClick" text="IncorrectStub" />
+      <Label fx:id="_translatedLabel" alignment="CENTER" layoutX="282.0" layoutY="222.0" prefHeight="16.0" prefWidth="291.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="_nextQuestionButton" layoutX="485.0" layoutY="340.0" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" text="Next" textFill="#f8f8f8" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <Label fx:id="_questionNoLabel" alignment="CENTER" layoutY="71.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
