@@ -226,7 +226,11 @@ public class CSVStatsHandler implements StatisticHandler {
 	}
 
 	private double calculateAverage() {
-		return (double) totalCorrect() / totalPlayed() * 10;
+		double average = (double) totalCorrect() / totalPlayed() * 10;
+		
+		average = Double.parseDouble(String.format("%.2f", average));
+		
+		return average;
 	}
 
 }
