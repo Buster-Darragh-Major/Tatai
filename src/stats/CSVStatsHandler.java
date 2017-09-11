@@ -123,7 +123,8 @@ public class CSVStatsHandler implements StatisticHandler {
 
 	/**
 	 * Reads the stats from the csv file.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	private void readCSVFile() throws Exception {
 		BufferedReader br = null;
@@ -162,13 +163,20 @@ public class CSVStatsHandler implements StatisticHandler {
 			throw new StatsException("Invalid data format in " + FILENAME);
 		}
 
-		for (int i = 0; i < stats.length; i++) {
+		for (int i = 0; i < stats.length - 1; i++) {
 			String value = stats[i];
 			if (value.matches("^-?\\d+$")) {
 				_valueMap.put(_keys[i], value);
 			} else {
 				throw new StatsException("Invalid data format in " + FILENAME);
 			}
+		}
+
+		String value = stats[3];
+		if (value.matches("^\\d+(\\.\\d{1,2})?$")) {
+			_valueMap.put(_keys[3], value);
+		} else {
+			throw new StatsException("Invalid data format in " + FILENAME);
 		}
 
 	}
@@ -201,7 +209,7 @@ public class CSVStatsHandler implements StatisticHandler {
 		if (played > 10) {
 			throw new StatsException("You can not have answered more than 10 questions in a session");
 		}
-		
+
 		if (played < 0 || correct < 0 || incorrect < 0) {
 			throw new StatsException("Scores cannot be negative!");
 		}
@@ -209,14 +217,14 @@ public class CSVStatsHandler implements StatisticHandler {
 			throw new StatsException("The number of question you got correct and the number of questions you "
 					+ "got wrong must be consistent with the number of questions you answered");
 		}
-		_valueMap.put(_keys[0],"" + (played + totalPlayed()));
-		_valueMap.put(_keys[1],"" + (correct + totalCorrect()));
-		_valueMap.put(_keys[2],"" + (incorrect + totalIncorrect()));
-		_valueMap.put(_keys[3],"" + calculateAverage());
-		
+		_valueMap.put(_keys[0], "" + (played + totalPlayed()));
+		_valueMap.put(_keys[1], "" + (correct + totalCorrect()));
+		_valueMap.put(_keys[2], "" + (incorrect + totalIncorrect()));
+		_valueMap.put(_keys[3], "" + calculateAverage());
+
 		writeToFile();
 	}
-	
+
 	private double calculateAverage() {
 		return (double) totalCorrect() / totalPlayed() * 10;
 	}
