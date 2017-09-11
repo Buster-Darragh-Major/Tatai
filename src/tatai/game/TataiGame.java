@@ -195,13 +195,14 @@ public class TataiGame {
 		boolean wasCorrect;
 		if (answer) {
 			_correct++;
+			nextQuestion();
 			wasCorrect = true;
 		} else {
-			_incorrect++;
 			wasCorrect = false;
 		}
 		
-		if (_firstAttempt || wasCorrect) {
+		if (_firstAttempt) {
+			_incorrect++;
 			nextQuestion();
 		} else {
 			_firstAttempt = true;
