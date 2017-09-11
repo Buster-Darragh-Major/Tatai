@@ -26,12 +26,12 @@ public class TataiGame {
 	private int _questionNo;
 	private TataiCreationModel _creationModel;
 	private Translator _translator;
+	private boolean _hasStarted = false;
 	
 	/**
 	 * Constructor
 	 */
 	public TataiGame() {
-		_questionNo = 1;
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
 	}
@@ -81,7 +81,11 @@ public class TataiGame {
 	 * Increments question number for next question in quiz
 	 */
 	public void nextQuestion() {
-		_questionNo++;
+		if (_questionNo < 10 && _questionNo > 0) {
+			_questionNo++;
+		} else {
+			endGame();
+		}
 	}
 	
 	/**
@@ -111,6 +115,15 @@ public class TataiGame {
 	}
 	
 	/**
+	 * Returns the game state.
+	 * 
+	 * @return true if game has started and is active, false otherwise.
+	 */
+	public boolean isActive() {
+		return _hasStarted;
+	}
+	
+	/**
 	 * Create a list of creations corresponding to the current level
 	 * @param <T>
 	 * 
@@ -118,9 +131,9 @@ public class TataiGame {
 	 * 
 	 * @return The generated list of creations
 	 */
-	@SuppressWarnings("unchecked")
-	public <T extends Creation> void populateModel() {
-		Class<T> creationClass = (Class<T>) TataiCreation.class;;
+	public <T extends Creation> void startGame() {
+		@SuppressWarnings("unchecked")
+		Class<T> creationClass = (Class<T>) TataiCreation.class;
 		
 		switch (_level) {
 		case Level1: _creationModel.setLabelingStrategy(new Level1RandomNumberLabelGenerator());
@@ -130,5 +143,11 @@ public class TataiGame {
 		}
 		
 		_creationModel.updateModel(creationClass);
+		_questionNo = 1;
+		_hasStarted = true;
+	}
+	
+	public void endGame() {
+		_hasStarted = false;
 	}
 }
