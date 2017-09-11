@@ -1,5 +1,7 @@
 package creations.cr;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 /**
@@ -8,38 +10,31 @@ import javafx.scene.paint.Color;
  * @author Nathan Cairns
  *
  */
-public interface Creation {
+public abstract class Creation {
+	
+	protected String _label;
+	protected Color _bgColor;
+	protected Color _fontColor;
+	
+	public Creation(String label, Color bgColor, Color fontColor) {
+		_label = label;
+		_bgColor = bgColor;
+		_fontColor = fontColor;
+	}
 	
 	/**
-	 * Plays the file
-	 */
-	public void play();
-	
-	/**
-	 * Returns the name of the file
+	 * Returns the label
 	 * 
-	 * @return String : creation name
+	 * @return the label
 	 */
-	public String maoriName();
+	public String label() {
+		return _label;
+	}
 	
 	/**
-	 * Returns the integer number of the creation
+	 * Display the creation in a javafx label.
 	 * 
-	 * @return int : creation number value
+	 * @param label to be displayed in.
 	 */
-	public int number();
-	
-	/**
-	 * Returns the color value corresponding to the text of the creation
-	 * 
-	 * @return Color : javafx color
-	 */
-	public Color textColor();
-	
-	/**
-	 * Returns the color value corresponding to the background of the creation
-	 * 
-	 * @return Color : javafx color
-	 */
-	public Color backgroundColor();
+	public abstract void display(Label label, Pane pane);
 }

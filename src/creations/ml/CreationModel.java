@@ -1,12 +1,11 @@
 package creations.ml;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import creations.cr.Creation;
-import creations.cr.CreationException;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 /**
  * This class allows a creation type object to be easily
@@ -19,40 +18,33 @@ import creations.cr.CreationException;
  */
 public abstract class CreationModel {
 	
-	// A map storing the creations in the model
-	protected Map<String, Creation> _creations;
+	protected List<Creation> _creations = new ArrayList<Creation>();
 	
 	/**
 	 * Constructor.
 	 * Instantiate the map and update the model.
 	 */
 	public CreationModel() {
-		_creations = new HashMap<String, Creation>();
-		
-		updateModel();
+		_creations = new ArrayList<Creation>();
 	}
 	
 	/**
-	 * Add a creation to the model
-	 * 
-	 * @param creation: the creation to be added
-	 */
-	public abstract void addCreation(Creation creation);
-	
-	/**
-	 * Add a creation to the model.
-	 * A creation should be constructed in this method in
-	 * order to correctly add it to the model.
-	 * 
-	 * @param creationName: the name of the creation to be created and added.
-	 */
-	public abstract void addCreation(String creationName);
-	
-	/**
 	 * update the model
+	 * @param <T>
 	 */
-	protected abstract void updateModel();
-
+	public abstract <T extends Creation> void updateModel(Class<T> creationClass);
+	
+	/**
+	 * Display a creation from the list.
+	 * 
+	 * @param index
+	 * @param label
+	 * @param pane
+	 */
+	public void displayCreation(int index, Label label, Pane pane) {
+		Creation creation = _creations.get(index);
+		creation.display(label, pane);
+	}
 	
 	/**
 	 * Return the names of the creations stored in the model as a 
@@ -60,47 +52,9 @@ public abstract class CreationModel {
 	 * 
 	 * @return List<String>: the list of creation names.
 	 */
-	public List<String> listCreations() {
-		List<String> creationList = new ArrayList<String>(_creations.keySet());
+	public List<Creation> listCreations() {
 		
-		return creationList;
+		return _creations;
 	}
 	
-	/**
-	 * Play a creation from the model.
-	 * 
-	 * @param creationName: the creation to be played
-	 */
-	public void playCreation(String creationName) { 
-		Creation creationToPlay = getCreation(creationName);
-		creationToPlay.play();
-	}
-	
-	/**
-	 * Get a creation from the model.
-	 * 
-	 * @param creationName: The name of the creation to get.
-	 * @return Creation: the creation which was retrieved.
-	 */
-	protected Creation getCreation(String creationName) {
-		if (creationName == null || creationName == "") {
-			throw new CreationException("Invalid creation name (" + creationName + ")");
-		} else if (!_creations.containsKey(creationName)){ 
-			throw new CreationException("Creation (" + creationName + ") does not exist");
-		}
-		return _creations.get(creationName);
-	}
-	
-	/**
-	 * Check whether the model contains a creation.
-	 * 
-	 * @param creationName: The name of the creation to check.
-	 * @return boolean: true if contains, false if not.
-	 */
-	public boolean containsCreation(String creationName) {
-		if (creationName != null && !creationName.equals(null) && _creations.containsKey(creationName)) {
-			return true;
-		}
-		return false;
-	}
 }

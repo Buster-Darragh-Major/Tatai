@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXHamburger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -30,15 +29,8 @@ public class GameWindowController extends TataiController implements Initializab
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// This is a bit messy isnt it
-		// TODO: Clean it up
 		int questionNo = Context.getInstance().currentGame().getQuestionNo();
-		String bgColor = Context.getInstance().currentCreationModel().getCreation(questionNo).backgroundColor().toString();
-		bgColor = bgColor.substring(2, bgColor.length() - 2);
 		
-		_intLabel.setAlignment(Pos.CENTER);
-		_intLabel.setText(Context.getInstance().currentCreationModel().getCreation(questionNo).number() + "");
-		_intLabel.setTextFill(Context.getInstance().currentCreationModel().getCreation(questionNo).textColor());
-		_pane.setStyle("-fx-background-color: #" + bgColor);
+		Context.getInstance().currentCreationModel().displayCreation(questionNo, _intLabel, _pane);
 	}
 }

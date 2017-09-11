@@ -1,6 +1,11 @@
-package game;
+package tatai.game;
 
-import creations.tatai.TataiCreationBuilder.Level;
+import creations.cr.Creation;
+import tatai.creations.Level;
+import tatai.creations.TataiCreation;
+import tatai.creations.TataiCreationModel;
+import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
+import tatai.creations.labelgenerator.Level2RandomNumberLabelGenerator;
 
 /**
  * Class that deals with the abstract parameters of the game itself, i.e. the current
@@ -15,12 +20,14 @@ public class TataiGame {
 	
 	private Level _level = Level.Level1;
 	private int _questionNo;
+	private TataiCreationModel _creationModel;
 	
 	/**
 	 * Constructor
 	 */
 	public TataiGame() {
 		_questionNo = 1;
+		_creationModel = new TataiCreationModel();
 	}
 	
 	/**
@@ -79,5 +86,27 @@ public class TataiGame {
 			return ("Ten questions ranging from numbers 1-99");
 		}
 		return null;
+	}
+	
+	/**
+	 * Create a list of creations corresponding to the current level
+	 * @param <T>
+	 * 
+	 * @param level The level to generate creations for.
+	 * 
+	 * @return The generated list of creations
+	 */
+	@SuppressWarnings("unchecked")
+	public <T extends Creation> void populateModel() {
+		Class<T> creationClass = (Class<T>) TataiCreation.class;;
+		
+		switch (_level) {
+		case Level1: _creationModel.setLabelingStrategy(new Level1RandomNumberLabelGenerator());
+			break;
+		case Level2: _creationModel.setLabelingStrategy(new Level2RandomNumberLabelGenerator());
+			break;
+		}
+		
+		_creationModel.updateModel(creationClass);
 	}
 }

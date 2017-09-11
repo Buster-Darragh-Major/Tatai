@@ -2,10 +2,10 @@ package gui;
 
 import com.jfoenix.controls.JFXHamburger;
 
-import creations.tatai.TataiCreationBuilder.Level;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import tatai.creations.Level;
 
 public class LevelSelectWindowController extends TataiController {
 
