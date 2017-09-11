@@ -8,6 +8,8 @@ import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
 import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
 import tatai.creations.labelgenerator.Level2RandomNumberLabelGenerator;
+import tatai.translator.TataiTranslator;
+import tatai.translator.Translator;
 
 /**
  * Class that deals with the abstract parameters of the game itself, i.e. the current
@@ -23,6 +25,7 @@ public class TataiGame {
 	private Level _level = Level.Level1;
 	private int _questionNo;
 	private TataiCreationModel _creationModel;
+	private Translator _translator;
 	
 	/**
 	 * Constructor
@@ -30,6 +33,7 @@ public class TataiGame {
 	public TataiGame() {
 		_questionNo = 1;
 		_creationModel = new TataiCreationModel();
+		_translator = new TataiTranslator();
 	}
 	
 	/**
