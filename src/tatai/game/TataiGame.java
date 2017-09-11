@@ -192,23 +192,20 @@ public class TataiGame {
 	 * THIS IS A STUB
 	 */
 	public boolean answerQuestion(boolean answer) {
-		boolean wasCorrect;
+
 		if (answer) {
 			_correct++;
-			nextQuestion();
-			wasCorrect = true;
+			nextQuestion();	
+			return true;
 		} else {
-			wasCorrect = false;
+			if (_firstAttempt) {
+				_incorrect++;
+				nextQuestion();
+			} else {
+				_firstAttempt = true;
+			}
+			return false;
 		}
-		
-		if (_firstAttempt) {
-			_incorrect++;
-			nextQuestion();
-		} else {
-			_firstAttempt = true;
-		}
-		
-		return wasCorrect;
 	}
 	
 	/**
