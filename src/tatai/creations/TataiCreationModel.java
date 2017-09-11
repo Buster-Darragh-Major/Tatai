@@ -7,9 +7,8 @@ import creations.cr.Creation;
 import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
-import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
-import tatai.creations.labelgenerator.Level2RandomNumberLabelGenerator;
 import tatai.creations.labelgenerator.LabelGenerator;
+import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of
