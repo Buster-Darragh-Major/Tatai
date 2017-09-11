@@ -157,6 +157,14 @@ public class TataiGame {
 	}
 	
 	/**
+	 * Restart the game
+	 */
+	public void restartGame() {
+		endGame();
+		startGame();
+	}
+	
+	/**
 	 * Populate the creationModel with a list of creations with
 	 * appropriate labels for the current level.s
 	 */
