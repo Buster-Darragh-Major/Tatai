@@ -23,6 +23,15 @@ public abstract class Creation {
 	}
 	
 	/**
+	 * Returns the label
+	 * 
+	 * @return the label
+	 */
+	public String label() {
+		return _label;
+	}
+	
+	/**
 	 * Display the creation in a javafx label.
 	 * 
 	 * @param label to be displayed in.
