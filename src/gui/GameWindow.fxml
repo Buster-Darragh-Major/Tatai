@@ -14,18 +14,20 @@
          </font>
       </Label>
       <JFXHamburger fx:id="_mainMenuButton" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleMainMenuClick" />
-      <JFXButton fx:id="_correctButton" layoutX="358.0" layoutY="305.0" onAction="#handleCorrectClick" text="CorrectStub" />
-      <JFXButton fx:id="_incorretButton" layoutX="127.0" layoutY="311.0" onAction="#handleIncorrectClick" text="IncorrectStub" />
-      <Label fx:id="_translatedLabel" alignment="CENTER" layoutX="282.0" layoutY="222.0" prefHeight="16.0" prefWidth="291.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <JFXButton fx:id="_correctButton" layoutX="358.0" layoutY="365.0" onAction="#handleCorrectClick" text="CorrectStub" />
+      <JFXButton fx:id="_incorretButton" layoutX="124.0" layoutY="365.0" onAction="#handleIncorrectClick" text="IncorrectStub" />
+      <Label fx:id="_translatedLabel" alignment="CENTER" layoutX="282.0" layoutY="222.0" prefHeight="16.0" prefWidth="291.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
-            <Font size="30.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-      <JFXButton fx:id="_nextQuestionButton" layoutX="485.0" layoutY="340.0" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" text="Next" textFill="#f8f8f8" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-      <Label fx:id="_questionNoLabel" alignment="CENTER" layoutY="71.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <JFXButton fx:id="_nextQuestionButton" layoutX="485.0" layoutY="340.0" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: white;" text="Next" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <Label fx:id="_questionNoLabel" alignment="CENTER" layoutY="71.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
+      <JFXButton fx:id="_tryAgainButton" layoutX="146.0" layoutY="266.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: white;" text="Try Again" AnchorPane.leftAnchor="150.0" />
+      <JFXButton fx:id="_skipButton" layoutX="375.0" layoutY="266.0" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: white;" text="Skip" AnchorPane.rightAnchor="150.0" />
    </children>
 </AnchorPane>
