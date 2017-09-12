@@ -17,7 +17,8 @@
          <columns>
             <TableColumn fx:id="qNo" prefWidth="75.0" text="Question" />
             <TableColumn fx:id="qInt" prefWidth="99.0" text="Number" />
-            <TableColumn fx:id="qTranslation" prefWidth="384.0" text="Answer" />
+            <TableColumn fx:id="qTranslation" prefWidth="263.0" text="Answer" />
+            <TableColumn fx:id="qCorrect" prefWidth="101.0" text="Your Answer" />
          </columns></TableView>
    </children>
 </AnchorPane>

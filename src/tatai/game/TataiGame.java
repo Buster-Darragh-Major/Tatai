@@ -38,6 +38,7 @@ public class TataiGame {
 	private int _correct;
 	private int _incorrect;
 	private boolean _firstAttempt;
+	private ArrayList<String> _questionsCorrect = new ArrayList<String>();
 
 	/**
 	 * Constructor
@@ -197,11 +198,13 @@ public class TataiGame {
 	public boolean answerQuestion(boolean answer) {
 
 		if (answer) {
+			_questionsCorrect.add("Correct");
 			_correct++;
 			nextQuestion();	
 			return true;
 		} else {
 			if (_firstAttempt) {
+				_questionsCorrect.add("Incorrect");
 				_incorrect++;
 				nextQuestion();
 			} else {
@@ -282,5 +285,13 @@ public class TataiGame {
 		}
 		
 		return trans;
+	}
+	
+	/**
+	 * Returns a list of correct correct/incorrect tags in the order the questions
+	 * were answered in the game.
+	 */
+	public ArrayList<String> getQuestionCorrect() {
+		return _questionsCorrect;
 	}
 }
