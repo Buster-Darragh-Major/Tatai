@@ -22,6 +22,7 @@ public abstract class TataiController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		double width = stage.getWidth();
 		double height = stage.getHeight();
 		
