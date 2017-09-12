@@ -1,5 +1,8 @@
 package tatai.game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import creations.cr.Creation;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -35,6 +38,7 @@ public class TataiGame {
 	private int _correct;
 	private int _incorrect;
 	private boolean _firstAttempt;
+	private ArrayList<String> _questionsCorrect = new ArrayList<String>();
 
 	/**
 	 * Constructor
@@ -194,11 +198,13 @@ public class TataiGame {
 	public boolean answerQuestion(boolean answer) {
 
 		if (answer) {
+			_questionsCorrect.add("Correct");
 			_correct++;
 			nextQuestion();	
 			return true;
 		} else {
 			if (_firstAttempt) {
+				_questionsCorrect.add("Incorrect");
 				_incorrect++;
 				nextQuestion();
 			} else {
@@ -248,5 +254,44 @@ public class TataiGame {
 		} else {
 			throw new GameException("Game has already ended");
 		}
+	}
+	
+	/**
+	 * Returns a list of integers as a String in the order they were played 
+	 * in the game
+	 */
+	@SuppressWarnings("static-access")
+	public ArrayList<String> getQuestionInts() {
+		List<Creation> creations = _creationModel.listCreations();
+		ArrayList<String> ints = new ArrayList<String>();
+		
+		for (int i = 0; i < _creationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
+			ints.add(i, creations.get(i).label());
+		}
+		
+		return ints;
+	}
+	
+	/**
+	 * Returns a list of translated integers as a String in the order they
+	 * were played in the game
+	 */
+	public ArrayList<String> getQuestionTrans() {
+		ArrayList<String> trans = new ArrayList<String>();
+		
+		for (int i = 0; i < _creationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
+			String creation = _creationModel.getCreationLabel(i + 1);
+			trans.add(i, _translator.translate(creation));
+		}
+		
+		return trans;
+	}
+	
+	/**
+	 * Returns a list of correct correct/incorrect tags in the order the questions
+	 * were answered in the game.
+	 */
+	public ArrayList<String> getQuestionCorrect() {
+		return _questionsCorrect;
 	}
 }

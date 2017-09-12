@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 
 public abstract class TataiController {
 
+	protected static final String INCORRECT_RED = "#f73333";
+	protected static final String CORRECT_GREEN = "#00d10a";
+	protected static final String WHITE = "#ffffff";
+	
 	/*
 	 * Changes the current view embedded in the desired stage. The fxml String points
 	 * to the file desired to be the root of the new view, and the stage refers to 
