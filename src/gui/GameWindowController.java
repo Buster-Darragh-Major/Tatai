@@ -3,8 +3,6 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXHamburger;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,8 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GameWindowController extends TataiController implements Initializable{
-	
-	private static final String FINISH = "Finish!";
+
+private static final String FINISH = "Finish!";
 	
 	
 	@FXML
@@ -24,12 +22,10 @@ public class GameWindowController extends TataiController implements Initializab
 	private Label _translatedLabel;
 	@FXML
 	private Label _questionNoLabel;
-	
 	@FXML
 	private Pane _pane;
-	
 	@FXML
-	private JFXHamburger _mainMenuButton;
+	private Pane _childPane;
 	@FXML
 	private Button _correctButton;
 	@FXML
@@ -89,12 +85,6 @@ public class GameWindowController extends TataiController implements Initializab
 		}
 	}
 	
-	@FXML
-	public void handleMainMenuClick() {
-		Stage stage = (Stage) _mainMenuButton.getScene().getWindow(); // Get current stage
-		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml view
-	}
-	
 	@SuppressWarnings("static-access")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -109,6 +99,7 @@ public class GameWindowController extends TataiController implements Initializab
 		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
 		_translatedLabel.setVisible(false);
 		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
+		_childPane.setBackground(_pane.getBackground());
 		
 		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
 		_questionNoLabel.setTextFill(_intLabel.getTextFill());

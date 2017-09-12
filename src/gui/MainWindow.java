@@ -17,13 +17,14 @@ public class MainWindow extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
 		    
-	        Scene scene = new Scene(root, 600, 400);
+	        Scene scene = new Scene(root, 800, 500);
 	       
 	        scene.getStylesheets().add(getClass().getResource("TataiTheme.css").toExternalForm());
 	        
 	        primaryStage.setTitle("Tatai");
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
+	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
