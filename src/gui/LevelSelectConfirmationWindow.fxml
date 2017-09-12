@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LevelSelectConfimationWindowController">
+
+<GridPane prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LevelSelectConfimationWindowController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="166.0" minHeight="10.0" prefHeight="82.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <JFXButton fx:id="_start" layoutX="250.0" layoutY="234.0" onMouseClicked="#handleStartClick" prefHeight="50.0" prefWidth="100.0" text="Start" textFill="WHITE" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" />
-      <JFXButton fx:id="_back" layoutX="5.0" layoutY="344.0" onMouseClicked="#handleBackClick" prefHeight="50.0" prefWidth="100.0" text="Back" textFill="WHITE" />
-      <JFXHamburger fx:id="_mainMenu" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleMainMenuClick" />
-      <Label fx:id="_levelDescriptor" alignment="CENTER" layoutX="283.0" layoutY="177.0" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="_levelHeader" alignment="CENTER" layoutY="42.0" prefHeight="108.0" prefWidth="600.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <JFXButton fx:id="_start" onMouseClicked="#handleStartClick" prefHeight="50.0" prefWidth="100.0" text="Start" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label fx:id="_levelHeader" alignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="90.0" />
          </font>
       </Label>
+      <Label fx:id="_levelDescriptor" alignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="_back" onMouseClicked="#handleBackClick" prefHeight="50.0" prefWidth="100.0" text="Back" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" />
+         </GridPane.margin>
+      </JFXButton>
    </children>
-</AnchorPane>
+</GridPane>

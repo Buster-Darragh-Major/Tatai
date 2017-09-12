@@ -17,7 +17,6 @@ public class GameWindowController extends TataiController implements Initializab
 	
 	private static final String INCORRECT_RED = "#f73333";
 	private static final String CORRECT_GREEN = "#00d10a";
-	private static final String WHITE = "#ffffff";
 	private static final String FINISH = "Finish!";
 	
 
