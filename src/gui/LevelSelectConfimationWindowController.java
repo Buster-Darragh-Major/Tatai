@@ -24,7 +24,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	public void handleStartClick() {
 		
 		// Set level of TataiCreationModel to be level defined in current game object
-		// also stored in singleton Context object
+		// also stored in s Context object
 		Context.getInstance().currentGame().setLevel(
 				Context.getInstance().currentGame().currentLevel());
 		
