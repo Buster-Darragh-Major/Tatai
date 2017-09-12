@@ -86,10 +86,16 @@ public class GameWindowController extends TataiController implements Initializab
 		_nextQuestionButton.setVisible(true);
 	}
 	
+	@SuppressWarnings("static-access")
 	@FXML
 	public void handleNextQuestionClick() {
 		Stage stage = (Stage) _nextQuestionButton.getScene().getWindow(); //Get current stage
-		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+		
+		if (_nextQuestionButton.getText() == FINISH) {
+			changeWindow("ResultsWindow.fxml", stage); // Change to ResultsWindow.fxml view 
+		} else {
+			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+		}
 	}
 	
 	@FXML
