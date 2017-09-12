@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,17 +9,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ResultsWindowController">
    <children>
-      <Label fx:id="_scoreLabel" alignment="CENTER" layoutY="54.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="_scoreLabel" alignment="CENTER" layoutX="3.0" layoutY="18.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <TableView fx:id="_resultsTable" layoutX="24.0" layoutY="155.0" prefHeight="200.0" prefWidth="559.0">
+      <TableView fx:id="_resultsTable" layoutX="16.0" layoutY="89.0" prefHeight="235.0" prefWidth="567.0">
          <columns>
             <TableColumn fx:id="qNo" prefWidth="75.0" text="Question" />
             <TableColumn fx:id="qInt" prefWidth="99.0" text="Number" />
             <TableColumn fx:id="qTranslation" prefWidth="263.0" text="Answer" />
             <TableColumn fx:id="qCorrect" prefWidth="101.0" text="Your Answer" />
          </columns></TableView>
+      <JFXButton fx:id="_mainMenuButton" layoutX="483.0" layoutY="336.0" onAction="#handleMainMenuButtonClick" prefHeight="50.0" prefWidth="100.0" text="Continue" />
+      <JFXButton fx:id="_level2Button" layoutX="362.0" layoutY="336.0" onAction="#handleLevel2ButtonClick" prefHeight="50.0" prefWidth="100.0" text="Play Level 2" />
    </children>
 </AnchorPane>
