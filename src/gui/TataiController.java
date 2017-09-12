@@ -22,10 +22,14 @@ public abstract class TataiController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		double width = stage.getWidth();
+		double height = stage.getHeight();
 		
 		Scene scene = new Scene(root); // Create new scene based off new view root
 		stage.setScene(scene); // Set current stage to show new view scene
 		stage.show();
+		stage.setWidth(width);
+		stage.setHeight(height);
 	}
 	
 }

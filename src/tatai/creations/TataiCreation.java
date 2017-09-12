@@ -36,6 +36,6 @@ public class TataiCreation extends Creation {
 		String bgColor = _bgColor.toString();
 		bgColor = bgColor.substring(2, bgColor.length() - 2);
 		
-		pane.setStyle("-fx-background-color: #" + bgColor);
+			pane.setStyle("-fx-background-color: #" + bgColor);
 	}	
 }
