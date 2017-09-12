@@ -11,6 +11,8 @@ public class LevelSelectWindowController extends TataiController {
 	private Button _level1;
 	@FXML
 	private Button _level2;
+	@FXML
+	private Button _menuButton;
 	
 	@FXML
 	public void handleLevel1Click() {
@@ -19,6 +21,12 @@ public class LevelSelectWindowController extends TataiController {
 		
 		Stage stage = (Stage) _level1.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
+	}
+	
+	@FXML
+	public void handleMenuButtonClick() {
+		Stage stage = (Stage) _menuButton.getScene().getWindow();
+		changeWindow("MainWindow.fxml", stage);
 	}
 	
 	@FXML
