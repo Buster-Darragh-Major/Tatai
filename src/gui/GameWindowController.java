@@ -61,8 +61,6 @@ public class GameWindowController extends TataiController implements Initializab
 			
 			_translatedLabel.setVisible(true);
 			
-			_nextQuestionButton.setTextFill(Color.web(INCORRECT_RED));
-			_nextQuestionButton.setStyle("-fx-background-color: " + WHITE);
 			_nextQuestionButton.setVisible(true);
 		}
 		
@@ -80,9 +78,7 @@ public class GameWindowController extends TataiController implements Initializab
 		_pane.setStyle("-fx-background-color: " + CORRECT_GREEN);
 		_intLabel.setTextFill(Color.WHITE);
 		_questionNoLabel.setTextFill(Color.WHITE);
-		
-		_nextQuestionButton.setTextFill(Color.web(CORRECT_GREEN));
-		_nextQuestionButton.setStyle("-fx-background-color: " + WHITE);
+
 		_nextQuestionButton.setVisible(true);
 	}
 	
