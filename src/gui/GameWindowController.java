@@ -18,6 +18,7 @@ public class GameWindowController extends TataiController implements Initializab
 	private static final String INCORRECT_RED = "#f73333";
 	private static final String CORRECT_GREEN = "#00d10a";
 	private static final String WHITE = "#ffffff";
+	private static final String FINISH = "Finish!";
 	
 
 	
@@ -85,12 +86,16 @@ public class GameWindowController extends TataiController implements Initializab
 		_nextQuestionButton.setVisible(true);
 	}
 	
+	@SuppressWarnings("static-access")
 	@FXML
 	public void handleNextQuestionClick() {
-		// TODO BUSTER CHANGE THIS
-		//Context.getInstance().currentGame().nextQuestion();
 		Stage stage = (Stage) _nextQuestionButton.getScene().getWindow(); //Get current stage
-		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+		
+		if (_nextQuestionButton.getText() == FINISH) {
+			changeWindow("ResultsWindow.fxml", stage); // Change to ResultsWindow.fxml view 
+		} else {
+			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+		}
 	}
 	
 	@FXML
@@ -99,8 +104,14 @@ public class GameWindowController extends TataiController implements Initializab
 		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml view
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		if (Context.getInstance().currentGame().currentQuestion() == 
+				Context.getInstance().currentGame().TOTAL_NUMBER_OF_QUESTIONS) {
+			_nextQuestionButton.setText(FINISH);
+		}
+		
 		_skipButton.setVisible(false);
 		_tryAgainButton.setVisible(false);
 		_nextQuestionButton.setVisible(false);
