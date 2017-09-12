@@ -18,7 +18,9 @@ public class MainWindow extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
 		    
 	        Scene scene = new Scene(root, 600, 400);
-	    
+	       
+	        scene.getStylesheets().add(getClass().getResource("TataiTheme.css").toExternalForm());
+	        
 	        primaryStage.setTitle("Tatai");
 	        primaryStage.setScene(scene);
 	        primaryStage.show();

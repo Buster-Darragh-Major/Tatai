@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GameWindowController">
+<AnchorPane fx:id="_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GameWindowController">
    <children>
       <Label fx:id="_intLabel" alignment="CENTER" layoutY="101.0" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
@@ -21,13 +21,13 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <JFXButton fx:id="_nextQuestionButton" layoutX="485.0" layoutY="340.0" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: white;" text="Next" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <JFXButton fx:id="_nextQuestionButton" layoutX="485.0" layoutY="340.0" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Next" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
       <Label fx:id="_questionNoLabel" alignment="CENTER" layoutY="71.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <JFXButton fx:id="_tryAgainButton" layoutX="146.0" layoutY="266.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: white;" text="Try Again" AnchorPane.leftAnchor="150.0" />
-      <JFXButton fx:id="_skipButton" layoutX="375.0" layoutY="266.0" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: white;" text="Skip" AnchorPane.rightAnchor="150.0" />
+      <JFXButton fx:id="_tryAgainButton" layoutX="146.0" layoutY="266.0" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Try Again" AnchorPane.leftAnchor="150.0" />
+      <JFXButton fx:id="_skipButton" layoutX="375.0" layoutY="266.0" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Skip" AnchorPane.rightAnchor="150.0" />
    </children>
 </AnchorPane>
