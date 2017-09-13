@@ -320,7 +320,7 @@ public class TataiGame {
 	 * Total played
 	 */
 	public int totalPlayed() {
-		return _statsHandler.totalCorrect();
+		return _statsHandler.totalPlayed();
 	}
 	
 	/**
