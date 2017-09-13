@@ -294,4 +294,47 @@ public class TataiGame {
 	public ArrayList<String> getQuestionCorrect() {
 		return _questionsCorrect;
 	}
+	
+	//// Stats Methods \\\\
+	
+	/**
+	 * Returns the average as a percentage 
+	 * 
+	 * return average
+	 */
+	public String averageAsPercent() {
+		String per = "" + (averageAsDouble() * 10);
+		
+		return per;
+	}
+	
+	/**
+	 * Returns this sessions current average
+	 * 
+	 * @return The average as a double
+	 */
+	public double averageAsDouble() {
+		return _statsHandler.average();
+	}
+	
+	/**
+	 * Total played
+	 */
+	public int totalPlayed() {
+		return _statsHandler.totalCorrect();
+	}
+	
+	/**
+	 * correct
+	 */
+	public int correct() {
+		return _statsHandler.totalCorrect();
+	}
+	
+	/**
+	 * incorrect
+	 */
+	public int incorrect() {
+		return _statsHandler.totalIncorrect();
+	}
 }
