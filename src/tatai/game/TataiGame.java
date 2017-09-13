@@ -279,7 +279,7 @@ public class TataiGame {
 	public ArrayList<String> getQuestionTrans() {
 		ArrayList<String> trans = new ArrayList<String>();
 		
-		for (int i = 0; i < _creationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
+		for (int i = 0; i < TataiCreationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
 			String creation = _creationModel.getCreationLabel(i + 1);
 			trans.add(i, _translator.translate(creation));
 		}
@@ -304,7 +304,6 @@ public class TataiGame {
 	 */
 	public String averageAsPercent() {
 		String per = "" + (averageAsDouble() * 10);
-		
 		return per;
 	}
 	
