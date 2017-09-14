@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class StatsWindowController extends TataiController implements Initializable{
 	
@@ -24,6 +25,32 @@ public class StatsWindowController extends TataiController implements Initializa
 	private Button _totalButton;
 	@FXML
 	private Button _exitButton;
+	
+	@FXML
+	public void handleAverageButtonClick() {
+		
+	}
+	
+	@FXML
+	public void handleCorrectButtonClick() {
+		
+	}
+	
+	@FXML
+	public void handleIncorrectButtonClick() {
+		
+	}
+	
+	@FXML 
+	public void handleTotalButtonClick() {
+		
+	}
+	
+	@FXML
+	public void handleExitButtonClick() {
+		Stage stage = (Stage) _exitButton.getScene().getWindow();
+		changeWindow("MainWindow.fxml", stage);
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

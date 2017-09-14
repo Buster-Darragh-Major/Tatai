@@ -58,7 +58,7 @@
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <Button fx:id="_exitButton" mnemonicParsing="false" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="exit" GridPane.rowIndex="5" />
+                  <Button fx:id="_exitButton" mnemonicParsing="false" onAction="#handleExitButtonClick" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="exit" GridPane.rowIndex="5" />
                   <Button fx:id="_averageButton" mnemonicParsing="false" style="-: #383838;" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="avg" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="13.0" />
