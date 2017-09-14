@@ -28,6 +28,10 @@ import tatai.translator.Translator;
  */
 public class TataiGame {
 	public static final int TOTAL_NUMBER_OF_QUESTIONS = 10;
+	public static final String AVERAGE = "Average Score";
+	public static final String TOTAL_PLAYED = "Total Answered";
+	public static final String INCORRECT = "Total Incorrect";
+	public static final String CORRECT = "Total Correct";
 	
 	private Level _level = Level.Level1;
 	private int _questionNo;
@@ -303,7 +307,7 @@ public class TataiGame {
 	 * return average
 	 */
 	public String averageAsPercent() {
-		String per = "" + (averageAsDouble() * 10);
+		String per = "" + (averageAsDouble() * 10) + "%";
 		return per;
 	}
 	

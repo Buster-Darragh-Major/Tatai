@@ -63,18 +63,24 @@ public class StatsWindowController extends TataiController implements Initializa
 	 * @param paint the color to set the text
 	 */
 	public void changeLabel(String text, String descripton, Paint paint) {
+		String paintHex = paint.toString();
+		paintHex = "#" +  paintHex.substring(2, paintHex.length() - 2);
+		
 		_statLabel.setText(text);
-		_statLabel.setTextFill(paint);
+		_statLabel.setStyle("-fx-border-color: " +  paintHex + "; -fx-text-fill: " + paintHex +";");
+		
+		_statTitleLabel.setText(descripton);
+		_statTitleLabel.setTextFill(paint);
 	}
 	
 	@FXML
 	public void handleAverageButtonClick() {
-		changeLabel("" + _game.averageAsPercent(), "", _averageButton.getTextFill());
+		changeLabel("" + _game.averageAsPercent(), TataiGame.AVERAGE, _averageButton.getTextFill());
 	}
 	
 	@FXML
 	public void handleCorrectButtonClick() {
-		changeLabel("" + _game.correct(), "", _correctButton.getTextFill());
+		changeLabel("" + _game.correct(), TataiGame.CORRECT, _correctButton.getTextFill());
 	}
 	
 	/**
@@ -82,7 +88,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	 */
 	@FXML
 	public void handleIncorrectButtonClick() {
-		changeLabel("" + _game.incorrect(), "", _incorrectButton.getTextFill());
+		changeLabel("" + _game.incorrect(), TataiGame.INCORRECT, _incorrectButton.getTextFill());
 	}
 	
 	/**
@@ -90,7 +96,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	 */
 	@FXML 
 	public void handleTotalButtonClick() {
-		changeLabel("" + _game.totalPlayed(), "" , _totalButton.getTextFill());
+		changeLabel("" + _game.totalPlayed(), TataiGame.TOTAL_PLAYED, _totalButton.getTextFill());
 	}
 	
 	/**
