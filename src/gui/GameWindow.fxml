@@ -1,33 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GameWindowController">
+<GridPane fx:id="_pane" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GameWindowController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="244.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="244.0" minHeight="10.0" prefHeight="139.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <Label fx:id="_intLabel" alignment="CENTER" layoutY="101.0" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="_intLabel" alignment="CENTER" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font size="100.0" />
          </font>
       </Label>
-      <JFXHamburger fx:id="_mainMenuButton" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleMainMenuClick" />
-      <JFXButton fx:id="_correctButton" layoutX="358.0" layoutY="365.0" onAction="#handleCorrectClick" text="CorrectStub" />
-      <JFXButton fx:id="_incorretButton" layoutX="124.0" layoutY="365.0" onAction="#handleIncorrectClick" text="IncorrectStub" />
-      <Label fx:id="_translatedLabel" alignment="CENTER" layoutX="282.0" layoutY="222.0" prefHeight="16.0" prefWidth="291.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <JFXButton fx:id="_correctButton" onAction="#handleCorrectClick" text="CorrectStub" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <JFXButton fx:id="_incorretButton" onAction="#handleIncorrectClick" text="IncorrectStub" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></JFXButton>
+      <Label fx:id="_translatedLabel" alignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <JFXButton fx:id="_nextQuestionButton" layoutX="485.0" layoutY="340.0" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Next" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-      <Label fx:id="_questionNoLabel" alignment="CENTER" layoutY="71.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <JFXButton fx:id="_nextQuestionButton" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Next" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets right="40.0" />
+         </GridPane.margin>
+      </JFXButton>
+      <Label fx:id="_questionNoLabel" alignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <JFXButton fx:id="_tryAgainButton" layoutX="146.0" layoutY="266.0" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Try Again" AnchorPane.leftAnchor="150.0" />
-      <JFXButton fx:id="_skipButton" layoutX="375.0" layoutY="266.0" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Skip" AnchorPane.rightAnchor="150.0" />
+      <GridPane fx:id="_childPane" GridPane.rowIndex="3">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="_skipButton" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Skip" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <JFXButton fx:id="_tryAgainButton" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Try Again" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
    </children>
-</AnchorPane>
+</GridPane>

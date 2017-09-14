@@ -3,8 +3,6 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXHamburger;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,8 +16,6 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML
 	private Button _back;
 	@FXML
-	private JFXHamburger _mainMenu;
-	@FXML
 	private Label _levelHeader;
 	@FXML
 	private Label _levelDescriptor;
@@ -28,7 +24,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	public void handleStartClick() {
 		
 		// Set level of TataiCreationModel to be level defined in current game object
-		// also stored in singleton Context object
+		// also stored in s Context object
 		Context.getInstance().currentGame().setLevel(
 				Context.getInstance().currentGame().currentLevel());
 		
@@ -43,12 +39,6 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	public void handleBackClick() {
 		Stage stage = (Stage) _back.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
-	}
-	
-	@FXML
-	public void handleMainMenuClick() {
-		Stage stage = (Stage) _mainMenu.getScene().getWindow(); // Get current stage
-		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml view
 	}
 
 	@Override
