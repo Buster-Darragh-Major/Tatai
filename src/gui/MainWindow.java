@@ -13,6 +13,7 @@ public class MainWindow extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			Context.getInstance().newGame();
 			Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
 		    
 	        Scene scene = new Scene(root, 800, 500);

@@ -1,0 +1,30 @@
+.statsBackground {
+	-fx-background-color: #383838;
+}
+
+#_statLabel {
+	-fx-text-fill: white;
+	-fx-border-width:  0 2 0 0;
+	-fx-border-color: white;
+}
+
+#_averageButton {
+	-fx-text-fill: white;
+}
+
+#_correctButton {
+	-fx-text-fill: #8ff243;
+	
+}
+
+#_incorrectButton {
+	-fx-text-fill: #e7412e;
+}
+
+#_totalButton {
+	-fx-text-fill: #71aef2;
+}
+
+#_exitButton {
+	-fx-text-fill: #e22e1a;
+}

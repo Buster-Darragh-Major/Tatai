@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import tatai.game.TataiGame;
 
 public class GameWindowController extends TataiController implements Initializable{
 
@@ -102,15 +103,12 @@ private static final String FINISH = "Finish!";
 		}
 	}
 	
-	/**
-	 * Initializes the state of the window on first access
-	 */
-	@SuppressWarnings("static-access")
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// If on last question set next button to indicate end of game
+		Context.getInstance().currentGame();
 		if (Context.getInstance().currentGame().currentQuestion() == 
-				Context.getInstance().currentGame().TOTAL_NUMBER_OF_QUESTIONS) {
+				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
 			_nextQuestionButton.setText(FINISH);
 		}
 		
