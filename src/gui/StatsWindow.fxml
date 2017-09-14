@@ -46,20 +46,20 @@
                   <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="_correctButton" mnemonicParsing="false" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="correct" GridPane.rowIndex="2">
+                  <Button fx:id="_correctButton" mnemonicParsing="false" onAction="#handleCorrectButtonClick" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="correct" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <Button fx:id="_incorrectButton" mnemonicParsing="false" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="incorrect" GridPane.rowIndex="3">
+                  <Button fx:id="_incorrectButton" mnemonicParsing="false" onAction="#handleIncorrectButtonClick" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="incorrect" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
-                  <Button fx:id="_totalButton" mnemonicParsing="false" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="total" GridPane.rowIndex="4">
+                  <Button fx:id="_totalButton" mnemonicParsing="false" onAction="#handleTotalButtonClick" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="total" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>
                   <Button fx:id="_exitButton" mnemonicParsing="false" onAction="#handleExitButtonClick" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="exit" GridPane.rowIndex="5" />
-                  <Button fx:id="_averageButton" mnemonicParsing="false" style="-: #383838;" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="avg" GridPane.rowIndex="1">
+                  <Button fx:id="_averageButton" mnemonicParsing="false" onAction="#handleAverageButtonClick" style="-: #383838;" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="avg" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Button>

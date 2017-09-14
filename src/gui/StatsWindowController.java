@@ -7,9 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import tatai.game.TataiGame;
 
+/**
+ * The controller for the stats view
+ * 
+ * @author Nathan Cairns
+ *
+ */
 public class StatsWindowController extends TataiController implements Initializable{
+	
+	private TataiGame _game;
 	
 	@FXML
 	private Label _statLabel;	
@@ -26,40 +37,69 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	private Button _exitButton;
 	
+	/**
+	 * Constructor
+	 */
+	public StatsWindowController() {
+		_game = Context.getInstance().currentGame();
+	}
+	
+	/**
+	 * Upon initialization.
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		_statLabel.setText(_game.averageAsPercent());
+		_statTitleLabel.setText("Average Score");
+		_averageButton.setText(_game.averageAsPercent());
+		_correctButton.setText("" + _game.correct());
+		_incorrectButton.setText("" + _game.incorrect());
+		_totalButton.setText("" + _game.totalPlayed());
+	}
+	
+	/**
+	 * Change the stats label
+	 * @param text the text to change the label to
+	 * @param paint the color to set the text
+	 */
+	public void changeLabel(String text, String descripton, Paint paint) {
+		_statLabel.setText(text);
+		_statLabel.setTextFill(paint);
+	}
+	
 	@FXML
 	public void handleAverageButtonClick() {
-		
+		changeLabel("" + _game.averageAsPercent(), "", _averageButton.getTextFill());
 	}
 	
 	@FXML
 	public void handleCorrectButtonClick() {
-		
+		changeLabel("" + _game.correct(), "", _correctButton.getTextFill());
 	}
 	
+	/**
+	 * Change the stats label to the incorrect
+	 */
 	@FXML
 	public void handleIncorrectButtonClick() {
-		
+		changeLabel("" + _game.incorrect(), "", _incorrectButton.getTextFill());
 	}
 	
+	/**
+	 * Change the stats label to the total played/
+	 */
 	@FXML 
 	public void handleTotalButtonClick() {
-		
+		changeLabel("" + _game.totalPlayed(), "" , _totalButton.getTextFill());
 	}
 	
+	/**
+	 * When clicked return to main menu
+	 */
 	@FXML
 	public void handleExitButtonClick() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
 		changeWindow("MainWindow.fxml", stage);
-	}
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		_statLabel.setText(Context.getInstance().currentGame().averageAsPercent());
-		_statTitleLabel.setText("Average Score");
-		_averageButton.setText(Context.getInstance().currentGame().averageAsPercent());
-		_correctButton.setText("" + Context.getInstance().currentGame().correct());
-		_incorrectButton.setText("" + Context.getInstance().currentGame().incorrect());
-		_totalButton.setText("" + Context.getInstance().currentGame().totalPlayed());
 	}
 	
 }
