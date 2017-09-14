@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class LevelSelectConfimationWindowController extends TataiController implements Initializable {
 
+	/* FXML Nodes */
 	@FXML
 	private Button _start;
 	@FXML
@@ -20,6 +21,9 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML
 	private Label _levelDescriptor;
 	
+	/**
+	 * Handles user pressing start button
+	 */
 	@FXML
 	public void handleStartClick() {
 		
@@ -35,12 +39,18 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 	}
 	
+	/**
+	 * Handles user pressing back button
+	 */
 	@FXML
 	public void handleBackClick() {
 		Stage stage = (Stage) _back.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
 	}
 
+	/**
+	 * Initializes the window state
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// Set header and description labels to be that representing the current game

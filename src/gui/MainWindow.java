@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainWindow extends Application {
-	
-	// TODO: Select a proper consistent font that allows a macron
 
 	@Override
 	public void start(Stage primaryStage) {

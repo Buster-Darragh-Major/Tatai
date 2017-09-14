@@ -281,6 +281,7 @@ public class TataiGame {
 	 * Returns a list of translated integers as a String in the order they
 	 * were played in the game
 	 */
+	@SuppressWarnings("static-access")
 	public ArrayList<String> getQuestionTrans() {
 		ArrayList<String> trans = new ArrayList<String>();
 		

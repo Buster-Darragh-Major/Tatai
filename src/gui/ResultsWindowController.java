@@ -17,6 +17,7 @@ import tatai.creations.Level;
 
 public class ResultsWindowController extends TataiController implements Initializable {
 
+	/* FXML Nodes */
 	@FXML
 	private Label _scoreLabel;
 	@FXML
@@ -27,18 +28,26 @@ public class ResultsWindowController extends TataiController implements Initiali
 	private TableView<TataiQuestion> _resultsTable;
 	@FXML
 	private TableColumn<TataiQuestion, String> qNo, qInt, qTranslation, qCorrect;
-
+	
+	/* Fields */
 	@SuppressWarnings("static-access")
 	private int _questionTotal = Context.getInstance().currentGame().TOTAL_NUMBER_OF_QUESTIONS;
-
+	
+	/**
+	 * Handles user pressing main menu button
+	 */
 	@FXML
 	public void handleMainMenuButtonClick() {
 		Stage stage = (Stage) _level2Button.getScene().getWindow(); // Get current Stage
 		changeWindow("LevelSelectWindow.fxml", stage); // Change to MainWindow.fxml view
 	}
-
+	
+	/**
+	 * Handles user pressing level 2 button but continuing immediately to level 2
+	 */
 	@FXML
 	public void handleLevel2ButtonClick() {
+		// Create new game, set to level 2 and begin game
 		Context.getInstance().newGame();
 		Context.getInstance().currentGame().setLevel(Level.Level2);
 		Context.getInstance().currentGame().startGame();
