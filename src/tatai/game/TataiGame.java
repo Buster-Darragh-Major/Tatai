@@ -1,5 +1,6 @@
 package tatai.game;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -308,6 +309,7 @@ public class TataiGame {
 	 */
 	public String averageAsPercent() {
 		String per = "" + (averageAsDouble() * 10) + "%";
+		per = per.substring(0, 4);
 		return per;
 	}
 	
