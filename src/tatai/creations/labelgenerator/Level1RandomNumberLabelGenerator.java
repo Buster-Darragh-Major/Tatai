@@ -21,6 +21,12 @@ public class Level1RandomNumberLabelGenerator implements LabelGenerator {
 		return "" + number;
 	}
 	
+	/**
+	 * returns a random number between input parameters maximum and minimum.
+	 * @param maximum
+	 * @param minimum
+	 * @return int
+	 */
 	public int getRandomInteger(int maximum, int minimum) {
 		return ((int) (Math.random()*(maximum))) + minimum;
 	}

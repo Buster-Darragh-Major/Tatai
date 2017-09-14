@@ -7,13 +7,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * An abstract class intended to be inherited from by any controller for the Tatai
+ * application. Controllers are interested in changing views from one .fxml document
+ * to another, all controllers inherit a function used for easily transitioning 
+ * between views.
+ * 
+ * @author Buster Major
+ */
 public abstract class TataiController {
 
+	/* Macros */
 	protected static final String INCORRECT_RED = "#f73333";
 	protected static final String CORRECT_GREEN = "#00d10a";
 	protected static final String WHITE = "#ffffff";
 	
-	/*
+	/**
 	 * Changes the current view embedded in the desired stage. The fxml String points
 	 * to the file desired to be the root of the new view, and the stage refers to 
 	 * the main stage needing to be changed.

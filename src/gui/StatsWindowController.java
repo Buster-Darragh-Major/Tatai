@@ -19,8 +19,10 @@ import tatai.game.TataiGame;
  */
 public class StatsWindowController extends TataiController implements Initializable{
 	
+	/* Fields */
 	private TataiGame _game;
 	
+	/* FXML Nodes */
 	@FXML
 	private Label _statLabel;	
 	@FXML
@@ -72,11 +74,17 @@ public class StatsWindowController extends TataiController implements Initializa
 		_statTitleLabel.setTextFill(paint);
 	}
 	
+	/**
+	 * Handles user pressing average
+	 */
 	@FXML
 	public void handleAverageButtonClick() {
 		changeLabel("" + _game.averageAsPercent(), TataiGame.AVERAGE, _averageButton.getTextFill());
 	}
 	
+	/**
+	 * Handles user pressing correct
+	 */
 	@FXML
 	public void handleCorrectButtonClick() {
 		changeLabel("" + _game.correct(), TataiGame.CORRECT, _correctButton.getTextFill());
