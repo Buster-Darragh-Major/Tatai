@@ -16,7 +16,6 @@ public class LevelSelectWindowController extends TataiController {
 	
 	@FXML
 	public void handleLevel1Click() {
-		Context.getInstance().newGame();
 		Context.getInstance().currentGame().setLevel(Level.Level1);
 		
 		Stage stage = (Stage) _level1.getScene().getWindow(); // Get current stage
@@ -31,7 +30,6 @@ public class LevelSelectWindowController extends TataiController {
 	
 	@FXML
 	public void handleLevel2Click() {
-		Context.getInstance().newGame();
 		Context.getInstance().currentGame().setLevel(Level.Level2);
 		
 		Stage stage = (Stage) _level2.getScene().getWindow(); // Get current stage
