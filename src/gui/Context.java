@@ -27,8 +27,6 @@ public class Context {
 	}
 	
 	
-	
-	
 	/**
 	 * Creates a new TataiGame object for a new game in play.
 	 */

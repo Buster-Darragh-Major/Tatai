@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class MainWindowController extends TataiController {
 	
-	// Main Menu Buttons
+	/* FXML Nodes */
 	@FXML
 	private Button _mainMenuPlay;
 	@FXML
@@ -14,12 +14,18 @@ public class MainWindowController extends TataiController {
 	@FXML
 	private Button _mainMenuQuit;
 	
+	/**
+	 * Handles user pressing play button
+	 */
 	@FXML
 	public void handlePlayMenuClick() {
 		Stage stage = (Stage) _mainMenuPlay.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
 	}
 	
+	/**
+	 * Handles user pressing statistics button
+	 */
 	@FXML
 	public void handleStatsMenuClick() {
 		Stage stage = (Stage) _mainMenuStats.getScene().getWindow(); // Get Current stage

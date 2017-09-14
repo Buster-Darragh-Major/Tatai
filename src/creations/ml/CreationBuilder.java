@@ -8,7 +8,7 @@ import creations.cr.CreationException;
 import javafx.scene.paint.Color;
 
 /**
- * This class deals with generating creations
+ * This class deals with generating creations, implements a builder design pattern
  * 
  * @author Nathan Cairns
  * @author Buster Major
@@ -25,30 +25,51 @@ public class CreationBuilder {
 	private Color _bgColor;
 	private Color _fontColor;
 
+	/* Default Constructor */
 	public CreationBuilder() {
 		_label = DEFAULT_LABEL;
 		_bgColor = DEFAULT_BACKGROUND_COLOR;
 		_fontColor = DEFAULT_FONT_COLOR;
 	}
 
+	/**
+	 * Sets background hex color value for creation.
+	 * @param color
+	 * @return
+	 */
 	public CreationBuilder backgroundColor(Color color) {
 		_bgColor = color;
 
 		return this;
 	}
 
+	/**
+	 * Sets font hex color value for creation.
+	 * @param color
+	 * @return
+	 */
 	public CreationBuilder fontColor(Color color) {
 		_fontColor = color;
 
 		return this;
 	}
 
+	/**
+	 * Sets number int value for creation.
+	 * @param label
+	 * @return
+	 */
 	public CreationBuilder number(String label) {
 		_label = label;
 
 		return this;
 	}
 
+	/**
+	 * Builds creation with current set parameters
+	 * @param creationClass
+	 * @return
+	 */
 	public <T extends Creation> T build(Class<T> creationClass) {
 		T builtCreation = null;
 
