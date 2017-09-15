@@ -28,11 +28,11 @@ public class ResultsWindowController extends TataiController implements Initiali
 	private TableView<TataiQuestion> _resultsTable;
 	@FXML
 	private TableColumn<TataiQuestion, String> qNo, qInt, qTranslation, qCorrect;
-	
+
 	/* Fields */
 	@SuppressWarnings("static-access")
 	private int _questionTotal = Context.getInstance().currentGame().TOTAL_NUMBER_OF_QUESTIONS;
-	
+
 	/**
 	 * Handles user pressing main menu button
 	 */
@@ -41,7 +41,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 		Stage stage = (Stage) _level2Button.getScene().getWindow(); // Get current Stage
 		changeWindow("LevelSelectWindow.fxml", stage); // Change to MainWindow.fxml view
 	}
-	
+
 	/**
 	 * Handles user pressing level 2 button but continuing immediately to level 2
 	 */
