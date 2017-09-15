@@ -312,7 +312,7 @@ public class TataiGame {
 		per = per.substring(0, 4) + "%";
 		return per;
 	}
-	
+		 
 	/**
 	 * Returns this sessions current average
 	 * 

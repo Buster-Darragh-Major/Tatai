@@ -35,7 +35,13 @@
 	-fx-text-fill: white;
  	-fx-background-color: #cc0404;
 }
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
 
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
 .list-view .scroll-bar:horizontal .increment-arrow,
 .list-view .scroll-bar:horizontal .decrement-arrow,
 .list-view .scroll-bar:horizontal .increment-button,
