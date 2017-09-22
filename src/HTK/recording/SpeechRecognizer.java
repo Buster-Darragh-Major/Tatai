@@ -1,21 +1,10 @@
 package HTK.recording;
 
-import java.io.File;
 import java.util.ArrayList;
 
-public class SpeechRecognizer {
-
-	public static final File FILEPATH = new File(
-			System.getProperty("user.dir") + System.getProperty("file.separator") + "HTK" +
-			System.getProperty("file.separator") + "MaoriNumbers");
+public interface SpeechRecognizer {
 	
-	public void record() {
-		
-	}
+	public void record();
 	
-	public ArrayList<String> getText() {
-		return null;
-		
-	}
-	
+	public ArrayList<String> getText();
 }
