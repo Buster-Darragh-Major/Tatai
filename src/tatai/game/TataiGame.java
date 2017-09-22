@@ -308,6 +308,10 @@ public class TataiGame {
 	 * return average
 	 */
 	public String averageAsPercent() {
+		if (averageAsDouble() <= 0) {
+			return "%" + 0.00;
+		}
+		
 		String per = "" + (averageAsDouble() * 10);
 		per = per.substring(0, 4) + "%";
 		return per;
