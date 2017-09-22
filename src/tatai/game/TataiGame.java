@@ -264,12 +264,11 @@ public class TataiGame {
 	 * Returns a list of integers as a String in the order they were played 
 	 * in the game
 	 */
-	@SuppressWarnings("static-access")
 	public ArrayList<String> getQuestionInts() {
 		List<Creation> creations = _creationModel.listCreations();
 		ArrayList<String> ints = new ArrayList<String>();
 		
-		for (int i = 0; i < _creationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
+		for (int i = 0; i < TataiCreationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
 			ints.add(i, creations.get(i).label());
 		}
 		
