@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -63,13 +64,18 @@
                   <Insets />
                </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="_incorretButton" onAction="#handleIncorrectClick" text="IncorrectStub" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton fx:id="_incorretButton" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Playback" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="_correctButton" onAction="#handleCorrectClick" text="CorrectStub" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <JFXButton fx:id="_correctButton" onAction="#handleCorrectClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Record" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
+      <Button fx:id="exit_button" mnemonicParsing="false" styleClass="button1" stylesheets="@TataiTheme.css" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
    </children>
 </GridPane>
