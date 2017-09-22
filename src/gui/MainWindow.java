@@ -25,7 +25,7 @@ public class MainWindow extends Application {
 	        primaryStage.setMinWidth(800);
 	        primaryStage.setMinHeight(500);
 	        primaryStage.show();
-	
+	        	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
