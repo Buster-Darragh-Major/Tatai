@@ -114,6 +114,7 @@ public class TataiGame {
 		if (_questionNo < TOTAL_NUMBER_OF_QUESTIONS && _questionNo > 0) {
 			_questionNo++;
 		} else {
+			_questionNo++;
 			endGame();
 		}
 	}
@@ -252,8 +253,7 @@ public class TataiGame {
 	 */
 	public void endGame() {
 		if (_hasStarted) {
-			_statsHandler.updateStats(_questionNo, _correct, _incorrect);
-
+			_statsHandler.updateStats(_questionNo - 1, _correct, _incorrect);
 			_hasStarted = false;
 		} else {
 			throw new GameException("Game has already ended");

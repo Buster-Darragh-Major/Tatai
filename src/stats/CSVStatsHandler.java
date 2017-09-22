@@ -206,7 +206,7 @@ public class CSVStatsHandler implements StatisticHandler {
 		if (played < 0 || correct < 0 || incorrect < 0) {
 			throw new StatsException("Scores cannot be negative!");
 		}
-		if ((correct + incorrect) > played) {
+		if ((correct + incorrect) != played) {
 			throw new StatsException("The number of question you got correct and the number of questions you "
 					+ "got wrong must be consistent with the number of questions you answered");
 		}

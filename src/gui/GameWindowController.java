@@ -108,8 +108,9 @@ private static final String FINISH = "Finish!";
 	@FXML
 	public void handleQuitClick() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
+		Context.getInstance().currentGame().answerQuestion(false);
+		Context.getInstance().currentGame().endGame();
 		changeWindow("LevelSelectWindow.fxml", stage);
-		
 	}
 	
 
