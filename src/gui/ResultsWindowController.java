@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import stats.TataiQuestion;
 import tatai.creations.Level;
+import tatai.game.TataiGame;
 
 public class ResultsWindowController extends TataiController implements Initializable {
 
@@ -30,8 +31,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 	private TableColumn<TataiQuestion, String> qNo, qInt, qTranslation, qCorrect;
 
 	/* Fields */
-	@SuppressWarnings("static-access")
-	private int _questionTotal = Context.getInstance().currentGame().TOTAL_NUMBER_OF_QUESTIONS;
+	private int _questionTotal = TataiGame.TOTAL_NUMBER_OF_QUESTIONS;
 
 	/**
 	 * Handles user pressing main menu button
