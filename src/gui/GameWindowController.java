@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import HTK.recording.TataiSpeechRecognizer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -112,6 +113,13 @@ private static final String FINISH = "Finish!";
 		
 	}
 	
+	
+	@FXML
+	public void handleRecordClick() {
+		TataiSpeechRecognizer speech = new TataiSpeechRecognizer();
+		speech.record();
+		speech.getText();
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
