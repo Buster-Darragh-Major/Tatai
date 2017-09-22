@@ -1,12 +1,16 @@
 package gui;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -107,12 +111,24 @@ private static final String FINISH = "Finish!";
 	
 	@FXML
 	public void handleQuitClick() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Quit Current Game");
+		alert.setContentText("Are you sure you want to quit your current game?");
+		
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			quitCurrentGame();
+		} else {
+			alert.close();
+		}
+	}
+	
+	public void quitCurrentGame() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
-		Context.getInstance().currentGame().answerQuestion(false);
 		Context.getInstance().currentGame().endGame();
 		changeWindow("LevelSelectWindow.fxml", stage);
 	}
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
