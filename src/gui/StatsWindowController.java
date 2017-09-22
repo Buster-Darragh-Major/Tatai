@@ -16,7 +16,7 @@ import tatai.game.TataiGame;
  * 
  * @author Nathan Cairns
  *
- */
+ */	
 public class StatsWindowController extends TataiController implements Initializable{
 	
 	/* Fields */
