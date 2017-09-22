@@ -8,7 +8,7 @@ import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
 import tatai.creations.labelgenerator.LabelGenerator;
-import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
+import tatai.creations.labelgenerator.Level1LabelGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of
@@ -64,11 +64,11 @@ public class TataiCreationModel extends CreationModel{
 	private int _numberOfCreations;
 	
 	public TataiCreationModel() {
-		this(new Level1RandomNumberLabelGenerator(), DEFAULT_NUMBER_OF_CREATIONS);
+		this(new Level1LabelGenerator(), DEFAULT_NUMBER_OF_CREATIONS);
 	}
 	
 	public TataiCreationModel(int numberOfCreations) {
-		this (new Level1RandomNumberLabelGenerator(), numberOfCreations);
+		this (new Level1LabelGenerator(), numberOfCreations);
 	}
 	
 	public TataiCreationModel(LabelGenerator labelGenerator) {

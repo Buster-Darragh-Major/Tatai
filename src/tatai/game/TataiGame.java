@@ -11,8 +11,8 @@ import stats.StatisticHandler;
 import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
-import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
-import tatai.creations.labelgenerator.Level2RandomNumberLabelGenerator;
+import tatai.creations.labelgenerator.Level1LabelGenerator;
+import tatai.creations.labelgenerator.Level2LabelGenerator;
 import tatai.translator.TataiTranslator;
 import tatai.translator.Translator;
 
@@ -237,10 +237,10 @@ public class TataiGame {
 
 		switch (_level) {
 		case Level1:
-			_creationModel.setLabelingStrategy(new Level1RandomNumberLabelGenerator());
+			_creationModel.setLabelingStrategy(new Level1LabelGenerator());
 			break;
 		case Level2:
-			_creationModel.setLabelingStrategy(new Level2RandomNumberLabelGenerator());
+			_creationModel.setLabelingStrategy(new Level2LabelGenerator());
 			break;
 		}
 		
