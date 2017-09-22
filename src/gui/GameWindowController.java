@@ -28,15 +28,17 @@ private static final String FINISH = "Finish!";
 	@FXML
 	private Pane _childPane;
 	@FXML
-	private Button _correctButton;
+	private Button _recordButton;
 	@FXML
-	private Button _incorretButton;
+	private Button _playbackButton;
 	@FXML
 	private Button _nextQuestionButton;
 	@FXML
 	private Button _tryAgainButton;
 	@FXML
 	private Button _skipButton;
+	@FXML
+	private Button _exitButton;
 	
 	/**
 	 * Stub for handling the incorrect click (Will be replaced with HTK logic)
@@ -101,6 +103,13 @@ private static final String FINISH = "Finish!";
 		} else {
 			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 		}
+	}
+	
+	@FXML
+	public void handleQuitClick() {
+		Stage stage = (Stage) _exitButton.getScene().getWindow();
+		changeWindow("LevelSelectWindow.fxml", stage);
+		
 	}
 	
 
