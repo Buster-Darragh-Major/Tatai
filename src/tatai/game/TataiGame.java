@@ -114,6 +114,7 @@ public class TataiGame {
 		if (_questionNo < TOTAL_NUMBER_OF_QUESTIONS && _questionNo > 0) {
 			_questionNo++;
 		} else {
+			_questionNo++;
 			endGame();
 		}
 	}
@@ -252,8 +253,7 @@ public class TataiGame {
 	 */
 	public void endGame() {
 		if (_hasStarted) {
-			_statsHandler.updateStats(_questionNo, _correct, _incorrect);
-
+			_statsHandler.updateStats(_questionNo - 1, _correct, _incorrect);
 			_hasStarted = false;
 		} else {
 			throw new GameException("Game has already ended");
@@ -264,12 +264,11 @@ public class TataiGame {
 	 * Returns a list of integers as a String in the order they were played 
 	 * in the game
 	 */
-	@SuppressWarnings("static-access")
 	public ArrayList<String> getQuestionInts() {
 		List<Creation> creations = _creationModel.listCreations();
 		ArrayList<String> ints = new ArrayList<String>();
 		
-		for (int i = 0; i < _creationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
+		for (int i = 0; i < TataiCreationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
 			ints.add(i, creations.get(i).label());
 		}
 		
@@ -308,6 +307,10 @@ public class TataiGame {
 	 * return average
 	 */
 	public String averageAsPercent() {
+		if (averageAsDouble() <= 0) {
+			return "%" + 0.00;
+		}
+		
 		String per = "" + (averageAsDouble() * 10);
 		per = per.substring(0, 4) + "%";
 		return per;
