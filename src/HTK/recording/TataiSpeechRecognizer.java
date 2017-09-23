@@ -30,7 +30,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 				// Build a builder with relevant bash command line command
 				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
 				
-				// Change working location of builder to work in the directory containing HTK sript
+				// Change working location of builder to work in the directory containing HTK script
 				builder.directory(FILEPATH);
 				
 				try {
@@ -60,12 +60,74 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 			String line;
 			while ((line = reader.readLine()) != null) {
 				_output.add(line);
-				System.out.println(line);
 			}	
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		extractWords();
+	}
+	
+	private void extractWords() {
+		for (int i = _output.size() - 1; i >= 0; i--) {
+			if (_output.get(i).equals("sil") || _output.get(i).equals(".") || 
+					_output.get(i).equals("#!MLF!#") || _output.get(i).equals("\"*/foo.rec\"")) {
+				_output.remove(i);
+			}
+		}
+	}
+	
+	public void playback() {
+		// Create a new thread for the playback of the audio file to occur in, allows
+		// GUI to remain responsive in this time
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				String command = "aplay foo.wav";
+				
+				// Build a builder with relevant Bash line command
+				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
+				
+				// Change working location directory of builder to be correct directory
+				builder.directory(FILEPATH);
+				
+				Process process = builder.start();
+				
+				return null;
+			}
+		};
+		
+		// Start the thread
+		Thread th = new Thread(task);
+		th.setDaemon(true);
+		th.start();
+	}
+	
+	public void cleanup() {
+		// Create a new thread for the removal of the audio file to occur in, allows
+		// GUI to remain responsive in this time
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				String command = "rm foo.wav";
+				
+				// Build a builder with relevant Bash line command
+				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
+				
+				// Change working location directory of builder to be correct directory
+				builder.directory(FILEPATH);
+				
+				Process process = builder.start();
+				
+				return null;
+			}
+		};
+				
+		// Start the thread
+		Thread th = new Thread(task);
+		th.setDaemon(true);
+		th.start();
 	}
 
 	@Override

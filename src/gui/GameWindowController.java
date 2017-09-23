@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -44,6 +45,9 @@ private static final String FINISH = "Finish!";
 	private Button _skipButton;
 	@FXML
 	private Button _exitButton;
+	
+	private TataiSpeechRecognizer _speech;
+	private ArrayList<String> _output;
 	
 	/**
 	 * Stub for handling the incorrect click (Will be replaced with HTK logic)
@@ -125,17 +129,32 @@ private static final String FINISH = "Finish!";
 		}
 	}
 	
-	@FXML
-	public void handleRecordClick() {
-		TataiSpeechRecognizer speech = new TataiSpeechRecognizer();
-		speech.record();
-		speech.getText();
-	}
-	
 	public void quitCurrentGame() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
 		Context.getInstance().currentGame().endGame();
 		changeWindow("LevelSelectWindow.fxml", stage);
+	}
+	
+	@FXML
+	public void handleRecordClick() {
+		_speech = new TataiSpeechRecognizer();
+		_speech.record();
+		
+		_nextQuestionButton.setVisible(true);
+	}
+	
+	@FXML
+	public void handlePlaybackClick() {
+		try {
+			_speech.playback();
+		} catch (RuntimeException e) {
+		}
+	}
+	
+	@FXML
+	public void handleSubmitClick() {
+		_speech.readFile();
+		_output = _speech.getText();
 	}
 
 	@Override

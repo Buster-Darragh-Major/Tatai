@@ -59,12 +59,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="_nextQuestionButton" onAction="#handleNextQuestionClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Submit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton fx:id="_nextQuestionButton" onAction="#handleSubmitClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Submit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="_playbackButton" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Playback" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton fx:id="_playbackButton" onAction="#handlePlaybackClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Playback" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
