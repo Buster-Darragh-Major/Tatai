@@ -2,6 +2,8 @@ package gui;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -155,6 +157,37 @@ private static final String FINISH = "Finish!";
 	public void handleSubmitClick() {
 		_speech.readFile();
 		_output = _speech.getText();
+		if (isCorrect()) {
+			handleCorrectClick();
+		} else {
+			handleIncorrectClick();
+		}
+	}
+	
+	private boolean isCorrect() {
+		String answer = Context.getInstance().currentGame().translateCurrentQuestion();
+		answer = answer.replace("mā", "maa");
+		answer = answer.replace("ā", "a");
+		List<String> answerList = Arrays.asList(answer.split(" "));
+		
+		ArrayList<String> concatList = new ArrayList<String>();
+		
+		for (int i = 0; i < answerList.size(); i++) {
+			for (int j = 0; j < _output.size(); j++) {
+				if (_output.get(j).equals(answerList.get(i))) {
+					concatList.add(_output.get(j));
+					break;
+				}
+			}
+		}
+		
+		System.out.println(concatList);
+		
+		if (concatList.equals(answerList)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
