@@ -24,6 +24,10 @@ public class GameWindowController extends TataiController implements Initializab
 
 private static final String FINISH = "Finish!";
 	
+	// TODO ***************************************************************
+	// make play back and submit buttons disabled while recording occurs
+	// TODO ***************************************************************
+
 	/* FXML Nodes */
 	@FXML
 	private Label _intLabel;
@@ -64,15 +68,23 @@ private static final String FINISH = "Finish!";
 		// Display skip/try again buttons
 		_skipButton.setVisible(true);
 		_tryAgainButton.setVisible(true);
+		
+		// Remove record/playback buttons
+		_nextQuestionButton.setVisible(false);
+		_playbackButton.setVisible(false);
+		_recordButton.setVisible(false);
 
 		// If on second attempt hide skip/try again and show answer/next button
 		if (Context.getInstance().currentGame().getAttempted()) {
 			_skipButton.setVisible(false);
 			_tryAgainButton.setVisible(false);
 			
+			_nextQuestionButton.setVisible(true);
 			_translatedLabel.setVisible(true);
 			
-			_nextQuestionButton.setVisible(true);
+			if (!_nextQuestionButton.getText().equals(FINISH)) {
+				_nextQuestionButton.setText(NEXT);
+			}
 		}
 		
 		// Tell game object question incorrectly answered
@@ -91,14 +103,17 @@ private static final String FINISH = "Finish!";
 		_skipButton.setVisible(false);
 		_tryAgainButton.setVisible(false);
 		_translatedLabel.setVisible(true);
+		_recordButton.setVisible(false);
+		_playbackButton.setVisible(false);
 		
 		// Change color scheme to white text on green background
 		_pane.setStyle("-fx-background-color: " + CORRECT_GREEN);
 		_intLabel.setTextFill(Color.WHITE);
 		_questionNoLabel.setTextFill(Color.WHITE);
 
-		// Show next Button
-		_nextQuestionButton.setVisible(true);
+		if (!_nextQuestionButton.getText().equals(FINISH)) {
+			_nextQuestionButton.setText(NEXT);
+		}
 	}
 	
 	/**
@@ -142,6 +157,7 @@ private static final String FINISH = "Finish!";
 		_speech = new TataiSpeechRecognizer();
 		_speech.record();
 		
+		_playbackButton.setVisible(true);
 		_nextQuestionButton.setVisible(true);
 	}
 	
@@ -154,16 +170,41 @@ private static final String FINISH = "Finish!";
 	}
 	
 	@FXML
+	public void handleTryAgainClick() {
+		_tryAgainButton.setVisible(false);
+		_skipButton.setVisible(false);
+		_nextQuestionButton.setVisible(false);
+		_playbackButton.setVisible(false);
+		
+		_recordButton.setVisible(true);
+	}
+	
+	@FXML
 	public void handleSubmitClick() {
-		_speech.readFile();
-		_output = _speech.getText();
-		if (isCorrect()) {
-			handleCorrectClick();
+		if (_nextQuestionButton.getText().equals(NEXT) || 
+				_nextQuestionButton.getText().equals(FINISH)) {
+			handleNextQuestionClick();
 		} else {
-			handleIncorrectClick();
+			_speech.readFile();
+			_output = _speech.getText();
+			if (isCorrect()) {
+				handleCorrectClick();
+			} else {
+				handleIncorrectClick();
+			}
+		}
+		
+		_speech.cleanup();
+		
+		if (Context.getInstance().currentGame().currentQuestion() == 
+				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
+			_nextQuestionButton.setText(FINISH);
 		}
 	}
 	
+	// TODO ***********************
+	// Move this into game class
+	// TODO ***********************
 	private boolean isCorrect() {
 		String answer = Context.getInstance().currentGame().translateCurrentQuestion();
 		answer = answer.replace("mā", "maa");
@@ -193,12 +234,9 @@ private static final String FINISH = "Finish!";
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Context.getInstance().currentGame();
-		if (Context.getInstance().currentGame().currentQuestion() == 
-				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
-			_nextQuestionButton.setText(FINISH);
-		}
 		
 		// Hide skip/try again/next question
+		_playbackButton.setVisible(false);
 		_skipButton.setVisible(false);
 		_tryAgainButton.setVisible(false);
 		_nextQuestionButton.setVisible(false);

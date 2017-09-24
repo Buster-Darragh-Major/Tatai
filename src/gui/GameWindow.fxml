@@ -46,7 +46,7 @@
         </rowConstraints>
          <children>
             <JFXButton fx:id="_skipButton" onAction="#handleIncorrectClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Skip" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <JFXButton fx:id="_tryAgainButton" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Try Again" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <JFXButton fx:id="_tryAgainButton" onAction="#handleTryAgainClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Try Again" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
       <GridPane GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
