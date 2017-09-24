@@ -222,8 +222,6 @@ private static final String FINISH = "Finish!";
 			}
 		}
 		
-		System.out.println(concatList);
-		
 		if (concatList.equals(answerList)) {
 			return true;
 		} else {
