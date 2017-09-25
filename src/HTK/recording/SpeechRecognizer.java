@@ -7,4 +7,6 @@ public interface SpeechRecognizer {
 	public void record();
 	
 	public ArrayList<String> getText();
+	
+	public void playback();
 }

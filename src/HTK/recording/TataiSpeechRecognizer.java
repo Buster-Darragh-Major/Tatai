@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 
 public class TataiSpeechRecognizer implements SpeechRecognizer{
 
