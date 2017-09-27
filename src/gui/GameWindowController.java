@@ -55,11 +55,133 @@ private static final String FINISH = "Finish!";
 	private TataiSpeechRecognizer _speech;
 	private ArrayList<String> _output;
 	
+
+	
+	@FXML
+	public void handleRecordClick() {
+		_speech = new TataiSpeechRecognizer();
+		_speech.record();
+		
+		_playbackButton.setVisible(true);
+		_nextQuestionButton.setVisible(true);
+	}
+	
+	@FXML
+	public void handlePlaybackClick() {
+		try {
+			_speech.playback();
+		} catch (RuntimeException e) {
+		}
+	}
+	
+	@FXML
+	public void handleTryAgainClick() {
+		_tryAgainButton.setVisible(false);
+		_skipButton.setVisible(false);
+		_nextQuestionButton.setVisible(false);
+		_playbackButton.setVisible(false);
+		
+		_recordButton.setVisible(true);
+	}
+	
+	@FXML
+	public void handleSubmitClick() {
+		if (Context.getInstance().currentGame().currentQuestion() == 
+				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
+			_nextQuestionButton.setText(FINISH);
+		}
+		
+		if (_nextQuestionButton.getText().equals(NEXT) || 
+				_nextQuestionButton.getText().equals(FINISH)) {
+			nextQuestion();
+		} else {
+			_speech.readFile();
+			_output = _speech.getText();
+			if (isCorrect()) {
+				questionCorrect();
+			} else {
+				questionIncorrect();
+			}
+		}
+		
+		_speech.cleanup();
+	}
+	
+	@FXML
+	public void handleQuitClick() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Quit Current Game");
+		alert.setContentText("Are you sure you want to quit your current game?");
+		
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			quitCurrentGame();
+		} else {
+			alert.close();
+		}
+	}
+	
+	public void quitCurrentGame() {
+		Stage stage = (Stage) _exitButton.getScene().getWindow();
+		Context.getInstance().currentGame().endGame();
+		changeWindow("LevelSelectWindow.fxml", stage);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Context.getInstance().currentGame();
+		
+		// Hide skip/try again/next question
+		_playbackButton.setVisible(false);
+		_skipButton.setVisible(false);
+		_tryAgainButton.setVisible(false);
+		_nextQuestionButton.setVisible(false);
+		
+		// Set answer label with correct answer and hide
+		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
+		_translatedLabel.setVisible(false);
+		
+		// Display question integer
+		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
+		_childPane.setBackground(_pane.getBackground());
+		
+		// Set question number label
+		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
+		_questionNoLabel.setTextFill(_intLabel.getTextFill());
+	}
+	
+	// TODO ***********************
+	// Move this into game class
+	// TODO ***********************
+	private boolean isCorrect() {
+		String answer = Context.getInstance().currentGame().translateCurrentQuestion();
+		answer = answer.replace("mā", "maa");
+		answer = answer.replace("ā", "a");
+		List<String> answerList = Arrays.asList(answer.split(" "));
+		
+		ArrayList<String> concatList = new ArrayList<String>();
+		
+		for (int i = 0; i < answerList.size(); i++) {
+			for (int j = 0; j < _output.size(); j++) {
+				if (_output.get(j).equals(answerList.get(i))) {
+					concatList.add(_output.get(j));
+					break;
+				}
+			}
+		}
+		
+		if (concatList.equals(answerList)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	/**
 	 * Stub for handling the incorrect click (Will be replaced with HTK logic)
-	 */
-	@FXML 
-	public void handleIncorrectClick() {
+	 */ 
+	public void questionIncorrect() {
 		// Set color scheme to be white text on red background
 		_pane.setStyle("-fx-background-color: " + INCORRECT_RED);
 		_intLabel.setTextFill(Color.WHITE);
@@ -94,8 +216,7 @@ private static final String FINISH = "Finish!";
 	/**
 	 * Stub for handling the correct click (Will be replaced with HTK logic)
 	 */
-	@FXML
-	public void handleCorrectClick() {
+	public void questionCorrect() {
 		// Tell game object question correctly answered
 		Context.getInstance().currentGame().answerQuestion(true);
 		
@@ -119,136 +240,14 @@ private static final String FINISH = "Finish!";
 	/**
 	 * Handles user requesting to change view
 	 */
-	@FXML
-	public void handleNextQuestionClick() {
+	public void nextQuestion() {
 		Stage stage = (Stage) _nextQuestionButton.getScene().getWindow(); //Get current stage
 		
 		// If button text says finish, finish game.
-		if (_nextQuestionButton.getText() == FINISH) {
+		if (_nextQuestionButton.getText().equals(FINISH)) {
 			changeWindow("ResultsWindow.fxml", stage); // Change to ResultsWindow.fxml view
 		} else {
 			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 		}
-	}
-	
-	@FXML
-	public void handleQuitClick() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmation Dialog");
-		alert.setHeaderText("Quit Current Game");
-		alert.setContentText("Are you sure you want to quit your current game?");
-		
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			quitCurrentGame();
-		} else {
-			alert.close();
-		}
-	}
-	
-	public void quitCurrentGame() {
-		Stage stage = (Stage) _exitButton.getScene().getWindow();
-		Context.getInstance().currentGame().endGame();
-		changeWindow("LevelSelectWindow.fxml", stage);
-	}
-	
-	@FXML
-	public void handleRecordClick() {
-		_speech = new TataiSpeechRecognizer();
-		_speech.record();
-		
-		_playbackButton.setVisible(true);
-		_nextQuestionButton.setVisible(true);
-	}
-	
-	@FXML
-	public void handlePlaybackClick() {
-		try {
-			_speech.playback();
-		} catch (RuntimeException e) {
-		}
-	}
-	
-	@FXML
-	public void handleTryAgainClick() {
-		_tryAgainButton.setVisible(false);
-		_skipButton.setVisible(false);
-		_nextQuestionButton.setVisible(false);
-		_playbackButton.setVisible(false);
-		
-		_recordButton.setVisible(true);
-	}
-	
-	@FXML
-	public void handleSubmitClick() {
-		if (_nextQuestionButton.getText().equals(NEXT) || 
-				_nextQuestionButton.getText().equals(FINISH)) {
-			handleNextQuestionClick();
-		} else {
-			_speech.readFile();
-			_output = _speech.getText();
-			if (isCorrect()) {
-				handleCorrectClick();
-			} else {
-				handleIncorrectClick();
-			}
-		}
-		
-		_speech.cleanup();
-		
-		if (Context.getInstance().currentGame().currentQuestion() == 
-				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
-			_nextQuestionButton.setText(FINISH);
-		}
-	}
-	
-	// TODO ***********************
-	// Move this into game class
-	// TODO ***********************
-	private boolean isCorrect() {
-		String answer = Context.getInstance().currentGame().translateCurrentQuestion();
-		answer = answer.replace("mā", "maa");
-		answer = answer.replace("ā", "a");
-		List<String> answerList = Arrays.asList(answer.split(" "));
-		
-		ArrayList<String> concatList = new ArrayList<String>();
-		
-		for (int i = 0; i < answerList.size(); i++) {
-			for (int j = 0; j < _output.size(); j++) {
-				if (_output.get(j).equals(answerList.get(i))) {
-					concatList.add(_output.get(j));
-					break;
-				}
-			}
-		}
-		
-		if (concatList.equals(answerList)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		Context.getInstance().currentGame();
-		
-		// Hide skip/try again/next question
-		_playbackButton.setVisible(false);
-		_skipButton.setVisible(false);
-		_tryAgainButton.setVisible(false);
-		_nextQuestionButton.setVisible(false);
-		
-		// Set answer label with correct answer and hide
-		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
-		_translatedLabel.setVisible(false);
-		
-		// Display question integer
-		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
-		_childPane.setBackground(_pane.getBackground());
-		
-		// Set question number label
-		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
-		_questionNoLabel.setTextFill(_intLabel.getTextFill());
 	}
 }

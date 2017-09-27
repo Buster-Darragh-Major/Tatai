@@ -111,7 +111,7 @@ public class TataiGame {
 	 */
 	private void nextQuestion() {
 		_firstAttempt = false;
-		if (_questionNo < TOTAL_NUMBER_OF_QUESTIONS && _questionNo > 0) {
+		if ((_questionNo < TOTAL_NUMBER_OF_QUESTIONS) && (_questionNo > 0)) {
 			_questionNo++;
 		} else {
 			_questionNo++;
@@ -279,7 +279,6 @@ public class TataiGame {
 	 * Returns a list of translated integers as a String in the order they
 	 * were played in the game
 	 */
-	@SuppressWarnings("static-access")
 	public ArrayList<String> getQuestionTrans() {
 		ArrayList<String> trans = new ArrayList<String>();
 		
