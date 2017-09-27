@@ -87,7 +87,7 @@ private static final String FINISH = "Finish!";
 	
 	@FXML
 	public void handleSubmitClick() {
-		if (Context.getInstance().currentGame().currentQuestion() == 
+		if (Context.getInstance().currentGame().currentQuestion() - 1 == 
 				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
 			_nextQuestionButton.setText(FINISH);
 		}
