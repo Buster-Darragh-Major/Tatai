@@ -8,6 +8,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import HTK.recording.TataiSpeechRecognizer;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -59,12 +62,39 @@ private static final String FINISH = "Finish!";
 	
 	@FXML
 	public void handleRecordClick() {
-		_speech = new TataiSpeechRecognizer();
-		_speech.record();
+		_recordButton.setText("Recording...");
 		
-		_playbackButton.setVisible(true);
-		_nextQuestionButton.setVisible(true);
-		_recordButton.setText("Re Record");
+		_speech = new TataiSpeechRecognizer();
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				_playbackButton.setVisible(false);
+				_nextQuestionButton.setVisible(false);
+				_recordButton.setDisable(true);
+				
+				_speech.record();
+				
+				_playbackButton.setVisible(true);
+				_nextQuestionButton.setVisible(true);
+				_recordButton.setDisable(false);
+				
+				return null;
+			}
+			
+		};
+		
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				_playbackButton.setVisible(true);
+				_nextQuestionButton.setVisible(true);
+				_recordButton.setText("Re Record");
+			}
+		});
+		
+		Thread th = new Thread(task);
+		//th.setDaemon(true);
+		th.start();
 	}
 	
 	@FXML

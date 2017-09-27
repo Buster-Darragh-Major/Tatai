@@ -18,37 +18,22 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 	private ArrayList<String> _output = new ArrayList<String>();
 	
 	public void record() {
-		// Create new thread for recording to occur in, recording takes time so allow
-		// GUI to be responsive by assigning separate thread.
-		Task<Void> task = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				String command = "./GoSpeech";
-				
-				// Build a builder with relevant bash command line command
-				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
-				
-				// Change working location of builder to work in the directory containing HTK script
-				builder.directory(FILEPATH);
-				
-				try {
-					Process process = builder.start();
-					process.waitFor();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				
-				return null;
+		String command = "./GoSpeech";
+		
+		// Build a builder with relevant bash command line command
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
+		
+		// Change working location of builder to work in the directory containing HTK script
+		builder.directory(FILEPATH);
+		
+		try {
+			Process process = builder.start();
+			try {
+				process.waitFor();
+			} catch (InterruptedException e) {
 			}
-		};
-		
-		// Start thread
-		Thread th = new Thread(task);
-		th.setDaemon(true);
-		th.start();
-		
+		} catch (IOException e) {
+		}		
 	}
 	
 	public void readFile() {
@@ -91,6 +76,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 				builder.directory(FILEPATH);
 				
 				Process process = builder.start();
+				process.waitFor();
 				
 				return null;
 			}
@@ -117,6 +103,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 				builder.directory(FILEPATH);
 				
 				Process process = builder.start();
+				process.waitFor();
 				
 				return null;
 			}
