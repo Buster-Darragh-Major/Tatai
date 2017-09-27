@@ -64,6 +64,7 @@ private static final String FINISH = "Finish!";
 		
 		_playbackButton.setVisible(true);
 		_nextQuestionButton.setVisible(true);
+		_recordButton.setText("Re Record");
 	}
 	
 	@FXML
