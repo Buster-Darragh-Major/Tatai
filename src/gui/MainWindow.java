@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 public class MainWindow extends Application {
 
+	/* THIS IS WHERE THE FUN BEGINS */
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {

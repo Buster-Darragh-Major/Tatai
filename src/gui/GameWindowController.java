@@ -112,41 +112,57 @@ private static final String FINISH = "Finish!";
 		}
 	}
 	
+	/**
+	 * Handles pressing of try again button
+	 */
 	@FXML
 	public void handleTryAgainClick() {
+		// Hide unnecessary buttons
 		_tryAgainButton.setVisible(false);
 		_skipButton.setVisible(false);
-		_nextQuestionButton.setVisible(false);
-		_playbackButton.setVisible(false);
 		
+		// Display record button
 		_recordButton.setVisible(true);
 	}
 	
+	/**
+	 * Handles pressing of submit button
+	 */
 	@FXML
 	public void handleSubmitClick() {
-		if (Context.getInstance().currentGame().currentQuestion() - 1 == 
+		// If game state is onto last question set the nextQuestion button text to indicate finishing
+		if (Context.getInstance().currentGame().currentQuestion() - 1 == // game class increments q. no. one too soon
 				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
 			_nextQuestionButton.setText(FINISH);
 		}
 		
+		// If button says next or finish call nextquesion()
 		if (_nextQuestionButton.getText().equals(NEXT) || 
 				_nextQuestionButton.getText().equals(FINISH)) {
 			nextQuestion();
-		} else {
+		} else { // Else button says 'Submit', in which case undergo recording strategy
+			// get readout from speech object
 			_speech.readFile();
 			_output = _speech.getText();
 			if (isCorrect()) {
+				// If question is deemed correct
 				questionCorrect();
 			} else {
+				// If question is deemed incorrect
 				questionIncorrect();
 			}
 		}
 		
+		// Cleanup method for speech object
 		_speech.cleanup();
 	}
 	
+	/**
+	 * Handles pressing of quit button
+	 */
 	@FXML
 	public void handleQuitClick() {
+		// Prompt user with quit confirmation window 
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation Dialog");
 		alert.setHeaderText("Quit Current Game");
@@ -154,39 +170,21 @@ private static final String FINISH = "Finish!";
 		
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK) {
+			// Quit the game
 			quitCurrentGame();
 		} else {
+			// Close alert
 			alert.close();
 		}
 	}
 	
+	/**
+	 * Method to quit current game gracefully
+	 */
 	public void quitCurrentGame() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
 		Context.getInstance().currentGame().endGame();
 		changeWindow("LevelSelectWindow.fxml", stage);
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		Context.getInstance().currentGame();
-		
-		// Hide skip/try again/next question
-		_playbackButton.setVisible(false);
-		_skipButton.setVisible(false);
-		_tryAgainButton.setVisible(false);
-		_nextQuestionButton.setVisible(false);
-		
-		// Set answer label with correct answer and hide
-		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
-		_translatedLabel.setVisible(false);
-		
-		// Display question integer
-		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
-		_childPane.setBackground(_pane.getBackground());
-		
-		// Set question number label
-		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
-		_questionNoLabel.setTextFill(_intLabel.getTextFill());
 	}
 	
 	// TODO ***********************
@@ -217,7 +215,8 @@ private static final String FINISH = "Finish!";
 	}
 	
 	/**
-	 * Stub for handling the incorrect click (Will be replaced with HTK logic)
+	 * Method intended to be called when question is answered incorrectly, alters GUI appropriately
+	 * to reflect answer.
 	 */ 
 	public void questionIncorrect() {
 		// Set color scheme to be white text on red background
@@ -236,12 +235,15 @@ private static final String FINISH = "Finish!";
 
 		// If on second attempt hide skip/try again and show answer/next button
 		if (Context.getInstance().currentGame().getAttempted()) {
+			// Hide irrelevant buttons
 			_skipButton.setVisible(false);
 			_tryAgainButton.setVisible(false);
 			
+			// Show relevant buttons
 			_nextQuestionButton.setVisible(true);
 			_translatedLabel.setVisible(true);
 			
+			// If next button does not currently display finish, set text to next
 			if (!_nextQuestionButton.getText().equals(FINISH)) {
 				_nextQuestionButton.setText(NEXT);
 			}
@@ -252,7 +254,8 @@ private static final String FINISH = "Finish!";
 	}
 	
 	/**
-	 * Stub for handling the correct click (Will be replaced with HTK logic)
+	 * Method intended to be called when question is answered correctly, alters GUI appropriately
+	 * to reflect answer.
 	 */
 	public void questionCorrect() {
 		// Tell game object question correctly answered
@@ -287,5 +290,31 @@ private static final String FINISH = "Finish!";
 		} else {
 			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 		}
+	}
+	
+	/**
+	 * Initializes state of the scene on open
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Context.getInstance().currentGame();
+		
+		// Hide irrelevant buttons
+		_playbackButton.setVisible(false);
+		_skipButton.setVisible(false);
+		_tryAgainButton.setVisible(false);
+		_nextQuestionButton.setVisible(false);
+		
+		// Set answer label with correct answer and hide
+		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
+		_translatedLabel.setVisible(false);
+		
+		// Display question integer
+		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
+		_childPane.setBackground(_pane.getBackground());
+		
+		// Set question number label
+		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
+		_questionNoLabel.setTextFill(_intLabel.getTextFill());
 	}
 }
