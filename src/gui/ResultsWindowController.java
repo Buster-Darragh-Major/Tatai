@@ -12,9 +12,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import stats.TataiQuestion;
 import tatai.creations.Level;
 import tatai.game.TataiGame;
+import tatai.game.TataiQuestion;
 
 public class ResultsWindowController extends TataiController implements Initializable {
 

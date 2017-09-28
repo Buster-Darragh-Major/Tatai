@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * through a recording process. They have the ability to record, read the speech audio file into
  * test as well as play back the audio.
  * 
- * @author Buster Major
+ * @author Nathan Cairns
  */
 public interface SpeechRecognizer {
 	
