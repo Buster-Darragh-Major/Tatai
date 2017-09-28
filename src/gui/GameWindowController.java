@@ -55,28 +55,29 @@ private static final String FINISH = "Finish!";
 	@FXML
 	private Button _exitButton;
 	
+	/* Fields */
 	private TataiSpeechRecognizer _speech;
 	private ArrayList<String> _output;
 	
 
-	
+	/**
+	 * Handles pressing of the record button
+	 */
 	@FXML
 	public void handleRecordClick() {
+		// Temporarily remove unnecessary buttons and disable recording
+		_playbackButton.setVisible(false);
+		_nextQuestionButton.setVisible(false);
+		_recordButton.setDisable(true);
 		_recordButton.setText("Recording...");
 		
+		// Create thread for recording process
 		_speech = new TataiSpeechRecognizer();
 		Task<Void> task = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				_playbackButton.setVisible(false);
-				_nextQuestionButton.setVisible(false);
-				_recordButton.setDisable(true);
-				
+				// Begin recording process
 				_speech.record();
-				
-				_playbackButton.setVisible(true);
-				_nextQuestionButton.setVisible(true);
-				_recordButton.setDisable(false);
 				
 				return null;
 			}
@@ -86,20 +87,26 @@ private static final String FINISH = "Finish!";
 		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent event) {
+				// Reinstate play back and next question buttons and record ability
 				_playbackButton.setVisible(true);
 				_nextQuestionButton.setVisible(true);
+				_recordButton.setDisable(false);
 				_recordButton.setText("Re Record");
 			}
 		});
 		
+		// Run thread
 		Thread th = new Thread(task);
-		//th.setDaemon(true);
 		th.start();
 	}
 	
+	/**
+	 * Handles pressing of play back button
+	 */
 	@FXML
 	public void handlePlaybackClick() {
 		try {
+			// Play recording stored in TataiSpeechRecogizer object
 			_speech.playback();
 		} catch (RuntimeException e) {
 		}

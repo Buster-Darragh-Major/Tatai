@@ -63,7 +63,7 @@ public class TataiGame {
 	 */
 	public String translateCurrentQuestion() {
 		String label = _creationModel.getCreationLabel(_questionNo);
-
+		
 		return _translator.translate(label);
 	}
 
