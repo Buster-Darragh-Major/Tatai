@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javafx.concurrent.Task;
-
 /**
  * An implementation of the SpeechRecognizer interface intended to read speech for the Tatai
  * application format. This uses a provided bash script "./GoSpeech" for recording and analyzing
