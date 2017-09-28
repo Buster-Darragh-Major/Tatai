@@ -29,7 +29,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 		try {
 			Process process = builder.start();
 			try {
-				process.waitFor();
+				process.waitFor(); // Ensure thread waits for process to complete
 			} catch (InterruptedException e) {
 			}
 		} catch (IOException e) {
@@ -62,60 +62,47 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 	}
 	
 	public void playback() {
-		// Create a new thread for the playback of the audio file to occur in, allows
-		// GUI to remain responsive in this time
-		Task<Void> task = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				String command = "aplay foo.wav";
-				
-				// Build a builder with relevant Bash line command
-				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
-				
-				// Change working location directory of builder to be correct directory
-				builder.directory(FILEPATH);
-				
-				Process process = builder.start();
-				process.waitFor();
-				
-				return null;
-			}
-		};
+		String command = "aplay foo.wav";
 		
-		// Start the thread
-		Thread th = new Thread(task);
-		th.setDaemon(true);
-		th.start();
+		// Build a builder with relevant Bash line command
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
+		
+		// Change working location directory of builder to be correct directory
+		builder.directory(FILEPATH);
+		
+		Process process;
+		try {
+			process = builder.start();
+			try {
+				process.waitFor(); // Ensure thread waits for process to complete
+			} catch (InterruptedException e) {
+			}
+		} catch (IOException e) {
+		}		
+				
 	}
 	
 	public void cleanup() {
-		// Create a new thread for the removal of the audio file to occur in, allows
-		// GUI to remain responsive in this time
-		Task<Void> task = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				String command = "rm foo.wav";
+		String command = "rm foo.wav";
+		
+		// Build a builder with relevant Bash line command
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
+		
+		// Change working location directory of builder to be correct directory
+		builder.directory(FILEPATH);
+		
+		Process process;
+		try {
+			process = builder.start();
+			try {
+				process.waitFor(); // Ensure thread waits for process to complete
+			} catch (InterruptedException e) {
+			} 
+		} catch (IOException e) {
+		}		
 				
-				// Build a builder with relevant Bash line command
-				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
-				
-				// Change working location directory of builder to be correct directory
-				builder.directory(FILEPATH);
-				
-				Process process = builder.start();
-				process.waitFor();
-				
-				return null;
-			}
-		};
-				
-		// Start the thread
-		Thread th = new Thread(task);
-		th.setDaemon(true);
-		th.start();
 	}
 
-	@Override
 	public ArrayList<String> getText() {
 		return _output;
 	}

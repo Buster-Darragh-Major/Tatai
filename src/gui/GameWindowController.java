@@ -84,6 +84,7 @@ private static final String FINISH = "Finish!";
 			
 		};
 		
+		// Once recording task is complete reconfigure GUI
 		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent event) {
@@ -105,11 +106,17 @@ private static final String FINISH = "Finish!";
 	 */
 	@FXML
 	public void handlePlaybackClick() {
-		try {
-			// Play recording stored in TataiSpeechRecogizer object
-			_speech.playback();
-		} catch (RuntimeException e) {
-		}
+		// New thread for playing back from audio file
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				_speech.playback();					
+				return null;
+			}
+		};
+		
+		Thread th = new Thread(task);
+		th.start();
 	}
 	
 	/**
@@ -153,8 +160,18 @@ private static final String FINISH = "Finish!";
 			}
 		}
 		
-		// Cleanup method for speech object
-		_speech.cleanup();
+		// New thread for cleaning up folder contents
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				// Cleanup method for speech object
+				_speech.cleanup();
+				return null;
+			}
+		};
+		
+		Thread th = new Thread(task);
+		th.start();
 	}
 	
 	/**
