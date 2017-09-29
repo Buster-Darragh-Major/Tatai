@@ -2,6 +2,7 @@ package HTK.recording;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,13 +52,22 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 	 */
 	public void readFile() {
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(FILEPATH + 
-					System.getProperty("file.separator") + "recout.mlf"));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				_output.add(line);
-			}	
-			reader.close();
+			BufferedReader reader = null;
+			try {
+				// Ensure file exists, if skip has been pressed file will not.
+				reader = new BufferedReader(new FileReader(FILEPATH + 
+						System.getProperty("file.separator") + "recout.mlf"));
+			} catch (FileNotFoundException e) {
+			}
+			
+			// Ensure last block of code successfully executed
+			if (reader != null) {
+				String line;
+				while ((line = reader.readLine()) != null) {
+					_output.add(line);
+				}	
+				reader.close();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
