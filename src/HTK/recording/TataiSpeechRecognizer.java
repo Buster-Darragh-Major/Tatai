@@ -29,7 +29,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 	 * Reads from the "./GoSpeech" script provided in the HTK.MaoriNumbers package
 	 */
 	public void record() {
-		String command = "./GoSpeech";
+		String command = "bash GoSpeech";
 		
 		// Build a builder with relevant bash command line command
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -81,6 +82,9 @@
                      <font>
                         <Font name="NanumGothic" size="30.0" />
                      </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" />
+                     </effect>
                   </Label>
                </children>
             </GridPane>
@@ -99,11 +103,17 @@
                <font>
                   <Font name="NanumBarunGothic" size="30.0" />
                </font>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </Label>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="NanumGothic" size="120.0" />
                </font>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </Text>
          </children>
       </GridPane>
