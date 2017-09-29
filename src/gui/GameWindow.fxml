@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -45,8 +44,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="_skipButton" onAction="#handleSubmitClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Skip" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <JFXButton fx:id="_tryAgainButton" onAction="#handleTryAgainClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Try Again" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <JFXButton fx:id="_skipButton" buttonType="RAISED" onAction="#handleSubmitClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Skip" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <JFXButton fx:id="_tryAgainButton" buttonType="RAISED" onAction="#handleTryAgainClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Try Again" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
       <GridPane GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
@@ -59,23 +58,23 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="_nextQuestionButton" onAction="#handleSubmitClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Submit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton fx:id="_nextQuestionButton" buttonType="RAISED" onAction="#handleSubmitClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Submit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="_playbackButton" onAction="#handlePlaybackClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Playback" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton fx:id="_playbackButton" buttonType="RAISED" onAction="#handlePlaybackClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Playback" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="_recordButton" onAction="#handleRecordClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Record" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <JFXButton fx:id="_recordButton" buttonType="RAISED" onAction="#handleRecordClick" prefHeight="50.0" prefWidth="100.0" styleClass="button1" stylesheets="@TataiTheme.css" text="Record" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
-      <Button fx:id="_exitButton" mnemonicParsing="false" onAction="#handleQuitClick" styleClass="button1" stylesheets="@TataiTheme.css" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <JFXButton fx:id="_exitButton" buttonType="RAISED" onAction="#handleQuitClick" styleClass="button1" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="5.0" top="5.0" />
+            <Insets left="10.0" top="10.0" />
          </GridPane.margin>
-      </Button>
+      </JFXButton>
    </children>
 </GridPane>
