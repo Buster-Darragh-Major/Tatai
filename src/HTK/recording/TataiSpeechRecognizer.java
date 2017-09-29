@@ -17,10 +17,8 @@ import java.util.ArrayList;
 public class TataiSpeechRecognizer implements SpeechRecognizer{
 
 	/* Macros */
-	public static final File FILEPATH = new File(
-			System.getProperty("user.dir") + System.getProperty("file.separator") + "src" +
-			System.getProperty("file.separator") + "HTK" +
-			System.getProperty("file.separator") + "MaoriNumbers");
+	public static final File FILEPATH = new File(System.getProperty("user.dir") 
+			+ System.getProperty("file.separator") + "MaoriNumbers");
 	
 	/* Fields */
 	private ArrayList<String> _output = new ArrayList<String>();
@@ -29,7 +27,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 	 * Reads from the "./GoSpeech" script provided in the HTK.MaoriNumbers package
 	 */
 	public void record() {
-		String command = "./GoSpeech";
+		String command = "bash GoSpeech";
 		
 		// Build a builder with relevant bash command line command
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
@@ -108,7 +106,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 	 * completed, deletes the now unnecessary foo.wav audio file from the directory.
 	 */
 	public void cleanup() {
-		String command = "rm foo.wav";
+		String command = "rm foo.wav; rm recout.mlf";
 		
 		// Build a builder with relevant Bash line command
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
