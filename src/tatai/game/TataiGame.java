@@ -168,6 +168,7 @@ public class TataiGame {
 			_questionNo = 1;
 			_hasStarted = true;
 			_firstAttempt = false;
+			_questionsCorrect = new ArrayList<String>();
 			
 		} else {
 			throw new GameException("Game has already started");
