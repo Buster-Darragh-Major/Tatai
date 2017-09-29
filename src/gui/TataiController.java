@@ -21,6 +21,7 @@ public abstract class TataiController {
 	protected static final String INCORRECT_RED = "#f73333";
 	protected static final String CORRECT_GREEN = "#00d10a";
 	protected static final String WHITE = "#ffffff";
+	protected static final String NEXT = "Next";
 	
 	/**
 	 * Changes the current view embedded in the desired stage. The fxml String points

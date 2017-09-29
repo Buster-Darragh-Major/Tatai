@@ -27,6 +27,9 @@ public class TataiCreation extends Creation {
 		super(label, backgroundColor, fontColor);
 	}
 
+	/**
+	 * Displays the creation on a label and pane object
+	 */
 	@Override
 	public void display(Label label, Pane pane) {
 		label.setText(_label);
@@ -36,6 +39,6 @@ public class TataiCreation extends Creation {
 		String bgColor = _bgColor.toString();
 		bgColor = bgColor.substring(2, bgColor.length() - 2);
 		
-			pane.setStyle("-fx-background-color: #" + bgColor);
+		pane.setStyle("-fx-background-color: #" + bgColor);
 	}	
 }

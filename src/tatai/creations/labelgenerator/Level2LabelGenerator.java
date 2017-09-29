@@ -6,7 +6,7 @@ package tatai.creations.labelgenerator;
  * @author Nathan Cairns
  *
  */
-public class Level2RandomNumberLabelGenerator extends Level1RandomNumberLabelGenerator{
+public class Level2LabelGenerator extends Level1LabelGenerator{
 	/*MACROS*/
 	public static final int MAX = 99;
 	public static final int MIN = 1;

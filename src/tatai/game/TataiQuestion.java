@@ -1,15 +1,33 @@
-package stats;
+package tatai.game;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Class intending to represent the bare minimal information corresponding to a single
+ * Tatai Question. The class predominantly serves as an adapter between the game data stored
+ * in the TataiGame object, and the PropertyValueFactory used in the ResultsWindowController.
+ * The formatting of method and variable names are set up in the method to handle this conversion
+ * and are highly volatile if tampered with.
+ * 
+ * @author Buster Major
+ */
 public class TataiQuestion {
 	
+	/* Fields */
 	private final SimpleStringProperty qNo;
 	private final SimpleStringProperty qInt;
 	private final SimpleStringProperty qTranslation;
 	private final SimpleStringProperty qCorrect;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param questNo :String
+	 * @param questInt : String
+	 * @param questTranslation : String
+	 * @param questCorrect : String
+	 */
 	public TataiQuestion(String questNo, String questInt, String questTranslation, String questCorrect) {
 		qNo = new SimpleStringProperty(questNo);
 		qInt = new SimpleStringProperty(questInt);

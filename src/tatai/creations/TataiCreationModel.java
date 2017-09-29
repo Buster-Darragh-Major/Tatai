@@ -8,7 +8,7 @@ import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
 import tatai.creations.labelgenerator.LabelGenerator;
-import tatai.creations.labelgenerator.Level1RandomNumberLabelGenerator;
+import tatai.creations.labelgenerator.Level1LabelGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of
@@ -60,21 +60,38 @@ public class TataiCreationModel extends CreationModel{
 			Color.web("#910094")  // Richer Violet
 	};
 	
+	/* Fields */
 	private LabelGenerator _labelStrategy;
 	private int _numberOfCreations;
 	
+	/**
+	 * Constructor
+	 */
 	public TataiCreationModel() {
-		this(new Level1RandomNumberLabelGenerator(), DEFAULT_NUMBER_OF_CREATIONS);
+		this(new Level1LabelGenerator(), DEFAULT_NUMBER_OF_CREATIONS);
 	}
 	
+	/**
+	 * Constructor
+	 * @param numberOfCreations : int
+	 */
 	public TataiCreationModel(int numberOfCreations) {
-		this (new Level1RandomNumberLabelGenerator(), numberOfCreations);
+		this (new Level1LabelGenerator(), numberOfCreations);
 	}
 	
+	/**
+	 * Constructor
+	 * @param labelGenerator : LabelGenerator
+	 */
 	public TataiCreationModel(LabelGenerator labelGenerator) {
 		this (labelGenerator, DEFAULT_NUMBER_OF_CREATIONS);
 	}
 	
+	/**
+	 * Constructor
+	 * @param labelGenerator : LabelGenerator
+	 * @param numberOfCreations : int
+	 */
 	public TataiCreationModel(LabelGenerator labelGenerator, int numberOfCreations) {
 		super();
 		_labelStrategy = labelGenerator;
