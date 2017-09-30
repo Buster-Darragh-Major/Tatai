@@ -9,7 +9,6 @@ Practise module for Tātai!. Users will be tested on their ability to correctly 
 ### HOW TO EXECUTE
 Open a terminal in the directory where the .jar is stored. <br>
 Enter the command java -jar Tatai.jar <br>
-Alternatively you can just double click on the .jar file to run.
 
 ###### Nathan Cairns
 ###### Buster Darragh-Major
