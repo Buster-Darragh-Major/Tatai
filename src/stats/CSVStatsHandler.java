@@ -57,12 +57,24 @@ public class CSVStatsHandler implements StatisticHandler {
 	}
 	
 	public CSVStatsHandler(Level level) {
-		super();
 		_level = level;
 		if (level == Level.Level1) {
 			STATS_FILE = L1_STATS_FILE;
 		} else if (level == Level.Level2) {
 			STATS_FILE = L2_STATS_FILE;
+		}
+		_valueMap = new HashMap<String, String>();
+
+		createStatsFolder();
+
+		// Try to read stats file, if fails create a new one.
+		try {
+			readCSVFile();
+		} catch (Exception e) {
+			for (String key : _keys) {
+				_valueMap.put(key, "" + START_VALUE);
+			}
+			writeToFile();
 		}
 	}
 
