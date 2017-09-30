@@ -25,6 +25,8 @@ public class StatsWindowController extends TataiController implements Initializa
 	/* Macros */
 	public final static String SEELEVEL1 = "See Level 1";
 	public final static String SEELEVEL2 = "See Level 2";
+	public final static String LEVEL1 = "Level 1: ";
+	public final static String LEVEL2 = "Level 2: ";
 	
 	/* Fields */
 	private TataiGame _game;
@@ -64,8 +66,15 @@ public class StatsWindowController extends TataiController implements Initializa
 	}
 	
 	private void updateValues() {
+		String level = null;
+		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
+			level = LEVEL1;
+		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
+			level = LEVEL2;
+		}
+		
 		_statLabel.setText(_game.averageAsPercent());
-		_statTitleLabel.setText("Average Score");
+		_statTitleLabel.setText(level + "Average Score");
 		_averageButton.setText(_game.averageAsPercent());
 		_correctButton.setText("" + _game.correct());
 		_incorrectButton.setText("" + _game.incorrect());
@@ -78,13 +87,20 @@ public class StatsWindowController extends TataiController implements Initializa
 	 * @param paint the color to set the text
 	 */
 	public void changeLabel(String text, String descripton, Paint paint) {
+		String level = null;
+		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
+			level = LEVEL1;
+		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
+			level = LEVEL2;
+		}
+		
 		String paintHex = paint.toString();
 		paintHex = "#" +  paintHex.substring(2, paintHex.length() - 2);
 		
 		_statLabel.setText(text);
 		_statLabel.setStyle("-fx-border-color: " +  paintHex + "; -fx-text-fill: " + paintHex +";");
 		
-		_statTitleLabel.setText(descripton);
+		_statTitleLabel.setText(level + descripton);
 		_statTitleLabel.setTextFill(paint);
 	}
 	
@@ -133,14 +149,12 @@ public class StatsWindowController extends TataiController implements Initializa
 	public void switchLevel() {
 		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
 			_game.setStatsHandlerLevel(Level.Level2);
-			updateValues();
-			
 			_switchLevelButton.setText(SEELEVEL1);
 		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
 			_game.setStatsHandlerLevel(Level.Level1);
-			updateValues();
-			
 			_switchLevelButton.setText(SEELEVEL2);
 		}
+		
+		updateValues();
 	}
 }
