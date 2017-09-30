@@ -31,6 +31,8 @@ public class CSVStatsHandler implements StatisticHandler {
 	/* Fields */
 	private String FILENAME = "user_statistics.csv";
 	private File STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
+	private File L1_STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + "user_statistics1.csv");
+	private File L2_STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + "user_statistics2.csv");
 	private Map<String, String> _valueMap;
 	private final String[] _keys = { "totalPlayed", "totalCorrect", "totalIncorrect", "average" };
 	private Level _level;
@@ -54,15 +56,13 @@ public class CSVStatsHandler implements StatisticHandler {
 		}
 	}
 	
-	CSVStatsHandler(Level level) {
+	public CSVStatsHandler(Level level) {
 		super();
 		_level = level;
 		if (level == Level.Level1) {
-			FILENAME = "user_statistics1.csv";
-			STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
+			STATS_FILE = L1_STATS_FILE;
 		} else if (level == Level.Level2) {
-			FILENAME = "user_statistics1.csv";
-			STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
+			STATS_FILE = L2_STATS_FILE;
 		}
 	}
 
@@ -117,6 +117,22 @@ public class CSVStatsHandler implements StatisticHandler {
 		if (!STATS_FILE.exists()) {
 			try {
 				STATS_FILE.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (!L1_STATS_FILE.exists()) {
+			try {
+				L1_STATS_FILE.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (!L2_STATS_FILE.exists()) {
+			try {
+				L2_STATS_FILE.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
