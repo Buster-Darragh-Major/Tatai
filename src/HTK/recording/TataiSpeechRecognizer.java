@@ -28,7 +28,10 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 	 * Reads from the "./GoSpeech" script provided in the HTK.MaoriNumbers package
 	 */
 	public void record() {
-		String command = "bash GoSpeech";
+		String command = "arecord -d 2 -r 22050 -c 1 -i -t wav -f s16_LE foo.wav;" + 
+				"HVite -H HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -C user/configLR " + 
+				" -w user/wordNetworkNum -o SWT -l '*' -i recout.mlf -p 0.0 -s 5.0 " + 
+				" user/dictionaryD user/tiedList foo.wav";
 		
 		// Build a builder with relevant bash command line command
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
