@@ -7,6 +7,7 @@ Practise module for Tātai!. Users will be tested on their ability to correctly 
 * Bash Shell
 
 ### HOW TO EXECUTE
+If JavaFX is not already installed on your machine, execute the command "sudo apt install openjfx" in a terminal <br>
 Open a terminal in the directory where the .jar is stored. <br>
 Enter the command java -jar Tatai.jar <br>
 Note: Due to how the working directory is set Tatai must be launched from the command line.
