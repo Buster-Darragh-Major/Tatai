@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import tatai.creations.Level;
+
 /**
  * This class gets information stored in the following format .... total
  * questions answered, total questions correct, total questions incorrect,
@@ -24,13 +26,14 @@ public class CSVStatsHandler implements StatisticHandler {
 	public static final String SEPARATOR = ",";
 	public static final File FILEPATH = new File(
 			System.getProperty("user.dir") + System.getProperty("file.separator") + "stats");
-	public static final String FILENAME = "user_statistics.csv";
-	public static final File STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
 	public static final int START_VALUE = 0;
 
 	/* Fields */
+	private String FILENAME = "user_statistics.csv";
+	private File STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
 	private Map<String, String> _valueMap;
 	private final String[] _keys = { "totalPlayed", "totalCorrect", "totalIncorrect", "average" };
+	private Level _level;
 
 	/**
 	 * Default Constructor
@@ -48,6 +51,18 @@ public class CSVStatsHandler implements StatisticHandler {
 				_valueMap.put(key, "" + START_VALUE);
 			}
 			writeToFile();
+		}
+	}
+	
+	CSVStatsHandler(Level level) {
+		super();
+		_level = level;
+		if (level == Level.Level1) {
+			FILENAME = "user_statistics1.csv";
+			STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
+		} else if (level == Level.Level2) {
+			FILENAME = "user_statistics1.csv";
+			STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
 		}
 	}
 

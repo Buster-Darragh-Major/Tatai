@@ -125,6 +125,8 @@ public class StatsWindowController extends TataiController implements Initializa
 	public void switchLevel() {
 		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
 			
+			
+			
 			_switchLevelButton.setText(SEELEVEL1);
 		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
 			
