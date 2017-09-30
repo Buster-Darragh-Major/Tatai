@@ -9,6 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import stats.CSVStatsHandler;
+import stats.StatisticHandler;
+import tatai.creations.Level;
 import tatai.game.TataiGame;
 
 /**
@@ -56,6 +59,11 @@ public class StatsWindowController extends TataiController implements Initializa
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		_game.setStatsHandlerLevel(Level.Level1);
+		updateValues();
+	}
+	
+	private void updateValues() {
 		_statLabel.setText(_game.averageAsPercent());
 		_statTitleLabel.setText("Average Score");
 		_averageButton.setText(_game.averageAsPercent());
@@ -124,11 +132,13 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	public void switchLevel() {
 		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
-			
-			
+			_game.setStatsHandlerLevel(Level.Level2);
+			updateValues();
 			
 			_switchLevelButton.setText(SEELEVEL1);
 		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
+			_game.setStatsHandlerLevel(Level.Level1);
+			updateValues();
 			
 			_switchLevelButton.setText(SEELEVEL2);
 		}

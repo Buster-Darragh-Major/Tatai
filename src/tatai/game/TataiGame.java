@@ -309,6 +309,15 @@ public class TataiGame {
 	
 	//// Stats Methods \\\\
 	
+	public void setStatsHandlerLevel(Level level) {
+		if (level == Level.Level1) {
+			_statsHandler = _l01statsHandler;
+		} else if (level == Level.Level2) {
+			_statsHandler = _l02statsHandler;
+		}
+		
+	}
+	
 	/**
 	 * Returns the average as a percentage 
 	 * 
