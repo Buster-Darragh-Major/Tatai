@@ -19,6 +19,10 @@ import tatai.game.TataiGame;
  */	
 public class StatsWindowController extends TataiController implements Initializable{
 	
+	/* Macros */
+	public final static String SEELEVEL1 = "See Level 1";
+	public final static String SEELEVEL2 = "See Level 2";
+	
 	/* Fields */
 	private TataiGame _game;
 	
@@ -37,6 +41,8 @@ public class StatsWindowController extends TataiController implements Initializa
 	private Button _totalButton;
 	@FXML
 	private Button _exitButton;
+	@FXML
+	private Button _switchLevelButton;
 	
 	/**
 	 * Constructor
@@ -115,4 +121,14 @@ public class StatsWindowController extends TataiController implements Initializa
 		changeWindow("MainWindow.fxml", stage);
 	}
 	
+	@FXML
+	public void switchLevel() {
+		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
+			
+			_switchLevelButton.setText(SEELEVEL1);
+		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
+			
+			_switchLevelButton.setText(SEELEVEL2);
+		}
+	}
 }
