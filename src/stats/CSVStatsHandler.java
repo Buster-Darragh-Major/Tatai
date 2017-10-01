@@ -40,19 +40,7 @@ public class CSVStatsHandler implements StatisticHandler {
 	 * Default Constructor
 	 */
 	public CSVStatsHandler() {
-		_valueMap = new HashMap<String, String>();
-
-		createStatsFolder();
-
-		// Try to read stats file, if fails create a new one.
-		try {
-			readCSVFile();
-		} catch (Exception e) {
-			for (String key : _keys) {
-				_valueMap.put(key, "" + START_VALUE);
-			}
-			writeToFile();
-		}
+		fileSetUp();
 	}
 	
 	public CSVStatsHandler(Level level) {
@@ -61,6 +49,13 @@ public class CSVStatsHandler implements StatisticHandler {
 		} else if (level == Level.Level2) {
 			STATS_FILE = L2_STATS_FILE;
 		}
+		fileSetUp();
+	}
+	
+	/**
+	 * Create a new file / read an existing file.
+	 */
+	private void fileSetUp() {
 		_valueMap = new HashMap<String, String>();
 
 		createStatsFolder();
