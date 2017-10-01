@@ -38,11 +38,13 @@ public class TataiGame {
 	private TataiCreationModel _creationModel;
 	private Translator _translator;
 	private boolean _hasStarted = false;
-	private StatisticHandler _statsHandler;
 	private int _correct;
 	private int _incorrect;
 	private boolean _firstAttempt;
 	private ArrayList<String> _questionsCorrect = new ArrayList<String>();
+	private StatisticHandler _statsHandler;
+	private StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
+	private StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
 
 	/**
 	 * Constructor
@@ -55,7 +57,6 @@ public class TataiGame {
 		
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
-		_statsHandler = new CSVStatsHandler();
 	}
 
 	/**
@@ -169,6 +170,12 @@ public class TataiGame {
 			_hasStarted = true;
 			_firstAttempt = false;
 			_questionsCorrect = new ArrayList<String>();
+			
+			if (_level == Level.Level1) {
+				_statsHandler = _l01statsHandler;
+			} else if (_level == Level.Level2) {
+				_statsHandler = _l02statsHandler;
+			}
 			
 		} else {
 			throw new GameException("Game has already started");
@@ -300,6 +307,15 @@ public class TataiGame {
 	}
 	
 	//// Stats Methods \\\\
+	
+	public void setStatsHandlerLevel(Level level) {
+		if (level == Level.Level1) {
+			_statsHandler = _l01statsHandler;
+		} else if (level == Level.Level2) {
+			_statsHandler = _l02statsHandler;
+		}
+		
+	}
 	
 	/**
 	 * Returns the average as a percentage 

@@ -210,6 +210,7 @@ private static final String FINISH = "Finish!";
 	private boolean isCorrect() {
 		String answer = Context.getInstance().currentGame().translateCurrentQuestion();
 		answer = answer.replace("mā", "maa");
+		answer = answer.replace("whā", "whaa");
 		answer = answer.replace("ā", "a");
 		List<String> answerList = Arrays.asList(answer.split(" "));
 		

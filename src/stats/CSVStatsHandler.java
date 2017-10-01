@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import tatai.creations.Level;
+
 /**
  * This class gets information stored in the following format .... total
  * questions answered, total questions correct, total questions incorrect,
@@ -24,11 +26,13 @@ public class CSVStatsHandler implements StatisticHandler {
 	public static final String SEPARATOR = ",";
 	public static final File FILEPATH = new File(
 			System.getProperty("user.dir") + System.getProperty("file.separator") + "stats");
-	public static final String FILENAME = "user_statistics.csv";
-	public static final File STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
 	public static final int START_VALUE = 0;
 
 	/* Fields */
+	private String FILENAME = "user_statistics.csv";
+	private File STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + FILENAME);
+	private File L1_STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + "user_statistics1.csv");
+	private File L2_STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + "user_statistics2.csv");
 	private Map<String, String> _valueMap;
 	private final String[] _keys = { "totalPlayed", "totalCorrect", "totalIncorrect", "average" };
 
@@ -36,6 +40,22 @@ public class CSVStatsHandler implements StatisticHandler {
 	 * Default Constructor
 	 */
 	public CSVStatsHandler() {
+		fileSetUp();
+	}
+	
+	public CSVStatsHandler(Level level) {
+		if (level == Level.Level1) {
+			STATS_FILE = L1_STATS_FILE;
+		} else if (level == Level.Level2) {
+			STATS_FILE = L2_STATS_FILE;
+		}
+		fileSetUp();
+	}
+	
+	/**
+	 * Create a new file / read an existing file.
+	 */
+	private void fileSetUp() {
 		_valueMap = new HashMap<String, String>();
 
 		createStatsFolder();
@@ -102,6 +122,22 @@ public class CSVStatsHandler implements StatisticHandler {
 		if (!STATS_FILE.exists()) {
 			try {
 				STATS_FILE.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (!L1_STATS_FILE.exists()) {
+			try {
+				L1_STATS_FILE.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (!L2_STATS_FILE.exists()) {
+			try {
+				L2_STATS_FILE.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
