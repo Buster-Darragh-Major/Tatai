@@ -57,7 +57,7 @@ public class TataiGame {
 		
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
-		_statsHandler = new CSVStatsHandler();
+		//_statsHandler = new CSVStatsHandler();
 	}
 
 	/**
