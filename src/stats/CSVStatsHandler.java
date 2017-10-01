@@ -35,7 +35,6 @@ public class CSVStatsHandler implements StatisticHandler {
 	private File L2_STATS_FILE = new File(FILEPATH + System.getProperty("file.separator") + "user_statistics2.csv");
 	private Map<String, String> _valueMap;
 	private final String[] _keys = { "totalPlayed", "totalCorrect", "totalIncorrect", "average" };
-	private Level _level;
 
 	/**
 	 * Default Constructor
@@ -57,7 +56,6 @@ public class CSVStatsHandler implements StatisticHandler {
 	}
 	
 	public CSVStatsHandler(Level level) {
-		_level = level;
 		if (level == Level.Level1) {
 			STATS_FILE = L1_STATS_FILE;
 		} else if (level == Level.Level2) {

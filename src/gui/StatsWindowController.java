@@ -9,8 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import stats.CSVStatsHandler;
-import stats.StatisticHandler;
 import tatai.creations.Level;
 import tatai.game.TataiGame;
 
@@ -156,5 +154,6 @@ public class StatsWindowController extends TataiController implements Initializa
 		}
 		
 		updateValues();
+		handleAverageButtonClick();
 	}
 }
