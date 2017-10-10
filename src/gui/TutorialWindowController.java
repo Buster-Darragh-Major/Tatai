@@ -52,10 +52,8 @@ public class TutorialWindowController  extends TataiController implements Initia
 	public void handleNextClick() {
 		_page++;
 		_numberLabel.setText(_page + ".");
-		
 		if (_page == 2) {
 			_progressIcon2.setFill(Color.GREEN);
-			
 		} else if (_page == 3) {
 			_progressIcon3.setFill(Color.GREEN);
 		} else if (_page == 4) {
@@ -71,6 +69,7 @@ public class TutorialWindowController  extends TataiController implements Initia
 	public void initialize(URL location, ResourceBundle resources) {
 		_numberLabel.setText(_page + ".");
 		_progressIcon1.setFill(Color.GREEN);
+		
 		Image img = new Image("res/imgs/tutorial/MainWindow.png");
 		_imageView.setImage(img);
 	}
