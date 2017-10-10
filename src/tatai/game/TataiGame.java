@@ -108,7 +108,7 @@ public class TataiGame {
 	}
 
 	/**
-	 * Increments question number for next question in quiz
+	 * i question number for next question in quiz
 	 */
 	private void nextQuestion() {
 		_firstAttempt = false;

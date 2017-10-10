@@ -12,7 +12,7 @@ import javafx.beans.property.StringProperty;
  * 
  * @author Buster Major
  */
-public class TataiQuestion {
+public class TataiQuestionTableAdapter {
 	
 	/* Fields */
 	private final SimpleStringProperty qNo;
@@ -28,7 +28,7 @@ public class TataiQuestion {
 	 * @param questTranslation : String
 	 * @param questCorrect : String
 	 */
-	public TataiQuestion(String questNo, String questInt, String questTranslation, String questCorrect) {
+	public TataiQuestionTableAdapter(String questNo, String questInt, String questTranslation, String questCorrect) {
 		qNo = new SimpleStringProperty(questNo);
 		qInt = new SimpleStringProperty(questInt);
 		qTranslation = new SimpleStringProperty(questTranslation);

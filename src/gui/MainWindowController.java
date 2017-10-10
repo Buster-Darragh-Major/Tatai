@@ -13,6 +13,8 @@ public class MainWindowController extends TataiController {
 	private Button _mainMenuStats;
 	@FXML
 	private Button _mainMenuQuit;
+	@FXML
+	private Button _mainMenuTutorial;
 	
 	/**
 	 * Handles user pressing play button
@@ -30,6 +32,12 @@ public class MainWindowController extends TataiController {
 	public void handleStatsMenuClick() {
 		Stage stage = (Stage) _mainMenuStats.getScene().getWindow(); // Get Current stage
 		changeWindow("StatsWindow.fxml", stage);// Change to StatsWindow.fxml view
+	}
+	
+	@FXML
+	public void handleTutorialClick() {
+		Stage stage = (Stage) _mainMenuTutorial.getScene().getWindow(); // Get Current stage
+		changeWindow("TutorialWindow.fxml", stage);// Change to TutorialWindow.fxml view
 	}
 	
 	/**

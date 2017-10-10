@@ -34,5 +34,6 @@
             <DropShadow blurType="ONE_PASS_BOX" />
          </effect>
       </Text>
+      <JFXButton fx:id="_mainMenuTutorial" buttonType="RAISED" onAction="#handleTutorialClick" prefHeight="50.0" prefWidth="100.0" text="Tutorial" textFill="WHITE" />
    </children>
 </GridPane>

@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tatai.creations.Level;
 import tatai.game.TataiGame;
-import tatai.game.TataiQuestion;
+import tatai.game.TataiQuestionTableAdapter;
 
 public class ResultsWindowController extends TataiController implements Initializable {
 
@@ -26,9 +26,9 @@ public class ResultsWindowController extends TataiController implements Initiali
 	@FXML
 	private Button _level2Button;
 	@FXML
-	private TableView<TataiQuestion> _resultsTable;
+	private TableView<TataiQuestionTableAdapter> _resultsTable;
 	@FXML
-	private TableColumn<TataiQuestion, String> qNo, qInt, qTranslation, qCorrect;
+	private TableColumn<TataiQuestionTableAdapter, String> qNo, qInt, qTranslation, qCorrect;
 
 	/* Fields */
 	private int _questionTotal = TataiGame.TOTAL_NUMBER_OF_QUESTIONS;
@@ -74,13 +74,13 @@ public class ResultsWindowController extends TataiController implements Initiali
 		ArrayList<String> trans = Context.getInstance().currentGame().getQuestionTrans();
 		ArrayList<String> correct = Context.getInstance().currentGame().getQuestionCorrect();
 		for (int i = 0; i < _questionTotal; i++) {
-			_resultsTable.getItems().add(new TataiQuestion(i + 1 + ")", ints.get(i), trans.get(i), correct.get(i)));
+			_resultsTable.getItems().add(new TataiQuestionTableAdapter(i + 1 + ")", ints.get(i), trans.get(i), correct.get(i)));
 		}
 
 		// Set up Columns
-		qNo.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qNo"));
-		qInt.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qInt"));
-		qTranslation.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qTranslation"));
-		qCorrect.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qCorrect"));
+		qNo.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qNo"));
+		qInt.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qInt"));
+		qTranslation.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qTranslation"));
+		qCorrect.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qCorrect"));
 	}
 }
