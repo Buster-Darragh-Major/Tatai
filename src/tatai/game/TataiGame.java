@@ -33,7 +33,7 @@ public class TataiGame {
 	public static final String INCORRECT = "Total Incorrect";
 	public static final String CORRECT = "Total Correct";
 	
-	private Level _level = Level.Level1;
+	protected Level _level = Level.Level1;
 	private int _questionNo;
 	private TataiCreationModel _creationModel;
 	private Translator _translator;
