@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -32,6 +34,8 @@ public class TutorialWindowController  extends TataiController implements Initia
 	private Circle _progressIcon5;
 	@FXML
 	private Circle _progressIcon6;
+	@FXML
+	private ImageView _imageView;
 	
 	/* Fields */
 	private int _page = 1;
@@ -51,6 +55,7 @@ public class TutorialWindowController  extends TataiController implements Initia
 		
 		if (_page == 2) {
 			_progressIcon2.setFill(Color.GREEN);
+			
 		} else if (_page == 3) {
 			_progressIcon3.setFill(Color.GREEN);
 		} else if (_page == 4) {
@@ -66,6 +71,8 @@ public class TutorialWindowController  extends TataiController implements Initia
 	public void initialize(URL location, ResourceBundle resources) {
 		_numberLabel.setText(_page + ".");
 		_progressIcon1.setFill(Color.GREEN);
+		Image img = new Image("res/imgs/tutorial/MainWindow.png");
+		_imageView.setImage(img);
 	}
 
 }
