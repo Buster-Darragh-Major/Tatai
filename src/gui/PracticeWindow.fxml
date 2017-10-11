@@ -18,9 +18,9 @@
    <children>
       <GridPane GridPane.rowIndex="1">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="0.0" prefWidth="0.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.0" minWidth="10.0" prefWidth="575.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="0.0" prefWidth="0.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="575.0" minWidth="10.0" prefWidth="575.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="330.0" minHeight="10.0" prefHeight="181.0" vgrow="SOMETIMES" />
@@ -92,14 +92,14 @@
                         <Font size="42.0" />
                      </font>
                   </Button>
-                  <Button fx:id="_41" mnemonicParsing="false" onAction="#handle4Click" prefHeight="80.0" prefWidth="80.0" text="Delete" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="100.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="RIGHT">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="19.0" />
                      </font>
                   </Button>
-                  <Button fx:id="_42" mnemonicParsing="false" onAction="#handle4Click" prefHeight="80.0" prefWidth="80.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button fx:id="_recordButton" mnemonicParsing="false" onAction="#handleRecordClick" prefHeight="80.0" prefWidth="100.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="14.0" />
                      </font>
                   </Button>
                </children>
@@ -108,9 +108,9 @@
       </GridPane>
       <GridPane>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="527.0" minWidth="10.0" prefWidth="72.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="527.0" minWidth="10.0" prefWidth="476.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="10.0" prefWidth="73.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="72.0" />
+          <ColumnConstraints hgrow="NEVER" maxWidth="527.0" minWidth="10.0" prefWidth="476.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="73.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
