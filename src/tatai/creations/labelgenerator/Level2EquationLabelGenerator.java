@@ -26,8 +26,19 @@ public class Level2EquationLabelGenerator extends Level1EquationLabelGenerator {
 	}
 	
 	protected void generateMultiplication(int maximum , int minimum) {
+		int operand1 = getRandomInteger(12, MIN);
 		
-		_label = "stub";
+		int operand2;
+		
+		if (operand1 >= 10 && operand1 < 12) {
+			operand2 = getRandomInteger(Level1LabelGenerator.MAX, MIN);
+		} else if (operand1 == 12){
+			operand2 = getRandomInteger(8, MIN);
+		} else {
+			operand2 = getRandomInteger(12, MIN);
+		}
+		
+		_label = operand1 + MULTIPLICATION + operand2 + EQUALS;
 	}
 	
 	
