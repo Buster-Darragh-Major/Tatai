@@ -92,14 +92,14 @@
                         <Font size="42.0" />
                      </font>
                   </Button>
-                  <Button fx:id="_41" mnemonicParsing="false" onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="80.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="100.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="RIGHT">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Button>
-                  <Button fx:id="_42" mnemonicParsing="false" onAction="#handleRecordClick" prefHeight="80.0" prefWidth="80.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button fx:id="_recordButton" mnemonicParsing="false" onAction="#handleRecordClick" prefHeight="80.0" prefWidth="100.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="14.0" />
                      </font>
                   </Button>
                </children>
