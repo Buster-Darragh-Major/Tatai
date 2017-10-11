@@ -1,7 +1,7 @@
 .root {
 	-fx-background-color: #383838;
 	-fx-text-fill: white;
-	-fx-alignment: CENTER;
+	-fx-alignment: center;
 }
 
 .table-view .column-header .label {
@@ -52,4 +52,11 @@
 .button1{
 	-fx-background-color: white;
 	-fx-text-fill: #383838;
+}
+
+.textarea {
+	-fx-padding: 10px;
+}
+.text-area *.content {
+    -fx-background-color: #383838;
 }
