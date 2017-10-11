@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -42,66 +42,66 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="_0" mnemonicParsing="false" onAction="#handle0Click" prefHeight="80.0" prefWidth="80.0" text="0" GridPane.halignment="CENTER">
+                  <JFXButton fx:id="_0" onAction="#handle0Click" prefHeight="80.0" prefWidth="80.0" text="0" GridPane.halignment="CENTER">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_1" mnemonicParsing="false" onAction="#handle1Click" prefHeight="80.0" prefWidth="80.0" text="1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  </JFXButton>
+                  <JFXButton fx:id="_1" onAction="#handle1Click" prefHeight="80.0" prefWidth="80.0" text="1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_6" mnemonicParsing="false" onAction="#handle6Click" prefHeight="80.0" prefWidth="80.0" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  </JFXButton>
+                  <JFXButton fx:id="_2" onAction="#handle2Click" prefHeight="80.0" prefWidth="80.0" text="2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_5" mnemonicParsing="false" onAction="#handle5Click" prefHeight="80.0" prefWidth="80.0" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  </JFXButton>
+                  <JFXButton fx:id="_3" onAction="#handle3Click" prefHeight="80.0" prefWidth="80.0" text="3" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_4" mnemonicParsing="false" onAction="#handle4Click" prefHeight="80.0" prefWidth="80.0" text="4" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                  </JFXButton>
+                  <JFXButton fx:id="_4" onAction="#handle4Click" prefHeight="80.0" prefWidth="80.0" text="4" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_3" mnemonicParsing="false" onAction="#handle3Click" prefHeight="80.0" prefWidth="80.0" text="3" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                  </JFXButton>
+                  <JFXButton fx:id="_5" onAction="#handle5Click" prefHeight="80.0" prefWidth="80.0" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_2" mnemonicParsing="false" onAction="#handle2Click" prefHeight="80.0" prefWidth="80.0" text="2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                  </JFXButton>
+                  <JFXButton fx:id="_6" onAction="#handle6Click" prefHeight="80.0" prefWidth="80.0" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_9" mnemonicParsing="false" onAction="#handle9Click" prefHeight="80.0" prefWidth="80.0" text="9" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  </JFXButton>
+                  <JFXButton fx:id="_7" onAction="#handle7Click" prefHeight="80.0" prefWidth="80.0" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_8" mnemonicParsing="false" onAction="#handle8Click" prefHeight="80.0" prefWidth="80.0" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  </JFXButton>
+                  <JFXButton fx:id="_8" onAction="#handle8Click" prefHeight="80.0" prefWidth="80.0" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_7" mnemonicParsing="false" onAction="#handle7Click" prefHeight="80.0" prefWidth="80.0" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  </JFXButton>
+                  <JFXButton fx:id="_9" onAction="#handle9Click" prefHeight="80.0" prefWidth="80.0" text="9" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
-                        <Font size="42.0" />
+                        <Font size="40.0" />
                      </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="100.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="RIGHT">
+                  </JFXButton>
+                  <JFXButton onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="95.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="RIGHT">
                      <font>
-                        <Font size="19.0" />
+                        <Font size="20.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="_recordButton" mnemonicParsing="false" onAction="#handleRecordClick" prefHeight="80.0" prefWidth="100.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  </JFXButton>
+                  <JFXButton fx:id="_recordButton" onAction="#handleRecordClick" prefHeight="80.0" prefWidth="95.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
-                  </Button>
+                  </JFXButton>
                </children>
             </GridPane>
          </children>
