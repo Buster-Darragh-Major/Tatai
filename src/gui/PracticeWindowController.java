@@ -90,6 +90,12 @@ public class PracticeWindowController extends TataiController {
 	}
 	
 	private void addToLabel(String num) {
-		_inputLabel.setText(_inputLabel.getText() + num);
+		if (_inputLabel.getText().length() == 2) {
+			// Do nothing
+		} else if (_inputLabel.getText().equals("0")) {
+			_inputLabel.setText(num);
+		} else {
+			_inputLabel.setText(_inputLabel.getText() + num);
+		}
 	}
 }
