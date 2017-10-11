@@ -1,6 +1,9 @@
 package gui;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import HTK.recording.TataiSpeechRecognizer;
@@ -11,9 +14,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import tatai.translator.TataiTranslator;
 
 public class PracticeWindowController extends TataiController implements Initializable {
 
+	/* FXML Nodes */
 	@FXML
 	private Label _inputLabel;
 	@FXML
@@ -39,6 +44,10 @@ public class PracticeWindowController extends TataiController implements Initial
 	@FXML
 	private Button _recordButton;
 	
+	/* Fields */
+	private ArrayList<String> _userAnswer;
+	private String _trueAnswer;
+	
 	@FXML
 	public void handle0Click() {
 		addToLabel("0");
@@ -48,75 +57,71 @@ public class PracticeWindowController extends TataiController implements Initial
 	public void handle1Click() {
 		addToLabel("1");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle2Click() {
 		addToLabel("2");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle3Click() {
 		addToLabel("3");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle4Click() {
 		addToLabel("4");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle5Click() {
 		addToLabel("5");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle6Click() {
 		addToLabel("6");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle7Click() {
 		addToLabel("7");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle8Click() {
 		addToLabel("8");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handle9Click() {
 		addToLabel("9");
 		_recordButton.setDisable(false);
-
 	}
 	
 	@FXML
 	public void handleDeleteClick() {
 		_inputLabel.setText("");
 		_recordButton.setDisable(true);
-
-		
 	}
 	
 	@FXML
 	public void handleRecordClick() {
+		translate();
+		record();
+	}
+	
+	
+	
+	private void record() {
 		TataiSpeechRecognizer speech = new TataiSpeechRecognizer();
 		
 		_recordButton.setDisable(true);
@@ -141,13 +146,53 @@ public class PracticeWindowController extends TataiController implements Initial
 				_recordButton.setDisable(false);
 				_recordButton.setStyle("-fx-font: 16 System");
 				_recordButton.setText("Record");
+				
+				speech.readFile();
+				_userAnswer = speech.getText();
+				
+				if (compareAnswers()) {
+					giveFeedback(true);
+				} else {
+					giveFeedback(false);
+				}
 			}
 		});
 		
 		// Run thread
 		Thread th = new Thread(task);
+		th.start();		
+	}
+	
+	
+	private void giveFeedback(boolean correct) {
+		// Create thread for flashing process
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				Thread.sleep(100);
+				return null;
+			}
+		};
+		
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				
+			}
+		});
+		
+		Thread th = new Thread(task);
 		th.start();
 	}
+	
+	
+	
+	private void translate() {
+		TataiTranslator translator = new TataiTranslator();
+		_trueAnswer = translator.translate(_inputLabel.getText());
+	}
+	
+	
 	
 	private void addToLabel(String num) {
 		if (_inputLabel.getText().length() == 2) {
@@ -158,6 +203,34 @@ public class PracticeWindowController extends TataiController implements Initial
 			_inputLabel.setText(_inputLabel.getText() + num);
 		}
 	}
+	
+	
+	
+	private boolean compareAnswers() {
+		_trueAnswer = _trueAnswer.replace("mā", "maa");
+		_trueAnswer = _trueAnswer.replace("whā", "whaa");
+		_trueAnswer = _trueAnswer.replace("ā", "a");
+		List<String> answerList = Arrays.asList(_trueAnswer.split(" "));
+		
+		ArrayList<String> concatList = new ArrayList<String>();
+		
+		for (int i = 0; i < answerList.size(); i++) {
+			for (int j = 0; j < _userAnswer.size(); j++) {
+				if (_userAnswer.get(j).equals(answerList.get(i))) {
+					concatList.add(_userAnswer.get(j));
+					break;
+				}
+			}
+		}
+		
+		if (concatList.equals(answerList)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
 	
 	private void flashText() {
 		_inputLabel.setStyle("-fx-text-fill: red;");
@@ -182,9 +255,10 @@ public class PracticeWindowController extends TataiController implements Initial
 		th.start();
 	}
 
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		_recordButton.setDisable(true);
-		
 	}
 }
