@@ -22,6 +22,8 @@ public class PracticeWindowController extends TataiController implements Initial
 	@FXML
 	private Label _inputLabel;
 	@FXML
+	private Label _feedbackLabel;
+	@FXML
 	private Button _0;
 	@FXML
 	private Button _1;
@@ -165,11 +167,17 @@ public class PracticeWindowController extends TataiController implements Initial
 	
 	
 	private void giveFeedback(boolean correct) {
+		if (correct) {
+			_inputLabel.setStyle("-fx-background-color: " + CORRECT_GREEN);
+		} else {
+			_inputLabel.setStyle("-fx-background-color: " + INCORRECT_RED);
+		}
+		
 		// Create thread for flashing process
 		Task<Void> task = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				Thread.sleep(100);
+				Thread.sleep(3000);
 				return null;
 			}
 		};
@@ -177,7 +185,7 @@ public class PracticeWindowController extends TataiController implements Initial
 		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent event) {
-				
+				_inputLabel.setStyle("-fx-background-color: " + "null");
 			}
 		});
 		
@@ -233,7 +241,7 @@ public class PracticeWindowController extends TataiController implements Initial
 	
 	
 	private void flashText() {
-		_inputLabel.setStyle("-fx-text-fill: red;");
+		_inputLabel.setStyle("-fx-text-fill: " + INCORRECT_RED + ";");
 		
 		// Create thread for flashing process
 		Task<Void> task = new Task<Void>() {
