@@ -13,6 +13,8 @@ public class LevelSelectWindowController extends TataiController {
 	@FXML
 	private Button _level2;
 	@FXML
+	private Button _practice;
+	@FXML
 	private Button _menuButton;
 	
 	/**
@@ -35,6 +37,13 @@ public class LevelSelectWindowController extends TataiController {
 		
 		Stage stage = (Stage) _level2.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
+	}
+	
+	
+	@FXML
+	public void handlePracticeClick() {
+		Stage stage = (Stage) _practice.getScene().getWindow(); // Get current stage
+		changeWindow("PracticeWindow.fxml", stage); // Change to GameWindow.fxml view
 	}
 	
 	/**
