@@ -8,16 +8,16 @@ public class Level2EquationLabelGenerator extends Level1EquationLabelGenerator {
 	/* Macros */
 	public static final int MIN = 1;
 	public static final int MAX = 99;
-	public static final int[] NON_PRIMES = {2,4,6,8,9,10,12};
+	public static final int[] NON_PRIMES = {4,6,8,9,10,12};
 	
 	@Override
 	public void chooseOperator(int maximum, int minimum) {
 		int rand = (int) (4 * Math.random());
 		
 		if (rand == 0) {
-			generateAddition(maximum, minimum);
+			generateAddition(MAX, MIN);
 		}  else if (rand == 1) {
-			generateSubratction(maximum, minimum);
+			generateSubratction(MAX, MIN);
 		} else if (rand == 2) {
 			generateMultiplication(maximum, minimum);
 		} else if (rand == 3) {
