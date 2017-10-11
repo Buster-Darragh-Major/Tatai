@@ -20,5 +20,4 @@ public class Level2LabelGenerator extends Level1LabelGenerator{
 		
 		return "" + number;
 	}
-
 }
