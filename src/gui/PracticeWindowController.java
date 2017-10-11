@@ -79,7 +79,17 @@ public class PracticeWindowController extends TataiController {
 		addToLabel("9");
 	}
 	
-	private void addToLabel(String num) {
+	@FXML
+	public void handleDeleteClick() {
+		_inputLabel.setText("");
+	}
+	
+	@FXML
+	public void handleRecordClick() {
 		
+	}
+	
+	private void addToLabel(String num) {
+		_inputLabel.setText(_inputLabel.getText() + num);
 	}
 }
