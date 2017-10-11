@@ -26,7 +26,6 @@ public class Level1EquationLabelGenerator implements LabelGenerator {
 	
 	protected void chooseOperator(int maximum, int minimum) {
 		int rand = (int) (4 * Math.random());
-		rand = 2;
 		
 		if (rand == 0) {
 			generateAddition(maximum, minimum);
@@ -55,6 +54,7 @@ public class Level1EquationLabelGenerator implements LabelGenerator {
 	
 	protected void generateMultiplication(int maximum , int minimum) {
 		
+		_label = "stub";
 	}
 	
 	

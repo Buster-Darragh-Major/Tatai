@@ -22,6 +22,7 @@ public class TestEquationLabelGeneratior {
 		for (int i = 0; i < 10; i++) {
 			System.out.println(_labelGenerator1.generateLabel());
 		}
+		System.out.println("---------");
 		for (int i = 0; i < 10; i++) {
 			System.out.println(_labelGenerator2.generateLabel());
 		}
