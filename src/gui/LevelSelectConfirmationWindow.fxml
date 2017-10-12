@@ -62,13 +62,5 @@
             </Label>
          </children>
       </GridPane>
-      <JFXButton fx:id="_tutorial" buttonType="RAISED" onAction="#handleTutorialClick" prefHeight="20.0" prefWidth="20.0" text="?" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="10.0" top="10.0" />
-         </GridPane.margin>
-      </JFXButton>
    </children>
 </GridPane>

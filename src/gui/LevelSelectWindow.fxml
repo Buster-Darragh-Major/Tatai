@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -18,14 +17,6 @@
       <RowConstraints maxHeight="400.0" minHeight="194.0" prefHeight="332.0" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <JFXButton fx:id="_tutorial" buttonType="RAISED" onAction="#handleTutorialClick" prefHeight="20.0" prefWidth="20.0" text="?" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="10.0" top="10.0" />
-         </GridPane.margin>
-      </JFXButton>
       <Label stylesheets="@TataiTheme.css" text="Level Select" textFill="WHITE">
          <font>
             <Font size="60.0" />
