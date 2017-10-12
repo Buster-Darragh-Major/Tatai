@@ -34,17 +34,17 @@ public class TataiGame {
 	public static final String CORRECT = "Total Correct";
 	
 	protected Level _level = Level.Level1;
-	private int _questionNo;
-	private TataiCreationModel _creationModel;
-	private Translator _translator;
-	private boolean _hasStarted = false;
-	private int _correct;
-	private int _incorrect;
-	private boolean _firstAttempt;
-	private ArrayList<String> _questionsCorrect = new ArrayList<String>();
-	private StatisticHandler _statsHandler;
-	private StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
-	private StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
+	protected int _questionNo;
+	protected TataiCreationModel _creationModel;
+	protected Translator _translator;
+	protected boolean _hasStarted = false;
+	protected int _correct;
+	protected int _incorrect;
+	protected boolean _firstAttempt;
+	protected ArrayList<String> _questionsCorrect = new ArrayList<String>();
+	protected StatisticHandler _statsHandler;
+	protected StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
+	protected StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
 
 	/**
 	 * Constructor

@@ -71,7 +71,7 @@
                   <Button fx:id="_nextButton" mnemonicParsing="false" onAction="#handleNextClick" prefHeight="50.0" prefWidth="100.0" text="Next" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
-            <ImageView fx:id="_imageView" fitHeight="222.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <ImageView fx:id="_imageView" fitHeight="273.0" fitWidth="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <effect>
                   <DropShadow color="WHITE" height="5.0" radius="2.0" spread="1.0" width="5.0" />
                </effect></ImageView>
