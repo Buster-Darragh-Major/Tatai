@@ -42,62 +42,62 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton fx:id="_0" onAction="#handle0Click" prefHeight="80.0" prefWidth="80.0" text="0" GridPane.halignment="CENTER">
+                  <JFXButton fx:id="_0" buttonType="RAISED" onAction="#handle0Click" prefHeight="80.0" prefWidth="80.0" text="0" GridPane.halignment="CENTER">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_1" onAction="#handle1Click" prefHeight="80.0" prefWidth="80.0" text="1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  <JFXButton fx:id="_1" buttonType="RAISED" onAction="#handle1Click" prefHeight="80.0" prefWidth="80.0" text="1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_2" onAction="#handle2Click" prefHeight="80.0" prefWidth="80.0" text="2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                  <JFXButton fx:id="_2" buttonType="RAISED" onAction="#handle2Click" prefHeight="80.0" prefWidth="80.0" text="2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_3" onAction="#handle3Click" prefHeight="80.0" prefWidth="80.0" text="3" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                  <JFXButton fx:id="_3" buttonType="RAISED" onAction="#handle3Click" prefHeight="80.0" prefWidth="80.0" text="3" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_4" onAction="#handle4Click" prefHeight="80.0" prefWidth="80.0" text="4" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                  <JFXButton fx:id="_4" buttonType="RAISED" onAction="#handle4Click" prefHeight="80.0" prefWidth="80.0" text="4" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_5" onAction="#handle5Click" prefHeight="80.0" prefWidth="80.0" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <JFXButton fx:id="_5" buttonType="RAISED" onAction="#handle5Click" prefHeight="80.0" prefWidth="80.0" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_6" onAction="#handle6Click" prefHeight="80.0" prefWidth="80.0" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <JFXButton fx:id="_6" buttonType="RAISED" onAction="#handle6Click" prefHeight="80.0" prefWidth="80.0" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_7" onAction="#handle7Click" prefHeight="80.0" prefWidth="80.0" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <JFXButton fx:id="_7" buttonType="RAISED" onAction="#handle7Click" prefHeight="80.0" prefWidth="80.0" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_8" onAction="#handle8Click" prefHeight="80.0" prefWidth="80.0" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <JFXButton fx:id="_8" buttonType="RAISED" onAction="#handle8Click" prefHeight="80.0" prefWidth="80.0" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_9" onAction="#handle9Click" prefHeight="80.0" prefWidth="80.0" text="9" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <JFXButton fx:id="_9" buttonType="RAISED" onAction="#handle9Click" prefHeight="80.0" prefWidth="80.0" text="9" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="95.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="RIGHT">
+                  <JFXButton buttonType="RAISED" onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="95.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="RIGHT">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="_recordButton" onAction="#handleRecordClick" prefHeight="80.0" prefWidth="95.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <JFXButton fx:id="_recordButton" buttonType="RAISED" onAction="#handleRecordClick" prefHeight="80.0" prefWidth="95.0" text="Record" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
