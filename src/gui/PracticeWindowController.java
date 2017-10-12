@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import tatai.translator.TataiTranslator;
 
 public class PracticeWindowController extends TataiController implements Initializable {
@@ -45,6 +46,8 @@ public class PracticeWindowController extends TataiController implements Initial
 	private Button _9;
 	@FXML
 	private Button _recordButton;
+	@FXML
+	private Button _exitButton;
 	
 	/* Fields */
 	private ArrayList<String> _userAnswer;
@@ -119,6 +122,12 @@ public class PracticeWindowController extends TataiController implements Initial
 	public void handleRecordClick() {
 		translate();
 		record();
+	}
+	
+	@FXML
+	public void handleExitClick() {
+		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
+		changeWindow("LevelSelectWindow.fxml", stage);// Change to StatsWindow.fxml view
 	}
 	
 	
