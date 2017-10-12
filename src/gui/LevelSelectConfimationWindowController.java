@@ -20,6 +20,8 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	private Label _levelHeader;
 	@FXML
 	private Label _levelDescriptor;
+	@FXML
+	private Button _tutorial;
 	
 	/**
 	 * Handles user pressing start button
@@ -59,5 +61,10 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
 	}
 	
+	@FXML
+	public void handleTutorialClick() {
+		Stage stage = (Stage) _tutorial.getScene().getWindow(); // Get Current stage
+		changeWindow("TutorialWindow.fxml", stage);// Change to TutorialWindow.fxml view
+	}
 	
 }
