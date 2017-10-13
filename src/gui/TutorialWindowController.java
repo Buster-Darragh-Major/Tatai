@@ -21,6 +21,7 @@ public class TutorialWindowController  extends TataiController implements Initia
 	/* FXML Nodes */
 	@FXML private Button _nextButton;
 	@FXML private Button _backButton;
+	@FXML private Button _exitButton;
 	@FXML private Circle _progressIcon1;
 	@FXML private Circle _progressIcon2;
 	@FXML private Circle _progressIcon3;
@@ -121,6 +122,11 @@ public class TutorialWindowController  extends TataiController implements Initia
 		updateSlide(FILEPATH_START + "MainWindow.png", "Welcome To Tatai! \n\nThis is the main menu. \n1.Press the play button to start "
 				+ "playing. \n2.Press the stats button for some stats.");
 		_nextButton.requestFocus();
+	}
+	
+	@FXML public void handleExitClick() {
+		Stage stage = (Stage) _exitButton.getScene().getWindow();
+		changeWindow("MainWindow.fxml", stage);
 	}
 
 }
