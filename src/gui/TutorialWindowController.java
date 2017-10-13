@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -134,6 +136,16 @@ public class TutorialWindowController  extends TataiController implements Initia
 	@FXML public void handleExitClick() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
 		changeWindow("MainWindow.fxml", stage);
+	}
+	
+	@FXML public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleExitClick();
+		} else if (e.getCode() == KeyCode.RIGHT) {
+			handleNextClick();
+		} else if (e.getCode() == KeyCode.LEFT) {
+			handleBackClick();
+		}
 	}
 
 }
