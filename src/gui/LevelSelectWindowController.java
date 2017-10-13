@@ -1,13 +1,17 @@
 package gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import tatai.creations.Level;
 
-public class LevelSelectWindowController extends TataiController {
+public class LevelSelectWindowController extends TataiController implements Initializable{
 
 	/* FXML Nodes */
 	@FXML 
@@ -65,6 +69,11 @@ public class LevelSelectWindowController extends TataiController {
 		if (e.getCode() == KeyCode.ESCAPE) {
 			handleMenuButtonClick();
 		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		_level1.requestFocus();
 	}
 	
 }

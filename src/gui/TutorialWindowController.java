@@ -84,6 +84,7 @@ public class TutorialWindowController  extends TataiController implements Initia
 		_textArea.setWrapText(true);
 		updateSlide(FILEPATH_START + "MainWindow.png", "Welcome To Tatai! \n\nThis is the main menu. \n1.Press the play button to start "
 				+ "playing. \n2.Press the stats button for some stats.");
+		_nextButton.requestFocus();
 	}
 
 }
