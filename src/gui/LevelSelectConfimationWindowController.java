@@ -59,5 +59,4 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
 	}
 	
-	
 }

@@ -13,7 +13,7 @@
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="600.0" prefWidth="600.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="206.0" minHeight="0.0" prefHeight="168.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="206.0" minHeight="0.0" prefHeight="168.0" valignment="CENTER" vgrow="NEVER" />
       <RowConstraints maxHeight="400.0" minHeight="194.0" prefHeight="332.0" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
