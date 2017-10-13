@@ -2,6 +2,8 @@ package gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MainWindowController extends TataiController {
@@ -46,5 +48,18 @@ public class MainWindowController extends TataiController {
 	@FXML
 	public void handleQuitClick() {
 		System.exit(0);
+	}
+	
+	/**
+	 * Handle key binds
+	 * @param e The key event
+	 */
+	@FXML 
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleQuitClick();
+		} else if (e.getCode() == KeyCode.F1) {
+			handleTutorialClick();
+		}
 	}
 }

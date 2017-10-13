@@ -2,6 +2,8 @@ package gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import tatai.creations.Level;
 
@@ -53,6 +55,16 @@ public class LevelSelectWindowController extends TataiController {
 	public void handleMenuButtonClick() {
 		Stage stage = (Stage) _menuButton.getScene().getWindow(); // Get current stage
 		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml
+	}
+	
+	/**
+	 * Handle key binds
+	 */
+	@FXML
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleMenuButtonClick();
+		}
 	}
 	
 }

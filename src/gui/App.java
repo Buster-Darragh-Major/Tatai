@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainWindow extends Application {
+public class App extends Application {
 
 	/* THIS IS WHERE THE FUN BEGINS */
 	

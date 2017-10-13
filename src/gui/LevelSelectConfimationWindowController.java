@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class LevelSelectConfimationWindowController extends TataiController implements Initializable {
@@ -57,6 +59,13 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		// objects set difficulty.
 		_levelHeader.setText(Context.getInstance().currentGame().getLevelHeader());
 		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+	}
+	
+	@FXML
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleBackClick();
+		}
 	}
 	
 }
