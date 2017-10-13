@@ -1,6 +1,7 @@
 package gui;
 
 import tatai.game.TataiGame;
+import tatai.game.TataiGameEquation;
 
 /**
  * Singleton class concerned with the 'context' of the program running, i.e. the
@@ -17,6 +18,8 @@ public class Context {
 	
 	// Objects singleton is keeping track of
 	private TataiGame _game;
+	private TataiGame _regularGame;
+	private TataiGameEquation _equationGame;
 	
 	/**
 	 * Returns instance of singleton object
@@ -31,7 +34,11 @@ public class Context {
 	 * Creates a new TataiGame object for a new game in play.
 	 */
 	public void newGame() {
-		_game = new TataiGame();
+		_regularGame = new TataiGame();
+		_equationGame = new TataiGameEquation();
+		
+		// By default set to return a regular game type
+		_game = _regularGame;
 	}
 	
 	/**
@@ -49,5 +56,19 @@ public class Context {
 	 */
 	public TataiGame currentGame() {
 		return _game;
+	}
+	
+	/**
+	 * Sets the current game type to be an equation based game.
+	 */
+	public void setGameToEquation() {
+		_game = _equationGame;
+	}
+	
+	/**
+	 * Sets the current game type to be a regular game.
+	 */
+	public void setGameToRegular() {
+		_game = _regularGame;
 	}
 }

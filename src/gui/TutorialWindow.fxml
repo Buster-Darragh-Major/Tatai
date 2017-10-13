@@ -78,7 +78,11 @@
                      </GridPane.margin></JFXButton>
                </children>
             </GridPane>
+<<<<<<< HEAD
             <ImageView fx:id="_imageView" fitHeight="222.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+=======
+            <ImageView fx:id="_imageView" fitHeight="273.0" fitWidth="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+>>>>>>> 26ed5813871c394a34b7d1ef9f5db9e5206bd14b
                <effect>
                   <DropShadow color="WHITE" height="5.0" radius="2.0" spread="1.0" width="5.0" />
                </effect></ImageView>
