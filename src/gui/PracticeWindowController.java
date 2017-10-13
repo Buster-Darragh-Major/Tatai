@@ -160,6 +160,7 @@ public class PracticeWindowController extends TataiController implements Initial
 				
 				speech.readFile();
 				_userAnswer = speech.getText();
+				speech.cleanup();
 				
 				if (compareAnswers()) {
 					giveFeedback(true);

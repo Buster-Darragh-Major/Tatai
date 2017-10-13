@@ -9,14 +9,20 @@ import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.labelgenerator.Level1EquationLabelGenerator;
 import tatai.creations.labelgenerator.Level2EquationLabelGenerator;
+import tatai.translator.TataiEquationTranslator;
+import tatai.translator.Translator;
 
 public class TataiGameEquation extends TataiGame {
 
 	/* Fields */
+	private Translator _translator = new TataiEquationTranslator();
 	private StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
 	private StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
 	// ^^^ REPLACE WITH PROPER STATS HANDLERS FOR GAME TYPE ^^^ //
 
+	public TataiGameEquation() {
+		super();
+	}
 	
 	@Override
 	public String getLevelDescription() {
@@ -27,6 +33,13 @@ public class TataiGameEquation extends TataiGame {
 		+ " Answers might range from 1-9 or 1-99.");
 		}
 		return null;	
+	}
+	
+	@Override
+	public String translateCurrentQuestion() {
+		String label = _creationModel.getCreationLabel(_questionNo);
+
+		return _translator.translate(label);
 	}
 	
 	@Override
@@ -50,11 +63,6 @@ public class TataiGameEquation extends TataiGame {
 		} else {
 			throw new GameException("Game has already started");
 		}
-	}
-	
-	@Override
-	public boolean answerQuestion(boolean answer) {
-		return answer;
 	}
 	
 	private <T extends Creation> void populateModel() {
