@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -121,7 +122,13 @@ public class TutorialWindowController  extends TataiController implements Initia
 		_textArea.setWrapText(true);
 		updateSlide(FILEPATH_START + "MainWindow.png", "Welcome To Tatai! \n\nThis is the main menu. \n1.Press the play button to start "
 				+ "playing. \n2.Press the stats button for some stats.");
-		_nextButton.requestFocus();
+		
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	_nextButton.requestFocus();
+	        }
+	    });
 	}
 	
 	@FXML public void handleExitClick() {

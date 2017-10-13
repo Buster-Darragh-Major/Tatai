@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import HTK.recording.TataiSpeechRecognizer;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
@@ -342,7 +343,12 @@ private static final String FINISH = "Finish!";
 		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
 		_questionNoLabel.setTextFill(_intLabel.getTextFill());
 		
-		_recordButton.requestFocus();
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	_recordButton.requestFocus();
+	        }
+	    });
 	}
 	
 	@FXML 

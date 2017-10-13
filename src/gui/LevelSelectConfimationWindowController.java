@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -59,7 +60,13 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		// objects set difficulty.
 		_levelHeader.setText(Context.getInstance().currentGame().getLevelHeader());
 		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
-		_start.requestFocus();
+		
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	    		_start.requestFocus();
+	        }
+	    });
 	}
 	
 	@FXML

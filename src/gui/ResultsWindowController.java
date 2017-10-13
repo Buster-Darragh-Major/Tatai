@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -83,7 +84,13 @@ public class ResultsWindowController extends TataiController implements Initiali
 		if (!((Context.getInstance().currentGame().questionsCorrect() >= 8)
 				&& (Context.getInstance().currentGame().currentLevel() == Level.Level1))) {
 			_level2Button.setVisible(false);
-			_level2Button.requestFocus();
+			
+		    Platform.runLater(new Runnable() {
+		        @Override
+		        public void run() {
+					_level2Button.requestFocus();
+		        }
+		    });
 		}
 	}
 }

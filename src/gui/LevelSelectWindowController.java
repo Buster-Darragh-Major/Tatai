@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -73,7 +74,12 @@ public class LevelSelectWindowController extends TataiController implements Init
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		_level1.requestFocus();
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	    		_level1.requestFocus();
+	        }
+	    });
 	}
 	
 }
