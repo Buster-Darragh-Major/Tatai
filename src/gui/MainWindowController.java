@@ -1,12 +1,16 @@
 package gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class MainWindowController extends TataiController {
+public class MainWindowController extends TataiController  implements Initializable{
 	
 	/* FXML Nodes */
 	@FXML
@@ -61,5 +65,10 @@ public class MainWindowController extends TataiController {
 		} else if (e.getCode() == KeyCode.F1) {
 			handleTutorialClick();
 		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		_mainMenuPlay.requestFocus();
 	}
 }

@@ -59,6 +59,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		// objects set difficulty.
 		_levelHeader.setText(Context.getInstance().currentGame().getLevelHeader());
 		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+		_start.requestFocus();
 	}
 	
 	@FXML

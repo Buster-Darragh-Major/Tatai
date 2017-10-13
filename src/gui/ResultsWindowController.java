@@ -58,12 +58,8 @@ public class ResultsWindowController extends TataiController implements Initiali
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// If on level 1 and got 8 or more correct offer user to play level 2
-		if (!((Context.getInstance().currentGame().questionsCorrect() >= 8)
-				&& (Context.getInstance().currentGame().currentLevel() == Level.Level1))) {
-			_level2Button.setVisible(false);
-		}
-
+		_mainMenuButton.requestFocus();
+		
 		// Set overall questions correct label
 		_scoreLabel
 				.setText("You scored " + Context.getInstance().currentGame().questionsCorrect() + "/" + _questionTotal);
@@ -82,5 +78,12 @@ public class ResultsWindowController extends TataiController implements Initiali
 		qInt.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qInt"));
 		qTranslation.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qTranslation"));
 		qCorrect.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qCorrect"));
+		// If on level 1 and got 8 or more correct offer user to play level 2
+		
+		if (!((Context.getInstance().currentGame().questionsCorrect() >= 8)
+				&& (Context.getInstance().currentGame().currentLevel() == Level.Level1))) {
+			_level2Button.setVisible(false);
+			_level2Button.requestFocus();
+		}
 	}
 }
