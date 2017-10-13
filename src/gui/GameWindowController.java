@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
@@ -93,6 +95,7 @@ private static final String FINISH = "Finish!";
 				_nextQuestionButton.setVisible(true);
 				_recordButton.setDisable(false);
 				_recordButton.setText("Re Record");
+				_nextQuestionButton.requestFocus();
 			}
 		});
 		
@@ -117,6 +120,7 @@ private static final String FINISH = "Finish!";
 		
 		Thread th = new Thread(task);
 		th.start();
+		_nextQuestionButton.requestFocus();
 	}
 	
 	/**
@@ -130,6 +134,7 @@ private static final String FINISH = "Finish!";
 		
 		// Display record button
 		_recordButton.setVisible(true);
+		_recordButton.requestFocus();
 	}
 	
 	/**
@@ -245,7 +250,7 @@ private static final String FINISH = "Finish!";
 		// Display skip/try again buttons
 		_skipButton.setVisible(true);
 		_tryAgainButton.setVisible(true);
-		
+		_tryAgainButton.requestFocus();
 		// Remove record/playback buttons
 		_nextQuestionButton.setVisible(false);
 		_playbackButton.setVisible(false);
@@ -264,6 +269,7 @@ private static final String FINISH = "Finish!";
 			// If next button does not currently display finish, set text to next
 			if (!_nextQuestionButton.getText().equals(FINISH)) {
 				_nextQuestionButton.setText(NEXT);
+				_nextQuestionButton.requestFocus();
 			}
 		}
 		
@@ -293,6 +299,7 @@ private static final String FINISH = "Finish!";
 
 		if (!_nextQuestionButton.getText().equals(FINISH)) {
 			_nextQuestionButton.setText(NEXT);
+			_nextQuestionButton.requestFocus();
 		}
 	}
 	
@@ -334,5 +341,14 @@ private static final String FINISH = "Finish!";
 		// Set question number label
 		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
 		_questionNoLabel.setTextFill(_intLabel.getTextFill());
+		
+		_recordButton.requestFocus();
+	}
+	
+	@FXML 
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleQuitClick();
+		} 
 	}
 }
