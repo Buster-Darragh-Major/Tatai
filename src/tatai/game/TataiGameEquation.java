@@ -7,6 +7,7 @@ import stats.CSVStatsHandler;
 import stats.StatisticHandler;
 import tatai.creations.Level;
 import tatai.creations.TataiCreation;
+import tatai.creations.TataiCreationModel;
 import tatai.creations.labelgenerator.Level1EquationLabelGenerator;
 import tatai.creations.labelgenerator.Level2EquationLabelGenerator;
 import tatai.translator.TataiEquationTranslator;
@@ -79,5 +80,76 @@ public class TataiGameEquation extends TataiGame {
 		}
 		
 		_creationModel.updateModel(creationClass);
+	}
+	
+	/**
+	 * Returns a list of translated integers as a String in the order they
+	 * were played in the game
+	 */
+	public ArrayList<String> getQuestionTrans() {
+		ArrayList<String> trans = new ArrayList<String>();
+		
+		for (int i = 0; i < TataiCreationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
+			String creation = _creationModel.getCreationLabel(i + 1);
+			trans.add(i, _translator.translate(creation));
+		}
+		
+		return trans;
+	}
+	
+	////Stats Methods \\\\
+	
+	public void setStatsHandlerLevel(Level level) {
+		if (level == Level.Level1) {
+			_statsHandler = _l01statsHandler;
+		} else if (level == Level.Level2) {
+			_statsHandler = _l02statsHandler;
+		}
+		
+	}
+	
+	/**
+	 * Returns the average as a percentage 
+	 * 
+	 * return average
+	 */
+	public String averageAsPercent() {
+		if (averageAsDouble() <= 0) {
+			return "%" + 0.00;
+		}
+		
+		String per = "" + (averageAsDouble() * 10);
+		per = per.substring(0, 4) + "%";
+		return per;
+	}
+		 
+	/**
+	 * Returns this sessions current average
+	 * 
+	 * @return The average as a double
+	 */
+	public double averageAsDouble() {
+		return _statsHandler.average();
+	}
+	
+	/**
+	 * Total played
+	 */
+	public int totalPlayed() {
+		return _statsHandler.totalPlayed();
+	}
+	
+	/**
+	 * correct
+	 */
+	public int correct() {
+		return _statsHandler.totalCorrect();
+	}
+	
+	/**
+	 * incorrect
+	 */
+	public int incorrect() {
+		return _statsHandler.totalIncorrect();
 	}
 }
