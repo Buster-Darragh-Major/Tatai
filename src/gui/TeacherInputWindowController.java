@@ -137,6 +137,11 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		addToLabel("");
 	}
 	
+	@FXML
+	public void handleEnterClick() {
+		
+	}
+	
 	private void addToLabel(String character) {
 		String equation = _inputLabel.getText();
 		
@@ -187,22 +192,27 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		
 		if (equation.contains("+")) {
 			if ((operand1 + operand2 <= 99) && (operand1 + operand2 >= 1)) {
+				_enterButton.setDisable(false);
 				return true;
 			}
 		} else if (equation.contains("-")) {
 			if ((operand1 - operand2 <= 99) && (operand1 - operand2 >= 1)) {
+				_enterButton.setDisable(false);
 				return true;
 			}
 		} else if (equation.contains("x")) {
 			if ((operand1 * operand2 <= 99) && (operand1 * operand2 >= 1)) {
+				_enterButton.setDisable(false);
 				return true;
 			}
 		} else if (equation.contains("÷")) {
 			if ((operand1 / operand2 <= 99) && (operand1 / operand2 >= 1) && (operand1 % operand2 == 0)) {
+				_enterButton.setDisable(false);
 				return true;
 			}
 		}
 		
+		_enterButton.setDisable(true);
 		return false;
 	}
 

@@ -90,7 +90,7 @@
                   <Font size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="_enterButton" buttonType="RAISED" prefHeight="71.0" prefWidth="95.0" text="Enter" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <JFXButton fx:id="_enterButton" buttonType="RAISED" onAction="#handleEnterClick" prefHeight="71.0" prefWidth="95.0" text="Enter" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
