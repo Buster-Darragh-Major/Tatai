@@ -41,5 +41,10 @@
          <GridPane.margin>
             <Insets right="10.0" top="10.0" />
          </GridPane.margin></JFXButton>
+      <JFXButton fx:id="_teachersButton" buttonType="RAISED" onAction="#handleTechersClick" prefHeight="20.0" text="Teachers" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="10.0" />
+         </GridPane.margin>
+      </JFXButton>
    </children>
 </GridPane>

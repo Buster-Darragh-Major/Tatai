@@ -22,6 +22,8 @@ public class MainWindowController extends TataiController  implements Initializa
 	private Button _mainMenuQuit;
 	@FXML
 	private Button _mainMenuTutorial;
+	@FXML
+	private Button _teachersButton;
 	
 	/**
 	 * Handles user pressing play button
@@ -41,10 +43,22 @@ public class MainWindowController extends TataiController  implements Initializa
 		changeWindow("StatsWindow.fxml", stage);// Change to StatsWindow.fxml view
 	}
 	
+	/**
+	 * Handles pressing tutorial button
+	 */
 	@FXML
 	public void handleTutorialClick() {
 		Stage stage = (Stage) _mainMenuTutorial.getScene().getWindow(); // Get Current stage
 		changeWindow("TutorialWindow.fxml", stage);// Change to TutorialWindow.fxml view
+	}
+	
+	/**
+	 * Handles pressing teachers button
+	 */
+	@FXML
+	public void handleTechersClick() {
+		Stage stage = (Stage) _teachersButton.getScene().getWindow(); // Get Current stage
+		changeWindow("TeacherInputWindow.fxml", stage);// Change to TeacherInputWindow.fxml view
 	}
 	
 	/**

@@ -216,7 +216,7 @@ public class PracticeWindowController extends TataiController implements Initial
 	
 	private void addToLabel(String num) {
 		if (_inputLabel.getText().length() == 2) {
-			flashText();
+			flashText(_inputLabel);
 		} else if (_inputLabel.getText().equals("0")) {
 			_inputLabel.setText(num);
 		} else {
@@ -248,31 +248,6 @@ public class PracticeWindowController extends TataiController implements Initial
 		} else {
 			return false;
 		}
-	}
-	
-	
-	
-	private void flashText() {
-		_inputLabel.setStyle("-fx-text-fill: " + INCORRECT_RED + ";");
-		
-		// Create thread for flashing process
-		Task<Void> task = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				Thread.sleep(100);
-				return null;
-			}
-		};
-		
-		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-			@Override
-			public void handle(WorkerStateEvent event) {
-				_inputLabel.setStyle("-fx-text-fill: white;");
-			}
-		});
-		
-		Thread th = new Thread(task);
-		th.start();
 	}
 	
 	/**
