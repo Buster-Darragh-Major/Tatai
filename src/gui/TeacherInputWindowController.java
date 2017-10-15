@@ -1,15 +1,25 @@
 package gui;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class TeacherInputWindowController extends TataiController {
+public class TeacherInputWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
 	@FXML
 	private Label _inputLabel;
+	@FXML
+	private Label _warningLabel;
 	@FXML
 	private Button _0;
 	@FXML
@@ -96,19 +106,110 @@ public class TeacherInputWindowController extends TataiController {
 	}
 	
 	@FXML
+	public void handlePlusClick() {
+		addToLabel("+");
+	}
+	
+	@FXML
+	public void handleMinusClick() {
+		addToLabel("-");
+	}
+	
+	@FXML
+	public void handleTimesClick() {
+		addToLabel("x");
+	}
+	
+	@FXML
+	public void handleDivideClick() {
+		addToLabel("÷");
+	}
+	
+	@FXML
 	public void handleExitClick() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
 		changeWindow("MainWindow.fxml", stage);// Change to MainWindow.fxml view
 	}
 	
-	private void addToLabel(String num) {
-		if (_inputLabel.getText().length() == 2) {
-			flashText(_inputLabel);
-		} else if (_inputLabel.getText().equals("0")) {
-			_inputLabel.setText(num);
+	@FXML
+	public void handleClearClick() {
+		_inputLabel.setText("");
+		addToLabel("");
+	}
+	
+	private void addToLabel(String character) {
+		String equation = _inputLabel.getText();
+		
+		if (character.equals("+") || character.equals("-") || character.equals("x") || character.equals("÷")) {
+			if ((!equation.contains("+")) && (!equation.contains("-")) && 
+					(!equation.contains("x")) && (!equation.contains("÷")) && (equation.length() > 0)) {
+				_inputLabel.setText(_inputLabel.getText() + character);
+			} else {
+				flashText(_inputLabel);
+			}
 		} else {
-			_inputLabel.setText(_inputLabel.getText() + num);
+			_inputLabel.setText(_inputLabel.getText() + character);
 		}
+		
+		if (isValid(_inputLabel.getText())) {
+			_warningLabel.setVisible(false);
+		} else {
+			_warningLabel.setVisible(true);
+		}
+	}
+	
+	/**
+	 * Checks that input from the user is valid for a game of tatai, all answers to questions must
+	 * be between 1 - 99 and division questions must evaluate to an integer > 0.
+	 * @return
+	 */
+	private boolean isValid(String equation) {
+		if ((!equation.contains("+")) && (!equation.contains("-")) && 
+				(!equation.contains("x")) && (!equation.contains("÷"))) {
+			return true;
+		}
+		
+		List<String> nums = new ArrayList<String>();
+		
+		Pattern p = Pattern.compile("\\d+");
+		Matcher m = p.matcher(equation);
+		
+		while (m.find()) {
+			nums.add(m.group());
+		}
+		
+		if (nums.size() < 2) {
+			return true;
+		}
+		
+		int operand1 = Integer.parseInt(nums.get(0));
+		int operand2 = Integer.parseInt(nums.get(1));
+		
+		if (equation.contains("+")) {
+			if ((operand1 + operand2 <= 99) && (operand1 + operand2 >= 1)) {
+				return true;
+			}
+		} else if (equation.contains("-")) {
+			if ((operand1 - operand2 <= 99) && (operand1 - operand2 >= 1)) {
+				return true;
+			}
+		} else if (equation.contains("x")) {
+			if ((operand1 * operand2 <= 99) && (operand1 * operand2 >= 1)) {
+				return true;
+			}
+		} else if (equation.contains("÷")) {
+			if ((operand1 / operand2 <= 99) && (operand1 / operand2 >= 1) && (operand1 % operand2 == 0)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		_enterButton.setDisable(true);
+		_warningLabel.setVisible(false);
 	}
 	
 }
