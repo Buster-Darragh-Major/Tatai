@@ -20,16 +20,11 @@ import tatai.game.TataiQuestionTableAdapter;
 public class ResultsWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML
-	private Label _scoreLabel;
-	@FXML
-	private Button _mainMenuButton;
-	@FXML
-	private Button _level2Button;
-	@FXML
-	private TableView<TataiQuestionTableAdapter> _resultsTable;
-	@FXML
-	private TableColumn<TataiQuestionTableAdapter, String> qNo, qInt, qTranslation, qCorrect;
+	@FXML private Label _scoreLabel;
+	@FXML private Button _mainMenuButton;
+	@FXML private Button _level2Button;
+	@FXML private TableView<TataiQuestionTableAdapter> _resultsTable;
+	@FXML private TableColumn<TataiQuestionTableAdapter, String> qNo, qInt, qTranslation, qCorrect;
 
 	/* Fields */
 	private int _questionTotal = TataiGame.TOTAL_NUMBER_OF_QUESTIONS;

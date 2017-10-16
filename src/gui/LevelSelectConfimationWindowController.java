@@ -15,14 +15,10 @@ import javafx.stage.Stage;
 public class LevelSelectConfimationWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML
-	private Button _start;
-	@FXML
-	private Button _back;
-	@FXML
-	private Label _levelHeader;
-	@FXML
-	private Label _levelDescriptor;
+	@FXML private Button _start;
+	@FXML private Button _back;
+	@FXML private Label _levelHeader;
+	@FXML private Label _levelDescriptor;
 	
 	/**
 	 * Handles user pressing start button

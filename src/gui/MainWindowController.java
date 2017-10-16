@@ -14,16 +14,11 @@ import javafx.stage.Stage;
 public class MainWindowController extends TataiController  implements Initializable{
 	
 	/* FXML Nodes */
-	@FXML
-	private Button _mainMenuPlay;
-	@FXML
-	private Button _mainMenuStats;
-	@FXML
-	private Button _mainMenuQuit;
-	@FXML
-	private Button _mainMenuTutorial;
-	@FXML
-	private Button _teachersButton;
+	@FXML private Button _mainMenuPlay;
+	@FXML private Button _mainMenuStats;
+	@FXML private Button _mainMenuQuit;
+	@FXML private Button _mainMenuTutorial;
+	@FXML private Button _teachersButton;
 	
 	/**
 	 * Handles user pressing play button

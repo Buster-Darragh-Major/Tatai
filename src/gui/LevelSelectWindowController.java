@@ -15,14 +15,10 @@ import tatai.creations.Level;
 public class LevelSelectWindowController extends TataiController implements Initializable{
 
 	/* FXML Nodes */
-	@FXML 
-	private Button _level1;
-	@FXML
-	private Button _level2;
-	@FXML
-	private Button _practice;
-	@FXML
-	private Button _menuButton;
+	@FXML private Button _level1;
+	@FXML private Button _level2;
+	@FXML private Button _practice;
+	@FXML private Button _menuButton;
 	
 	/**
 	 * Handles user pressing level 1 select

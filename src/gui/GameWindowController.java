@@ -35,28 +35,17 @@ private static final String FINISH = "Finish!";
 	// TODO ***************************************************************
 
 	/* FXML Nodes */
-	@FXML
-	private Label _intLabel;
-	@FXML
-	private Label _translatedLabel;
-	@FXML
-	private Label _questionNoLabel;
-	@FXML
-	private Pane _pane;
-	@FXML
-	private Pane _childPane;
-	@FXML
-	private Button _recordButton;
-	@FXML
-	private Button _playbackButton;
-	@FXML
-	private Button _nextQuestionButton;
-	@FXML
-	private Button _tryAgainButton;
-	@FXML
-	private Button _skipButton;
-	@FXML
-	private Button _exitButton;
+	@FXML private Label _intLabel;
+	@FXML private Label _translatedLabel;
+	@FXML private Label _questionNoLabel;
+	@FXML private Pane _pane;
+	@FXML private Pane _childPane;
+	@FXML private Button _recordButton;
+	@FXML private Button _playbackButton;
+	@FXML private Button _nextQuestionButton;
+	@FXML private Button _tryAgainButton;
+	@FXML private Button _skipButton;
+	@FXML private Button _exitButton;
 	
 	/* Fields */
 	private TataiSpeechRecognizer _speech;

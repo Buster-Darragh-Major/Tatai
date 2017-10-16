@@ -18,44 +18,25 @@ import javafx.stage.Stage;
 public class TeacherInputWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML
-	private Label _inputLabel;
-	@FXML
-	private Label _warningLabel;
-	@FXML
-	private Button _0;
-	@FXML
-	private Button _1;
-	@FXML
-	private Button _2;
-	@FXML
-	private Button _3;
-	@FXML
-	private Button _4;
-	@FXML
-	private Button _5;
-	@FXML
-	private Button _6;
-	@FXML
-	private Button _7;
-	@FXML
-	private Button _8;
-	@FXML
-	private Button _9;
-	@FXML
-	private Button _plus;
-	@FXML
-	private Button _minus;
-	@FXML
-	private Button _times;
-	@FXML
-	private Button _divide;
-	@FXML
-	private Button _enterButton;
-	@FXML
-	private Button _clearButton;
-	@FXML
-	private Button _exitButton;
+	@FXML private Label _inputLabel;
+	@FXML private Label _warningLabel;
+	@FXML private Button _0;
+	@FXML private Button _1;
+	@FXML private Button _2;
+	@FXML private Button _3;
+	@FXML private Button _4;
+	@FXML private Button _5;
+	@FXML private Button _6;
+	@FXML private Button _7;
+	@FXML private Button _8;
+	@FXML private Button _9;
+	@FXML private Button _plus;
+	@FXML private Button _minus;
+	@FXML private Button _times;
+	@FXML private Button _divide;
+	@FXML private Button _enterButton;
+	@FXML private Button _clearButton;
+	@FXML private Button _exitButton;
 	
 	@FXML
 	public void handle0Click() {
