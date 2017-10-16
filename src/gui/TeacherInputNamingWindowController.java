@@ -43,6 +43,8 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 	
 	@FXML
 	public void handleCreateClick() {
+		Context.getInstance().setQuestionList(_textField.getText());
+		
 		Stage stage = (Stage) _createButton.getScene().getWindow(); // Get Current stage
 		changeWindow("TeacherInputWindow.fxml", stage);// Change to MainWindow.fxml view
 	}

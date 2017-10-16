@@ -20,6 +20,7 @@ public class Context {
 	private TataiGame _game;
 	private TataiGame _regularGame;
 	private TataiGameEquation _equationGame;
+	private String _equationList;
 	
 	/**
 	 * Returns instance of singleton object
@@ -70,5 +71,21 @@ public class Context {
 	 */
 	public void setGameToRegular() {
 		_game = _regularGame;
+	}
+	
+	/**
+	 * Sets the current equation list name that Context cares about to be that of input string 
+	 * @param listName : String
+	 */
+	public void setQuestionList(String listName) {
+		_equationList = listName;
+	}
+	
+	/**
+	 * Returns the current list name that Context tracks
+	 * @return equationList : String
+	 */
+	public String currentQuestionList() {
+		return _equationList;
 	}
 }

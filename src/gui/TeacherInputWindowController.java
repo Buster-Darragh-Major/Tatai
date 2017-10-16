@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import res.questionlist.TextQuestionListHandler;
 
 public class TeacherInputWindowController extends TataiController implements Initializable {
 
@@ -37,6 +38,9 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	@FXML private Button _enterButton;
 	@FXML private Button _clearButton;
 	@FXML private Button _exitButton;
+	
+	/* Fields */
+	private TextQuestionListHandler _handler;
 	
 	@FXML
 	public void handle0Click() {
@@ -122,7 +126,8 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	
 	@FXML
 	public void handleEnterClick() {
-		
+		_handler.writeToFile(_inputLabel.getText() + "=");
+		_inputLabel.setText("");
 	}
 	
 	/**
@@ -207,6 +212,9 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	public void initialize(URL location, ResourceBundle resources) {
 		_enterButton.setDisable(true);
 		_warningLabel.setVisible(false);
+		
+		_handler = new TextQuestionListHandler(Context.getInstance().currentQuestionList());
+		_handler.makeList();
 	}
 	
 	/**
