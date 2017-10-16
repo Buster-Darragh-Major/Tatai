@@ -125,6 +125,10 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		
 	}
 	
+	/**
+	 * Adds the character pressed on the keyboard to the label if syntactically sound
+	 * @param character
+	 */
 	private void addToLabel(String character) {
 		String equation = _inputLabel.getText();
 		
