@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class TeacherInputWindowController extends TataiController implements Initializable {
@@ -220,6 +222,49 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	public void initialize(URL location, ResourceBundle resources) {
 		_enterButton.setDisable(true);
 		_warningLabel.setVisible(false);
+	}
+	
+	/**
+	 * Handles key presses
+	 * @param e The Key Event
+	 */
+	@FXML public void onKeyPress(KeyEvent e) {
+		KeyCode code = e.getCode();
+		if (code == KeyCode.ESCAPE) {
+			handleExitClick();
+		} else if (code == KeyCode.DIGIT0 || code == KeyCode.NUMPAD0) {
+			handle0Click();
+		} else if (code == KeyCode.DIGIT1 || code == KeyCode.NUMPAD1) {
+			handle1Click();
+		} else if (code == KeyCode.DIGIT2 || code == KeyCode.NUMPAD2) {
+			handle2Click();
+		} else if (code == KeyCode.DIGIT3 || code == KeyCode.NUMPAD3) {
+			handle3Click();
+		} else if (code == KeyCode.DIGIT4 || code == KeyCode.NUMPAD4) {
+			handle4Click();
+		} else if (code == KeyCode.DIGIT5 || code == KeyCode.NUMPAD5) {
+			handle5Click();
+		} else if (code == KeyCode.DIGIT6 || code == KeyCode.NUMPAD6) {
+			handle6Click();
+		} else if (code == KeyCode.DIGIT7 || code == KeyCode.NUMPAD7) {
+			handle7Click();
+		} else if (code == KeyCode.DIGIT8 || code == KeyCode.NUMPAD8) {
+			handle8Click();
+		} else if (code == KeyCode.DIGIT9 || code == KeyCode.NUMPAD9) {
+			handle9Click();
+		} else if (code == KeyCode.X || code == KeyCode.MULTIPLY) {
+			handleTimesClick();
+		} else if (code == KeyCode.SLASH || code == KeyCode.DIVIDE) {
+			handleDivideClick();
+		} else if (code == KeyCode.PLUS || code == KeyCode.ADD) {
+			handlePlusClick();
+		} else if (code == KeyCode.MINUS || code == KeyCode.SUBTRACT) {
+			handleMinusClick();
+		} else if (code == KeyCode.BACK_SPACE) {
+			handleClearClick();
+		} else if (code == KeyCode.ENTER) {
+			handleClearClick();
+		}
 	}
 	
 }
