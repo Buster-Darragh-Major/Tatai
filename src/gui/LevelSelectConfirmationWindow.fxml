@@ -59,6 +59,9 @@
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" />
                </effect>
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
             </Label>
          </children>
       </GridPane>
