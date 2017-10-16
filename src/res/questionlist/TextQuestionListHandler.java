@@ -23,18 +23,33 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	public TextQuestionListHandler(String listName) {
 		_fileName = listName + ".txt";
 		_textFile = new File(FILEPATH + System.getProperty("file.separator") + _fileName);
-		fileSetup();
 	}
 	
 	
-	
-	private void fileSetup() {		
+	/**
+	 * Makes a blank text file list under the name of the file the handler holds reference to
+	 */
+	public void makeList() {
 		if (!_textFile.exists()) {
 			try {
 				_textFile.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	
+	
+	/**
+	 * Returns true if the file that the handler holds reverence to currently exists, and false otherwise.
+	 * @return fileExists : boolean
+	 */
+	public boolean alreadyExists() {
+		if (_textFile.exists()) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	

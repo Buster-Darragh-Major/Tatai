@@ -15,6 +15,7 @@ public class TestTextQuestionListHandler {
 	@Before
 	public void setup() {
 		_handler = new TextQuestionListHandler("Test");
+		_handler.makeList();
 		_handler.clear();
 	}
 	
