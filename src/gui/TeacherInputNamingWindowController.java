@@ -40,6 +40,12 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 			_createButton.setDisable(false);
 		}
 	}
+	
+	@FXML
+	public void handleCreateClick() {
+		Stage stage = (Stage) _createButton.getScene().getWindow(); // Get Current stage
+		changeWindow("TeacherInputWindow.fxml", stage);// Change to MainWindow.fxml view
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

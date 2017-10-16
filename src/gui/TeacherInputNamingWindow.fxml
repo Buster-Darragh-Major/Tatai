@@ -33,7 +33,7 @@
             <Insets left="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <JFXButton fx:id="_createButton" buttonType="RAISED" prefHeight="50.0" prefWidth="100.0" text="Create!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+      <JFXButton fx:id="_createButton" buttonType="RAISED" onAction="#handleCreateClick" prefHeight="50.0" prefWidth="100.0" text="Create!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
       <Label fx:id="_warningLabel" text="A list under this name already exists." textFill="#cc0404" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="10.0" />
