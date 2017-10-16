@@ -28,7 +28,8 @@ public interface ListHandler {
 	
 	/**
 	 * Returns the String content found on the line of the file specified by the input
-	 * parameter lineNo.
+	 * parameter lineNo. (Line numbers start at 1). If line number doesn't exist null is
+	 * returned;
 	 * @param lineNo
 	 * @return lineContent : String
 	 */

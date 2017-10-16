@@ -20,9 +20,7 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	
 	/* Fields */
 	private final String _fileName;
-	private final File _textFile;
-	private List<String> _listContent;
-	
+	private final File _textFile;	
 	
 	public TextQuestionListHandler(String listName) {
 		_fileName = listName + ".txt";
@@ -32,9 +30,7 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	
 	
 	
-	private void fileSetup() {
-		_listContent = new ArrayList<String>();
-		
+	private void fileSetup() {		
 		if (!_textFile.exists()) {
 			try {
 				_textFile.createNewFile();
@@ -130,16 +126,62 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		int lineNo = 0;
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(_textFile));
+			
+			while (reader.readLine() != null) {
+				lineNo++;
+			}
+			
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return lineNo;
 	}
 
 	
 	
 	@Override
 	public String getLine(int lineNo) {
-		// TODO Auto-generated method stub
-		return null;
+		String line  = null;
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(_textFile));
+			
+			// Loop through to required line and set output string to equal content
+			for (int i = 0; i < lineNo; i++) {
+				line = reader.readLine();
+			}
+			
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return line;
 	}
 
+	
+	public void clear() {
+		try {
+			// Create blank file and overwrite current file with temp file
+			TEMP_FILE.createNewFile();
+			TEMP_FILE.renameTo(_textFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete() {
+		try {
+			_textFile.delete();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
