@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import res.TataiHandler;
 import tatai.creations.Level;
 
 /**
@@ -21,11 +22,9 @@ import tatai.creations.Level;
  * @author Nathan Cairns
  *
  */
-public class CSVStatsHandler implements StatisticHandler {
+public class CSVStatsHandler extends TataiHandler implements StatisticHandler {
 	/* MACROS */
 	public static final String SEPARATOR = ",";
-	public static final File FILEPATH = new File(
-			System.getProperty("user.dir") + System.getProperty("file.separator") + "res");
 	public static final int START_VALUE = 0;
 
 	/* Fields */
