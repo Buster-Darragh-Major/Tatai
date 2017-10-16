@@ -7,8 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
 
 import res.TataiHandler;
 
@@ -167,6 +165,10 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	}
 
 	
+	
+	/**
+	 * Clears all content of file
+	 */
 	public void clear() {
 		try {
 			// Create blank file and overwrite current file with temp file
@@ -177,6 +179,12 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 		}
 	}
 	
+	
+	
+	/**
+	 * Deletes the file related to the handler. Nullifies use of object, only invoke if object
+	 * will no longer be used.
+	 */
 	public void delete() {
 		try {
 			_textFile.delete();
