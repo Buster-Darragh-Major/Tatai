@@ -1,4 +1,4 @@
- package stats;
+ package res.stats;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,7 +25,7 @@ public class CSVStatsHandler implements StatisticHandler {
 	/* MACROS */
 	public static final String SEPARATOR = ",";
 	public static final File FILEPATH = new File(
-			System.getProperty("user.dir") + System.getProperty("file.separator") + "stats");
+			System.getProperty("user.dir") + System.getProperty("file.separator") + "res");
 	public static final int START_VALUE = 0;
 
 	/* Fields */
