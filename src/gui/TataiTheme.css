@@ -60,6 +60,10 @@
 	-fx-text-fill: #383838;
 }
 
+.text-input {
+    -fx-text-fill: white;
+}
+
 .textarea {
 	-fx-padding: 10px;
 }

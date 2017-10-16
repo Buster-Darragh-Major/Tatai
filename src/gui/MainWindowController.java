@@ -53,7 +53,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	@FXML
 	public void handleTechersClick() {
 		Stage stage = (Stage) _teachersButton.getScene().getWindow(); // Get Current stage
-		changeWindow("TeacherInputWindow.fxml", stage);// Change to TeacherInputWindow.fxml view
+		changeWindow("TeacherInputNamingWindow.fxml", stage);// Change to TeacherInputNamingWindow.fxml view
 	}
 	
 	/**
