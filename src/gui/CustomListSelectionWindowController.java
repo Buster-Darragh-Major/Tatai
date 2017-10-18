@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import res.TataiHandler;
+import res.questionlist.TextQuestionListHandler;
 
 public class CustomListSelectionWindowController extends TataiController implements Initializable {
 
@@ -44,7 +44,7 @@ public class CustomListSelectionWindowController extends TataiController impleme
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ArrayList<File> files = new ArrayList<File>(Arrays.asList(TataiHandler.RES_DIRECTORY.listFiles()));
+		ArrayList<File> files = new ArrayList<File>(Arrays.asList(TextQuestionListHandler.LIST_DIRECTORY.listFiles()));
 		ArrayList<String> items = new ArrayList<String>();
 		for (File f : files) {
 			String name = f.getName();
