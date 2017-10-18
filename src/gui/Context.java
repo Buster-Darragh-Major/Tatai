@@ -1,6 +1,7 @@
 package gui;
 
 import tatai.game.TataiGame;
+import tatai.game.TataiGameCustomList;
 import tatai.game.TataiGameEquation;
 
 /**
@@ -20,6 +21,7 @@ public class Context {
 	private TataiGame _game;
 	private TataiGame _regularGame;
 	private TataiGameEquation _equationGame;
+	private TataiGameCustomList _customGame;
 	private String _equationList;
 	
 	/**
@@ -37,6 +39,7 @@ public class Context {
 	public void newGame() {
 		_regularGame = new TataiGame();
 		_equationGame = new TataiGameEquation();
+		_customGame = new TataiGameCustomList();
 		
 		// By default set to return a regular game type
 		_game = _regularGame;
@@ -64,6 +67,13 @@ public class Context {
 	 */
 	public void setGameToEquation() {
 		_game = _equationGame;
+	}
+	
+	/**
+	 * sets the current game type to be a custom type game;
+	 */
+	public void setGameToCustom() {
+		_game = _customGame;
 	}
 	
 	/**
