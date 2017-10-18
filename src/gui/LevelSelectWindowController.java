@@ -18,6 +18,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	@FXML private Button _level1;
 	@FXML private Button _level2;
 	@FXML private Button _practice;
+	@FXML private Button _customList;
 	@FXML private Button _menuButton;
 	
 	/**
@@ -56,6 +57,15 @@ public class LevelSelectWindowController extends TataiController implements Init
 	public void handleMenuButtonClick() {
 		Stage stage = (Stage) _menuButton.getScene().getWindow(); // Get current stage
 		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml
+	}
+	
+	/**
+	 * Handles user pressing custom list button
+	 */
+	@FXML
+	public void handleCustomListClick() {
+		Stage stage = (Stage) _customList.getScene().getWindow(); // Get current stage
+		changeWindow("CustomListSelectionWindow.fxml", stage); // Change to CustomListSelectionWindow.fxml
 	}
 	
 	/**
