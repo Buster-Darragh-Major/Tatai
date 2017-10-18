@@ -14,7 +14,7 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 
 	/* Macros */
 	public final static String TEMP_FILE_NAME = "temp.txt";
-	public final static File TEMP_FILE = new File(FILEPATH + System.getProperty("file.separator") + TEMP_FILE_NAME);
+	public final static File TEMP_FILE = new File(RES_DIRECTORY + System.getProperty("file.separator") + TEMP_FILE_NAME);
 	
 	/* Fields */
 	private final String _fileName;
@@ -22,7 +22,7 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	
 	public TextQuestionListHandler(String listName) {
 		_fileName = listName + ".txt";
-		_textFile = new File(FILEPATH + System.getProperty("file.separator") + _fileName);
+		_textFile = new File(RES_DIRECTORY + System.getProperty("file.separator") + _fileName);
 	}
 	
 	
