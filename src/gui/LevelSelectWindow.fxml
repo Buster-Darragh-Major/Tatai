@@ -40,7 +40,7 @@
             <JFXButton fx:id="_level1" buttonType="RAISED" onAction="#handleLevel1Click" prefHeight="50.0" prefWidth="100.0" text="Level 1" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <JFXButton fx:id="_level2" buttonType="RAISED" onAction="#handleLevel2Click" prefHeight="50.0" prefWidth="100.0" text="Level 2" textFill="#f8f8f8" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
             <JFXButton fx:id="_practice" buttonType="RAISED" onAction="#handlePracticeClick" prefHeight="50.0" prefWidth="100.0" text="Practice" textFill="#f8f8f8" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <JFXButton prefHeight="50.0" prefWidth="100.0" text="Custom List" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <JFXButton buttonType="RAISED" prefHeight="50.0" prefWidth="100.0" text="Custom List" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
       <JFXButton fx:id="_menuButton" buttonType="RAISED" onAction="#handleMenuButtonClick" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
