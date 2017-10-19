@@ -147,4 +147,15 @@ public class TataiClassRoom implements ClassRoom {
 		}
 	}
 
+	@Override
+	public void saveRoll() {
+		for (User user : _students) {
+			user.saveUser();
+		}
+		
+		for (User user : _teachers) {
+			user.saveUser();
+		}
+	}
+
 }

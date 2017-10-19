@@ -58,4 +58,9 @@ public interface ClassRoom {
 	 * @param teacher
 	 */
 	public void addTeacher(Teacher teacher);
+	
+	/**
+	 * Save the students and teachers
+	 */
+	public void saveRoll();
 }
