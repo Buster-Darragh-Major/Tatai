@@ -1,6 +1,7 @@
 package users.user;
 
 import res.stats.TataiStat;
+import tatai.creations.Level;
 
 /**
  * Abstract class representing a user.
@@ -75,6 +76,69 @@ public abstract class User {
 	 */
 	public String name() {
 		return _firstName + " " + _lastName;
+	}
+	
+	/**
+	 * Gets the total played for the appropriate level.
+	 * @param l the level
+	 * @return total player for l
+	 */
+	public int getTotalPlayed(Level l) {
+		TataiStat ts = determineStatLevel(l);
+		
+		return ts.totalPlayed();
+	}
+	
+	/**
+	 * Gets the total correct for the appropriate level
+	 * @param l the level
+	 * @return total correct for l
+	 */
+	public int getTotalCorrect(Level l) {
+		TataiStat ts = determineStatLevel(l);
+		
+		return ts.totalCorrect();
+	}
+	
+	/**
+	 * Gets the total incorrect for the appropriate level
+	 * @param l the level
+	 * @return total incorrect for l
+	 */
+	public int getTotalIncorrect(Level l) {
+		TataiStat ts = determineStatLevel(l);
+		
+		return ts.totalIncorrect();
+	}
+	
+	/**
+	 * Gets the average for the appropriate level
+	 * @param l the level
+	 * @return average for l
+	 */
+	public double getAverage(Level l) {
+		TataiStat ts = determineStatLevel(l);
+		
+		return ts.average();
+	}
+	
+	/**
+	 * Determines which level stats to use.
+	 * @param l the level
+	 * @return the stats of the apporpriate level
+	 */
+	private TataiStat determineStatLevel(Level l) {
+		TataiStat ts = null;
+		
+		switch (l) {
+		case Level1: 
+			ts = _lvl1Stats;
+			break;
+		case Level2:
+			ts = _lvl2Stats;
+			break;
+		}
+		return ts;
 	}
 	
 	/**
