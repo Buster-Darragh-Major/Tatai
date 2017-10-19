@@ -17,7 +17,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 	private TataiCreationModel _creationModel;
 	private TextQuestionListHandler _handler;
 	public final int TOTAL_NUMBER_OF_QUESTIONS;
-	private int _questionNo = 1;
+	private int _questionNo = 0;
 	
 	// Constructor
 	public TataiGameCustomList(TextQuestionListHandler handler) {
@@ -25,6 +25,11 @@ public class TataiGameCustomList extends TataiGameEquation {
 		_handler = handler;
 		TOTAL_NUMBER_OF_QUESTIONS = _handler.size();
 		_creationModel = new TataiCreationModel(new CustomEquationLabelGenerator(_handler), _handler.size());
+	}
+	
+	@Override
+	public int totalNumberOfQuestions() {
+		return TOTAL_NUMBER_OF_QUESTIONS;
 	}
 	
 	@Override
@@ -46,7 +51,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 	
 	@Override
 	public void displayCurrentQuestion(Label label, Pane pane) {
-		_creationModel.displayCreation(_questionNo, label, pane);
+		_creationModel.displayCreation(_questionNo + 1, label, pane);
 	}
 	
 	@Override
@@ -71,7 +76,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 	
 	private void nextQuestion() {
 		_firstAttempt = false;
-		if ((_questionNo < _handler.size() + 1) && (_questionNo > 0)) {
+		if ((_questionNo < _handler.size()) && (_questionNo >= 0)) {
 			_questionNo++;
 		} else {
 			_questionNo++;
@@ -130,5 +135,10 @@ public class TataiGameCustomList extends TataiGameEquation {
 		}
 		
 		return trans;
+	}
+	
+	@Override
+	public int currentQuestion() {
+		return _questionNo + 1;
 	}
 }

@@ -58,7 +58,11 @@ public class TataiGame {
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
 	}
-
+	
+	public int totalNumberOfQuestions() {
+		return TOTAL_NUMBER_OF_QUESTIONS;
+	}
+	
 	/**
 	 * Provides a translation of the current question
 	 */

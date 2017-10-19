@@ -12,7 +12,7 @@ public class TataiEquationTranslator implements Translator {
 	public String translate(String toTranslate) {
 		
 		List<String> nums = new ArrayList<String>();
-		
+
 		Pattern p = Pattern.compile("\\d+");
 		Matcher m = p.matcher(toTranslate);
 		

@@ -27,7 +27,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 	@FXML private TableColumn<TataiQuestionTableAdapter, String> qNo, qInt, qTranslation, qCorrect;
 
 	/* Fields */
-	private int _questionTotal = TataiGame.TOTAL_NUMBER_OF_QUESTIONS;
+	private int _questionTotal = Context.getInstance().currentGame().totalNumberOfQuestions();
 
 	/**
 	 * Handles user pressing main menu button
