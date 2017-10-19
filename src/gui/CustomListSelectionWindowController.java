@@ -35,7 +35,7 @@ public class CustomListSelectionWindowController extends TataiController impleme
 		Context.getInstance().setQuestionList(_listView.getSelectionModel().getSelectedItem());
 		
 		Stage stage = (Stage) _playButton.getScene().getWindow(); // Get current stage
-		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml
+		changeWindow("GameWindow.fxml", stage); // Change to GameokWindow.fxml
 	}
 	
 	@FXML

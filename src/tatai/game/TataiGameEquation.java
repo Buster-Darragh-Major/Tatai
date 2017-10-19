@@ -16,7 +16,7 @@ import tatai.translator.Translator;
 public class TataiGameEquation extends TataiGame {
 
 	/* Fields */
-	private Translator _translator = new TataiEquationTranslator();
+	protected Translator _translator = new TataiEquationTranslator();
 	private StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
 	private StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
 	// ^^^ REPLACE WITH PROPER STATS HANDLERS FOR GAME TYPE ^^^ //
