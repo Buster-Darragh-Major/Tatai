@@ -23,21 +23,25 @@ import tatai.creations.Level;
 public abstract class User extends TataiHandler {
 	/* MACROS */
 	public static final File USER_DIR = new File(DATA_DIR + System.getProperty("file.separator") + "users");
-	
-	@JsonIgnore protected File _userFile;
+
+	@JsonIgnore
+	protected File _userFile;
 	protected boolean _writingPrivileges;
 	protected String _firstName;
 	protected String _lastName;
 	protected String _userName;
 	protected TataiStat _lvl1Stats;
 	protected TataiStat _lvl2Stats;
-	
+
 	/**
 	 * Constructor
 	 * 
-	 * @param firstName the first name of the user
-	 * @param LastName the last name of the user
-	 * @param userName the user name the user has choosen
+	 * @param firstName
+	 *            the first name of the user
+	 * @param LastName
+	 *            the last name of the user
+	 * @param userName
+	 *            the user name the user has choosen
 	 */
 	public User(String firstName, String LastName, String userName) {
 		_firstName = firstName;
@@ -45,10 +49,10 @@ public abstract class User extends TataiHandler {
 		_userName = userName;
 		_lvl1Stats = new TataiStat();
 		_lvl2Stats = new TataiStat();
-		
-		_userFile =  new File(USER_DIR + System.getProperty("file.separator") + userName);
+
+		_userFile = new File(USER_DIR + System.getProperty("file.separator") + userName);
 	}
-	
+
 	/**
 	 * Saves the user. Inheritors should decide how a user is saved.
 	 */
@@ -57,28 +61,29 @@ public abstract class User extends TataiHandler {
 
 		writeToFile(jsonStr);
 	}
-	
+
 	/**
-	 * Converts this object to a Json string
-	 * Convenience method for inheritors to use.
+	 * Converts this object to a Json string Convenience method for inheritors to
+	 * use.
+	 * 
 	 * @return object as Json String
 	 */
 	protected String toJsonString() {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 		String jsonStr = null;
-        try {
-            jsonStr = mapper.writeValueAsString(this);
-            return jsonStr;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		try {
+			jsonStr = mapper.writeValueAsString(this);
+			return jsonStr;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return jsonStr;
 	}
-	
+
 	protected void writeToFile(String jsonStr) {
 		createUsersFolder();
-		
+
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(_userFile.getAbsolutePath(), false));
 			writer.write(jsonStr);
@@ -87,110 +92,125 @@ public abstract class User extends TataiHandler {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Makes the appropriate directory if it doesn't already exist.
 	 */
-	private void createUsersFolder() {
+	public static void createUsersFolder() {
 		if (!USER_DIR.exists()) {
 			USER_DIR.mkdirs();
 		}
-}
-	
+	}
+
 	/**
-	 * Checks if the user has writing privileges 
+	 * Checks if the user has writing privileges
+	 * 
 	 * @return writingPrivileges
 	 */
 	public boolean hasWritingPrivileges() {
 		return _writingPrivileges;
 	}
-	
+
 	/**
 	 * Returns the user's username
+	 * 
 	 * @return username
 	 */
 	public String userName() {
 		return _userName;
 	}
-	
+
 	/**
 	 * Returns the user's first name
+	 * 
 	 * @return first name
 	 */
 	public String firstName() {
 		return _firstName;
 	}
-	
+
 	/**
 	 * Returns the user's last name;
+	 * 
 	 * @return last name
 	 */
 	public String lastName() {
 		return _lastName;
 	}
-	
+
 	/**
 	 * Returns the user's full name
+	 * 
 	 * @return full name
 	 */
 	public String name() {
 		return _firstName + " " + _lastName;
 	}
-	
+
 	/**
 	 * Gets the total played for the appropriate level.
-	 * @param l the level
+	 * 
+	 * @param l
+	 *            the level
 	 * @return total player for l
 	 */
 	public int getTotalPlayed(Level l) {
 		TataiStat ts = determineStatLevel(l);
-		
+
 		return ts.totalPlayed();
 	}
-	
+
 	/**
 	 * Gets the total correct for the appropriate level
-	 * @param l the level
+	 * 
+	 * @param l
+	 *            the level
 	 * @return total correct for l
 	 */
 	public int getTotalCorrect(Level l) {
 		TataiStat ts = determineStatLevel(l);
-		
+
 		return ts.totalCorrect();
 	}
-	
+
 	/**
 	 * Gets the total incorrect for the appropriate level
-	 * @param l the level
+	 * 
+	 * @param l
+	 *            the level
 	 * @return total incorrect for l
 	 */
 	public int getTotalIncorrect(Level l) {
 		TataiStat ts = determineStatLevel(l);
-		
+
 		return ts.totalIncorrect();
 	}
-	
+
 	/**
 	 * Gets the average for the appropriate level
-	 * @param l the level
+	 * 
+	 * @param l
+	 *            the level
 	 * @return average for l
 	 */
 	public double getAverage(Level l) {
 		TataiStat ts = determineStatLevel(l);
-		
+
 		return ts.average();
 	}
-	
+
 	/**
 	 * Determines which level stats to use.
-	 * @param l the level
+	 * 
+	 * @param l
+	 *            the level
 	 * @return the stats of the apporpriate level
 	 */
 	private TataiStat determineStatLevel(Level l) {
 		TataiStat ts = null;
-		
+
 		switch (l) {
-		case Level1: 
+		case Level1:
 			ts = _lvl1Stats;
 			break;
 		case Level2:
@@ -199,7 +219,7 @@ public abstract class User extends TataiHandler {
 		}
 		return ts;
 	}
-	
+
 	/**
 	 * Overrides the toString method to return the user's username
 	 */
@@ -207,10 +227,10 @@ public abstract class User extends TataiHandler {
 	public String toString() {
 		return _userName;
 	}
-	
+
 	/**
-	 * Overrides the equals method so that equality between users is determined
-	 * by their username.
+	 * Overrides the equals method so that equality between users is determined by
+	 * their username.
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -220,9 +240,9 @@ public abstract class User extends TataiHandler {
 		if (!(o instanceof User)) {
 			return false;
 		}
-		
+
 		User user = (User) o;
-		
+
 		return this.userName().equals(user.userName());
 	}
 

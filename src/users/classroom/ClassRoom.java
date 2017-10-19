@@ -63,4 +63,9 @@ public interface ClassRoom {
 	 * Save the students and teachers
 	 */
 	public void saveRoll();
+	
+	/**
+	 * Read the roll from wherever it is saved
+	 */
+	public void readRoll();
 }

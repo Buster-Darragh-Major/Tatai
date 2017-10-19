@@ -1,9 +1,13 @@
 package users.classroom;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import users.user.Student;
 import users.user.Teacher;
@@ -30,6 +34,7 @@ public class TataiClassRoom implements ClassRoom {
 	public TataiClassRoom() {
 		_students = new HashSet<User>();
 		_teachers = new HashSet<User>();
+		readRoll();
 	}
 
 	/**
@@ -146,7 +151,10 @@ public class TataiClassRoom implements ClassRoom {
 			throw new ClassRoomException(error);
 		}
 	}
-
+	
+	/**
+	 * Save the roll
+	 */
 	@Override
 	public void saveRoll() {
 		for (User user : _students) {
@@ -156,6 +164,32 @@ public class TataiClassRoom implements ClassRoom {
 		for (User user : _teachers) {
 			user.saveUser();
 		}
+	}
+
+	/**
+	 * Read the roll
+	 */
+	@Override
+	public void readRoll() {
+		User.createUsersFolder();
+		File[] userFiles = User.USER_DIR.listFiles();
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		for (File f : userFiles) {
+			try {
+				User user = mapper.readValue(f, User.class);
+				
+				if (user.hasWritingPrivileges()) {
+					addTeacher((Teacher) user);
+				} else {
+					addStudent((Student) user);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }
