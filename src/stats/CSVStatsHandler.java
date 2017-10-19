@@ -1,4 +1,4 @@
- package res.stats;
+ package stats;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import res.TataiHandler;
 import tatai.creations.Level;
 
 /**
@@ -30,9 +29,9 @@ public class CSVStatsHandler extends TataiHandler implements StatisticHandler {
 
 	/* Fields */
 	private String FILENAME = "user_statistics.csv";
-	private File STATS_FILE = new File(RES_DIRECTORY + System.getProperty("file.separator") + FILENAME);
-	private File L1_STATS_FILE = new File(RES_DIRECTORY + System.getProperty("file.separator") + "user_statistics1.csv");
-	private File L2_STATS_FILE = new File(RES_DIRECTORY + System.getProperty("file.separator") + "user_statistics2.csv");
+	private File STATS_FILE = new File(DATA_DIR + System.getProperty("file.separator") + FILENAME);
+	private File L1_STATS_FILE = new File(DATA_DIR + System.getProperty("file.separator") + "user_statistics1.csv");
+	private File L2_STATS_FILE = new File(DATA_DIR + System.getProperty("file.separator") + "user_statistics2.csv");
 	private Map<String, String> _valueMap;
 	private final String[] _keys = { "totalPlayed", "totalCorrect", "totalIncorrect", "average" };
 
@@ -148,8 +147,8 @@ public class CSVStatsHandler extends TataiHandler implements StatisticHandler {
 	 * Makes the appropriate directory if it doesn't already exist.
 	 */
 	private void createStatsFolder() {
-		if (!RES_DIRECTORY.exists()) {
-			RES_DIRECTORY.mkdir();
+		if (!DATA_DIR.exists()) {
+			DATA_DIR.mkdir();
 		}
 	}
 

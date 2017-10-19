@@ -1,4 +1,4 @@
-package res.questionlist;
+package questionlist;
 
 public interface ListHandler {
 	

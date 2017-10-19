@@ -1,4 +1,4 @@
-package res.stats;
+package stats;
 
 @SuppressWarnings("serial")
 public class StatsException extends RuntimeException{

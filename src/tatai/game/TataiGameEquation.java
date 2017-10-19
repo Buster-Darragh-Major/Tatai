@@ -3,8 +3,8 @@ package tatai.game;
 import java.util.ArrayList;
 
 import creations.cr.Creation;
-import res.stats.CSVStatsHandler;
-import res.stats.StatisticHandler;
+import stats.CSVStatsHandler;
+import stats.StatisticHandler;
 import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;

@@ -1,6 +1,6 @@
 package tatai.creations.labelgenerator;
 
-import res.questionlist.TextQuestionListHandler;
+import questionlist.TextQuestionListHandler;
 
 public class CustomEquationLabelGenerator implements LabelGenerator {
 	

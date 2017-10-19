@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import res.stats.TataiStat;
+import stats.TataiHandler;
+import stats.TataiStat;
 import tatai.creations.Level;
 
 /**
@@ -19,9 +20,9 @@ import tatai.creations.Level;
  * @author Nathan Cairns
  *
  */
-public abstract class User {
+public abstract class User extends TataiHandler {
 	/* MACROS */
-	public static final File USER_DIR = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "users");
+	public static final File USER_DIR = new File(DATA_DIR + System.getProperty("file.separator") + "users");
 	
 	@JsonIgnore protected File _userFile;
 	protected boolean _writingPrivileges;
@@ -92,7 +93,7 @@ public abstract class User {
 	 */
 	private void createUsersFolder() {
 		if (!USER_DIR.exists()) {
-			USER_DIR.mkdir();
+			USER_DIR.mkdirs();
 		}
 }
 	
