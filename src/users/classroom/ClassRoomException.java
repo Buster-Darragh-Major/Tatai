@@ -1,4 +1,4 @@
-package user.classroom;
+package users.classroom;
 
 /**
  * An exception for errors in to do with ClassRooms;

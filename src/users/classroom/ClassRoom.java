@@ -1,4 +1,4 @@
-package user.classroom;
+package users.classroom;
 
 import java.util.List;
 

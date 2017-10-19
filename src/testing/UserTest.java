@@ -3,8 +3,8 @@ package testing;
 import org.junit.Before;
 import org.junit.Test;
 
-import user.classroom.ClassRoom;
-import user.classroom.TataiClassRoom;
+import users.classroom.ClassRoom;
+import users.classroom.TataiClassRoom;
 import users.user.Student;
 import users.user.Teacher;
 
