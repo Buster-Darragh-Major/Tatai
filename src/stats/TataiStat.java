@@ -1,20 +1,26 @@
 package stats;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * This class represents the statistics for a given game mode.
  * 
  * @author Nathan Cairns
  *
  */
-public class TataiStat implements StatisticHandler{
+public class TataiStat implements StatisticHandler {
 	private int _totalPlayed;
 	private int _totalCorrect;
 	private int _totalIncorrect;
-	
+
 	public TataiStat() {
-		_totalPlayed = 0;
-		_totalCorrect = 0;
-		_totalIncorrect = 0;
+		this(0, 0, 0);
+	}
+
+	public TataiStat(@JsonProperty("_totalPlayed")int totalPlayed,@JsonProperty("_totalCorrect") int totalCorrect, @JsonProperty("_totalIncorrect") int totalIncorrect) {
+		_totalPlayed = totalPlayed;
+		_totalCorrect = totalCorrect;
+		_totalIncorrect = totalIncorrect;
 	}
 
 	@Override
@@ -36,22 +42,22 @@ public class TataiStat implements StatisticHandler{
 	public double average() {
 		return calculateAverage();
 	}
-	
+
 	/**
 	 * Calculate the average score from games the played and question correct.
 	 * 
 	 * @return the average
 	 */
 	private double calculateAverage() {
-		
+
 		if (totalPlayed() == 0) {
 			return 0;
 		}
-		
+
 		double average = (double) totalCorrect() / totalPlayed() * 10;
-		
+
 		average = Double.parseDouble(String.format("%.2f", average));
-		
+
 		return average;
 	}
 
@@ -68,7 +74,7 @@ public class TataiStat implements StatisticHandler{
 			throw new StatsException("The number of question you got correct and the number of questions you "
 					+ "got wrong must be consistent with the number of questions you answered");
 		}
-		
+
 		_totalPlayed += played;
 		_totalCorrect += correct;
 		_totalIncorrect += incorrect;

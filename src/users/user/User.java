@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import stats.TataiHandler;
@@ -20,13 +23,19 @@ import tatai.creations.Level;
  * @author Nathan Cairns
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Student.class, name = "Student"),
+
+    @JsonSubTypes.Type(value = Teacher.class, name = "Teacher") }
+)
 public abstract class User extends TataiHandler {
 	/* MACROS */
 	public static final File USER_DIR = new File(DATA_DIR + System.getProperty("file.separator") + "users");
 
-	@JsonIgnore
-	protected File _userFile;
-	protected boolean _writingPrivileges;
+	@JsonIgnore protected File _userFile;
+	@JsonIgnore protected boolean _writingPrivileges;
 	protected String _firstName;
 	protected String _lastName;
 	protected String _userName;
@@ -51,6 +60,20 @@ public abstract class User extends TataiHandler {
 		_lvl2Stats = new TataiStat();
 
 		_userFile = new File(USER_DIR + System.getProperty("file.separator") + userName);
+	}
+	
+	/**
+	 * Constructor for user with pre existing stats
+	 * @param firstName first name of the user
+	 * @param lastName last name of the user
+	 * @param userName username the user has choosen
+	 * @param stat1 their lvl1 stats
+	 * @param stat2
+	 */
+	public User(String firstName, String lastName, String userName, TataiStat stat1, TataiStat stat2) {
+		this(firstName, lastName, userName);
+		_lvl1Stats = stat1;
+		_lvl2Stats = stat2;
 	}
 
 	/**

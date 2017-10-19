@@ -17,7 +17,7 @@ public class App extends Application {
 		try {
 			Context.getInstance().newGame();
 			Context.getInstance().setGameToEquation();
-			Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("UserWindow.fxml"));
 		    
 	        Scene scene = new Scene(root, 800, 500);
 	       

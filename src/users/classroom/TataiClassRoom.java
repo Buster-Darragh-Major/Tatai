@@ -19,6 +19,7 @@ import users.user.User;
  * @author Nathan Cairns
  *
  */
+
 public class TataiClassRoom implements ClassRoom {
 	/* MACROS */
 	public static final String TEACHER_ERROR = "No teacher with name found: ";
@@ -175,6 +176,8 @@ public class TataiClassRoom implements ClassRoom {
 		File[] userFiles = User.USER_DIR.listFiles();
 		
 		ObjectMapper mapper = new ObjectMapper();
+		mapper.enableDefaultTyping(
+			    ObjectMapper.DefaultTyping.NON_CONCRETE_AND_ARRAYS); 
 		
 		for (File f : userFiles) {
 			try {
@@ -190,6 +193,27 @@ public class TataiClassRoom implements ClassRoom {
 			}
 		}
 		
+	}
+
+	@Override
+	public List<String> listTeachers() {
+		List<String> teacherUserNames = new ArrayList<String>();
+		
+		for (User user : _teachers) {
+			teacherUserNames.add("" + user);
+		}
+		
+		return teacherUserNames;
+	}
+
+	@Override
+	public List<String> listStudents() {
+		List<String> studentUserNames = new ArrayList<String>();
+		
+		for (User user : _students) {
+			studentUserNames.add("" + user);
+		}
+		return studentUserNames;
 	}
 
 }

@@ -15,6 +15,8 @@ import tatai.creations.labelgenerator.Level1LabelGenerator;
 import tatai.creations.labelgenerator.Level2LabelGenerator;
 import tatai.translator.TataiTranslator;
 import tatai.translator.Translator;
+import users.classroom.ClassRoom;
+import users.classroom.TataiClassRoom;
 
 /**
  * Class that deals with the abstract parameters of the game itself, i.e. the
@@ -43,6 +45,9 @@ public class TataiGame {
 	protected boolean _firstAttempt;
 	protected ArrayList<String> _questionsCorrect = new ArrayList<String>();
 	protected StatisticHandler _statsHandler;
+	
+	protected ClassRoom _classRoom;
+	
 	protected StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
 	protected StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
 
@@ -57,6 +62,16 @@ public class TataiGame {
 		
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
+		
+		_classRoom = new TataiClassRoom();
+	}
+	
+	/**
+	 * Gets the current class room
+	 * @return the current class
+	 */
+	public ClassRoom getClassRoom() {
+		return _classRoom;
 	}
 
 	/**

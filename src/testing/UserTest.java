@@ -7,6 +7,7 @@ import users.classroom.ClassRoom;
 import users.classroom.TataiClassRoom;
 import users.user.Student;
 import users.user.Teacher;
+import users.user.User;
 
 public class UserTest {
 	Student _student;

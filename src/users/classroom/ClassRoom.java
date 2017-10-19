@@ -60,6 +60,18 @@ public interface ClassRoom {
 	public void addTeacher(Teacher teacher);
 	
 	/**
+	 * Return a list of teachers
+	 * @return the teachers in the class
+	 */
+	public List<String> listTeachers();
+	
+	/**
+	 * Return a list of the students
+	 * @return the students in the class
+	 */
+	public List<String> listStudents();
+	
+	/**
 	 * Save the students and teachers
 	 */
 	public void saveRoll();
