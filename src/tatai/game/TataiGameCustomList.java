@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import creations.cr.Creation;
-import creations.ml.CreationModel;
-import gui.Context;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import res.questionlist.TextQuestionListHandler;
@@ -13,7 +11,6 @@ import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
 import tatai.creations.labelgenerator.CustomEquationLabelGenerator;
-import tatai.creations.labelgenerator.LabelGenerator;
 
 public class TataiGameCustomList extends TataiGameEquation {
 
