@@ -1,4 +1,4 @@
-package stats;
+package res.stats;
 
 /**
  * Simple interface which represents a type which returns 

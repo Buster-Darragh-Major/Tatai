@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import HTK.recording.TataiSpeechRecognizer;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
@@ -16,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
@@ -32,28 +35,17 @@ private static final String FINISH = "Finish!";
 	// TODO ***************************************************************
 
 	/* FXML Nodes */
-	@FXML
-	private Label _intLabel;
-	@FXML
-	private Label _translatedLabel;
-	@FXML
-	private Label _questionNoLabel;
-	@FXML
-	private Pane _pane;
-	@FXML
-	private Pane _childPane;
-	@FXML
-	private Button _recordButton;
-	@FXML
-	private Button _playbackButton;
-	@FXML
-	private Button _nextQuestionButton;
-	@FXML
-	private Button _tryAgainButton;
-	@FXML
-	private Button _skipButton;
-	@FXML
-	private Button _exitButton;
+	@FXML private Label _intLabel;
+	@FXML private Label _translatedLabel;
+	@FXML private Label _questionNoLabel;
+	@FXML private Pane _pane;
+	@FXML private Pane _childPane;
+	@FXML private Button _recordButton;
+	@FXML private Button _playbackButton;
+	@FXML private Button _nextQuestionButton;
+	@FXML private Button _tryAgainButton;
+	@FXML private Button _skipButton;
+	@FXML private Button _exitButton;
 	
 	/* Fields */
 	private TataiSpeechRecognizer _speech;
@@ -93,6 +85,7 @@ private static final String FINISH = "Finish!";
 				_nextQuestionButton.setVisible(true);
 				_recordButton.setDisable(false);
 				_recordButton.setText("Re Record");
+				_nextQuestionButton.requestFocus();
 			}
 		});
 		
@@ -117,6 +110,7 @@ private static final String FINISH = "Finish!";
 		
 		Thread th = new Thread(task);
 		th.start();
+		_nextQuestionButton.requestFocus();
 	}
 	
 	/**
@@ -130,6 +124,7 @@ private static final String FINISH = "Finish!";
 		
 		// Display record button
 		_recordButton.setVisible(true);
+		_recordButton.requestFocus();
 	}
 	
 	/**
@@ -245,7 +240,7 @@ private static final String FINISH = "Finish!";
 		// Display skip/try again buttons
 		_skipButton.setVisible(true);
 		_tryAgainButton.setVisible(true);
-		
+		_tryAgainButton.requestFocus();
 		// Remove record/playback buttons
 		_nextQuestionButton.setVisible(false);
 		_playbackButton.setVisible(false);
@@ -264,6 +259,7 @@ private static final String FINISH = "Finish!";
 			// If next button does not currently display finish, set text to next
 			if (!_nextQuestionButton.getText().equals(FINISH)) {
 				_nextQuestionButton.setText(NEXT);
+				_nextQuestionButton.requestFocus();
 			}
 		}
 		
@@ -293,6 +289,7 @@ private static final String FINISH = "Finish!";
 
 		if (!_nextQuestionButton.getText().equals(FINISH)) {
 			_nextQuestionButton.setText(NEXT);
+			_nextQuestionButton.requestFocus();
 		}
 	}
 	
@@ -334,5 +331,19 @@ private static final String FINISH = "Finish!";
 		// Set question number label
 		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
 		_questionNoLabel.setTextFill(_intLabel.getTextFill());
+		
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	_recordButton.requestFocus();
+	        }
+	    });
+	}
+	
+	@FXML 
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleQuitClick();
+		} 
 	}
 }

@@ -2,9 +2,13 @@ package gui;
 
 import java.io.IOException;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -47,4 +51,26 @@ public abstract class TataiController {
 		stage.setHeight(height);
 	}
 	
+	protected void flashText(Label label) {
+		label.setStyle("-fx-text-fill: " + INCORRECT_RED + ";");
+		
+		// Create thread for flashing process
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				Thread.sleep(100);
+				return null;
+			}
+		};
+		
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				label.setStyle("-fx-text-fill: white;");
+			}
+		});
+		
+		Thread th = new Thread(task);
+		th.start();
+	}
 }

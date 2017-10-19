@@ -1,7 +1,7 @@
 .root {
 	-fx-background-color: #383838;
 	-fx-text-fill: white;
-	-fx-alignment: CENTER;
+	-fx-alignment: center;
 }
 
 .table-view .column-header .label {
@@ -34,7 +34,13 @@
 .button{
 	-fx-text-fill: white;
  	-fx-background-color: #cc0404;
+ 	-fx-cursor: hand;
 }
+.button:hover {
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-scale-z: 1.2;
+ }
 .table-row-cell:empty {
     -fx-background-color: white;
 }
@@ -52,4 +58,15 @@
 .button1{
 	-fx-background-color: white;
 	-fx-text-fill: #383838;
+}
+
+.text-input {
+    -fx-text-fill: white;
+}
+
+.textarea {
+	-fx-padding: 10px;
+}
+.text-area *.content {
+    -fx-background-color: #383838;
 }

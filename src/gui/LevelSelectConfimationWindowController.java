@@ -3,23 +3,22 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class LevelSelectConfimationWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML
-	private Button _start;
-	@FXML
-	private Button _back;
-	@FXML
-	private Label _levelHeader;
-	@FXML
-	private Label _levelDescriptor;
+	@FXML private Button _start;
+	@FXML private Button _back;
+	@FXML private Label _levelHeader;
+	@FXML private Label _levelDescriptor;
 	
 	/**
 	 * Handles user pressing start button
@@ -57,7 +56,20 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		// objects set difficulty.
 		_levelHeader.setText(Context.getInstance().currentGame().getLevelHeader());
 		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+		
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	    		_start.requestFocus();
+	        }
+	    });
 	}
 	
+	@FXML
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleBackClick();
+		}
+	}
 	
 }

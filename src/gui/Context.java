@@ -1,6 +1,7 @@
 package gui;
 
 import tatai.game.TataiGame;
+import tatai.game.TataiGameEquation;
 
 /**
  * Singleton class concerned with the 'context' of the program running, i.e. the
@@ -17,6 +18,9 @@ public class Context {
 	
 	// Objects singleton is keeping track of
 	private TataiGame _game;
+	private TataiGame _regularGame;
+	private TataiGameEquation _equationGame;
+	private String _equationList;
 	
 	/**
 	 * Returns instance of singleton object
@@ -31,7 +35,11 @@ public class Context {
 	 * Creates a new TataiGame object for a new game in play.
 	 */
 	public void newGame() {
-		_game = new TataiGame();
+		_regularGame = new TataiGame();
+		_equationGame = new TataiGameEquation();
+		
+		// By default set to return a regular game type
+		_game = _regularGame;
 	}
 	
 	/**
@@ -49,5 +57,42 @@ public class Context {
 	 */
 	public TataiGame currentGame() {
 		return _game;
+	}
+	
+	/**
+	 * Sets the current game type to be an equation based game.
+	 */
+	public void setGameToEquation() {
+		_game = _equationGame;
+	}
+	
+	/**
+	 * sets the current game type to be a desired type game;
+	 */
+	public void setGameType(TataiGame game) {
+		_game = game;
+	}
+	
+	/**
+	 * Sets the current game type to be a regular game.
+	 */
+	public void setGameToRegular() {
+		_game = _regularGame;
+	}
+	
+	/**
+	 * Sets the current equation list name that Context cares about to be that of input string 
+	 * @param listName : String
+	 */
+	public void setQuestionList(String listName) {
+		_equationList = listName;
+	}
+	
+	/**
+	 * Returns the current list name that Context tracks
+	 * @return equationList : String
+	 */
+	public String currentQuestionList() {
+		return _equationList;
 	}
 }

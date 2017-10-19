@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainWindow extends Application {
+public class App extends Application {
 
 	/* THIS IS WHERE THE FUN BEGINS */
 	
@@ -16,6 +16,7 @@ public class MainWindow extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Context.getInstance().newGame();
+			Context.getInstance().setGameToEquation();
 			Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
 		    
 	        Scene scene = new Scene(root, 800, 500);

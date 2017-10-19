@@ -6,8 +6,8 @@ import java.util.List;
 import creations.cr.Creation;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import stats.CSVStatsHandler;
-import stats.StatisticHandler;
+import res.stats.CSVStatsHandler;
+import res.stats.StatisticHandler;
 import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
@@ -33,18 +33,18 @@ public class TataiGame {
 	public static final String INCORRECT = "Total Incorrect";
 	public static final String CORRECT = "Total Correct";
 	
-	private Level _level = Level.Level1;
-	private int _questionNo;
-	private TataiCreationModel _creationModel;
-	private Translator _translator;
-	private boolean _hasStarted = false;
-	private int _correct;
-	private int _incorrect;
-	private boolean _firstAttempt;
-	private ArrayList<String> _questionsCorrect = new ArrayList<String>();
-	private StatisticHandler _statsHandler;
-	private StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
-	private StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
+	protected Level _level = Level.Level1;
+	protected int _questionNo;
+	protected TataiCreationModel _creationModel;
+	protected Translator _translator;
+	protected boolean _hasStarted = false;
+	protected int _correct;
+	protected int _incorrect;
+	protected boolean _firstAttempt;
+	protected ArrayList<String> _questionsCorrect = new ArrayList<String>();
+	protected StatisticHandler _statsHandler;
+	protected StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
+	protected StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
 
 	/**
 	 * Constructor
@@ -108,7 +108,7 @@ public class TataiGame {
 	}
 
 	/**
-	 * Increments question number for next question in quiz
+	 * i question number for next question in quiz
 	 */
 	private void nextQuestion() {
 		_firstAttempt = false;
@@ -240,7 +240,7 @@ public class TataiGame {
 	 * Populate the creationModel with a list of creations with
 	 * appropriate labels for the current level.s
 	 */
-	private <T extends Creation> void populateModel() {
+	public <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
 

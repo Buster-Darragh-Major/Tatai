@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,21 +15,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tatai.creations.Level;
 import tatai.game.TataiGame;
-import tatai.game.TataiQuestion;
+import tatai.game.TataiQuestionTableAdapter;
 
 public class ResultsWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML
-	private Label _scoreLabel;
-	@FXML
-	private Button _mainMenuButton;
-	@FXML
-	private Button _level2Button;
-	@FXML
-	private TableView<TataiQuestion> _resultsTable;
-	@FXML
-	private TableColumn<TataiQuestion, String> qNo, qInt, qTranslation, qCorrect;
+	@FXML private Label _scoreLabel;
+	@FXML private Button _mainMenuButton;
+	@FXML private Button _level2Button;
+	@FXML private TableView<TataiQuestionTableAdapter> _resultsTable;
+	@FXML private TableColumn<TataiQuestionTableAdapter, String> qNo, qInt, qTranslation, qCorrect;
 
 	/* Fields */
 	private int _questionTotal = TataiGame.TOTAL_NUMBER_OF_QUESTIONS;
@@ -58,12 +54,8 @@ public class ResultsWindowController extends TataiController implements Initiali
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// If on level 1 and got 8 or more correct offer user to play level 2
-		if (!((Context.getInstance().currentGame().questionsCorrect() >= 8)
-				&& (Context.getInstance().currentGame().currentLevel() == Level.Level1))) {
-			_level2Button.setVisible(false);
-		}
-
+		_mainMenuButton.requestFocus();
+		
 		// Set overall questions correct label
 		_scoreLabel
 				.setText("You scored " + Context.getInstance().currentGame().questionsCorrect() + "/" + _questionTotal);
@@ -74,13 +66,26 @@ public class ResultsWindowController extends TataiController implements Initiali
 		ArrayList<String> trans = Context.getInstance().currentGame().getQuestionTrans();
 		ArrayList<String> correct = Context.getInstance().currentGame().getQuestionCorrect();
 		for (int i = 0; i < _questionTotal; i++) {
-			_resultsTable.getItems().add(new TataiQuestion(i + 1 + ")", ints.get(i), trans.get(i), correct.get(i)));
+			_resultsTable.getItems().add(new TataiQuestionTableAdapter(i + 1 + ")", ints.get(i), trans.get(i), correct.get(i)));
 		}
 
 		// Set up Columns
-		qNo.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qNo"));
-		qInt.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qInt"));
-		qTranslation.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qTranslation"));
-		qCorrect.setCellValueFactory(new PropertyValueFactory<TataiQuestion, String>("qCorrect"));
+		qNo.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qNo"));
+		qInt.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qInt"));
+		qTranslation.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qTranslation"));
+		qCorrect.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qCorrect"));
+		// If on level 1 and got 8 or more correct offer user to play level 2
+		
+		if (!((Context.getInstance().currentGame().questionsCorrect() >= 8)
+				&& (Context.getInstance().currentGame().currentLevel() == Level.Level1))) {
+			_level2Button.setVisible(false);
+			
+		    Platform.runLater(new Runnable() {
+		        @Override
+		        public void run() {
+					_level2Button.requestFocus();
+		        }
+		    });
+		}
 	}
 }

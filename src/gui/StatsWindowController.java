@@ -30,22 +30,14 @@ public class StatsWindowController extends TataiController implements Initializa
 	private TataiGame _game;
 	
 	/* FXML Nodes */
-	@FXML
-	private Label _statLabel;	
-	@FXML
-	private Label _statTitleLabel;
-	@FXML
-	private Button _averageButton;
-	@FXML 
-	private Button _correctButton;
-	@FXML
-	private Button _incorrectButton;
-	@FXML
-	private Button _totalButton;
-	@FXML
-	private Button _exitButton;
-	@FXML
-	private Button _switchLevelButton;
+	@FXML private Label _statLabel;	
+	@FXML private Label _statTitleLabel;
+	@FXML private Button _averageButton;
+	@FXML private Button _correctButton;
+	@FXML private Button _incorrectButton;
+	@FXML private Button _totalButton;
+	@FXML private Button _exitButton;
+	@FXML private Button _switchLevelButton;
 	
 	/**
 	 * Constructor
