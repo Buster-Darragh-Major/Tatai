@@ -1,5 +1,15 @@
 package users.user;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import res.stats.TataiStat;
 import tatai.creations.Level;
 
@@ -10,11 +20,14 @@ import tatai.creations.Level;
  *
  */
 public abstract class User {
+	/* MACROS */
+	public static final File USER_DIR = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "users");
+	
+	@JsonIgnore protected File _userFile;
 	protected boolean _writingPrivileges;
 	protected String _firstName;
 	protected String _lastName;
 	protected String _userName;
-	
 	protected TataiStat _lvl1Stats;
 	protected TataiStat _lvl2Stats;
 	
@@ -31,12 +44,57 @@ public abstract class User {
 		_userName = userName;
 		_lvl1Stats = new TataiStat();
 		_lvl2Stats = new TataiStat();
+		
+		_userFile =  new File(USER_DIR + System.getProperty("file.separator") + userName);
 	}
 	
 	/**
 	 * Saves the user. Inheritors should decide how a user is saved.
 	 */
-	public abstract void saveUser();
+	public void saveUser() {
+		String jsonStr = toJsonString();
+
+		writeToFile(jsonStr);
+	}
+	
+	/**
+	 * Converts this object to a Json string
+	 * Convenience method for inheritors to use.
+	 * @return object as Json String
+	 */
+	protected String toJsonString() {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+		String jsonStr = null;
+        try {
+            jsonStr = mapper.writeValueAsString(this);
+            return jsonStr;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return jsonStr;
+	}
+	
+	protected void writeToFile(String jsonStr) {
+		createUsersFolder();
+		
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(_userFile.getAbsolutePath(), false));
+			writer.write(jsonStr);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Makes the appropriate directory if it doesn't already exist.
+	 */
+	private void createUsersFolder() {
+		if (!USER_DIR.exists()) {
+			USER_DIR.mkdir();
+		}
+}
 	
 	/**
 	 * Checks if the user has writing privileges 
