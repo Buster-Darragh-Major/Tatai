@@ -1,9 +1,10 @@
-package user.classroom;
+package users.classroom;
 
 import java.util.List;
 
 import users.user.Student;
 import users.user.Teacher;
+import users.user.User;
 
 /**
  * Interface representing a classroom with taechers and students.
@@ -26,7 +27,7 @@ public interface ClassRoom {
 	 * @param name the student's name
 	 * @return Student that was searched for
 	 */
-	public List<Student> getStudentsByName(String name);
+	public List<User> getStudentsByName(String name);
 	
 	/**
 	 * Get a teacher by their username
@@ -40,7 +41,7 @@ public interface ClassRoom {
 	 * @param Name the teacher's name
 	 * @return Teacher that was searched for
 	 */
-	public List<Teacher> getTeachersByName(String Name);
+	public List<User> getTeachersByName(String Name);
 	
 	/**
 	 * Adds a student to the classroom
@@ -57,4 +58,14 @@ public interface ClassRoom {
 	 * @param teacher
 	 */
 	public void addTeacher(Teacher teacher);
+	
+	/**
+	 * Save the students and teachers
+	 */
+	public void saveRoll();
+	
+	/**
+	 * Read the roll from wherever it is saved
+	 */
+	public void readRoll();
 }

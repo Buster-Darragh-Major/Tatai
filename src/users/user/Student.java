@@ -4,13 +4,12 @@ package users.user;
  * This class represents a student user.
  * A student user does not have writing privileges and therefore cannot
  * create custom lists.
- * A student can also have achievments.
+ * A student can also have achievments. //TODO
  * 
  * @author Nathan Cairns
  *
  */
 public class Student extends User {
-	
 	
 	/**
 	 * Constructor
@@ -23,10 +22,4 @@ public class Student extends User {
 		super(firstName, lastName, userName);
 		_writingPrivileges = false;
 	}
-	@Override
-	public void saveUser() {
-		// TODO Auto-generated method stub
-
-	}
-
 }

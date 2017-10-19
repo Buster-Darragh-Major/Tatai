@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import res.questionlist.TextQuestionListHandler;
+import questionlist.TextQuestionListHandler;
 
 public class TeacherInputNamingWindowController extends TataiController implements Initializable {
 

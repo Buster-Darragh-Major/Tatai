@@ -21,11 +21,4 @@ public class Teacher extends User{
 		super(firstName, lastName, userName);
 		_writingPrivileges = true;
 	}
-
-	@Override
-	public void saveUser() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

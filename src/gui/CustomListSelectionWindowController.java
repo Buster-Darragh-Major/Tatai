@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import res.questionlist.TextQuestionListHandler;
+import questionlist.TextQuestionListHandler;
 import tatai.game.TataiGameCustomList;
 
 public class CustomListSelectionWindowController extends TataiController implements Initializable {

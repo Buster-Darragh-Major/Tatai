@@ -1,4 +1,4 @@
-package res.stats;
+package stats;
 
 /**
  * This class represents the statistics for a given game mode.

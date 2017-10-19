@@ -6,7 +6,7 @@ import java.util.List;
 import creations.cr.Creation;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import res.questionlist.TextQuestionListHandler;
+import questionlist.TextQuestionListHandler;
 import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
