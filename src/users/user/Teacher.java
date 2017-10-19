@@ -19,7 +19,7 @@ public class Teacher extends User{
 	 */
 	public Teacher(String firstName, String lastName, String userName) {
 		super(firstName, lastName, userName);
-		_writingPrivleges = true;
+		_writingPrivileges = true;
 	}
 
 	@Override

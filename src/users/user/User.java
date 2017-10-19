@@ -7,7 +7,7 @@ package users.user;
  *
  */
 public abstract class User {
-	protected boolean _writingPrivleges;
+	protected boolean _writingPrivileges;
 	protected String _firstName;
 	protected String _lastName;
 	protected String _userName;
@@ -35,7 +35,7 @@ public abstract class User {
 	 * @return writingPrivileges
 	 */
 	public boolean hasWritingPrivileges() {
-		return _writingPrivleges;
+		return _writingPrivileges;
 	}
 	
 	/**
