@@ -1,6 +1,17 @@
 package users.user;
 
+/**
+ * This class represents a student user.
+ * A student user does not have writing privileges and therefore cannot
+ * create custom lists.
+ * A student can also have stats and achievments.
+ * 
+ * @author Nathan Cairns
+ *
+ */
 public class Student extends User {
+	
+	
 	/**
 	 * Constructor
 	 * 

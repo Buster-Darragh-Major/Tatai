@@ -1,5 +1,7 @@
 package users.user;
 
+import res.stats.TataiStat;
+
 /**
  * Abstract class representing a user.
  * 
@@ -12,6 +14,9 @@ public abstract class User {
 	protected String _lastName;
 	protected String _userName;
 	
+	protected TataiStat _lvl1Stats;
+	protected TataiStat _lvl2Stats;
+	
 	/**
 	 * Constructor
 	 * 
@@ -23,6 +28,8 @@ public abstract class User {
 		_firstName = firstName;
 		_lastName = LastName;
 		_userName = userName;
+		_lvl1Stats = new TataiStat();
+		_lvl2Stats = new TataiStat();
 	}
 	
 	/**
