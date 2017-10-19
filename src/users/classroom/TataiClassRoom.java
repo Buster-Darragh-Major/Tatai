@@ -2,6 +2,7 @@ package users.classroom;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -216,16 +217,26 @@ public class TataiClassRoom implements ClassRoom {
 		return studentUserNames;
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public void removeTeacher(String userName) {
-		_teachers.remove(userName);
+		User user = getTeacherByUsername(userName);
+		_teachers.remove(user);
+		deleteFile(user._userFile);
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public void removeStudent(String userName) {
-		_students.remove(userName);
+		User user = getStudentByUsername(userName);
+		_students.remove(user);
+		deleteFile(user._userFile);
+	}
+	
+	private void deleteFile(File file) {
+		try {
+			Files.delete(file.toPath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

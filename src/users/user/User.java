@@ -34,7 +34,7 @@ public abstract class User extends TataiHandler {
 	/* MACROS */
 	public static final File USER_DIR = new File(DATA_DIR + System.getProperty("file.separator") + "users");
 
-	@JsonIgnore protected File _userFile;
+	@JsonIgnore public final File _userFile;
 	@JsonIgnore protected boolean _writingPrivileges;
 	protected String _firstName;
 	protected String _lastName;

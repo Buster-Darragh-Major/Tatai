@@ -7,6 +7,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -34,27 +36,66 @@ public class UserWindowController implements Initializable {
 
 	@FXML
 	public void handleAddClick() {
-
+		
 	}
-
+	
+	/**
+	 * DELETE a user
+	 */
 	@FXML
 	public void handleDeleteClick() {
-		String userName = null;
+
+		Task<String> deletionTask = new Task<String>() {
+
+			@Override
+			protected String call() throws Exception {
+				String userName = null;
+				if (_userList2.getSelectionModel().isEmpty()) {
+					userName = _userList1.getSelectionModel().getSelectedItem();	
+					Context.getInstance().currentGame().getClassRoom().removeStudent(userName);
+				} else if (_userList1.getSelectionModel().isEmpty()) {
+					userName = _userList2.getSelectionModel().getSelectedItem();
+					Context.getInstance().currentGame().getClassRoom().removeTeacher(userName);
+				}
+				return userName;
+			}
+		};
 		
-		if (_userList1.isFocused()) {
-			userName = _userList1.getSelectionModel().getSelectedItem();
-			Context.getInstance().currentGame().getClassRoom().removeStudent(userName);
-		} else if (_userList2.isFocused()) {
-			userName = _userList2.getSelectionModel().getSelectedItem();
-			Context.getInstance().currentGame().getClassRoom().removeTeacher(userName);
-		}
+		deletionTask.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, e -> {
+			String userName = deletionTask.getValue();
+			if (_userList2.getSelectionModel().isEmpty()) {
+				_userList1.getItems().remove(userName);
+			} else if (_userList1.getSelectionModel().isEmpty()) {
+				_userList2.getItems().remove(userName);
+			}
+		});
+		
+		startBackgroundThread(deletionTask);
 	}
 
+	/**
+	 * Quits the program
+	 */
 	@FXML
 	public void handleQuitClick() {
 		System.exit(0);
 	}
+	
+	
+	/**
+	 * Starts a background thread
+	 * 
+	 * @param task: the task to be performed in the background thread
+	 */
+	private void startBackgroundThread(@SuppressWarnings("rawtypes") Task task) {
+		Thread th = new Thread(task);
+		th.setDaemon(true);
+		th.start();
+}
 
+	/**
+	 * Init the controller
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ObservableList<String> teachers = FXCollections
@@ -68,6 +109,7 @@ public class UserWindowController implements Initializable {
 		_userList1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		_userList2.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+		// Allows selection of only one list
 		_userList1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override
@@ -79,6 +121,7 @@ public class UserWindowController implements Initializable {
 
 		});
 
+		// Allows selection of only one list
 		_userList2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 			@Override

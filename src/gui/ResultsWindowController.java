@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import creations.cr.Level;
-import game.TataiGame;
 import game.TataiQuestionTableAdapter;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
