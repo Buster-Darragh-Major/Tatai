@@ -1,7 +1,5 @@
 package users.user;
 
-import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
-
 /**
  * Abstract class representing a user.
  * 
