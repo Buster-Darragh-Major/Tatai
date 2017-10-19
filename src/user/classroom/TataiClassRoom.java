@@ -1,11 +1,13 @@
 package user.classroom;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import users.user.Student;
 import users.user.Teacher;
+import users.user.User;
 
 /**
  * This interface represents a classroom.
@@ -14,48 +16,135 @@ import users.user.Teacher;
  *
  */
 public class TataiClassRoom implements ClassRoom {
-	private Set<Student> _students;
-	private Set<Teacher> _teachers;
-	
+	/* MACROS */
+	public static final String TEACHER_ERROR = "No teacher with name found: ";
+	public static final String STUDENT_ERROR = "No student with name found: ";
+
+	private enum MemberType {
+		TEACHER, STUDENT;
+	}
+
+	private Set<User> _students;
+	private Set<User> _teachers;
+
 	public TataiClassRoom() {
-		_students = new HashSet<Student>();
-		_teachers = new HashSet<Teacher>();
+		_students = new HashSet<User>();
+		_teachers = new HashSet<User>();
 	}
 
+	/**
+	 * if no student is with user name found exception is thrown
+	 */
 	@Override
-	public Student getStudentByUsername(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+	public Student getStudentByUsername(String userName) throws ClassRoomException {
+		return (Student) byUserName(userName, MemberType.STUDENT);
 	}
 
+	/**
+	 * if no students were found with name exceptions is thrown
+	 */
 	@Override
-	public List<Student> getStudentsByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getStudentsByName(String name) throws ClassRoomException {
+		return byName(name, MemberType.STUDENT);
 	}
 
+	/**
+	 * if no teachers were found with user name exception is thrown
+	 */
 	@Override
-	public Teacher getTeacherByUsername(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+	public Teacher getTeacherByUsername(String userName) throws ClassRoomException {
+		return (Teacher) byUserName(userName, MemberType.TEACHER);
 	}
 
+	/**
+	 * if no teacher is found with name exception is thrown
+	 */
 	@Override
-	public List<Teacher> getTeachersByName(String Name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getTeachersByName(String name) throws ClassRoomException{
+		return byName(name, MemberType.TEACHER);
 	}
-
+	
 	@Override
 	public void addStudent(Student student) {
-		// TODO Auto-generated method stub
-		
+		_students.add(student);
 	}
 
 	@Override
 	public void addTeacher(Teacher teacher) {
-		// TODO Auto-generated method stub
-		
+		_teachers.add(teacher);
 	}
 	
+	/**
+	 * Searches for a user by Username
+	 * 
+	 * @param userName the user to search for's username
+	 * @param type the type of user
+	 * @return the User if they were found
+	 */
+	private User byUserName(String userName, MemberType type) throws ClassRoomException {
+		Set<User> searchSpace = null;
+		String error = null;
+		
+		switch(type) {
+		case STUDENT:
+			searchSpace = _students;
+			error = STUDENT_ERROR;
+			break;
+		case TEACHER:
+			searchSpace = _teachers;
+			error = TEACHER_ERROR;
+			break;
+		}
+		
+		for (User user: searchSpace) {
+			if (user.userName().equals(userName)) {
+				return user;
+			}
+		}
+		throw new ClassRoomException(error);
+	}
+
+	/**
+	 * Searches for a user by name.
+	 * 
+	 * @param name
+	 *            the user's name to search by.
+	 * @param type
+	 *            the type of user to search for.
+	 * @return a list of users with matching names
+	 */
+	private List<User> byName(String name, MemberType type) throws ClassRoomException {
+		List<User> found = new ArrayList<User>();
+		Set<User> searchSpace = null;
+		String error = null;
+
+		switch (type) {
+		case TEACHER:
+			searchSpace = _teachers;
+			error = TEACHER_ERROR;
+			break;
+		case STUDENT:
+			searchSpace = _students;
+			error = STUDENT_ERROR;
+			break;
+		}
+
+		for (User user : searchSpace) {
+			String firstName = user.firstName().toLowerCase();
+			String lastName = user.lastName().toLowerCase();
+			String fullName = user.name().toLowerCase();
+			String nameLower = name.toLowerCase();
+
+			if (firstName.equals(nameLower) || lastName.equals(nameLower) || fullName.equals(nameLower)) {
+				found.add(user);
+			}
+		}
+
+		if (found.size() > 0) {
+			return found;
+		} else {
+			throw new ClassRoomException(error);
+		}
+	}
+
 }
