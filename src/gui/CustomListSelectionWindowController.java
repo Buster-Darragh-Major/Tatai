@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import res.questionlist.TextQuestionListHandler;
 import tatai.game.TataiGameCustomList;
@@ -22,6 +23,7 @@ public class CustomListSelectionWindowController extends TataiController impleme
 	@FXML private Button _exitButton;
 	@FXML private Button _playButton;
 	@FXML private JFXListView<String> _listView;
+	@FXML private Label _warningLabel;
 
 	@FXML
 	public void handleExitClick() {
@@ -52,17 +54,22 @@ public class CustomListSelectionWindowController extends TataiController impleme
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ArrayList<File> files = new ArrayList<File>(Arrays.asList(TextQuestionListHandler.LIST_DIRECTORY.listFiles()));
-		ArrayList<String> items = new ArrayList<String>();
-		for (File f : files) {
-			String name = f.getName();
-			if (name.contains(".txt")) {
-				items.add(f.getName().replaceAll(".txt", ""));
-			}
-		}
-		
-		_listView.setItems(FXCollections.observableArrayList(items));
-		
 		_playButton.setDisable(true);
+		_warningLabel.setVisible(false);
+		
+		try {
+			ArrayList<File> files = new ArrayList<File>(Arrays.asList(TextQuestionListHandler.LIST_DIRECTORY.listFiles()));
+			ArrayList<String> items = new ArrayList<String>();
+			for (File f : files) {
+				String name = f.getName();
+				if (name.contains(".txt")) {
+					items.add(f.getName().replaceAll(".txt", ""));
+				}
+			}
+			
+			_listView.setItems(FXCollections.observableArrayList(items));
+		} catch (NullPointerException e) {
+			_warningLabel.setVisible(true);
+		}
 	}
 }
