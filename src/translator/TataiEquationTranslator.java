@@ -1,4 +1,4 @@
-package tatai.translator;
+package translator;
 
 import java.util.ArrayList;
 import java.util.List;

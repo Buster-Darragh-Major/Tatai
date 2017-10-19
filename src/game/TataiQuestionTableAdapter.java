@@ -1,4 +1,4 @@
-package tatai.game;
+package game;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

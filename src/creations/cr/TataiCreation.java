@@ -1,6 +1,5 @@
-package tatai.creations;
+package creations.cr;
 
-import creations.cr.Creation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;

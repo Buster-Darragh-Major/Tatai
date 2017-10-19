@@ -1,6 +1,6 @@
-package tatai.game;
+package game;
 
-import tatai.creations.Level;
+import creations.cr.Level;
 
 public class TataiGamePractice extends TataiGame {
 	

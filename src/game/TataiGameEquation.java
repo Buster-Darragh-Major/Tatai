@@ -1,17 +1,17 @@
-package tatai.game;
+package game;
 
 import java.util.ArrayList;
 
 import creations.cr.Creation;
+import creations.cr.Level;
+import creations.cr.TataiCreation;
+import creations.cr.TataiCreationModel;
+import creations.labelgenerator.Level1EquationLabelGenerator;
+import creations.labelgenerator.Level2EquationLabelGenerator;
 import stats.CSVStatsHandler;
 import stats.StatisticHandler;
-import tatai.creations.Level;
-import tatai.creations.TataiCreation;
-import tatai.creations.TataiCreationModel;
-import tatai.creations.labelgenerator.Level1EquationLabelGenerator;
-import tatai.creations.labelgenerator.Level2EquationLabelGenerator;
-import tatai.translator.TataiEquationTranslator;
-import tatai.translator.Translator;
+import translator.TataiEquationTranslator;
+import translator.Translator;
 
 public class TataiGameEquation extends TataiGame {
 

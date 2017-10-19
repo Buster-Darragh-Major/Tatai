@@ -3,8 +3,8 @@ package testing;
 import org.junit.Before;
 import org.junit.Test;
 
-import tatai.creations.labelgenerator.Level1EquationLabelGenerator;
-import tatai.creations.labelgenerator.Level2EquationLabelGenerator;
+import creations.labelgenerator.Level1EquationLabelGenerator;
+import creations.labelgenerator.Level2EquationLabelGenerator;
 
 public class TestEquationLabelGeneratior {
 

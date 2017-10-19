@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import creations.cr.Level;
+import game.TataiGame;
+import game.TataiQuestionTableAdapter;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,9 +16,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import tatai.creations.Level;
-import tatai.game.TataiGame;
-import tatai.game.TataiQuestionTableAdapter;
 
 public class ResultsWindowController extends TataiController implements Initializable {
 

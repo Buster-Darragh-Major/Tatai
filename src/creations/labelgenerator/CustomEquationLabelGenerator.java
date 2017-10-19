@@ -1,4 +1,4 @@
-package tatai.creations.labelgenerator;
+package creations.labelgenerator;
 
 import questionlist.TextQuestionListHandler;
 

@@ -1,4 +1,4 @@
-package tatai.game;
+package game;
 
 
 /**

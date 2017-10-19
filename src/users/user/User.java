@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import creations.cr.Level;
 import stats.TataiHandler;
 import stats.TataiStat;
-import tatai.creations.Level;
 
 /**
  * Abstract class representing a user.

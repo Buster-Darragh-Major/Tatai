@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import tatai.creations.Level;
+import creations.cr.Level;
 
 /**
  * This class gets information stored in the following format .... total

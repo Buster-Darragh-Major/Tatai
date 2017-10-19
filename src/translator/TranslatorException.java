@@ -1,4 +1,4 @@
-package tatai.translator;
+package translator;
 
 /**
  * An exception for errors in the translator class

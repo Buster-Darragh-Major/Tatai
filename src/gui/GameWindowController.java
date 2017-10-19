@@ -24,7 +24,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import tatai.game.TataiGame;
 
 public class GameWindowController extends TataiController implements Initializable{
 

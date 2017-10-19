@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXListView;
 
+import game.TataiGameCustomList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import questionlist.TextQuestionListHandler;
-import tatai.game.TataiGameCustomList;
 
 public class CustomListSelectionWindowController extends TataiController implements Initializable {
 

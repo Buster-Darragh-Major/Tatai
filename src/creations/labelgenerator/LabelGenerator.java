@@ -1,4 +1,4 @@
-package tatai.creations.labelgenerator;
+package creations.labelgenerator;
 
 /**
  * An interface which allows a user to generate a random number.

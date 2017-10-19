@@ -1,20 +1,20 @@
-package tatai.game;
+package game;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import creations.cr.Creation;
+import creations.cr.Level;
+import creations.cr.TataiCreation;
+import creations.cr.TataiCreationModel;
+import creations.labelgenerator.Level1LabelGenerator;
+import creations.labelgenerator.Level2LabelGenerator;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import stats.CSVStatsHandler;
 import stats.StatisticHandler;
-import tatai.creations.Level;
-import tatai.creations.TataiCreation;
-import tatai.creations.TataiCreationModel;
-import tatai.creations.labelgenerator.Level1LabelGenerator;
-import tatai.creations.labelgenerator.Level2LabelGenerator;
-import tatai.translator.TataiTranslator;
-import tatai.translator.Translator;
+import translator.TataiTranslator;
+import translator.Translator;
 import users.classroom.ClassRoom;
 import users.classroom.TataiClassRoom;
 

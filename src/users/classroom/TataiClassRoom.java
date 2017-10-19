@@ -216,4 +216,16 @@ public class TataiClassRoom implements ClassRoom {
 		return studentUserNames;
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
+	@Override
+	public void removeTeacher(String userName) {
+		_teachers.remove(userName);
+	}
+
+	@SuppressWarnings("unlikely-arg-type")
+	@Override
+	public void removeStudent(String userName) {
+		_students.remove(userName);
+	}
+
 }

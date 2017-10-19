@@ -1,4 +1,4 @@
-package tatai.translator;
+package translator;
 
 /**
  * This class represents the ability to translate integers to strings

@@ -1,4 +1,4 @@
-package tatai.creations.labelgenerator;
+package creations.labelgenerator;
 /**
  * Generates a number for level one.
  * The range is 1 - 100.

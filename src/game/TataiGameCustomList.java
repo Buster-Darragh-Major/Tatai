@@ -1,16 +1,16 @@
-package tatai.game;
+package game;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import creations.cr.Creation;
+import creations.cr.Level;
+import creations.cr.TataiCreation;
+import creations.cr.TataiCreationModel;
+import creations.labelgenerator.CustomEquationLabelGenerator;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import questionlist.TextQuestionListHandler;
-import tatai.creations.Level;
-import tatai.creations.TataiCreation;
-import tatai.creations.TataiCreationModel;
-import tatai.creations.labelgenerator.CustomEquationLabelGenerator;
 
 public class TataiGameCustomList extends TataiGameEquation {
 

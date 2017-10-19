@@ -1,14 +1,13 @@
-package tatai.creations;
+package creations.cr;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import creations.cr.Creation;
+import creations.labelgenerator.LabelGenerator;
+import creations.labelgenerator.Level1LabelGenerator;
 import creations.ml.CreationBuilder;
 import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
-import tatai.creations.labelgenerator.LabelGenerator;
-import tatai.creations.labelgenerator.Level1LabelGenerator;
 
 /**
  * Class representing the model of the current set of creations. Holds the list of

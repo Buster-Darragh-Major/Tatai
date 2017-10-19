@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import tatai.translator.TataiEquationTranslator;
-import tatai.translator.Translator;
+import translator.TataiEquationTranslator;
+import translator.Translator;
 
 public class TestTataiEquationTranslator {
 

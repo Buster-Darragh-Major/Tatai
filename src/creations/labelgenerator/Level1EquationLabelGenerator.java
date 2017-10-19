@@ -1,4 +1,4 @@
-package tatai.creations.labelgenerator;
+package creations.labelgenerator;
 
 public class Level1EquationLabelGenerator extends Level1LabelGenerator{
 

@@ -1,4 +1,4 @@
-package tatai.translator;
+package translator;
 
 /**
  * An interface for translating strings to other langauages

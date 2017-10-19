@@ -1,7 +1,7 @@
 package gui;
 
-import tatai.game.TataiGame;
-import tatai.game.TataiGameEquation;
+import game.TataiGame;
+import game.TataiGameEquation;
 
 /**
  * Singleton class concerned with the 'context' of the program running, i.e. the
