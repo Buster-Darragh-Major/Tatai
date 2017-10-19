@@ -134,7 +134,7 @@ private static final String FINISH = "Finish!";
 	public void handleSubmitClick() {
 		// If game state is onto last question set the nextQuestion button text to indicate finishing
 		if (Context.getInstance().currentGame().currentQuestion() - 1 == // game class increments q. no. one too soon
-				TataiGame.TOTAL_NUMBER_OF_QUESTIONS) {
+				Context.getInstance().currentGame().totalNumberOfQuestions()) {
 			_nextQuestionButton.setText(FINISH);
 		}
 		
@@ -329,7 +329,8 @@ private static final String FINISH = "Finish!";
 		_childPane.setBackground(_pane.getBackground());
 		
 		// Set question number label
-		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/10");
+		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/" + 
+				Context.getInstance().currentGame().totalNumberOfQuestions());
 		_questionNoLabel.setTextFill(_intLabel.getTextFill());
 		
 	    Platform.runLater(new Runnable() {

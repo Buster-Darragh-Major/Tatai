@@ -73,7 +73,11 @@ public class TataiGame {
 	public ClassRoom getClassRoom() {
 		return _classRoom;
 	}
-
+	
+	public int totalNumberOfQuestions() {
+		return TOTAL_NUMBER_OF_QUESTIONS;
+	}
+	
 	/**
 	 * Provides a translation of the current question
 	 */
