@@ -66,7 +66,7 @@ public class TataiGameEquation extends TataiGame {
 		}
 	}
 	
-	private <T extends Creation> void populateModel() {
+	public <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
 

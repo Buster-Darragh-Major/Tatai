@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import creations.cr.Creation;
+import creations.ml.CreationModel;
 import gui.Context;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -12,16 +13,21 @@ import tatai.creations.Level;
 import tatai.creations.TataiCreation;
 import tatai.creations.TataiCreationModel;
 import tatai.creations.labelgenerator.CustomEquationLabelGenerator;
+import tatai.creations.labelgenerator.LabelGenerator;
 
 public class TataiGameCustomList extends TataiGameEquation {
 
 	private TataiCreationModel _creationModel;
-	private TextQuestionListHandler _handler = new TextQuestionListHandler(Context.getInstance().currentQuestionList());
-	public final int TOTAL_NUMBER_OF_QUESTIONS = _handler.size();
+	private TextQuestionListHandler _handler;
+	public final int TOTAL_NUMBER_OF_QUESTIONS;
+	private int _questionNo = 1;
 	
 	// Constructor
-	public TataiGameCustomList() {
+	public TataiGameCustomList(TextQuestionListHandler handler) {
 		super();
+		_handler = handler;
+		TOTAL_NUMBER_OF_QUESTIONS = _handler.size();
+		_creationModel = new TataiCreationModel(new CustomEquationLabelGenerator(_handler), _handler.size());
 	}
 	
 	@Override
@@ -46,6 +52,26 @@ public class TataiGameCustomList extends TataiGameEquation {
 		_creationModel.displayCreation(_questionNo, label, pane);
 	}
 	
+	@Override
+	public boolean answerQuestion(boolean answer) {
+
+		if (answer) {
+			_questionsCorrect.add("Correct");
+			_correct++;
+			nextQuestion();	
+			return true;
+		} else {
+			if (_firstAttempt) {
+				_questionsCorrect.add("Incorrect");
+				_incorrect++;
+				nextQuestion();
+			} else {
+				_firstAttempt = true;
+			}
+			return false;
+		}
+	}
+	
 	private void nextQuestion() {
 		_firstAttempt = false;
 		if ((_questionNo < _handler.size() + 1) && (_questionNo > 0)) {
@@ -66,7 +92,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 		return "Play questions from your custom lists";
 	}
 	
-	private <T extends Creation> void populateModel() {
+	public <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
 

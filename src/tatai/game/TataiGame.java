@@ -240,7 +240,7 @@ public class TataiGame {
 	 * Populate the creationModel with a list of creations with
 	 * appropriate labels for the current level.s
 	 */
-	private <T extends Creation> void populateModel() {
+	public <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
 

@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import res.questionlist.TextQuestionListHandler;
+import tatai.game.TataiGameCustomList;
 
 public class CustomListSelectionWindowController extends TataiController implements Initializable {
 
@@ -31,8 +32,10 @@ public class CustomListSelectionWindowController extends TataiController impleme
 	@FXML
 	public void handlePlayClick() {
 		// Set game type and list to read off for Context singleton
-		Context.getInstance().setGameToCustom();
-		Context.getInstance().setQuestionList(_listView.getSelectionModel().getSelectedItem());
+		Context.getInstance().setGameType(
+				new TataiGameCustomList(
+				new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem())));
+		Context.getInstance().currentGame().populateModel();
 		
 		Stage stage = (Stage) _playButton.getScene().getWindow(); // Get current stage
 		changeWindow("GameWindow.fxml", stage); // Change to GameokWindow.fxml

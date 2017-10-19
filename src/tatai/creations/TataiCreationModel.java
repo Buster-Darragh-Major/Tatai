@@ -153,7 +153,7 @@ public class TataiCreationModel extends CreationModel{
 			
 			creationList.add(creation);
 		}
-		
+
 		_creations = creationList;
 	}
 }
