@@ -87,5 +87,10 @@
 
 .list-view {
 	-fx-focus-color: #cc0404;
+	-fx-text-fill: black;
+}
+
+.list-cell {
+	-fx-text-fill: black;
 }
 
