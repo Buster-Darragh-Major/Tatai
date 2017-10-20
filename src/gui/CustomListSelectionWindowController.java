@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import questionlist.TextQuestionListHandler;
 
@@ -49,6 +51,15 @@ public class CustomListSelectionWindowController extends TataiController impleme
 			_playButton.setDisable(true);
 		} else {
 			_playButton.setDisable(false);
+		}
+	}
+	
+	@FXML
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleExitClick();
+		} else if (e.getCode() == KeyCode.ENTER) {
+			handlePlayClick();
 		}
 	}
 

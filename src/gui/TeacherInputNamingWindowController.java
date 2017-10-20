@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -64,6 +66,15 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 		} else {
 			_warningLabel.setVisible(false);
 			_createButton.setDisable(false);
+		}
+	}
+	
+	@FXML
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleExitCick();
+		} else if (e.getCode() == KeyCode.ENTER) {
+			handleCreateClick();
 		}
 	}
 	
