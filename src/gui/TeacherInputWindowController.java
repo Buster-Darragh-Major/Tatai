@@ -115,7 +115,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	@FXML
 	public void handleExitClick() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
-		changeWindow("MainWindow.fxml", stage);// Change to MainWindow.fxml view
+		changeWindow("TeacherInputNamingWindow.fxml", stage);// Change to MainWindow.fxml view
 	}
 	
 	@FXML
@@ -126,6 +126,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	
 	@FXML
 	public void handleEnterClick() {
+		_enterButton.setDisable(true);
 		_handler.writeToFile(_inputLabel.getText() + "=");
 		_inputLabel.setText("");
 	}
