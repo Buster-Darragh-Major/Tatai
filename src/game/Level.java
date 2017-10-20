@@ -1,4 +1,4 @@
-package creations.cr;
+package game;
 
 /**
  * Enum for describing level types

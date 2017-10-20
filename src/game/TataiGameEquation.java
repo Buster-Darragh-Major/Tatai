@@ -3,11 +3,10 @@ package game;
 import java.util.ArrayList;
 
 import creations.cr.Creation;
-import creations.cr.Level;
 import creations.cr.TataiCreation;
-import creations.cr.TataiCreationModel;
 import creations.labelgenerator.Level1EquationLabelGenerator;
 import creations.labelgenerator.Level2EquationLabelGenerator;
+import creations.ml.TataiCreationModel;
 import stats.CSVStatsHandler;
 import stats.StatisticHandler;
 import translator.TataiEquationTranslator;

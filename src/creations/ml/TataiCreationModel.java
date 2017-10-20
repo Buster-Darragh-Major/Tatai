@@ -1,12 +1,11 @@
-package creations.cr;
+package creations.ml;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import creations.cr.Creation;
 import creations.labelgenerator.LabelGenerator;
 import creations.labelgenerator.Level1LabelGenerator;
-import creations.ml.CreationBuilder;
-import creations.ml.CreationModel;
 import javafx.scene.paint.Color;
 
 /**

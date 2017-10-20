@@ -3,7 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import creations.cr.Level;
+import game.Level;
 import game.TataiGame;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import creations.cr.Level;
+import game.Level;
 import stats.TataiHandler;
 import stats.TataiStat;
 
