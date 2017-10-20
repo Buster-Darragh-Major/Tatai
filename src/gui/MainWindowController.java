@@ -59,13 +59,18 @@ public class MainWindowController extends TataiController  implements Initializa
 	}
 	
 	/**
-	 * Allows the user to exit the application by clicking the quit button
+	 * Allows the user to logout of the application by clicking the log out button
 	 */
 	@FXML
 	public void handleQuitClick() {
-		Context.getInstance().currentGame().logout();
-		Stage stage = (Stage) _mainMenuQuit.getScene().getWindow();
-		changeWindow("UserWindow.fxml", stage);
+		
+		boolean confirmation = showWarningDialogConfirmation("Logging out", "Are you sure you want log out?");
+		
+		if (confirmation) {
+			Context.getInstance().currentGame().logout();
+			Stage stage = (Stage) _mainMenuQuit.getScene().getWindow();
+			changeWindow("UserWindow.fxml", stage);
+		}
 	}
 	
 	/**

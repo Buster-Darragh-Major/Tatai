@@ -51,6 +51,9 @@
          <font>
             <Font name="NanumGothicBold" size="20.0" />
          </font>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect>
       </Label>
    </children>
 </GridPane>

@@ -88,7 +88,7 @@
                 <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="_statLabel" style="-fx-effect:: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );" stylesheets="@StatisticsTheme.css" text="88.8%" textFill="#f2f2f2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Label fx:id="_statLabel" stylesheets="@StatisticsTheme.css" text="88.8%" textFill="#f2f2f2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <font>
                         <Font name="NanumGothic" size="130.0" />
                      </font>
