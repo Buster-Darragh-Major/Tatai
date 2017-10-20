@@ -7,6 +7,7 @@ import creations.cr.Creation;
 import creations.cr.TataiCreation;
 import creations.labelgenerator.CustomEquationLabelGenerator;
 import creations.ml.TataiCreationModel;
+import gui.Context;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import questionlist.TextQuestionListHandler;
@@ -108,6 +109,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 		if (_hasStarted) {
 			// No stats updates
 			_hasStarted = false;
+			Context.getInstance().setGameToEquation();
 		} else {
 			throw new GameException("Game has already ended");
 		}
