@@ -40,11 +40,13 @@ public class CustomListEditViewController extends TataiController implements Ini
 	public void handleEditButton() {
 		if (_editButton.getText().equals("Back")) {
 			_insideListView.setVisible(false);
+			_label.setText("Custom Lists");
 			_editButton.setText("Edit");
 		} else {
 			updateInsideList();
 			
 			_insideListView.setVisible(true);
+			_label.setText(_listView.getSelectionModel().getSelectedItem());
 			_editButton.setText("Back");
 			_deleteButton.setDisable(true);
 		}
@@ -60,6 +62,7 @@ public class CustomListEditViewController extends TataiController implements Ini
 			if (_handler.size() == 0) {
 				_handler.delete();
 				_insideListView.setVisible(false);
+				_label.setText("Custom Lists");
 				_editButton.setText("Edit");
 				updateOutsideList();
 			}

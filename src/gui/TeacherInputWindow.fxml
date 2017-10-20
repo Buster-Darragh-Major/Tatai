@@ -166,6 +166,7 @@
                   <Font size="36.0" />
                </font>
             </JFXButton>
+            <Label fx:id="_questionNoLabel" text="Label" textFill="WHITE" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Label fx:id="_inputLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
