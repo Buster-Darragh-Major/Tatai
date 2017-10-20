@@ -70,11 +70,7 @@
 .text-area *.content {
     -fx-background-color: #383838;
 }
-.label {
-	-fx-background-color: transparent;
-	 -fx-text-fill: white;
 
-} 
 
 .list-cell:filled:hover {
     -fx-text-fill: #cc0404;
@@ -87,10 +83,19 @@
 
 .list-view {
 	-fx-focus-color: #cc0404;
-	-fx-text-fill: black;
+	-fx-text-fill: white;
+	-fx-background-color: #383838;
+	-fx-alignment:center;
 }
 
 .list-cell {
-	-fx-text-fill: black;
+	-fx-text-fill: white;
+	-fx-background-color: #383838;
+	-fx-alignment:center;
 }
 
+.label {
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+
+}
