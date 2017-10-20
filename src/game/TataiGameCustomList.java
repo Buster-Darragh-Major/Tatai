@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import creations.cr.Creation;
-import creations.cr.Level;
 import creations.cr.TataiCreation;
-import creations.cr.TataiCreationModel;
 import creations.labelgenerator.CustomEquationLabelGenerator;
+import creations.ml.TataiCreationModel;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import questionlist.TextQuestionListHandler;

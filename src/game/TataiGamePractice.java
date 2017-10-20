@@ -1,7 +1,5 @@
 package game;
 
-import creations.cr.Level;
-
 public class TataiGamePractice extends TataiGame {
 	
 	

@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import creations.cr.Level;
+import game.Level;
 import game.TataiQuestionTableAdapter;
 import javafx.application.Platform;
 import javafx.fxml.FXML;

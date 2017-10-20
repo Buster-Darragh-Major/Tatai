@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import creations.cr.Level;
+import game.Level;
 
 /**
  * This class gets information stored in the following format .... total
