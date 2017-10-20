@@ -65,6 +65,9 @@ public class TataiGame {
 		_currentUser = user;
 	}
 	
+	public void logout() {
+		_currentUser = null;
+	}
 	/**
 	 * Gets the current class room
 	 * @return the current class
@@ -274,6 +277,7 @@ public class TataiGame {
 	public void endGame() {
 		if (_hasStarted) {
 			_currentUser.updateStats(TOTAL_NUMBER_OF_QUESTIONS, _correct, _incorrect, _level);
+			_currentUser.saveUser();
 			_hasStarted = false;
 		} else {
 			throw new GameException("Game has already ended");

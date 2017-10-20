@@ -61,7 +61,9 @@ public class MainWindowController extends TataiController  implements Initializa
 	 */
 	@FXML
 	public void handleQuitClick() {
-		System.exit(0);
+		Context.getInstance().currentGame().logout();
+		Stage stage = (Stage) _mainMenuQuit.getScene().getWindow();
+		changeWindow("UserWindow.fxml", stage);
 	}
 	
 	/**
