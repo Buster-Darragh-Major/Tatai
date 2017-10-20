@@ -7,8 +7,6 @@ import creations.cr.TataiCreation;
 import creations.labelgenerator.Level1EquationLabelGenerator;
 import creations.labelgenerator.Level2EquationLabelGenerator;
 import creations.ml.TataiCreationModel;
-import stats.CSVStatsHandler;
-import stats.StatisticHandler;
 import translator.TataiEquationTranslator;
 import translator.Translator;
 
@@ -16,7 +14,6 @@ public class TataiGameEquation extends TataiGame {
 
 	/* Fields */
 	protected Translator _translator = new TataiEquationTranslator();
-	// ^^^ REPLACE WITH PROPER STATS HANDLERS FOR GAME TYPE ^^^ //
 
 	public TataiGameEquation() {
 		super();
