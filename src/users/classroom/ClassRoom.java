@@ -58,7 +58,7 @@ public interface ClassRoom {
 	 * @param student
 	 *            the student to be added
 	 */
-	public void addStudent(Student student);
+	public void addStudent(Student student) throws ClassRoomException;
 
 	/**
 	 * Adds a teacher to the classroom. It is up to implementers of this interface
@@ -66,7 +66,7 @@ public interface ClassRoom {
 	 * 
 	 * @param teacher
 	 */
-	public void addTeacher(Teacher teacher);
+	public void addTeacher(Teacher teacher) throws ClassRoomException;
 
 	/**
 	 * Removes a teacher by userName

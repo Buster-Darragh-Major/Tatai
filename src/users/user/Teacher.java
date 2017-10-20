@@ -23,7 +23,7 @@ public class Teacher extends User {
 	 * @param userName
 	 *            the user name the user has choosen
 	 */
-	public Teacher(String firstName, String lastName, String userName) {
+	public Teacher(String firstName, String lastName, String userName) throws UserException {
 		super(firstName, lastName, userName);
 		_writingPrivileges = true;
 	}
