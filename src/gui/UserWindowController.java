@@ -58,6 +58,19 @@ public class UserWindowController extends TataiController implements Initializab
 			showWarningDialog("No User selected", "Please select a user");
 		}
 	}
+	
+	/**
+	 * Determines whether to enable login button
+	 */
+	@FXML
+	public void handleListClick() {
+		if ((_userList1.getSelectionModel().getSelectedItem() == null) && 
+				(_userList2.getSelectionModel().getSelectedItem() == null)) {
+			_continueButton.setDisable(true);
+		} else {
+			_continueButton.setDisable(false);
+		}
+	}
 
 	/**
 	 * Add a user
@@ -73,6 +86,8 @@ public class UserWindowController extends TataiController implements Initializab
 	 */
 	@FXML
 	public void handleDeleteClick() {
+		_continueButton.setDisable(true);
+
 		String userName = getSelection();
 
 		boolean confirmation = false;
@@ -183,6 +198,7 @@ public class UserWindowController extends TataiController implements Initializab
 
 		_userList1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		_userList2.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+		_continueButton.setDisable(true);
 
 		// Allows selection of only one list
 		_userList1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

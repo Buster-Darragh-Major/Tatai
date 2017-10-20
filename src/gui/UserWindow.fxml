@@ -73,8 +73,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ListView fx:id="_userList1" prefHeight="200.0" prefWidth="200.0" />
-            <ListView fx:id="_userList2" prefHeight="200.0" prefWidth="200.0" stylesheets="@TataiTheme.css" GridPane.columnIndex="1" />
+            <ListView fx:id="_userList1" onMouseClicked="#handleListClick" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="_userList2" onMouseClicked="#handleListClick" prefHeight="200.0" prefWidth="200.0" stylesheets="@TataiTheme.css" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
