@@ -51,7 +51,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		_game.setStatsHandlerLevel(Level.Level1);
+		_game.setLevel(Level.Level1);
 		updateValues();
 	}
 	
@@ -138,10 +138,10 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	public void switchLevel() {
 		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
-			_game.setStatsHandlerLevel(Level.Level2);
+			_game.setLevel(Level.Level2);
 			_switchLevelButton.setText(SEELEVEL1);
 		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
-			_game.setStatsHandlerLevel(Level.Level1);
+			_game.setLevel(Level.Level1);
 			_switchLevelButton.setText(SEELEVEL2);
 		}
 		

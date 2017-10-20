@@ -192,12 +192,6 @@ public class TataiGame {
 			_firstAttempt = false;
 			_questionsCorrect = new ArrayList<String>();
 			
-			if (_level == Level.Level1) {
-				_statsHandler = _l01statsHandler;
-			} else if (_level == Level.Level2) {
-				_statsHandler = _l02statsHandler;
-			}
-			
 		} else {
 			throw new GameException("Game has already started");
 		}
@@ -282,7 +276,7 @@ public class TataiGame {
 	 */
 	public void endGame() {
 		if (_hasStarted) {
-			_statsHandler.updateStats(_questionNo - 1, _correct, _incorrect);
+			_currentUser.updateStats(TOTAL_NUMBER_OF_QUESTIONS, _correct, _incorrect, _level);
 			_hasStarted = false;
 		} else {
 			throw new GameException("Game has already ended");

@@ -17,8 +17,6 @@ public class TataiGameEquation extends TataiGame {
 
 	/* Fields */
 	protected Translator _translator = new TataiEquationTranslator();
-	private StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
-	private StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
 	// ^^^ REPLACE WITH PROPER STATS HANDLERS FOR GAME TYPE ^^^ //
 
 	public TataiGameEquation() {
@@ -54,12 +52,6 @@ public class TataiGameEquation extends TataiGame {
 			_hasStarted = true;
 			_firstAttempt = false;
 			_questionsCorrect = new ArrayList<String>();
-			
-			if (_level == Level.Level1) {
-				_statsHandler = _l01statsHandler;
-			} else if (_level == Level.Level2) {
-				_statsHandler = _l02statsHandler;
-			}
 			
 		} else {
 			throw new GameException("Game has already started");
@@ -99,15 +91,6 @@ public class TataiGameEquation extends TataiGame {
 	
 	////Stats Methods \\\\
 	
-	public void setStatsHandlerLevel(Level level) {
-		if (level == Level.Level1) {
-			_statsHandler = _l01statsHandler;
-		} else if (level == Level.Level2) {
-			_statsHandler = _l02statsHandler;
-		}
-		
-	}
-	
 	/**
 	 * Returns the average as a percentage 
 	 * 
@@ -129,27 +112,27 @@ public class TataiGameEquation extends TataiGame {
 	 * @return The average as a double
 	 */
 	public double averageAsDouble() {
-		return _statsHandler.average();
+		return _currentUser.getAverage(_level);
 	}
 	
 	/**
 	 * Total played
 	 */
 	public int totalPlayed() {
-		return _statsHandler.totalPlayed();
+		return _currentUser.getTotalPlayed(_level);
 	}
 	
 	/**
 	 * correct
 	 */
 	public int correct() {
-		return _statsHandler.totalCorrect();
+		return _currentUser.getTotalCorrect(_level);
 	}
 	
 	/**
 	 * incorrect
 	 */
 	public int incorrect() {
-		return _statsHandler.totalIncorrect();
+		return _currentUser.getTotalIncorrect(_level);
 	}
 }
