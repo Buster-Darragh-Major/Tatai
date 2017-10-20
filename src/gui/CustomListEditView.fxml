@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@TataiTheme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="556.0" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CustomListEditViewController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="21.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="456.0" minWidth="10.0" prefWidth="456.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="36.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="132.0" minHeight="0.0" prefHeight="84.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="337.0" minHeight="10.0" prefHeight="262.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="97.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="FUK" textFill="WHITE" GridPane.rowIndex="1" />
+      <JFXButton fx:id="_exitButton" buttonType="RAISED" onAction="#handleExitClick" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="10.0" />
+         </GridPane.margin>
+      </JFXButton>
+      <JFXListView fx:id="_listView" onMouseClicked="#handleListSelection" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <JFXButton fx:id="_deleteButton" buttonType="RAISED" onAction="#handleDeleteButton" prefHeight="50.0" prefWidth="100.0" text="Delete" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <JFXButton fx:id="_editButton" buttonType="RAISED" onAction="#handleEditButton" prefHeight="50.0" prefWidth="100.0" text="Edit" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Label fx:id="_label" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="_warningLabel" text="You currently have no custom lists." textFill="#bf0505" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>

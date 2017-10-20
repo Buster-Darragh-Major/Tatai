@@ -42,6 +42,7 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 			Scene scene = new Scene(root);
 			stage.setTitle("Edit Lists");
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.show();
 		} catch (IOException e) {
