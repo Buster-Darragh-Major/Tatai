@@ -72,17 +72,17 @@ public class TataiClassRoom implements ClassRoom {
 	}
 	
 	@Override
-	public void addStudent(Student student) {
+	public void addStudent(Student student) throws ClassRoomException {
 		if (containsUser(student.userName())) {
-			throw new ClassRoomException("user with username" + student.userName() + "is already in classroom");
+			throw new ClassRoomException("user with username " + student.userName() + " is already in classroom");
 		}
 		_students.add(student);
 	}
 
 	@Override
-	public void addTeacher(Teacher teacher) {
+	public void addTeacher(Teacher teacher) throws ClassRoomException{
 		if (containsUser(teacher.userName())) {
-			throw new ClassRoomException("user with username" + teacher.userName() + "is already in classroom");
+			throw new ClassRoomException("user with username " + teacher.userName() + " is already in classroom");
 		}
 		_teachers.add(teacher);
 	}

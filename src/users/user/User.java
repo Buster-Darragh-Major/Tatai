@@ -52,10 +52,27 @@ public abstract class User extends TataiHandler {
 	 * @param userName
 	 *            the user name the user has choosen
 	 */
-	public User(String firstName, String LastName, String userName) {
-		_firstName = firstName;
-		_lastName = LastName;
-		_userName = userName;
+	public User(String firstName, String LastName, String userName) throws UserException {
+		_firstName = firstName.trim();
+		_lastName = LastName.trim();
+		_userName = userName.trim();
+		
+		if (_firstName == null || _lastName == null || _userName == null) {
+			throw new UserException("All name fields must be provided");
+		}
+		
+		if (_firstName == "" || _firstName.matches(".*\\d+.*") || _firstName.contains(" ")) {
+			throw new UserException("Invalid first name: " + _firstName + " choosen for user. Please make sure the name field is filled in and there are no "
+					+ "spaces or digits");
+		}
+		if (_lastName == "" || _firstName.matches(".*\\d+.*") || _lastName.contains(" ")) {
+			throw new UserException("Invalid last name: " + _lastName + " choosen for user. Please make sure the name field is filled in and there are no "
+					+ "spaces or digits");
+		}
+		if (_userName == "") {
+			throw new UserException("Invalid username: " + _userName + " choosen for user. Please make sure this is not empty.");
+		}
+		
 		_lvl1Stats = new TataiStat();
 		_lvl2Stats = new TataiStat();
 

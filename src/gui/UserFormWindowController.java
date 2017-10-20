@@ -11,10 +11,14 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import users.classroom.ClassRoomException;
 import users.user.Student;
 import users.user.Teacher;
 import users.user.User;
+import users.user.UserException;
 
 public class UserFormWindowController extends TataiController implements Initializable {
 	@FXML
@@ -36,35 +40,31 @@ public class UserFormWindowController extends TataiController implements Initial
 		String lastName = _lastNameField.getText().toString();
 		String userName = _userNameField.getText().toString();
 
-		Task<Boolean> addTask = new Task<Boolean>() {
+		Task<Void> addTask = new Task<Void>() {
 
 			@Override
-			protected Boolean call() throws Exception {
+			protected Void call() throws UserException, ClassRoomException {
 				User u = null;
-				if (_teacherCheckBox.isSelected()
-						&& !Context.getInstance().currentGame().getClassRoom().containsUser(userName)) {
+				if (_teacherCheckBox.isSelected()) {
 					u = new Teacher(firstName, lastName, userName);
 					Context.getInstance().currentGame().getClassRoom().addTeacher((Teacher) u);
-				} else if (!Context.getInstance().currentGame().getClassRoom().containsUser(userName)) {
+				} else {
 					u = new Student(firstName, lastName, userName);
 					Context.getInstance().currentGame().getClassRoom().addStudent((Student) u);
-				} else {
-					return false;
 				}
-
 				u.saveUser();
-				return true;
+				return null;
+
 			}
 		};
 
 		addTask.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, e -> {
-			if (addTask.getValue()) {
-				Stage stage = (Stage) _confirmButton.getScene().getWindow();
-				changeWindow("UserWindow.fxml", stage);
-			} else {
-				showWarningDialog("Failed Creating User", "username already exists");
-			}
+			Stage stage = (Stage) _confirmButton.getScene().getWindow();
+			changeWindow("UserWindow.fxml", stage);
+		});
 
+		addTask.setOnFailed(e -> {
+			showWarningDialog("Failed Creating User", addTask.getException().getMessage());
 		});
 
 		startBackgroundThread(addTask);
@@ -91,5 +91,18 @@ public class UserFormWindowController extends TataiController implements Initial
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		_confirmButton.setDisable(true);
+	}
+
+	/**
+	 * Handle key binds
+	 * @param e The key event
+	 */
+	@FXML 
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleBackClick();
+		} else if (e.getCode() == KeyCode.ENTER) {
+			handleConfirmClick();
+		}
 	}
 }

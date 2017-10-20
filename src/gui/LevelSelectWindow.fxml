@@ -11,11 +11,11 @@
 
 <GridPane onKeyPressed="#handleKeyPress" prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LevelSelectWindowController">
    <columnConstraints>
-      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="600.0" prefWidth="600.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="206.0" minHeight="0.0" prefHeight="168.0" valignment="CENTER" vgrow="NEVER" />
-      <RowConstraints maxHeight="400.0" minHeight="194.0" prefHeight="332.0" vgrow="ALWAYS" />
+      <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints vgrow="ALWAYS" />
    </rowConstraints>
    <children>
       <Label stylesheets="@TataiTheme.css" text="Level Select" textFill="WHITE">
@@ -25,6 +25,9 @@
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" />
          </effect>
+         <GridPane.margin>
+            <Insets bottom="25.0" top="25.0" />
+         </GridPane.margin>
       </Label>
       <GridPane GridPane.rowIndex="1">
         <columnConstraints>

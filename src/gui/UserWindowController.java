@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import users.user.User;
 
@@ -150,6 +152,19 @@ public class UserWindowController extends TataiController implements Initializab
 	private void clearListSelection(ListView<String> l) {
 		if (l.isFocused()) {
 			l.getSelectionModel().clearSelection();
+		}
+	}
+	
+	/**
+	 * Handle key binds
+	 * @param e The key event
+	 */
+	@FXML 
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleQuitClick();
+		} else if (e.getCode() == KeyCode.ENTER) {
+			handleContinueClick();
 		}
 	}
 	
