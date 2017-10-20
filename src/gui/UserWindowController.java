@@ -71,34 +71,46 @@ public class UserWindowController extends TataiController implements Initializab
 	 */
 	@FXML
 	public void handleDeleteClick() {
+		String userName = getSelection();
 
-		Task<String> deletionTask = new Task<String>() {
+		boolean confirmation = false;
+		if (userName != null) {
+			confirmation = showWarningDialogConfirmation("Deletion Confirmation",
+					"Are you sure you want to delete: " + userName);
+		}
 
-			@Override
-			protected String call() throws Exception {
-				ListView<String> l = getSelectedList();
-				String userName = getSelection();
+		if (confirmation) {
+			Task<Void> deletionTask = new Task<Void>() {
 
-				if (l.equals(_userList1)) {
-					Context.getInstance().currentGame().getClassRoom().removeStudent(userName);
-				} else if (l.equals(_userList2)) {
-					Context.getInstance().currentGame().getClassRoom().removeTeacher(userName);
+				@Override
+				protected Void call() throws Exception {
+					ListView<String> l = getSelectedList();
+
+					if (l.equals(_userList1)) {
+						Context.getInstance().currentGame().getClassRoom().removeStudent(userName);
+					} else if (l.equals(_userList2)) {
+						Context.getInstance().currentGame().getClassRoom().removeTeacher(userName);
+					}
+
+					return null;
 				}
+			};
 
-				return userName;
-			}
-		};
+			deletionTask.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, e -> {
+				if (_userList2.getSelectionModel().isEmpty()) {
+					_userList1.getItems().remove(userName);
+				} else if (_userList1.getSelectionModel().isEmpty()) {
+					_userList2.getItems().remove(userName);
+				}
+				if (_userList1.getSelectionModel().getSelectedIndex() != -1) {
+					_userList1.getSelectionModel().clearSelection();
+				} else if (_userList2.getSelectionModel().getSelectedIndex() != 1) {
+					_userList2.getSelectionModel().clearSelection();
+				}
+			});
 
-		deletionTask.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, e -> {
-			String userName = deletionTask.getValue();
-			if (_userList2.getSelectionModel().isEmpty()) {
-				_userList1.getItems().remove(userName);
-			} else if (_userList1.getSelectionModel().isEmpty()) {
-				_userList2.getItems().remove(userName);
-			}
-		});
-
-		startBackgroundThread(deletionTask);
+			startBackgroundThread(deletionTask);
+		}
 	}
 
 	/**
@@ -135,6 +147,12 @@ public class UserWindowController extends TataiController implements Initializab
 		return l;
 	}
 
+	private void clearListSelection(ListView<String> l) {
+		if (l.isFocused()) {
+			l.getSelectionModel().clearSelection();
+		}
+	}
+	
 	/**
 	 * Init the controller
 	 */
@@ -156,9 +174,7 @@ public class UserWindowController extends TataiController implements Initializab
 
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (_userList2.isFocused()) {
-					_userList2.getSelectionModel().clearSelection();
-				}
+				clearListSelection(_userList2);
 			}
 
 		});
@@ -168,11 +184,8 @@ public class UserWindowController extends TataiController implements Initializab
 
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (_userList1.isFocused()) {
-					_userList1.getSelectionModel().clearSelection();
-				}
+				clearListSelection(_userList1);
 			}
-
 		});
 	}
 }
