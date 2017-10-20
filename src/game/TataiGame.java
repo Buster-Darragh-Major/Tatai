@@ -10,8 +10,6 @@ import creations.labelgenerator.Level2LabelGenerator;
 import creations.ml.TataiCreationModel;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import stats.CSVStatsHandler;
-import stats.StatisticHandler;
 import translator.TataiTranslator;
 import translator.Translator;
 import users.classroom.ClassRoom;
