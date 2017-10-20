@@ -7,6 +7,8 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import users.classroom.ClassRoomException;
 import users.user.Student;
@@ -68,5 +70,18 @@ public class UserFormWindowController extends TataiController {
 	public void handleBackClick() {
 		Stage stage = (Stage) _confirmButton.getScene().getWindow();
 		changeWindow("UserWindow.fxml", stage);
+	}
+	
+	/**
+	 * Handle key binds
+	 * @param e The key event
+	 */
+	@FXML 
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleBackClick();
+		} else if (e.getCode() == KeyCode.ENTER) {
+			handleConfirmClick();
+		}
 	}
 }

@@ -95,6 +95,12 @@ public class MainWindowController extends TataiController  implements Initializa
 	        }
 	    });
 	    
+	    if (Context.getInstance().currentGame().getCurrentUser().hasWritingPrivileges()) {
+	    	_teachersButton.setVisible(true);
+	    } else {
+	    	_teachersButton.setVisible(false);
+	    }
+	    
 	    _userLabel.setText(Context.getInstance().currentGame().getCurrentUser().name());
 	}
 }
