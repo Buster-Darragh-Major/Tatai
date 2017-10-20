@@ -35,17 +35,17 @@
             <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXTextField fx:id="_firstNameField" maxWidth="300.0" promptText="First Name" styleClass="root" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXTextField fx:id="_firstNameField" maxWidth="300.0" onKeyPressed="#handleFormKeystroke" onKeyReleased="#handleFormKeystroke" onKeyTyped="#handleFormKeystroke" promptText="First Name" styleClass="root" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="_lastNameField" maxWidth="300.0" promptText="Last Name" styleClass="root" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <JFXTextField fx:id="_lastNameField" maxWidth="300.0" onKeyPressed="#handleFormKeystroke" onKeyReleased="#handleFormKeystroke" onKeyTyped="#handleFormKeystroke" promptText="Last Name" styleClass="root" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="_userNameField" maxWidth="300.0" promptText="username" styleClass="root" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <JFXTextField fx:id="_userNameField" maxWidth="300.0" onKeyPressed="#handleFormKeystroke" onKeyReleased="#handleFormKeystroke" onKeyTyped="#handleFormKeystroke" promptText="username" styleClass="root" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
