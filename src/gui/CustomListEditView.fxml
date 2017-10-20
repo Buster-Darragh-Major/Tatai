@@ -35,6 +35,6 @@
          </font>
       </Label>
       <Label fx:id="_warningLabel" text="You currently have no custom lists." textFill="#bf0505" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-      <JFXListView fx:id="_insideListView" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <JFXListView fx:id="_insideListView" onMouseClicked="#handleInnerListSelection" onMousePressed="#handleInnerListSelection" onMouseReleased="#handleInnerListSelection" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>

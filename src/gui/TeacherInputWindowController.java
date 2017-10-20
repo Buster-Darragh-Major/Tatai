@@ -21,6 +21,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	/* FXML Nodes */
 	@FXML private Label _inputLabel;
 	@FXML private Label _warningLabel;
+	@FXML private Label _questionNoLabel;
 	@FXML private Button _0;
 	@FXML private Button _1;
 	@FXML private Button _2;
@@ -114,6 +115,10 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	
 	@FXML
 	public void handleExitClick() {
+		if (_handler.size() == 0) {
+			_handler.delete();
+		}
+		
 		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
 		changeWindow("TeacherInputNamingWindow.fxml", stage);// Change to MainWindow.fxml view
 	}
@@ -129,6 +134,12 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		_enterButton.setDisable(true);
 		_handler.writeToFile(_inputLabel.getText() + "=");
 		_inputLabel.setText("");
+		
+		if (_handler.size() == 1) {
+			_questionNoLabel.setText(_handler.size() + " Question");
+		} else {
+			_questionNoLabel.setText(_handler.size() + " Questions");
+		}
 	}
 	
 	/**
@@ -216,6 +227,8 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		
 		_handler = new TextQuestionListHandler(Context.getInstance().currentQuestionList());
 		_handler.makeList();
+		
+		_questionNoLabel.setText(_handler.size() + " Questions");
 	}
 	
 	/**

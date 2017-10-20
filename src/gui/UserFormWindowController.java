@@ -1,11 +1,15 @@
 package gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -16,7 +20,7 @@ import users.user.Teacher;
 import users.user.User;
 import users.user.UserException;
 
-public class UserFormWindowController extends TataiController {
+public class UserFormWindowController extends TataiController implements Initializable {
 	@FXML
 	private JFXTextField _firstNameField;
 	@FXML
@@ -65,13 +69,30 @@ public class UserFormWindowController extends TataiController {
 
 		startBackgroundThread(addTask);
 	}
+	
+	@FXML
+	public void handleFormKeystroke() {
+		if ((_firstNameField.getText().trim().equals("")) || 
+				(_lastNameField.getText().trim().equals("")) || 
+				(_userNameField.getText().trim().equals(""))) {
+			_confirmButton.setDisable(true);
+		} else {
+			_confirmButton.setDisable(false);
+
+		}
+	}
 
 	@FXML
 	public void handleBackClick() {
 		Stage stage = (Stage) _confirmButton.getScene().getWindow();
 		changeWindow("UserWindow.fxml", stage);
 	}
-	
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		_confirmButton.setDisable(true);
+	}
+
 	/**
 	 * Handle key binds
 	 * @param e The key event

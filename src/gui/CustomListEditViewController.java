@@ -27,6 +27,9 @@ public class CustomListEditViewController extends TataiController implements Ini
 	@FXML private Label _label;
 	@FXML private Label _warningLabel;
 	
+	/* Fields */
+	private TextQuestionListHandler _handler;
+	
 	@FXML
 	public void handleExitClick() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
@@ -35,42 +38,70 @@ public class CustomListEditViewController extends TataiController implements Ini
 	
 	@FXML
 	public void handleEditButton() {
-		ArrayList<String> items = new ArrayList<String>();
-		
-		TextQuestionListHandler handler = new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem());
-		for (int i = 1; i <= handler.size(); i++) {
-			items.add(handler.getLine(i));
+		if (_editButton.getText().equals("Back")) {
+			_insideListView.setVisible(false);
+			_label.setText("Custom Lists");
+			_editButton.setText("Edit");
+		} else {
+			updateInsideList();
+			
+			_insideListView.setVisible(true);
+			_label.setText(_listView.getSelectionModel().getSelectedItem());
+			_editButton.setText("Back");
+			_deleteButton.setDisable(true);
 		}
-		_insideListView.setItems(FXCollections.observableArrayList(items));
-		
-		_insideListView.setVisible(true);
 	}
 	
 	@FXML
 	public void handleDeleteButton() {
-		TextQuestionListHandler handler = new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem());
-		handler.delete();
-		update();
+		if (_insideListView.isVisible()) {
+			int lineNo = _insideListView.getSelectionModel().getSelectedIndex() + 1;
+			_handler.delete(lineNo);
+			updateInsideList();
+			
+			if (_handler.size() == 0) {
+				_handler.delete();
+				_insideListView.setVisible(false);
+				_label.setText("Custom Lists");
+				_editButton.setText("Edit");
+				updateOutsideList();
+			}
+		} else {
+			_handler = new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem());
+			_handler.delete();
+			updateOutsideList();
+		}
+		
+		_deleteButton.setDisable(true);
 	}
 	
 	@FXML
 	public void handleListSelection() {
 		if (_listView.getSelectionModel().getSelectedItem() == null) {
-			_editButton.setDisable(true);
 			_deleteButton.setDisable(true);
-
+			_editButton.setDisable(true);
 		} else {
+			_deleteButton.setDisable(false);
 			_editButton.setDisable(false);
+
+		}
+	}
+	
+	@FXML
+	public void handleInnerListSelection() {
+		if (_insideListView.getSelectionModel().getSelectedItem() == null) {
+			_deleteButton.setDisable(true);
+		} else {
 			_deleteButton.setDisable(false);
 		}
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		update();
+		updateOutsideList();
 	}
 	
-	private void update() {
+	private void updateOutsideList() {
 		_label.setText("Custom Lists");
 		
 		_insideListView.setVisible(false);
@@ -96,5 +127,15 @@ public class CustomListEditViewController extends TataiController implements Ini
 		} catch (NullPointerException e) {
 			_warningLabel.setVisible(true);
 		}
+	}
+	
+	private void updateInsideList() {
+		ArrayList<String> items = new ArrayList<String>();
+		
+		_handler = new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem());
+		for (int i = 1; i <= _handler.size(); i++) {
+			items.add(_handler.getLine(i));
+		}
+		_insideListView.setItems(FXCollections.observableArrayList(items));
 	}
 }
