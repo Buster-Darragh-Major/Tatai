@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -46,5 +47,10 @@
             <Insets left="10.0" top="10.0" />
          </GridPane.margin>
       </JFXButton>
+      <Label fx:id="_userLabel" styleClass="root" text="LOREM" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+         <font>
+            <Font name="NanumGothicBold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>

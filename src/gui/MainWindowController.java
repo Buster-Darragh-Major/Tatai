@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	@FXML private Button _mainMenuQuit;
 	@FXML private Button _mainMenuTutorial;
 	@FXML private Button _teachersButton;
+	@FXML private Label _userLabel;
 	
 	/**
 	 * Handles user pressing play button
@@ -87,5 +89,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	    		_mainMenuPlay.requestFocus();
 	        }
 	    });
+	    
+	    _userLabel.setText(Context.getInstance().currentGame().getCurrentUser().name());
 	}
 }

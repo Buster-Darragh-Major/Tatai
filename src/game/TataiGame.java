@@ -32,7 +32,7 @@ public class TataiGame {
 	public static final String TOTAL_PLAYED = "Total Answered";
 	public static final String INCORRECT = "Total Incorrect";
 	public static final String CORRECT = "Total Correct";
-	
+
 	protected Level _level = Level.Level1;
 	protected int _questionNo;
 	protected TataiCreationModel _creationModel;
@@ -42,10 +42,10 @@ public class TataiGame {
 	protected int _incorrect;
 	protected boolean _firstAttempt;
 	protected ArrayList<String> _questionsCorrect = new ArrayList<String>();
-	
+
 	protected ClassRoom _classRoom;
 	protected User _currentUser;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -54,38 +54,55 @@ public class TataiGame {
 		_incorrect = 0;
 		_questionNo = 0;
 		_firstAttempt = false;
-		
+
 		_creationModel = new TataiCreationModel();
 		_translator = new TataiTranslator();
-		
+
 		_classRoom = new TataiClassRoom();
 	}
-	
+
+	/**
+	 * Gets the current user
+	 * 
+	 * @return the current user of the game
+	 */
+	public User getCurrentUser() {
+		return _currentUser;
+	}
+
+	/**
+	 * Sets the current user
+	 * 
+	 * @param user
+	 *            the user who is to play the game
+	 */
 	public void setCurrentUser(User user) {
 		_currentUser = user;
 	}
-	
+
 	public void logout() {
 		_currentUser = null;
 	}
+
 	/**
 	 * Gets the current class room
+	 * 
 	 * @return the current class
 	 */
 	public ClassRoom getClassRoom() {
 		return _classRoom;
 	}
-	
+
 	public int totalNumberOfQuestions() {
 		return TOTAL_NUMBER_OF_QUESTIONS;
 	}
-	
+
 	/**
 	 * Provides a translation of the current question
 	 */
 	public String translateCurrentQuestion() {
 		String label = _creationModel.getCreationLabel(_questionNo);
-		
+
 		return _translator.translate(label);
 	}
 
@@ -100,7 +117,7 @@ public class TataiGame {
 		} else {
 			throw new GameException("Cannot change the level in the middle of a game!");
 		}
-		
+
 	}
 
 	/**
@@ -184,19 +201,19 @@ public class TataiGame {
 	public void startGame() {
 		if (!_hasStarted) {
 			populateModel();
-			
+
 			_correct = 0;
 			_incorrect = 0;
 			_questionNo = 1;
 			_hasStarted = true;
 			_firstAttempt = false;
 			_questionsCorrect = new ArrayList<String>();
-			
+
 		} else {
 			throw new GameException("Game has already started");
 		}
 	}
-	
+
 	/**
 	 * Restart the game
 	 */
@@ -204,31 +221,30 @@ public class TataiGame {
 		endGame();
 		startGame();
 	}
-	
+
 	/**
 	 * Get amount you got correct
 	 */
 	public int questionsCorrect() {
 		return _correct;
 	}
-	
+
 	/**
 	 * Get amount you got incorrect
 	 */
 	public int questionIncorrect() {
 		return _incorrect;
 	}
-	
+
 	/**
-	 * Answer the current question 
-	 * THIS IS A STUB
+	 * Answer the current question THIS IS A STUB
 	 */
 	public boolean answerQuestion(boolean answer) {
 
 		if (answer) {
 			_questionsCorrect.add("Correct");
 			_correct++;
-			nextQuestion();	
+			nextQuestion();
 			return true;
 		} else {
 			if (_firstAttempt) {
@@ -241,7 +257,7 @@ public class TataiGame {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Return whether or not the question has already been attempted
 	 * 
@@ -250,10 +266,10 @@ public class TataiGame {
 	public boolean getAttempted() {
 		return _firstAttempt;
 	}
-	
+
 	/**
-	 * Populate the creationModel with a list of creations with
-	 * appropriate labels for the current level.s
+	 * Populate the creationModel with a list of creations with appropriate labels
+	 * for the current level.s
 	 */
 	public <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
@@ -267,10 +283,10 @@ public class TataiGame {
 			_creationModel.setLabelingStrategy(new Level2LabelGenerator());
 			break;
 		}
-		
+
 		_creationModel.updateModel(creationClass);
 	}
-	
+
 	/**
 	 * End the game
 	 */
@@ -283,37 +299,37 @@ public class TataiGame {
 			throw new GameException("Game has already ended");
 		}
 	}
-	
+
 	/**
-	 * Returns a list of integers as a String in the order they were played 
-	 * in the game
+	 * Returns a list of integers as a String in the order they were played in the
+	 * game
 	 */
 	public ArrayList<String> getQuestionInts() {
 		List<Creation> creations = _creationModel.listCreations();
 		ArrayList<String> ints = new ArrayList<String>();
-		
+
 		for (int i = 0; i < TataiCreationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
 			ints.add(i, creations.get(i).label());
 		}
-		
+
 		return ints;
 	}
-	
+
 	/**
-	 * Returns a list of translated integers as a String in the order they
-	 * were played in the game
+	 * Returns a list of translated integers as a String in the order they were
+	 * played in the game
 	 */
 	public ArrayList<String> getQuestionTrans() {
 		ArrayList<String> trans = new ArrayList<String>();
-		
+
 		for (int i = 0; i < TataiCreationModel.DEFAULT_NUMBER_OF_CREATIONS; i++) {
 			String creation = _creationModel.getCreationLabel(i + 1);
 			trans.add(i, _translator.translate(creation));
 		}
-		
+
 		return trans;
 	}
-	
+
 	/**
 	 * Returns a list of correct correct/incorrect tags in the order the questions
 	 * were answered in the game.
@@ -321,10 +337,9 @@ public class TataiGame {
 	public ArrayList<String> getQuestionCorrect() {
 		return _questionsCorrect;
 	}
-	
-	
+
 	/**
-	 * Returns the average as a percentage 
+	 * Returns the average as a percentage
 	 * 
 	 * return average
 	 */
@@ -332,12 +347,12 @@ public class TataiGame {
 		if (averageAsDouble() <= 0) {
 			return "%" + 0.00;
 		}
-		
+
 		String per = "" + (averageAsDouble() * 10);
 		per = per.substring(0, 4) + "%";
 		return per;
 	}
-		 
+
 	/**
 	 * Returns this sessions current average
 	 * 
@@ -346,21 +361,21 @@ public class TataiGame {
 	public double averageAsDouble() {
 		return _currentUser.getAverage(_level);
 	}
-	
+
 	/**
 	 * Total played
 	 */
 	public int totalPlayed() {
 		return _currentUser.getTotalPlayed(_level);
 	}
-	
+
 	/**
 	 * correct
 	 */
 	public int correct() {
 		return _currentUser.getTotalCorrect(_level);
 	}
-	
+
 	/**
 	 * incorrect
 	 */
