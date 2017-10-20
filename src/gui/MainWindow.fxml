@@ -25,7 +25,7 @@
             <Insets />
          </GridPane.margin></JFXButton>
       <JFXButton fx:id="_mainMenuStats" buttonType="RAISED" onAction="#handleStatsMenuClick" prefHeight="50.0" prefWidth="100.0" text="Statistics" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-      <JFXButton fx:id="_mainMenuQuit" buttonType="RAISED" onAction="#handleQuitClick" prefHeight="50.0" prefWidth="100.0" text="Quit" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+      <JFXButton fx:id="_mainMenuQuit" buttonType="RAISED" onAction="#handleQuitClick" prefHeight="50.0" prefWidth="100.0" text="Log Out" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
       <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tātai" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <font>
             <Font name="Noto Sans CJK SC Black" size="90.0" />
