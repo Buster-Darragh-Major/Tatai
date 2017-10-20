@@ -1,5 +1,13 @@
 package creations.labelgenerator;
 
+/**
+ * This class deals with the responsibility of generating random strings of equations
+ * in the form "x(+or-)y=", where x and y are integers between 1 and 9, and the equation
+ * evaluates to an integer between 1 and 9. Calling the GenerateLabel() method will return
+ * this String.
+ * @author Buster Darragh-Major
+ * @author Nathan Cairns
+ */
 public class Level1EquationLabelGenerator extends Level1LabelGenerator{
 
 	/* Macros */
@@ -14,6 +22,11 @@ public class Level1EquationLabelGenerator extends Level1LabelGenerator{
 	/* Fields */
 	protected String _label;
 	
+	/**
+	 * Generates an equation with either addition or subtraction as its operand type.
+	 * Minimum and maximum answers of said equations are set to 1 and 9 respectively.
+	 * Every time this method is called a random string is generated.
+	 */
 	@Override
 	public String generateLabel() {
 		chooseOperator(MAX, MIN);
@@ -21,6 +34,13 @@ public class Level1EquationLabelGenerator extends Level1LabelGenerator{
 		return _label;
 	}
 	
+	/**
+	 * Randomly generates an operator string, either "+" or "-". It calls
+	 * a further method that either generates a valid addition or subtraction
+	 * equation, depending on the operator generated.
+	 * @param maximum : int
+	 * @param minimum : int
+	 */
 	protected void chooseOperator(int maximum, int minimum) {
 		int rand = (int) (2 * Math.random());
 		
@@ -31,6 +51,12 @@ public class Level1EquationLabelGenerator extends Level1LabelGenerator{
 		}
 	}
 	
+	/**
+	 * Generates a string based off an addition equation between two ints, the
+	 * answer must evaluate to an integer between two parameters:
+	 * @param maximum : int
+	 * @param minimum : int
+	 */
 	protected void generateAddition(int maximum , int minimum) {
 		int operand1 = getRandomInteger(maximum - minimum, minimum);
 		
@@ -41,6 +67,12 @@ public class Level1EquationLabelGenerator extends Level1LabelGenerator{
 		_label = operand1 + ADDITION + operand2 + EQUALS;
 	}
 	
+	/**
+	 * Generates a string based off an subtraction equation between two ints, the
+	 * answer must evaluate to an integer between two parameters:
+	 * @param maximum : int
+	 * @param minimum : int
+	 */
 	protected void generateSubratction(int maximum , int minimum) {
 		int operand1 = getRandomInteger(maximum, 2 * minimum);
 		

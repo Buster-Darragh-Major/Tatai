@@ -17,6 +17,7 @@ import translator.TataiTranslator;
 import translator.Translator;
 import users.classroom.ClassRoom;
 import users.classroom.TataiClassRoom;
+import users.user.User;
 
 /**
  * Class that deals with the abstract parameters of the game itself, i.e. the
@@ -44,13 +45,10 @@ public class TataiGame {
 	protected int _incorrect;
 	protected boolean _firstAttempt;
 	protected ArrayList<String> _questionsCorrect = new ArrayList<String>();
-	protected StatisticHandler _statsHandler;
 	
 	protected ClassRoom _classRoom;
+	protected User _currentUser;
 	
-	protected StatisticHandler _l01statsHandler = new CSVStatsHandler(Level.Level1);
-	protected StatisticHandler _l02statsHandler = new CSVStatsHandler(Level.Level2);
-
 	/**
 	 * Constructor
 	 */
@@ -64,6 +62,10 @@ public class TataiGame {
 		_translator = new TataiTranslator();
 		
 		_classRoom = new TataiClassRoom();
+	}
+	
+	public void setCurrentUser(User user) {
+		_currentUser = user;
 	}
 	
 	/**
@@ -325,16 +327,6 @@ public class TataiGame {
 		return _questionsCorrect;
 	}
 	
-	//// Stats Methods \\\\
-	
-	public void setStatsHandlerLevel(Level level) {
-		if (level == Level.Level1) {
-			_statsHandler = _l01statsHandler;
-		} else if (level == Level.Level2) {
-			_statsHandler = _l02statsHandler;
-		}
-		
-	}
 	
 	/**
 	 * Returns the average as a percentage 
@@ -357,27 +349,27 @@ public class TataiGame {
 	 * @return The average as a double
 	 */
 	public double averageAsDouble() {
-		return _statsHandler.average();
+		return _currentUser.getAverage(_level);
 	}
 	
 	/**
 	 * Total played
 	 */
 	public int totalPlayed() {
-		return _statsHandler.totalPlayed();
+		return _currentUser.getTotalPlayed(_level);
 	}
 	
 	/**
 	 * correct
 	 */
 	public int correct() {
-		return _statsHandler.totalCorrect();
+		return _currentUser.getTotalCorrect(_level);
 	}
 	
 	/**
 	 * incorrect
 	 */
 	public int incorrect() {
-		return _statsHandler.totalIncorrect();
+		return _currentUser.getTotalIncorrect(_level);
 	}
 }

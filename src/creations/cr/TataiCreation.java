@@ -27,7 +27,9 @@ public class TataiCreation extends Creation {
 	}
 
 	/**
-	 * Displays the creation on a label and pane object
+	 * Displays the creation on a label and pane object which are passed in to the method. The text
+	 * of the label is set to the current creation, integer. The background of the background and 
+	 * text color of the label that is passed in is set to the current creation color scheme.
 	 */
 	@Override
 	public void display(Label label, Pane pane) {

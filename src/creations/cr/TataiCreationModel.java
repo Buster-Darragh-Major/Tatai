@@ -134,7 +134,9 @@ public class TataiCreationModel extends CreationModel{
 	}
 	
 	/**
-	 * This method populates the model with the required number of creations.
+	 * This method populates the model with the required number of creations. The number of questions
+	 * depends on the game type, for equation game types it is statically set to 10, whereas for the custom
+	 * game mode it depends on the length of the custom list that is read off.
 	 */
 	@Override
 	public <T extends Creation> void updateModel(Class<T> creationClass) {
