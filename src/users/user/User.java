@@ -221,6 +221,19 @@ public abstract class User extends TataiHandler {
 
 		return ts.average();
 	}
+	
+	/**
+	 * Updates the users stats for a specific level
+	 * @param played amount just played
+	 * @param correct amount correct
+	 * @param incorrect amount incorrect
+	 * @param level the level to add stats to
+	 */
+	public void updateStats(int played, int correct, int incorrect, Level level) {
+		TataiStat ts = determineStatLevel(level);
+		
+		ts.updateStats(played, correct, incorrect);
+	}
 
 	/**
 	 * Determines which level stats to use.
