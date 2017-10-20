@@ -12,9 +12,9 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TeacherInputNamingWindowController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="0.0" prefWidth="39.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="500.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="0.0" prefWidth="39.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="0.0" prefWidth="107.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="382.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="0.0" prefWidth="110.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
@@ -39,5 +39,6 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </Label>
+      <JFXButton fx:id="_editButton" buttonType="RAISED" onAction="#handleEditClick" prefWidth="60.0" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
    </children>
 </GridPane>
