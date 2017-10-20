@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import HTK.recording.TataiSpeechRecognizer;
@@ -15,12 +14,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -174,19 +170,13 @@ private static final String FINISH = "Finish!";
 	@FXML
 	public void handleQuitClick() {
 		// Prompt user with quit confirmation window 
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmation Dialog");
-		alert.setHeaderText("Quit Current Game");
-		alert.setContentText("Are you sure you want to quit your current game?");
 		
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
+		boolean quit = showWarningDialogConfirmation("Confirmation Dialog", "Are you sure you want to quit your current game");
+		
+		if (quit) {
 			// Quit the game
 			quitCurrentGame();
-		} else {
-			// Close alert
-			alert.close();
-		}
+		} 
 	}
 	
 	/**
