@@ -58,14 +58,14 @@ public class UserWindowController extends TataiController implements Initializab
 			showWarningDialog("No User selected", "Please select a user");
 		}
 	}
-	
+
 	/**
 	 * Determines whether to enable login button
 	 */
 	@FXML
 	public void handleListClick() {
-		if ((_userList1.getSelectionModel().getSelectedItem() == null) && 
-				(_userList2.getSelectionModel().getSelectedItem() == null)) {
+		if ((_userList1.getSelectionModel().getSelectedItem() == null)
+				&& (_userList2.getSelectionModel().getSelectedItem() == null)) {
 			_continueButton.setDisable(true);
 		} else {
 			_continueButton.setDisable(false);
@@ -169,20 +169,24 @@ public class UserWindowController extends TataiController implements Initializab
 			l.getSelectionModel().clearSelection();
 		}
 	}
-	
+
 	/**
 	 * Handle key binds
-	 * @param e The key event
+	 * 
+	 * @param e
+	 *            The key event
 	 */
-	@FXML 
+	@FXML
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {
 			handleQuitClick();
 		} else if (e.getCode() == KeyCode.ENTER) {
-			handleContinueClick();
+			if (!_continueButton.isDisabled()) {
+				handleContinueClick();
+			}
 		}
 	}
-	
+
 	/**
 	 * Init the controller
 	 */

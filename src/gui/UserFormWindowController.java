@@ -102,7 +102,9 @@ public class UserFormWindowController extends TataiController implements Initial
 		if (e.getCode() == KeyCode.ESCAPE) {
 			handleBackClick();
 		} else if (e.getCode() == KeyCode.ENTER) {
-			handleConfirmClick();
+			if (!_confirmButton.isDisabled()) {
+				handleConfirmClick();
+			}
 		}
 	}
 }
