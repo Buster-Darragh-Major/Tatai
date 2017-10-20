@@ -18,10 +18,12 @@ import questionlist.TextQuestionListHandler;
 
 public class CustomListEditViewController extends TataiController implements Initializable {
 
+	/* FXML nodes */
 	@FXML private Button _exitButton;
 	@FXML private Button _editButton;
 	@FXML private Button _deleteButton;
 	@FXML private JFXListView<String> _listView;
+	@FXML private JFXListView<String> _insideListView;
 	@FXML private Label _label;
 	@FXML private Label _warningLabel;
 	
@@ -33,17 +35,21 @@ public class CustomListEditViewController extends TataiController implements Ini
 	
 	@FXML
 	public void handleEditButton() {
+		ArrayList<String> items = new ArrayList<String>();
+		
 		TextQuestionListHandler handler = new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem());
 		for (int i = 1; i <= handler.size(); i++) {
-			
+			items.add(handler.getLine(i));
 		}
+		_insideListView.setItems(FXCollections.observableArrayList(items));
+		
+		_insideListView.setVisible(true);
 	}
 	
 	@FXML
 	public void handleDeleteButton() {
 		TextQuestionListHandler handler = new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem());
 		handler.delete();
-		
 		update();
 	}
 	
@@ -67,6 +73,7 @@ public class CustomListEditViewController extends TataiController implements Ini
 	private void update() {
 		_label.setText("Custom Lists");
 		
+		_insideListView.setVisible(false);
 		_warningLabel.setVisible(false);
 		_editButton.setDisable(true);
 		_deleteButton.setDisable(true);
