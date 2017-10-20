@@ -249,6 +249,7 @@ public abstract class User extends TataiHandler {
 	public void updateStats(int played, int correct, int incorrect, Level level) {
 		TataiStat ts = determineStatLevel(level);
 		
+		System.out.println(played + " " + correct + " " + incorrect);
 		ts.updateStats(played, correct, incorrect);
 	}
 

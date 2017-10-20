@@ -24,6 +24,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 		_handler = handler;
 		TOTAL_NUMBER_OF_QUESTIONS = _handler.size();
 		_creationModel = new TataiCreationModel(new CustomEquationLabelGenerator(_handler), _handler.size());
+		_hasStarted = true;
 	}
 	
 	@Override
