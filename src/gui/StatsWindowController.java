@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -161,5 +163,12 @@ public class StatsWindowController extends TataiController implements Initializa
 
 		updateValues();
 		handleAverageButtonClick();
+	}
+	
+	@FXML
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleExitButtonClick();
+		}	
 	}
 }

@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import questionlist.TextQuestionListHandler;
 
@@ -126,6 +128,16 @@ public class CustomListEditViewController extends TataiController implements Ini
 			_listView.setItems(FXCollections.observableArrayList(items));
 		} catch (NullPointerException e) {
 			_warningLabel.setVisible(true);
+		}
+	}
+	@FXML 
+	public void handleKeyPress(KeyEvent e) {
+		if (e.getCode() == KeyCode.ESCAPE) {
+			handleExitClick();
+		} else if (e.getCode() == KeyCode.ENTER) {
+			handleEditButton();
+		} else if (e.getCode() == KeyCode.DELETE) {
+			handleDeleteButton();
 		}
 	}
 	
