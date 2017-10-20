@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.stage.Stage;
+import users.user.User;
 
 public class UserWindowController extends TataiController implements Initializable {
 	@FXML
@@ -30,9 +31,30 @@ public class UserWindowController extends TataiController implements Initializab
 	@FXML
 	ListView<String> _userList2;
 
+	/**
+	 * goto next main window
+	 */
 	@FXML
 	public void handleContinueClick() {
+		String username = getSelection();
+		ListView<String> l = getSelectedList();
+		User user = null;
 
+		if (username != null) {
+			if (l.equals(_userList1)) {
+				user = Context.getInstance().currentGame().getClassRoom().getStudentByUsername(username);
+			} else if (l.equals(_userList2)) {
+				user = Context.getInstance().currentGame().getClassRoom().getTeacherByUsername(username);
+			}
+
+			if (user != null) {
+				Context.getInstance().currentGame().setCurrentUser(user);
+				Stage stage = (Stage) _continueButton.getScene().getWindow();
+				changeWindow("MainWindow.fxml", stage);
+			}
+		} else {
+			showWarningDialog("No User selected", "Please select a user");
+		}
 	}
 
 	/**
@@ -43,7 +65,7 @@ public class UserWindowController extends TataiController implements Initializab
 		Stage stage = (Stage) _addButton.getScene().getWindow();
 		changeWindow("UserFormWindow.fxml", stage);
 	}
-	
+
 	/**
 	 * DELETE a user
 	 */
@@ -54,18 +76,19 @@ public class UserWindowController extends TataiController implements Initializab
 
 			@Override
 			protected String call() throws Exception {
-				String userName = null;
-				if (_userList2.getSelectionModel().isEmpty()) {
-					userName = _userList1.getSelectionModel().getSelectedItem();	
+				ListView<String> l = getSelectedList();
+				String userName = getSelection();
+
+				if (l.equals(_userList1)) {
 					Context.getInstance().currentGame().getClassRoom().removeStudent(userName);
-				} else if (_userList1.getSelectionModel().isEmpty()) {
-					userName = _userList2.getSelectionModel().getSelectedItem();
+				} else if (l.equals(_userList2)) {
 					Context.getInstance().currentGame().getClassRoom().removeTeacher(userName);
 				}
+
 				return userName;
 			}
 		};
-		
+
 		deletionTask.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, e -> {
 			String userName = deletionTask.getValue();
 			if (_userList2.getSelectionModel().isEmpty()) {
@@ -74,7 +97,7 @@ public class UserWindowController extends TataiController implements Initializab
 				_userList2.getItems().remove(userName);
 			}
 		});
-		
+
 		startBackgroundThread(deletionTask);
 	}
 
@@ -84,6 +107,32 @@ public class UserWindowController extends TataiController implements Initializab
 	@FXML
 	public void handleQuitClick() {
 		System.exit(0);
+	}
+
+	/**
+	 * Gets the currently selected user
+	 * 
+	 * @return the currently selected user
+	 */
+	private String getSelection() {
+		String userName = null;
+		ListView<String> l = getSelectedList();
+		if (l.equals(_userList1)) {
+			userName = l.getSelectionModel().getSelectedItem();
+		} else if (l.equals(_userList2)) {
+			userName = l.getSelectionModel().getSelectedItem();
+		}
+		return userName;
+	}
+
+	private ListView<String> getSelectedList() {
+		ListView<String> l = null;
+		if (_userList2.getSelectionModel().isEmpty()) {
+			l = _userList1;
+		} else if (_userList1.getSelectionModel().isEmpty()) {
+			l = _userList2;
+		}
+		return l;
 	}
 
 	/**
