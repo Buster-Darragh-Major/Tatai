@@ -73,11 +73,17 @@ public class TataiClassRoom implements ClassRoom {
 	
 	@Override
 	public void addStudent(Student student) {
+		if (containsUser(student.userName())) {
+			throw new ClassRoomException("user with username" + student.userName() + "is already in classroom");
+		}
 		_students.add(student);
 	}
 
 	@Override
 	public void addTeacher(Teacher teacher) {
+		if (containsUser(teacher.userName())) {
+			throw new ClassRoomException("user with username" + teacher.userName() + "is already in classroom");
+		}
 		_teachers.add(teacher);
 	}
 	
@@ -238,5 +244,23 @@ public class TataiClassRoom implements ClassRoom {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public boolean containsUser(String username) {
+		for (User user : _students ) {
+			if (user.userName().equals(username)) {
+				return true;
+			}
+		}
+		
+		for (User user : _teachers) {
+			if (user.userName().equals(username)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
 
 }

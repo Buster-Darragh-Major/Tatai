@@ -14,8 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.stage.Stage;
 
-public class UserWindowController implements Initializable {
+public class UserWindowController extends TataiController implements Initializable {
 	@FXML
 	Button _continueButton;
 	@FXML
@@ -34,9 +35,13 @@ public class UserWindowController implements Initializable {
 
 	}
 
+	/**
+	 * Add a user
+	 */
 	@FXML
 	public void handleAddClick() {
-		
+		Stage stage = (Stage) _addButton.getScene().getWindow();
+		changeWindow("UserFormWindow.fxml", stage);
 	}
 	
 	/**
@@ -80,18 +85,6 @@ public class UserWindowController implements Initializable {
 	public void handleQuitClick() {
 		System.exit(0);
 	}
-	
-	
-	/**
-	 * Starts a background thread
-	 * 
-	 * @param task: the task to be performed in the background thread
-	 */
-	private void startBackgroundThread(@SuppressWarnings("rawtypes") Task task) {
-		Thread th = new Thread(task);
-		th.setDaemon(true);
-		th.start();
-}
 
 	/**
 	 * Init the controller

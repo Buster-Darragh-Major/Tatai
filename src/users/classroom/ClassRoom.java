@@ -107,4 +107,13 @@ public interface ClassRoom {
 	 * Read the roll from wherever it is saved
 	 */
 	public void readRoll();
+
+	/**
+	 * Check if the classroom contains a user.
+	 * 
+	 * @param username
+	 *            the username of the user.
+	 * @return true if user is found false otherwise
+	 */
+	public boolean containsUser(String username);
 }
