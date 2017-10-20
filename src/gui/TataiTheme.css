@@ -73,4 +73,19 @@
 .label {
 	-fx-background-color: transparent;
 	 -fx-text-fill: white;
+
+} 
+
+.list-cell:filled:hover {
+    -fx-text-fill: #cc0404;
 }
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+  	-fx-background-color: #cc0404;
+    -fx-text-fill: white;
+}
+
+.list-view {
+	-fx-focus-color: #cc0404;
+}
+
