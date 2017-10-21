@@ -1,10 +1,7 @@
 package gui;
 
 import java.net.URL;
-import java.time.Duration;
 import java.util.ResourceBundle;
-
-import org.omg.PortableServer._ServantActivatorStub;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import game.Level;
@@ -209,32 +206,45 @@ public class StatsWindowController extends TataiController implements Initializa
 	}
 
 	@FXML
+	public void handleHelpClick() {
+		System.out.println("clicked");
+	}
+	
+	@FXML
 	public void handleIconHover(MouseEvent e) {
-		Node node = (Node)e.getSource();
+		Node node = (Node) e.getSource();
 		Stage stage = (Stage) _averageButton.getScene().getWindow();
 		Student student = (Student) _user;
-		
+
 		if (node instanceof FontAwesomeIconView) {
 			if (node.equals(_averageStar)) {
 				_tp.setText("Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel())));
 			} else if (node.equals(_correctStar)) {
 				_tp.setText("Correct: " + getSkillText(student.getStatSkill(Stat.TOTALCORRECT, _game.currentLevel())));
 			} else if (node.equals(_incorrectStar)) {
-				_tp.setText("Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTALINCORRECT, _game.currentLevel())));
+				_tp.setText(
+						"Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTALINCORRECT, _game.currentLevel())));
 			} else if (node.equals(_totalStar)) {
 				_tp.setText("Total: " + getSkillText(student.getStatSkill(Stat.TOTALPLAYED, _game.currentLevel())));
 			}
-		_tp.setAutoHide(true);
-		_tp.show(node, stage.getX()+e.getSceneX(), stage.getY()+e.getSceneY());
+			_tp.setAutoHide(true);
+			_tp.show(node, stage.getX() + e.getSceneX(), stage.getY() + e.getSceneY());
 		} else {
 			_tp.hide();
 		}
 	}
-	
+
+	/**
+	 * Displays relevant text for a specific skill level
+	 * 
+	 * @param skill
+	 *            the skill
+	 * @return relevant text
+	 */
 	private String getSkillText(StatSkill skill) {
 		String skillText = null;
-		
-		switch(skill) {
+
+		switch (skill) {
 		case BRONZE:
 			skillText = "Bronze";
 			break;
@@ -253,7 +263,7 @@ public class StatsWindowController extends TataiController implements Initializa
 		default:
 			break;
 		}
-		
+
 		return skillText + " Level";
 	}
 

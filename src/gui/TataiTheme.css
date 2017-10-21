@@ -4,6 +4,15 @@
 	-fx-alignment: center;
 }
 
+.icon-standard-clickable {
+	-fx-fill: #cc0404;
+}
+
+.icon-standard-clickable:hover {
+	-fx-fill: white;
+}
+
+
 .icon-none {
 	-fx-fill: black;
 }
