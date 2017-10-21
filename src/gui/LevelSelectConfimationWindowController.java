@@ -3,6 +3,8 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXCheckBox;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +21,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML private Button _back;
 	@FXML private Label _levelHeader;
 	@FXML private Label _levelDescriptor;
+	@FXML private JFXCheckBox _checkBox;
 	
 	/**
 	 * Handles user pressing start button
@@ -26,16 +29,28 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML
 	public void handleStartClick() {
 		
-		// Set level of TataiCreationModel to be level defined in current game object
-		// also stored in s Context object
-		Context.getInstance().currentGame().setLevel(
-				Context.getInstance().currentGame().currentLevel());
+		if (_checkBox.isSelected()) {
+			
+		} else {
+			// Set level of TataiCreationModel to be level defined in current game object
+			// also stored in s Context object
+			Context.getInstance().currentGame().setLevel(
+					Context.getInstance().currentGame().currentLevel());
+			
+			// Populate TataiCreationModel object in singleton
+			Context.getInstance().currentGame().startGame();
+			
+			Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
+			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+		}
+	}
+	
+	/**
+	 * Handles clicking of check box by the user, changes label that is displayed and game type.
+	 */
+	@FXML
+	public void handleCheckBoxClick() {
 		
-		// Populate TataiCreationModel object in singleton
-		Context.getInstance().currentGame().startGame();
-		
-		Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
-		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 	}
 	
 	/**
