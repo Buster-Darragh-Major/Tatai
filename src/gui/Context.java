@@ -3,6 +3,7 @@ package gui;
 import game.TataiGame;
 import game.TataiGameEquation;
 import game.TataiGameReverse;
+import users.user.User;
 
 /**
  * Singleton class concerned with the 'context' of the program running, i.e. the
@@ -21,8 +22,8 @@ public class Context {
 	private TataiGame _game;
 	private TataiGame _regularGame;
 	private TataiGameEquation _equationGame;
-	private TataiGameReverse _reverseGame;
 	private String _equationList;
+	private User _user;
 	
 	/**
 	 * Returns instance of singleton object
@@ -96,5 +97,19 @@ public class Context {
 	 */
 	public String currentQuestionList() {
 		return _equationList;
+	}
+	
+	/**
+	 * Sets the current user the Context class cares about
+	 */
+	public void setUser(User user) {
+		_user = user;
+	}
+	
+	/**
+	 * Returns the current user
+	 */
+	public User getUser() {
+		return _user;
 	}
 }

@@ -54,6 +54,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		if (_checkBox.isSelected()) { // Set game type to reverse game and set to current level
 			TataiGameReverse reverseGame = new TataiGameReverse();
 			reverseGame.setLevel(Context.getInstance().currentGame().currentLevel());
+			reverseGame.setCurrentUser(Context.getInstance().getUser());
 			
 			Context.getInstance().setGameType(reverseGame);
 		} else {
@@ -78,6 +79,8 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Context.getInstance().setGameToEquation();
+		
 		// Set header and description labels to be that representing the current game
 		// objects set difficulty.
 		_levelHeader.setText(Context.getInstance().currentGame().getLevelHeader());

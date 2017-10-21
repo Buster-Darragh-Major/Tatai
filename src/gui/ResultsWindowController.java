@@ -43,7 +43,6 @@ public class ResultsWindowController extends TataiController implements Initiali
 	@FXML
 	public void handleLevel2ButtonClick() {
 		// Create new game, set to level 2 and begin game
-		Context.getInstance().newGame();
 		Context.getInstance().currentGame().setLevel(Level.Level2);
 		Context.getInstance().currentGame().startGame();
 

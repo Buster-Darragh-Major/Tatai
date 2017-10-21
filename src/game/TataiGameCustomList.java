@@ -74,7 +74,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 		}
 	}
 	
-	private void nextQuestion() {
+	protected void nextQuestion() {
 		_firstAttempt = false;
 		if ((_questionNo < _handler.size() - 1) && (_questionNo >= 0)) {
 			_questionNo++;

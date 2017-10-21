@@ -50,6 +50,7 @@ public class UserWindowController extends TataiController implements Initializab
 			}
 
 			if (user != null) {
+				Context.getInstance().setUser(user);
 				Context.getInstance().currentGame().setCurrentUser(user);
 				Stage stage = (Stage) _continueButton.getScene().getWindow();
 				changeWindow("MainWindow.fxml", stage);

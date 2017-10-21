@@ -148,7 +148,7 @@ public class TataiGame {
 	/**
 	 * i question number for next question in quiz
 	 */
-	private void nextQuestion() {
+	protected void nextQuestion() {
 		_firstAttempt = false;
 		if ((_questionNo < TOTAL_NUMBER_OF_QUESTIONS) && (_questionNo > 0)) {
 			_questionNo++;
@@ -237,7 +237,7 @@ public class TataiGame {
 	}
 
 	/**
-	 * Answer the current question THIS IS A STUB
+	 * Answer the current question
 	 */
 	public boolean answerQuestion(boolean answer) {
 

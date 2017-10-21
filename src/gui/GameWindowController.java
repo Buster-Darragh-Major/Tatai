@@ -187,9 +187,10 @@ private static final String FINISH = "Finish!";
 		changeWindow("LevelSelectWindow.fxml", stage);
 	}
 	
-	// TODO ***********************
-	// Move this into game class
-	// TODO ***********************
+	/**
+	 * Determines correctness of answer given through speech
+	 * @return isCorrect : boolean
+	 */
 	private boolean isCorrect() {
 		String answer = Context.getInstance().currentGame().translateCurrentQuestion();
 		answer = answer.replace("mā", "maa");

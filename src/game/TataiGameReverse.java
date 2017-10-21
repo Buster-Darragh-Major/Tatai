@@ -33,4 +33,33 @@ public class TataiGameReverse extends TataiGame {
 		}
 		return null;
 	}
+	
+	/**
+	 * Answer the current question
+	 */
+	public boolean answerQuestion(boolean answer) {
+		if (answer) {
+			_questionsCorrect.add("Correct");
+			_correct++;
+			nextQuestion();
+			return true;
+		} else {
+			_questionsCorrect.add("Incorrect");
+			_incorrect++;
+			nextQuestion();
+			return false;
+		}
+	}
+	
+	/**
+	 * End the game
+	 */
+	public void endGame() {
+		if (_hasStarted) {
+			_currentUser.saveUser();
+			_hasStarted = false;
+		} else {
+			throw new GameException("Game has already ended");
+		}
+	}
 }

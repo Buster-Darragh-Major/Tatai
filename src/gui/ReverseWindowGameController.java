@@ -101,6 +101,14 @@ public class ReverseWindowGameController extends TataiController implements Init
 	
 	@FXML
 	public void handlesubmitClick() {
+		if (_submitButton.getText().equals("Submit")) {
+			submit();
+		} else {
+			next();
+		}
+	}
+	
+	private void submit() {
 		if (_intLabel.getText().equals(_answer)) {
 			questionCorrect();
 		} else {
@@ -125,6 +133,20 @@ public class ReverseWindowGameController extends TataiController implements Init
 			_submitButton.setText("Finish");
 		} else {
 			_submitButton.setText("Next");
+		}
+	}
+	
+	/**
+	 * Handles user requesting to change view
+	 */
+	public void next() {
+		Stage stage = (Stage) _submitButton.getScene().getWindow(); //Get current stage
+		
+		// If button text says finish, finish game.
+		if (_submitButton.getText().equals("Finish")) {
+			changeWindow("ResultsWindow.fxml", stage); // Change to ResultsWindow.fxml view
+		} else {
+			changeWindow("ReverseGamemodeWindow.fxml", stage); // Change to GameWindow.fxml view
 		}
 	}
 	
