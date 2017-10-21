@@ -77,10 +77,11 @@ public class TataiGameCustomList extends TataiGameEquation {
 	
 	private void nextQuestion() {
 		_firstAttempt = false;
-		if ((_questionNo < _handler.size()) && (_questionNo >= 0)) {
+		if ((_questionNo < _handler.size() - 1) && (_questionNo >= 0)) {
 			_questionNo++;
 		} else {
 			_questionNo++;
+			System.out.println("success");
 			endGame();
 		}
 	}
@@ -109,7 +110,6 @@ public class TataiGameCustomList extends TataiGameEquation {
 		if (_hasStarted) {
 			// No stats updates
 			_hasStarted = false;
-			Context.getInstance().setGameToEquation();
 		} else {
 			throw new GameException("Game has already ended");
 		}
