@@ -12,9 +12,14 @@
 	-fx-text-fill: white;
 }
 
+#_averageButton:hover, #_correctButton:hover, #_incorrectButton:hover, #_totalButton:hover {
+	-fx-background-color: transparent;
+	-fx-cursor: hand;
+	-fx-effect: dropshadow( one-pass-box , white, 2, 0.0, 0, 0 );
+}
+
 #_correctButton {
 	-fx-text-fill: #8ff243;
-	
 }
 
 #_incorrectButton {
