@@ -30,19 +30,18 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleStartClick() {
+		// Set level of TataiCreationModel to be level defined in current game object
+		// also stored in s Context object
+		Context.getInstance().currentGame().setLevel(
+				Context.getInstance().currentGame().currentLevel());
 		
+		// Populate TataiCreationModel object in singleton
+		Context.getInstance().currentGame().startGame();
+		
+		Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
 		if (_checkBox.isSelected()) {
-			
+			changeWindow("ReverseGamemodeWindow.fxml", stage); // Change to ReverseGamemodeWindow.fxml view
 		} else {
-			// Set level of TataiCreationModel to be level defined in current game object
-			// also stored in s Context object
-			Context.getInstance().currentGame().setLevel(
-					Context.getInstance().currentGame().currentLevel());
-			
-			// Populate TataiCreationModel object in singleton
-			Context.getInstance().currentGame().startGame();
-			
-			Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
 			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 		}
 	}
