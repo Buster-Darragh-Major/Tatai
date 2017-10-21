@@ -6,18 +6,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import game.Level;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import main.java.game.Level;
 
 public class ReverseWindowGameController extends TataiController implements Initializable {
 
 	/* Macros */
-	public final static String AUDIO_FILE_PATH = "src/res/audio/NumberRecordings/";
+	public final static String AUDIO_FILE_PATH = "src/main/resources/audio/NumberRecordings/";
 	
 	/* FXML Nodes */
 	@FXML private Pane _pane;
