@@ -4,6 +4,27 @@
 	-fx-alignment: center;
 }
 
+.icon-none {
+	-fx-fill: black;
+}
+
+.icon-bronze {
+	-fx-fill: #965A38;
+}
+
+.icon-silver {
+	-fx-fill: #A8A8A8;	
+}
+
+.icon-gold {
+	-fx-fill: #C98910;
+}
+
+.icon-platnium {
+	-fx-fill: #CCC2C2;
+	-fx-effect: dropshadow( one-pass-box , #C98910, 10, 0.0, 0, 0 );
+}
+
 .table-view .column-header .label {
     -fx-text-fill: white;
 }
