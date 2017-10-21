@@ -223,8 +223,8 @@ private static final String FINISH = "Finish!";
 	public void questionIncorrect() {
 		// Set color scheme to be white text on red background
 		_pane.setStyle("-fx-background-color: " + INCORRECT_RED);
-		_intLabel.setTextFill(Color.WHITE);
-		_questionNoLabel.setTextFill(Color.WHITE);
+		_intLabel.setStyle("-fx-text-fill: white");
+		_questionNoLabel.setStyle("-fx-text-fill: white");
 		
 		// Display skip/try again buttons
 		_skipButton.setVisible(true);
@@ -273,8 +273,8 @@ private static final String FINISH = "Finish!";
 		
 		// Change color scheme to white text on green background
 		_pane.setStyle("-fx-background-color: " + CORRECT_GREEN);
-		_intLabel.setTextFill(Color.WHITE);
-		_questionNoLabel.setTextFill(Color.WHITE);
+		_intLabel.setStyle("-fx-text-fill: white");
+		_questionNoLabel.setStyle("-fx-text-fill: white");
 
 		if (!_nextQuestionButton.getText().equals(FINISH)) {
 			_nextQuestionButton.setText(NEXT);
