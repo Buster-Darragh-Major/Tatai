@@ -184,6 +184,7 @@ private static final String FINISH = "Finish!";
 	public void quitCurrentGame() {
 		Stage stage = (Stage) _exitButton.getScene().getWindow();
 		Context.getInstance().currentGame().endGame();
+		Context.getInstance().setGameToEquation();
 		changeWindow("LevelSelectWindow.fxml", stage);
 	}
 	
