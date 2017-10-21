@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import HTK.recording.TataiSpeechRecognizer;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
@@ -35,7 +36,7 @@ public class PracticeWindowController extends TataiController implements Initial
 	@FXML private Button _8;
 	@FXML private Button _9;
 	@FXML private Button _recordButton;
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	
 	/* Fields */
 	private ArrayList<String> _userAnswer;

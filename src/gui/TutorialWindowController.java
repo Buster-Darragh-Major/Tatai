@@ -3,10 +3,10 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -22,9 +22,9 @@ public class TutorialWindowController  extends TataiController implements Initia
 	public final static String FILEPATH_START = "res/imgs/tutorial/";
 
 	/* FXML Nodes */
-	@FXML private Button _nextButton;
-	@FXML private Button _backButton;
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _nextButton;
+	@FXML private FontAwesomeIconView _backButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Circle _progressIcon1;
 	@FXML private Circle _progressIcon2;
 	@FXML private Circle _progressIcon3;

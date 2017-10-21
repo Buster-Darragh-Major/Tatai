@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXCheckBox;
 
-import game.Level;
 import game.TataiGameReverse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;

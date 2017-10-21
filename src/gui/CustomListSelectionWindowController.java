@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXListView;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import game.TataiGameCustomList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ import questionlist.TextQuestionListHandler;
 public class CustomListSelectionWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Button _playButton;
 	@FXML private JFXListView<String> _listView;
 	@FXML private Label _warningLabel;

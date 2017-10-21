@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -46,11 +46,14 @@
                </GridPane.margin></Circle>
             <Circle fx:id="_progressIcon6" fill="#2c2c2c" radius="15.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Circle fx:id="_progressIcon7" fill="#2c2c2c" radius="15.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <JFXButton fx:id="_exitButton" buttonType="RAISED" onAction="#handleExitClick" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <FontAwesomeIconView fx:id="_exitButton" glyphName="TIMES" onMouseClicked="#handleExitClick" onMousePressed="#handleExitClick" onMouseReleased="#handleExitClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" />
+               </effect>
                <GridPane.margin>
-                  <Insets left="10.0" top="10.0" />
+                  <Insets left="15.0" top="15.0" />
                </GridPane.margin>
-            </JFXButton>
+            </FontAwesomeIconView>
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="1">
@@ -72,10 +75,14 @@
                 <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton fx:id="_nextButton" buttonType="RAISED" onAction="#handleNextClick" prefHeight="50.0" prefWidth="100.0" text="Next" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                  <FontAwesomeIconView fx:id="_nextButton" glyphName="ARROW_RIGHT" onMouseClicked="#handleNextClick" size="50" styleClass="icon-standard-clickable" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" />
+                     </effect>
                      <GridPane.margin>
-                        <Insets bottom="20.0" right="20.0" />
-                     </GridPane.margin></JFXButton>
+                        <Insets bottom="15.0" right="30.0" />
+                     </GridPane.margin>
+                  </FontAwesomeIconView>
                </children>
             </GridPane>
             <ImageView fx:id="_imageView" fitHeight="222.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -95,11 +102,14 @@
                 <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton fx:id="_backButton" buttonType="RAISED" onAction="#handleBackClick" prefHeight="50.0" prefWidth="100.0" text="Back" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                  <FontAwesomeIconView fx:id="_backButton" glyphName="ARROW_LEFT" onMouseClicked="#handleBackClick" size="50" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" />
+                     </effect>
                      <GridPane.margin>
-                        <Insets bottom="20.0" left="20.0" />
+                        <Insets bottom="15.0" left="30.0" />
                      </GridPane.margin>
-                  </JFXButton>
+                  </FontAwesomeIconView>
                </children>
             </GridPane>
          </children>

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXListView;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ import questionlist.TextQuestionListHandler;
 public class CustomListEditViewController extends TataiController implements Initializable {
 
 	/* FXML nodes */
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Button _editButton;
 	@FXML private Button _deleteButton;
 	@FXML private JFXListView<String> _listView;

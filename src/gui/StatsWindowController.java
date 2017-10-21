@@ -55,7 +55,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	private Button _totalButton;
 	@FXML
-	private Button _exitButton;
+	private FontAwesomeIconView _exitButton;
 	@FXML
 	private Button _switchLevelButton;
 	@FXML
@@ -66,8 +66,10 @@ public class StatsWindowController extends TataiController implements Initializa
 	private FontAwesomeIconView _incorrectStar;
 	@FXML
 	private FontAwesomeIconView _totalStar;
-
-	Tooltip _tp = new Tooltip("at stack tool");
+	@FXML
+	private FontAwesomeIconView _helpButton;
+	
+	Tooltip _tp = new Tooltip();
 
 	/**
 	 * Constructor
@@ -202,21 +204,24 @@ public class StatsWindowController extends TataiController implements Initializa
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {
 			handleExitButtonClick();
+		} else if (e.getCode() == KeyCode.F1) {
+			handleHelpClick();
 		}
 	}
 
 	@FXML
 	public void handleHelpClick() {
-		System.out.println("clicked");
+		Stage stage = (Stage) _averageButton.getScene().getWindow();
+		changeWindow("StatsHelpWindow.fxml", stage);
 	}
 	
 	@FXML
 	public void handleIconHover(MouseEvent e) {
 		Node node = (Node) e.getSource();
 		Stage stage = (Stage) _averageButton.getScene().getWindow();
-		Student student = (Student) _user;
 
 		if (node instanceof FontAwesomeIconView) {
+			Student student = (Student) _user;
 			if (node.equals(_averageStar)) {
 				_tp.setText("Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel())));
 			} else if (node.equals(_correctStar)) {
@@ -233,6 +238,7 @@ public class StatsWindowController extends TataiController implements Initializa
 			_tp.hide();
 		}
 	}
+	/**/
 
 	/**
 	 * Displays relevant text for a specific skill level

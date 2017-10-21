@@ -20,7 +20,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	@FXML private Button _mainMenuStats;
 	@FXML private Button _mainMenuQuit;
 	@FXML private FontAwesomeIconView _mainMenuTutorial;
-	@FXML private Button _teachersButton;
+	@FXML private FontAwesomeIconView _teachersButton;
 	@FXML private Label _userLabel;
 	
 	/**

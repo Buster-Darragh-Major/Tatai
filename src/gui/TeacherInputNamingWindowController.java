@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +23,7 @@ import questionlist.TextQuestionListHandler;
 
 public class TeacherInputNamingWindowController extends TataiController implements Initializable {
 
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Button _createButton;
 	@FXML private Button _editButton;
 	@FXML private Label _warningLabel;
@@ -42,6 +43,7 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			Scene scene = new Scene(root);
+			scene.getRoot().requestFocus();
 			stage.setTitle("Edit Lists");
 			stage.setScene(scene);
 			stage.setResizable(false);

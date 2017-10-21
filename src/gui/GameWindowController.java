@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import HTK.recording.TataiSpeechRecognizer;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -39,7 +40,7 @@ private static final String FINISH = "Finish!";
 	@FXML private Button _nextQuestionButton;
 	@FXML private Button _tryAgainButton;
 	@FXML private Button _skipButton;
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	
 	/* Fields */
 	private TataiSpeechRecognizer _speech;
