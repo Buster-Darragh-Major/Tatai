@@ -66,8 +66,10 @@ public class StatsWindowController extends TataiController implements Initializa
 	private FontAwesomeIconView _incorrectStar;
 	@FXML
 	private FontAwesomeIconView _totalStar;
-
-	Tooltip _tp = new Tooltip("at stack tool");
+	@FXML
+	private FontAwesomeIconView _helpButton;
+	
+	Tooltip _tp = new Tooltip();
 
 	/**
 	 * Constructor
@@ -207,7 +209,8 @@ public class StatsWindowController extends TataiController implements Initializa
 
 	@FXML
 	public void handleHelpClick() {
-		System.out.println("clicked");
+		Stage stage = (Stage) _helpButton.getScene().getWindow();
+		changeWindow("StatsHelpWindow.fxml", stage);
 	}
 	
 	@FXML

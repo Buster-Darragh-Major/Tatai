@@ -141,7 +141,7 @@
                   <DropShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Text>
-            <FontAwesomeIconView glyphName="QUESTION" onMouseClicked="#handleHelpClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+            <FontAwesomeIconView fx:id="_helpButton" glyphName="QUESTION" onMouseClicked="#handleHelpClick" onMousePressed="#handleHelpClick" onMouseReleased="#handleHelpClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" />
                </effect>
