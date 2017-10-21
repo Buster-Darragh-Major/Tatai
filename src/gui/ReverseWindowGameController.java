@@ -18,7 +18,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 	@FXML private Label _wordLabel;
 	@FXML private Label _intLabel;
 	@FXML private Label _questionNoLabel;
-	@FXML private FontAwesomeIconView _exitButton;
+	@FXML private Button _exitButton;
 	@FXML private Button _0;
 	@FXML private Button _1;
 	@FXML private Button _2;
