@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -50,7 +51,10 @@
                      </font>
                      <effect>
                         <DropShadow blurType="ONE_PASS_BOX" />
-                     </effect></Button>
+                     </effect>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Button>
                   <Button fx:id="_incorrectButton" mnemonicParsing="false" onAction="#handleIncorrectButtonClick" styleClass="statsBackground" stylesheets="@StatisticsTheme.css" text="incorrect" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -77,6 +81,10 @@
                         <JFXButton fx:id="_switchLevelButton" buttonType="RAISED" layoutX="54.0" layoutY="24.0" onAction="#switchLevel" prefHeight="50.0" prefWidth="100.0" text="See Level 2" />
                      </children></AnchorPane>
                   <AnchorPane GridPane.rowIndex="5" />
+                  <FontAwesomeIconView fx:id="_averageStar" glyphName="STAR" size="25" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <FontAwesomeIconView fx:id="_correctStar" glyphName="STAR" size="25" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <FontAwesomeIconView fx:id="_incorrectStar" glyphName="STAR" size="25" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <FontAwesomeIconView fx:id="_totalStar" glyphName="STAR" size="25" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
             <GridPane>

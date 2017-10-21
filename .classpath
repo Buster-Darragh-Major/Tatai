@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="/media/storage/Documents/Uni/SoftEng206/a03/Tatai/jackson-databind-2.1.4.jar"/>
 	<classpathentry kind="lib" path="/media/storage/Documents/Uni/SoftEng206/a03/Tatai/jackson-core-2.1.4.jar"/>
 	<classpathentry kind="lib" path="/media/storage/Documents/Uni/SoftEng206/a03/Tatai/jackson-annotations-2.1.4.jar"/>
+	<classpathentry kind="lib" path="/media/storage/Documents/Uni/SoftEng206/a03/Tatai/fontawesomefx-8.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
