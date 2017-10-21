@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -12,7 +15,7 @@
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" />
     <ColumnConstraints hgrow="SOMETIMES" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0" minWidth="0.0" prefWidth="42.0" />
+      <ColumnConstraints hgrow="SOMETIMES" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints vgrow="SOMETIMES" />
@@ -174,11 +177,15 @@
             <Font size="70.0" />
          </font>
       </Label>
-      <JFXButton fx:id="_exitButton" buttonType="RAISED" onAction="#handleExitClick" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets left="10.0" top="10.0" />
-         </GridPane.margin>
-      </JFXButton>
       <Label fx:id="_warningLabel" text="Answers must evaluate to between 1 - 99 with no decimals." textFill="#d00707" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+      <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <FontAwesomeIconView fx:id="_exitButton" glyphName="ARROW_LEFT" onMouseClicked="#handleExitClick" onMousePressed="#handleExitClick" onMouseReleased="#handleExitClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect>
+         <GridPane.margin>
+            <Insets left="15.0" top="15.0" />
+         </GridPane.margin>
+      </FontAwesomeIconView>
    </children>
 </GridPane>

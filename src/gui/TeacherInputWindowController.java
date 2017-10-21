@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -38,7 +39,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	@FXML private Button _divide;
 	@FXML private Button _enterButton;
 	@FXML private Button _clearButton;
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	
 	/* Fields */
 	private TextQuestionListHandler _handler;

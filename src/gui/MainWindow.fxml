@@ -52,7 +52,7 @@
             <Insets right="20.0" top="10.0" />
          </GridPane.margin>
       </FontAwesomeIconView>
-      <FontAwesomeIconView fx:id="_teachersButton" glyphName="GRADUATION_CAP" onMouseClicked="#handleTechersClick" onMousePressed="#handleTechersClick" onMouseReleased="#handleTechersClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <FontAwesomeIconView fx:id="_teachersButton" glyphName="PENCIL" onMouseClicked="#handleTechersClick" onMousePressed="#handleTechersClick" onMouseReleased="#handleTechersClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" />
          </effect>

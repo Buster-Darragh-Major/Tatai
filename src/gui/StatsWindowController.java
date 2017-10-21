@@ -55,7 +55,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	private Button _totalButton;
 	@FXML
-	private Button _exitButton;
+	private FontAwesomeIconView _exitButton;
 	@FXML
 	private Button _switchLevelButton;
 	@FXML
