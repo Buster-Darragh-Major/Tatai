@@ -7,7 +7,6 @@ import creations.cr.Creation;
 import creations.cr.TataiCreation;
 import creations.labelgenerator.CustomEquationLabelGenerator;
 import creations.ml.TataiCreationModel;
-import gui.Context;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import questionlist.TextQuestionListHandler;

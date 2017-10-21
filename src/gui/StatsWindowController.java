@@ -1,17 +1,23 @@
 package gui;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.ResourceBundle;
+
+import org.omg.PortableServer._ServantActivatorStub;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import game.Level;
 import game.TataiGame;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import stats.Stat;
@@ -63,6 +69,8 @@ public class StatsWindowController extends TataiController implements Initializa
 	private FontAwesomeIconView _incorrectStar;
 	@FXML
 	private FontAwesomeIconView _totalStar;
+
+	Tooltip _tp = new Tooltip("at stack tool");
 
 	/**
 	 * Constructor
@@ -187,7 +195,7 @@ public class StatsWindowController extends TataiController implements Initializa
 
 		updateValues();
 		handleAverageButtonClick();
-		
+
 		if (_user instanceof Student) {
 			updateStars();
 		}
@@ -199,7 +207,56 @@ public class StatsWindowController extends TataiController implements Initializa
 			handleExitButtonClick();
 		}
 	}
+
+	@FXML
+	public void handleIconHover(MouseEvent e) {
+		Node node = (Node)e.getSource();
+		Stage stage = (Stage) _averageButton.getScene().getWindow();
+		Student student = (Student) _user;
+		
+		if (node instanceof FontAwesomeIconView) {
+			if (node.equals(_averageStar)) {
+				_tp.setText("Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel())));
+			} else if (node.equals(_correctStar)) {
+				_tp.setText("Correct: " + getSkillText(student.getStatSkill(Stat.TOTALCORRECT, _game.currentLevel())));
+			} else if (node.equals(_incorrectStar)) {
+				_tp.setText("Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTALINCORRECT, _game.currentLevel())));
+			} else if (node.equals(_totalStar)) {
+				_tp.setText("Total: " + getSkillText(student.getStatSkill(Stat.TOTALPLAYED, _game.currentLevel())));
+			}
+		_tp.setAutoHide(true);
+		_tp.show(node, stage.getX()+e.getSceneX(), stage.getY()+e.getSceneY());
+		} else {
+			_tp.hide();
+		}
+	}
 	
+	private String getSkillText(StatSkill skill) {
+		String skillText = null;
+		
+		switch(skill) {
+		case BRONZE:
+			skillText = "Bronze";
+			break;
+		case GOLD:
+			skillText = "Gold";
+			break;
+		case NONE:
+			skillText = "No";
+			break;
+		case PLATINUM:
+			skillText = "Platinum";
+			break;
+		case SILVER:
+			skillText = "Silver";
+			break;
+		default:
+			break;
+		}
+		
+		return skillText + " Level";
+	}
+
 	/**
 	 * Hides achievements
 	 */
@@ -209,11 +266,11 @@ public class StatsWindowController extends TataiController implements Initializa
 		hideFontAwesomeIcon(_incorrectStar);
 		hideFontAwesomeIcon(_totalStar);
 	}
-	
+
 	private void hideFontAwesomeIcon(FontAwesomeIconView fa) {
 		fa.setVisible(false);
 	}
-	
+
 	/**
 	 * Updates the stars colours
 	 */
@@ -223,9 +280,10 @@ public class StatsWindowController extends TataiController implements Initializa
 		updateStar(Stat.TOTALINCORRECT, _incorrectStar);
 		updateStar(Stat.TOTALPLAYED, _totalStar);
 	}
-	
+
 	/**
 	 * update the colour of a specific star
+	 * 
 	 * @param stat
 	 * @param fa
 	 */
@@ -233,7 +291,7 @@ public class StatsWindowController extends TataiController implements Initializa
 		String styleClass = getStatSkillCss(stat, _game.currentLevel());
 		changeStyleClass(fa, styleClass);
 	}
-	
+
 	/**
 	 * Takes the stat and level you wish to enquire and returns a string
 	 * representing the style class to use.
