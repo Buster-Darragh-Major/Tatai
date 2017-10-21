@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXCheckBox;
 
+import game.Level;
+import game.TataiGameReverse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,7 +52,23 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleCheckBoxClick() {
-		
+		if (_checkBox.isSelected()) {
+			TataiGameReverse reverseGame = new TataiGameReverse();
+
+			if (Context.getInstance().currentGame().currentLevel() == Level.Level1) {
+				reverseGame.setLevel(Level.Level1);
+			} else {
+				reverseGame.setLevel(Level.Level2);
+			}
+			
+			Context.getInstance().setGameType(reverseGame);
+			
+			_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+		} else {
+			Context.getInstance().setGameToEquation();
+			
+			_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+		}
 	}
 	
 	/**

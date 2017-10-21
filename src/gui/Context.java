@@ -2,6 +2,7 @@ package gui;
 
 import game.TataiGame;
 import game.TataiGameEquation;
+import game.TataiGameReverse;
 
 /**
  * Singleton class concerned with the 'context' of the program running, i.e. the
@@ -20,6 +21,7 @@ public class Context {
 	private TataiGame _game;
 	private TataiGame _regularGame;
 	private TataiGameEquation _equationGame;
+	private TataiGameReverse _reverseGame;
 	private String _equationList;
 	
 	/**
