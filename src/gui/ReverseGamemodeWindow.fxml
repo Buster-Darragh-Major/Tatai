@@ -118,5 +118,13 @@
             <Insets left="10.0" top="10.0" />
          </GridPane.margin>
       </JFXButton>
+      <Label fx:id="_questionNoLabel" text="/10" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="15.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>

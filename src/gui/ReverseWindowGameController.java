@@ -12,9 +12,11 @@ import javafx.stage.Stage;
 
 public class ReverseWindowGameController extends TataiController implements Initializable {
 
+	/* FXML Nodes */
 	@FXML private Pane _pane;
 	@FXML private Label _wordLabel;
 	@FXML private Label _intLabel;
+	@FXML private Label _questionNoLabel;
 	@FXML private Button _exitButton;
 	@FXML private Button _0;
 	@FXML private Button _1;
@@ -28,6 +30,9 @@ public class ReverseWindowGameController extends TataiController implements Init
 	@FXML private Button _9;
 	@FXML private Button _clearButton;
 	@FXML private Button _submitButton;
+	
+	/* Fields */
+	private String _answer;
 	
 	@FXML
 	public void handle0Click() {
@@ -96,7 +101,31 @@ public class ReverseWindowGameController extends TataiController implements Init
 	
 	@FXML
 	public void handlesubmitClick() {
+		if (_intLabel.getText().equals(_answer)) {
+			questionCorrect();
+		} else {
+			questionIncorrect();
+		}
 		
+		_0.setVisible(false);
+		_1.setVisible(false);
+		_2.setVisible(false);
+		_3.setVisible(false);
+		_4.setVisible(false);
+		_5.setVisible(false);
+		_6.setVisible(false);
+		_7.setVisible(false);
+		_8.setVisible(false);
+		_9.setVisible(false);
+		_clearButton.setVisible(false);
+		
+		// If game state is onto last question set the nextQuestion button text to indicate finishing
+		if (Context.getInstance().currentGame().currentQuestion() - 1 == // game class increments q. no. one too soon
+				Context.getInstance().currentGame().totalNumberOfQuestions()) {
+			_submitButton.setText("Finish");
+		} else {
+			_submitButton.setText("Next");
+		}
 	}
 	
 	private void addToLabel(String num) {
@@ -109,12 +138,46 @@ public class ReverseWindowGameController extends TataiController implements Init
 		}
 	}
 	
+	private void questionCorrect() {
+		// Tell game object question correctly answered
+		Context.getInstance().currentGame().answerQuestion(true);
+		
+		// Change color scheme to white text on green background
+		_pane.setStyle("-fx-background-color: " + CORRECT_GREEN);
+		_intLabel.setStyle("-fx-text-fill: white");
+		_questionNoLabel.setStyle("-fx-text-fill: white");
+		_wordLabel.setStyle("-fx-text-fill: white");
+	}
+	
+	private void questionIncorrect() {
+		// Tell game object question correctly answered
+		Context.getInstance().currentGame().answerQuestion(false);
+		
+		// Change color scheme to white text on green background
+		_pane.setStyle("-fx-background-color: " + INCORRECT_RED);
+		_intLabel.setStyle("-fx-text-fill: white");
+		_questionNoLabel.setStyle("-fx-text-fill: white");
+		_wordLabel.setStyle("-fx-text-fill: white");
+	}
+	
 	@FXML
 	public void handleExitClick() {
-		Context.getInstance().currentGame().endGame();
+		// Prompt user with quit confirmation window 
+		boolean quit = showWarningDialogConfirmation("Confirmation Dialog", "Are you sure you want to quit your current game");
 		
-		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
-		changeWindow("LevelSelectWindow.fxml", stage);// Change to StatsWindow.fxml view
+		if (quit) {
+			// Quit the game
+			quitCurrentGame();
+		} 
+	}
+	
+	/**
+	 * Method to quit current game gracefully
+	 */
+	public void quitCurrentGame() {
+		Stage stage = (Stage) _exitButton.getScene().getWindow();
+		Context.getInstance().currentGame().endGame();
+		changeWindow("LevelSelectWindow.fxml", stage);
 	}
 	
 	@Override
@@ -126,13 +189,15 @@ public class ReverseWindowGameController extends TataiController implements Init
 		
 		// Display question integer
 		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
-		//_childPane.setBackground(_pane.getBackground());
+		_answer = _intLabel.getText();
+		_intLabel.setText("");
 		
 		// Set question number label
-		//_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/" + 
-		//		Context.getInstance().currentGame().totalNumberOfQuestions());
+		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/" + 
+				Context.getInstance().currentGame().totalNumberOfQuestions());
 		
 		String style = _intLabel.getStyle();
-		//_questionNoLabel.setStyle(style);
+		_questionNoLabel.setStyle(style);
+		_wordLabel.setStyle(style);
 	}
 }
