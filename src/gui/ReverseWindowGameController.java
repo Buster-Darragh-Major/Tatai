@@ -3,7 +3,6 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -127,6 +126,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_8.setVisible(false);
 		_9.setVisible(false);
 		_clearButton.setVisible(false);
+		_submitButton.setStyle("-fx-background-color: white");
 		
 		// If game state is onto last question set the nextQuestion button text to indicate finishing
 		if (Context.getInstance().currentGame().currentQuestion() - 1 == // game class increments q. no. one too soon
@@ -222,5 +222,21 @@ public class ReverseWindowGameController extends TataiController implements Init
 		String style = _intLabel.getStyle();
 		_questionNoLabel.setStyle(style);
 		_wordLabel.setStyle(style);
+		
+		style = style.split(": ")[1];
+		
+		_0.setStyle("-fx-background-color: " + style);
+		_1.setStyle("-fx-background-color: " + style);
+		_2.setStyle("-fx-background-color: " + style);
+		_3.setStyle("-fx-background-color: " + style);
+		_4.setStyle("-fx-background-color: " + style);
+		_5.setStyle("-fx-background-color: " + style);
+		_6.setStyle("-fx-background-color: " + style);
+		_7.setStyle("-fx-background-color: " + style);
+		_8.setStyle("-fx-background-color: " + style);
+		_9.setStyle("-fx-background-color: " + style);
+		_clearButton.setStyle("-fx-background-color: " + style);
+		_submitButton.setStyle("-fx-background-color: " + style);
+
 	}
 }

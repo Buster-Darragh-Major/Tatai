@@ -2,7 +2,6 @@ package gui;
 
 import game.TataiGame;
 import game.TataiGameEquation;
-import game.TataiGameReverse;
 import users.user.User;
 
 /**
