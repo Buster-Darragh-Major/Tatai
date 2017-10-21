@@ -37,4 +37,5 @@ public class Student extends User {
 		super(firstName, lastName, userName, stat1, stat2);
 		_writingPrivileges = false;
 	}
+
 }
