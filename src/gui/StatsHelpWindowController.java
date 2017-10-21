@@ -25,9 +25,7 @@ public class StatsHelpWindowController extends TataiController implements Initia
 	
 	@FXML
 	public void handleKeyPress(KeyEvent e) {
-		System.out.println("ff");
 		if (e.getCode() == KeyCode.ESCAPE) {
-			System.out.println("esc");
 			handleBackClick();
 		}
 	}
