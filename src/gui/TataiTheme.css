@@ -37,9 +37,8 @@
  	-fx-cursor: hand;
 }
 .button:hover {
-    -fx-scale-x: 1.2;
-    -fx-scale-y: 1.2;
-    -fx-scale-z: 1.2;
+	-fx-text-fill: #cc0404;
+    -fx-background-color: white;
  }
 .table-row-cell:empty {
     -fx-background-color: white;
