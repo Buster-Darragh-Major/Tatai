@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	@FXML private Button _mainMenuPlay;
 	@FXML private Button _mainMenuStats;
 	@FXML private Button _mainMenuQuit;
-	@FXML private Button _mainMenuTutorial;
+	@FXML private FontAwesomeIconView _mainMenuTutorial;
 	@FXML private Button _teachersButton;
 	@FXML private Label _userLabel;
 	
