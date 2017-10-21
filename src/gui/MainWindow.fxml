@@ -36,11 +36,6 @@
             <DropShadow blurType="ONE_PASS_BOX" />
          </effect>
       </Text>
-      <JFXButton fx:id="_teachersButton" buttonType="RAISED" onAction="#handleTechersClick" prefHeight="20.0" text="Teachers" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets left="10.0" top="10.0" />
-         </GridPane.margin>
-      </JFXButton>
       <Label fx:id="_userLabel" styleClass="root" text="LOREM" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font name="NanumGothicBold" size="20.0" />
@@ -55,6 +50,14 @@
          </effect>
          <GridPane.margin>
             <Insets right="20.0" top="10.0" />
+         </GridPane.margin>
+      </FontAwesomeIconView>
+      <FontAwesomeIconView fx:id="_teachersButton" glyphName="GRADUATION_CAP" onMouseClicked="#handleTechersClick" onMousePressed="#handleTechersClick" onMouseReleased="#handleTechersClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect>
+         <GridPane.margin>
+            <Insets left="15.0" top="15.0" />
          </GridPane.margin>
       </FontAwesomeIconView>
    </children>

@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import game.Level;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -19,7 +20,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	@FXML private Button _level2;
 	@FXML private Button _practice;
 	@FXML private Button _customList;
-	@FXML private Button _menuButton;
+	@FXML private FontAwesomeIconView _menuButton;
 	
 	/**
 	 * Handles user pressing level 1 select

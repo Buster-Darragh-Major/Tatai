@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -46,10 +47,13 @@
             <JFXButton fx:id="_customList" buttonType="RAISED" onAction="#handleCustomListClick" prefHeight="50.0" prefWidth="100.0" text="Custom List" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
-      <JFXButton fx:id="_menuButton" buttonType="RAISED" onAction="#handleMenuButtonClick" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <FontAwesomeIconView fx:id="_menuButton" glyphName="ARROW_LEFT" onMouseClicked="#handleMenuButtonClick" onMousePressed="#handleMenuButtonClick" onMouseReleased="#handleMenuButtonClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect>
          <GridPane.margin>
-            <Insets left="10.0" top="10.0" />
+            <Insets left="15.0" top="15.0" />
          </GridPane.margin>
-      </JFXButton>
+      </FontAwesomeIconView>
    </children>
 </GridPane>

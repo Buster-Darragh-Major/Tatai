@@ -42,9 +42,6 @@
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
-         <effect>
-            <DropShadow blurType="ONE_PASS_BOX" />
-         </effect>
       </TableView>
       <GridPane GridPane.rowIndex="2">
         <columnConstraints>

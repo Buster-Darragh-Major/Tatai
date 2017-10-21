@@ -42,6 +42,7 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			Scene scene = new Scene(root);
+			scene.getRoot().requestFocus();
 			stage.setTitle("Edit Lists");
 			stage.setScene(scene);
 			stage.setResizable(false);

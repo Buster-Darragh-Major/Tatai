@@ -2,8 +2,10 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -19,11 +21,6 @@
       <RowConstraints vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <JFXButton fx:id="_exitButton" buttonType="RAISED" onAction="#handleExitClick" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets left="10.0" top="10.0" />
-         </GridPane.margin>
-      </JFXButton>
       <JFXListView fx:id="_listView" onKeyPressed="#handleKeyPress" onMouseClicked="#handleListSelection" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets left="10.0" right="10.0" />
@@ -47,5 +44,13 @@
          <padding>
             <Insets top="70.0" />
          </padding></Label>
+      <FontAwesomeIconView fx:id="_exitButton" glyphName="ARROW_LEFT" onMouseClicked="#handleExitClick" onMousePressed="#handleExitClick" onMouseReleased="#handleExitClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect>
+         <GridPane.margin>
+            <Insets left="15.0" top="15.0" />
+         </GridPane.margin>
+      </FontAwesomeIconView>
    </children>
 </GridPane>

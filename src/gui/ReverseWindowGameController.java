@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 	@FXML private Pane _pane;
 	@FXML private Label _wordLabel;
 	@FXML private Label _intLabel;
-	@FXML private Button _exitButton;
+	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Button _0;
 	@FXML private Button _1;
 	@FXML private Button _2;

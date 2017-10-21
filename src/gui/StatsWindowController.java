@@ -219,9 +219,9 @@ public class StatsWindowController extends TataiController implements Initializa
 	public void handleIconHover(MouseEvent e) {
 		Node node = (Node) e.getSource();
 		Stage stage = (Stage) _averageButton.getScene().getWindow();
-		Student student = (Student) _user;
 
 		if (node instanceof FontAwesomeIconView) {
+			Student student = (Student) _user;
 			if (node.equals(_averageStar)) {
 				_tp.setText("Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel())));
 			} else if (node.equals(_correctStar)) {
