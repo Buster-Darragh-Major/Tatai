@@ -16,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.java.users.user.User;
 
@@ -61,16 +62,30 @@ public class UserWindowController extends TataiController implements Initializab
 	}
 
 	/**
-	 * Determines whether to enable login button
+	 * Determines whether to enable login buttons
 	 */
 	@FXML
-	public void handleListClick() {
+	public void handleListClick(MouseEvent e) {
+		doubleClickCell(e);
 		if ((_userList1.getSelectionModel().getSelectedItem() == null)
 				&& (_userList2.getSelectionModel().getSelectedItem() == null)) {
 			_continueButton.setDisable(true);
 		} else {
 			_continueButton.setDisable(false);
 		}
+		if (e.getSource().equals(_userList1)) {
+			clearListSelection(_userList2);
+			_userList1.requestFocus();
+		} else {
+			clearListSelection(_userList1);
+			_userList2.requestFocus();
+		}
+	}
+	
+	public void doubleClickCell(MouseEvent e) {
+        if (e.getClickCount() == 2) {
+            handleContinueClick();
+         }
 	}
 
 	/**
@@ -157,9 +172,9 @@ public class UserWindowController extends TataiController implements Initializab
 
 	private ListView<String> getSelectedList() {
 		ListView<String> l = null;
-		if (_userList2.getSelectionModel().isEmpty()) {
+		if (!_userList1.getSelectionModel().isEmpty()) {
 			l = _userList1;
-		} else if (_userList1.getSelectionModel().isEmpty()) {
+		} else if (!_userList2.getSelectionModel().isEmpty()) {
 			l = _userList2;
 		}
 		return l;
@@ -185,6 +200,11 @@ public class UserWindowController extends TataiController implements Initializab
 			if (!_continueButton.isDisabled()) {
 				handleContinueClick();
 			}
+		// This seems a bit weird but the only way to fix issues with list selection. 
+		} else if (e.getCode() == KeyCode.RIGHT) {
+			clearListSelection(_userList1);
+		} else if (e.getCode() == KeyCode.LEFT) {
+			clearListSelection(_userList2);
 		}
 	}
 
