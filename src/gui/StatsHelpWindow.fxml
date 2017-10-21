@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<GridPane prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StatsHelpWindowController">
+<GridPane fx:id="_root" onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyPress" onKeyTyped="#handleKeyPress" prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StatsHelpWindowController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" />
    </columnConstraints>
@@ -27,7 +26,7 @@
             <DropShadow blurType="ONE_PASS_BOX" />
          </effect>
       </Label>
-      <FontAwesomeIconView fx:id="_backButton" glyphName="ARROW_LEFT" onMouseClicked="#handleBackClick" onMousePressed="#handleBackClick" onMouseReleased="#handleBackClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <FontAwesomeIconView fx:id="_backButton" glyphName="ARROW_LEFT" onKeyPressed="#handleKeyPress" onMouseClicked="#handleBackClick" onMousePressed="#handleBackClick" onMouseReleased="#handleBackClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" />
          </effect>
@@ -35,7 +34,7 @@
             <Insets left="15.0" top="15.0" />
          </GridPane.margin>
       </FontAwesomeIconView>
-      <GridPane prefHeight="336.0" prefWidth="800.0" GridPane.rowIndex="1">
+      <GridPane onKeyPressed="#handleKeyPress" prefHeight="336.0" prefWidth="800.0" GridPane.rowIndex="1">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" />
             <ColumnConstraints hgrow="SOMETIMES" />

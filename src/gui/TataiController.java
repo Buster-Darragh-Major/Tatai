@@ -49,6 +49,7 @@ public abstract class TataiController {
 		double height = stage.getHeight();
 
 		Scene scene = new Scene(root, width, height); // Create new scene based off new view root
+		scene.getRoot().requestFocus();
 		stage.setScene(scene); // Set current stage to show new view scene
 		stage.show();
 		stage.setWidth(width);

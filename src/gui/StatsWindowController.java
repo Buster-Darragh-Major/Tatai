@@ -204,12 +204,14 @@ public class StatsWindowController extends TataiController implements Initializa
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {
 			handleExitButtonClick();
+		} else if (e.getCode() == KeyCode.F1) {
+			handleHelpClick();
 		}
 	}
 
 	@FXML
 	public void handleHelpClick() {
-		Stage stage = (Stage) _helpButton.getScene().getWindow();
+		Stage stage = (Stage) _averageButton.getScene().getWindow();
 		changeWindow("StatsHelpWindow.fxml", stage);
 	}
 	
@@ -236,6 +238,7 @@ public class StatsWindowController extends TataiController implements Initializa
 			_tp.hide();
 		}
 	}
+	/**/
 
 	/**
 	 * Displays relevant text for a specific skill level
