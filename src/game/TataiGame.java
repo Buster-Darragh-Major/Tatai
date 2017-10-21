@@ -292,7 +292,7 @@ public class TataiGame {
 	 */
 	public void endGame() {
 		if (_hasStarted) {
-			_currentUser.updateStats(TOTAL_NUMBER_OF_QUESTIONS, _correct, _incorrect, _level);
+			_currentUser.updateStats(_questionNo - 1, _correct, _incorrect, _level);
 			_currentUser.saveUser();
 			_hasStarted = false;
 		} else {

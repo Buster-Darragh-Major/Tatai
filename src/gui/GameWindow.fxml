@@ -20,7 +20,7 @@
       <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label fx:id="_intLabel" alignment="CENTER" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label fx:id="_intLabel" alignment="CENTER" styleClass="root" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font size="100.0" />
          </font>
@@ -30,7 +30,7 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="_questionNoLabel" alignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Label fx:id="_questionNoLabel" alignment="CENTER" styleClass="root" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font size="25.0" />
          </font>

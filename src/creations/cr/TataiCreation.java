@@ -34,12 +34,14 @@ public class TataiCreation extends Creation {
 	@Override
 	public void display(Label label, Pane pane) {
 		label.setText(_label);
-		label.setTextFill(_fontColor);
 		label.setAlignment(Pos.CENTER);
 		
 		String bgColor = _bgColor.toString();
+		String ftColor = _fontColor.toString();
 		bgColor = bgColor.substring(2, bgColor.length() - 2);
+		ftColor = ftColor.substring(2, ftColor.length() - 2);
 		
 		pane.setStyle("-fx-background-color: #" + bgColor);
+		label.setStyle("-fx-text-fill: #" + ftColor);
 	}	
 }

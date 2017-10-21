@@ -320,7 +320,9 @@ private static final String FINISH = "Finish!";
 		// Set question number label
 		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/" + 
 				Context.getInstance().currentGame().totalNumberOfQuestions());
-		_questionNoLabel.setTextFill(_intLabel.getTextFill());
+		
+		String style = _intLabel.getStyle();
+		_questionNoLabel.setStyle(style);
 		
 	    Platform.runLater(new Runnable() {
 	        @Override
