@@ -80,7 +80,6 @@ public class TataiGameCustomList extends TataiGameEquation {
 			_questionNo++;
 		} else {
 			_questionNo++;
-			System.out.println("success");
 			endGame();
 		}
 	}
