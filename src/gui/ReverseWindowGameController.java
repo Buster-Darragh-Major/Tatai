@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ReverseWindowGameController extends TataiController implements Initializable {
 
+	@FXML private Pane _pane;
 	@FXML private Label _wordLabel;
 	@FXML private Label _intLabel;
 	@FXML private Button _exitButton;
@@ -109,12 +111,28 @@ public class ReverseWindowGameController extends TataiController implements Init
 	
 	@FXML
 	public void handleExitClick() {
+		Context.getInstance().currentGame().endGame();
+		
 		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
 		changeWindow("LevelSelectWindow.fxml", stage);// Change to StatsWindow.fxml view
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		_submitButton.setDisable(true);
 		
+		// Set answer label with correct answer and hide
+		_wordLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
+		
+		// Display question integer
+		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
+		//_childPane.setBackground(_pane.getBackground());
+		
+		// Set question number label
+		//_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/" + 
+		//		Context.getInstance().currentGame().totalNumberOfQuestions());
+		
+		String style = _intLabel.getStyle();
+		//_questionNoLabel.setStyle(style);
 	}
 }

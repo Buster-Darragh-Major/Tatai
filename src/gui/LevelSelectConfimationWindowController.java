@@ -30,19 +30,18 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleStartClick() {
+		// Set level of TataiCreationModel to be level defined in current game object
+		// also stored in s Context object
+		Context.getInstance().currentGame().setLevel(
+				Context.getInstance().currentGame().currentLevel());
 		
+		// Populate TataiCreationModel object in singleton
+		Context.getInstance().currentGame().startGame();
+		
+		Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
 		if (_checkBox.isSelected()) {
-			
+			changeWindow("ReverseGamemodeWindow.fxml", stage); // Change to ReverseGamemodeWindow.fxml view
 		} else {
-			// Set level of TataiCreationModel to be level defined in current game object
-			// also stored in s Context object
-			Context.getInstance().currentGame().setLevel(
-					Context.getInstance().currentGame().currentLevel());
-			
-			// Populate TataiCreationModel object in singleton
-			Context.getInstance().currentGame().startGame();
-			
-			Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
 			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
 		}
 	}
@@ -52,23 +51,17 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleCheckBoxClick() {
-		if (_checkBox.isSelected()) {
+		if (_checkBox.isSelected()) { // Set game type to reverse game and set to current level
 			TataiGameReverse reverseGame = new TataiGameReverse();
-
-			if (Context.getInstance().currentGame().currentLevel() == Level.Level1) {
-				reverseGame.setLevel(Level.Level1);
-			} else {
-				reverseGame.setLevel(Level.Level2);
-			}
+			reverseGame.setLevel(Context.getInstance().currentGame().currentLevel());
 			
 			Context.getInstance().setGameType(reverseGame);
-			
-			_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
 		} else {
 			Context.getInstance().setGameToEquation();
-			
-			_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
 		}
+		
+		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+
 	}
 	
 	/**
