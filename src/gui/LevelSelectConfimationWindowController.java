@@ -51,23 +51,17 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleCheckBoxClick() {
-		if (_checkBox.isSelected()) {
+		if (_checkBox.isSelected()) { // Set game type to reverse game and set to current level
 			TataiGameReverse reverseGame = new TataiGameReverse();
-
-			if (Context.getInstance().currentGame().currentLevel() == Level.Level1) {
-				reverseGame.setLevel(Level.Level1);
-			} else {
-				reverseGame.setLevel(Level.Level2);
-			}
+			reverseGame.setLevel(Context.getInstance().currentGame().currentLevel());
 			
 			Context.getInstance().setGameType(reverseGame);
-			
-			_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
 		} else {
 			Context.getInstance().setGameToEquation();
-			
-			_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
 		}
+		
+		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+
 	}
 	
 	/**
