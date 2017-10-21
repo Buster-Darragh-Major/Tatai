@@ -99,14 +99,14 @@ public class Student extends User {
 	 *            the percent the student's average is currently on
 	 * @return the stat skill level of the student's average
 	 */
-	protected StatSkill determineAverageSkill(Double value) {
-		if (value >= 60 && value < 75) {
+	protected StatSkill determineAverageSkill(double value) {
+		if (value >= 6.0 && value < 7.5) {
 			return StatSkill.BRONZE;
-		} else if (value >= 75 && value < 85) {
+		} else if (value >= 7.5 && value < 8.5) {
 			return StatSkill.SILVER;
-		} else if (value >= 85 && value < 95) {
+		} else if (value >= 8.5 && value < 9.5) {
 			return StatSkill.GOLD;
-		} else if (value >= 95 && value <= 100) {
+		} else if (value >= 9.5 && value <= 10.0) {
 			return StatSkill.PLATINUM;
 		} else {
 			return StatSkill.NONE;
