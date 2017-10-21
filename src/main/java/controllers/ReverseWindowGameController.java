@@ -1,8 +1,12 @@
 package main.java.controllers;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import game.Level;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,6 +16,9 @@ import javafx.stage.Stage;
 
 public class ReverseWindowGameController extends TataiController implements Initializable {
 
+	/* Macros */
+	public final static String AUDIO_FILE_PATH = "src/res/audio/NumberRecordings/";
+	
 	/* FXML Nodes */
 	@FXML private Pane _pane;
 	@FXML private Label _wordLabel;
@@ -30,6 +37,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 	@FXML private Button _9;
 	@FXML private Button _clearButton;
 	@FXML private Button _submitButton;
+	@FXML FontAwesomeIconView _hearButton;
 	
 	/* Fields */
 	private String _answer;
@@ -108,10 +116,29 @@ public class ReverseWindowGameController extends TataiController implements Init
 		}
 	}
 	
+	@FXML
+	public void handleHearClick() {
+		String number = _wordLabel.getText();
+		number = number.replaceAll("ā", "a");
+		String command = "aplay " + number + ".wav";
+		
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
+		builder.directory(new File(AUDIO_FILE_PATH));
+		
+		Process process;
+		try {
+			process = builder.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void submit() {
 		if (_intLabel.getText().equals(_answer)) {
+			_submitButton.setStyle("-fx-background-color: white;" + " -fx-text-fill: " + CORRECT_GREEN);
 			questionCorrect();
 		} else {
+			_submitButton.setStyle("-fx-background-color: white;" + " -fx-text-fill: " + INCORRECT_RED);
 			questionIncorrect();
 		}
 		
@@ -126,7 +153,6 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_8.setVisible(false);
 		_9.setVisible(false);
 		_clearButton.setVisible(false);
-		_submitButton.setStyle("-fx-background-color: white");
 		
 		// If game state is onto last question set the nextQuestion button text to indicate finishing
 		if (Context.getInstance().currentGame().currentQuestion() - 1 == // game class increments q. no. one too soon
@@ -235,8 +261,12 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_7.setStyle("-fx-background-color: " + style);
 		_8.setStyle("-fx-background-color: " + style);
 		_9.setStyle("-fx-background-color: " + style);
+		
 		_clearButton.setStyle("-fx-background-color: " + style);
 		_submitButton.setStyle("-fx-background-color: " + style);
-
+		
+		if (Context.getInstance().currentGame().currentLevel() == Level.Level2) {
+			_hearButton.setVisible(false);
+		}
 	}
 }

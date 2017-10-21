@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -126,5 +128,9 @@
             <Insets top="15.0" />
          </GridPane.margin>
       </Label>
+      <FontAwesomeIconView fx:id="_hearButton" fill="WHITE" glyphName="VOLUME_UP" onMouseClicked="#handleHearClick" size="30" styleClass="icon-standard-clickable" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
    </children>
+   <effect>
+      <DropShadow />
+   </effect>
 </GridPane>
