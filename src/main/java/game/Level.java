@@ -5,5 +5,5 @@ package main.java.game;
  *
  */
 public enum Level {
-	Level1, Level2
+	LEVEL1, LEVEL2, LEVEL1_REVERSE, LEVEL2_REVERSE
 }

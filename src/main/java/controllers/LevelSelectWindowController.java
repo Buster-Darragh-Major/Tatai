@@ -12,13 +12,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import main.java.game.Level;
-import main.java.game.TataiGame;
 import main.java.users.user.User;
 
 public class LevelSelectWindowController extends TataiController implements Initializable{
 	
 	/* FIELDS */
-	private TataiGame _game;
 	private User _user;
 	
 	/* FXML Nodes */
@@ -32,7 +30,6 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 * Constructor
 	 */
 	public LevelSelectWindowController() {
-		_game = Context.getInstance().currentGame();
 		_user = _game.getCurrentUser();	
 	}
 	
@@ -42,7 +39,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 */
 	@FXML
 	public void handleLevel1Click() {
-		_game.setLevel(Level.Level1);
+		_game.setLevel(Level.LEVEL1);
 		
 		Stage stage = (Stage) _level1.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
@@ -53,7 +50,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 */
 	@FXML
 	public void handleLevel2Click() {
-		_game.setLevel(Level.Level2);
+		_game.setLevel(Level.LEVEL2);
 		
 		Stage stage = (Stage) _level2.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
@@ -102,7 +99,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	    		_level1.requestFocus();
 	        }
 	    });
-	    if (!_user.isUnlocked(Level.Level2)) {
+	    if (!_user.isUnlocked(Level.LEVEL2)) {
 	    	_level2.setDisable(true);
 	    } else {
 	    	_level2.setDisable(false);

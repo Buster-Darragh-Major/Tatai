@@ -21,9 +21,9 @@ public class TataiGameEquation extends TataiGame {
 	
 	@Override
 	public String getLevelDescription() {
-		if (_level == Level.Level1) {
+		if (_level == Level.LEVEL1) {
 			return ("Test your maths with addition and subtraction questions, answers range from 1-9.");
-		} else if (_level == Level.Level2) {
+		} else if (_level == Level.LEVEL2) {
 			return ("Test your maths with addition, subtraction, multiplication and division questions." 
 		+ " Answers might range from 1-9 or 1-99.");
 		}
@@ -57,14 +57,11 @@ public class TataiGameEquation extends TataiGame {
 	public <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
-
-		switch (_level) {
-		case Level1:
+		
+		if (_level == Level.LEVEL1 || _level == Level.LEVEL1_REVERSE) {
 			_creationModel.setLabelingStrategy(new Level1EquationLabelGenerator());
-			break;
-		case Level2:
+		} else if (_level == Level.LEVEL2 || _level == Level.LEVEL2_REVERSE) {
 			_creationModel.setLabelingStrategy(new Level2EquationLabelGenerator());
-			break;
 		}
 		
 		_creationModel.updateModel(creationClass);

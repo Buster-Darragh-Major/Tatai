@@ -14,6 +14,7 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import main.java.game.TataiGame;
 
 /**
  * An abstract class intended to be inherited from by any controller for the
@@ -24,14 +25,20 @@ import javafx.stage.Stage;
  * @author Buster Major
  */
 public abstract class TataiController {
-
+	/* Fields */
+	protected TataiGame _game;
+	
 	/* Macros */
 	protected static final String INCORRECT_RED = "#f73333";
 	protected static final String CORRECT_GREEN = "#00d10a";
 	protected static final String WHITE = "#ffffff";
 	protected static final String NEXT = "Next";
 	protected static final String FXML_LOCATION = "/main/resources/view/fxml/";	
-
+	
+	public TataiController() {
+		_game = Context.getInstance().currentGame();
+	}
+	
 	/**
 	 * Changes the current view embedded in the desired stage. The fxml String
 	 * points to the file desired to be the root of the new view, and the stage

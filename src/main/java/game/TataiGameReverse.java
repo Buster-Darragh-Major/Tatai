@@ -12,9 +12,9 @@ public class TataiGameReverse extends TataiGame {
 	 * @return String : header
 	 */
 	public String getLevelHeader() {
-		if (_level == Level.Level1) {
+		if (_level == Level.LEVEL1_REVERSE) {
 			return ("Level 1");
-		} else if (_level == Level.Level2) {
+		} else if (_level == Level.LEVEL2_REVERSE) {
 			return ("Level 2");
 		}
 		return null;
@@ -26,9 +26,9 @@ public class TataiGameReverse extends TataiGame {
 	 * @return String : description
 	 */
 	public String getLevelDescription() {
-		if (_level == Level.Level1) {
+		if (_level == Level.LEVEL1_REVERSE) {
 			return ("See and hear the number in Māori, then type it! Answers range from 1-9");
-		} else if (_level == Level.Level2) {
+		} else if (_level == Level.LEVEL2_REVERSE) {
 			return ("See and hear the number in Māori, then type it! Answers range from 1-99");
 		}
 		return null;
@@ -56,6 +56,7 @@ public class TataiGameReverse extends TataiGame {
 	 */
 	public void endGame() {
 		if (_hasStarted) {
+			_currentUser.updateStats(_questionNo - 1, _correct, _incorrect, _correct, _level);
 			_currentUser.saveUser();
 			_hasStarted = false;
 		} else {

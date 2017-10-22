@@ -13,10 +13,15 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import main.java.game.Level;
 import main.java.game.TataiGameReverse;
+import main.java.users.user.User;
 
 public class LevelSelectConfimationWindowController extends TataiController implements Initializable {
-
+	
+	/* FIELDS */
+	private User _user;
+	
 	/* FXML Nodes */
 	@FXML private Button _start;
 	@FXML private Button _back;
@@ -24,18 +29,17 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML private Label _levelDescriptor;
 	@FXML private JFXCheckBox _checkBox;
 	
+	public LevelSelectConfimationWindowController() {
+		_user = _game.getCurrentUser();
+	}
+	
 	/**
 	 * Handles user pressing start button
 	 */
 	@FXML
 	public void handleStartClick() {
-		// Set level of TataiCreationModel to be level defined in current game object
-		// also stored in s Context object
-		Context.getInstance().currentGame().setLevel(
-				Context.getInstance().currentGame().currentLevel());
-		
 		// Populate TataiCreationModel object in singleton
-		Context.getInstance().currentGame().startGame();
+		_game.startGame();
 		
 		Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
 		if (_checkBox.isSelected()) {
@@ -52,10 +56,17 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	public void handleCheckBoxClick() {
 		if (_checkBox.isSelected()) { // Set game type to reverse game and set to current level
 			TataiGameReverse reverseGame = new TataiGameReverse();
-			reverseGame.setLevel(Context.getInstance().currentGame().currentLevel());
-			reverseGame.setCurrentUser(Context.getInstance().getUser());
 			
+			Level level;
+			if (_game.currentLevel() == Level.LEVEL1 || _game.currentLevel() == Level.LEVEL1_REVERSE) {
+				level = Level.LEVEL1_REVERSE;
+			} else {
+				level = Level.LEVEL2_REVERSE;
+			}
+			reverseGame.setLevel(level);
+			reverseGame.setCurrentUser(Context.getInstance().getUser());
 			Context.getInstance().setGameType(reverseGame);
+			_game = Context.getInstance().currentGame();
 		} else {
 			Context.getInstance().setGameToEquation();
 		}
@@ -79,11 +90,18 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Context.getInstance().setGameToEquation();
+		_game = Context.getInstance().currentGame();
 		
 		// Set header and description labels to be that representing the current game
 		// objects set difficulty.
-		_levelHeader.setText(Context.getInstance().currentGame().getLevelHeader());
-		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
+		_levelHeader.setText(_game.getLevelHeader());
+		_levelDescriptor.setText(_game.getLevelDescription());
+		
+		if (_game.currentLevel() == Level.LEVEL2 && !_user.isUnlocked(Level.LEVEL2_REVERSE)) {
+			_checkBox.setDisable(true);
+		} else {
+			_checkBox.setDisable(false);
+		}
 		
 	    Platform.runLater(new Runnable() {
 	        @Override

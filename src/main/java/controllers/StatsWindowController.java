@@ -37,7 +37,6 @@ public class StatsWindowController extends TataiController implements Initializa
 	public final static String LEVEL2 = "Level 2: ";
 
 	/* Fields */
-	private TataiGame _game;
 	private String _firstName;
 	private User _user;
 
@@ -75,7 +74,6 @@ public class StatsWindowController extends TataiController implements Initializa
 	 * Constructor
 	 */
 	public StatsWindowController() {
-		_game = Context.getInstance().currentGame();
 		_user = _game.getCurrentUser();
 		_firstName = _user.firstName();
 	}
@@ -85,7 +83,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		_game.setLevel(Level.Level1);
+		_game.setLevel(Level.LEVEL1);
 		updateValues();
 
 		if (_user instanceof Student) {
@@ -185,10 +183,10 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	public void switchLevel() {
 		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
-			_game.setLevel(Level.Level2);
+			_game.setLevel(Level.LEVEL2);
 			_switchLevelButton.setText(SEELEVEL1);
 		} else if (_switchLevelButton.getText().equals(SEELEVEL1)) {
-			_game.setLevel(Level.Level1);
+			_game.setLevel(Level.LEVEL1);
 			_switchLevelButton.setText(SEELEVEL2);
 		}
 
@@ -225,12 +223,12 @@ public class StatsWindowController extends TataiController implements Initializa
 			if (node.equals(_averageStar)) {
 				_tp.setText("Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel())));
 			} else if (node.equals(_correctStar)) {
-				_tp.setText("Correct: " + getSkillText(student.getStatSkill(Stat.TOTALCORRECT, _game.currentLevel())));
+				_tp.setText("Correct: " + getSkillText(student.getStatSkill(Stat.TOTAL_CORRECT, _game.currentLevel())));
 			} else if (node.equals(_incorrectStar)) {
 				_tp.setText(
-						"Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTALINCORRECT, _game.currentLevel())));
+						"Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTAL_INCORRECT, _game.currentLevel())));
 			} else if (node.equals(_totalStar)) {
-				_tp.setText("Total: " + getSkillText(student.getStatSkill(Stat.TOTALPLAYED, _game.currentLevel())));
+				_tp.setText("Total: " + getSkillText(student.getStatSkill(Stat.TOTAL_PLAYED, _game.currentLevel())));
 			}
 			_tp.setAutoHide(true);
 			_tp.show(node, stage.getX() + e.getSceneX(), stage.getY() + e.getSceneY());
@@ -292,9 +290,9 @@ public class StatsWindowController extends TataiController implements Initializa
 	 */
 	private void updateStars() {
 		updateStar(Stat.AVERAGE, _averageStar);
-		updateStar(Stat.TOTALCORRECT, _correctStar);
-		updateStar(Stat.TOTALINCORRECT, _incorrectStar);
-		updateStar(Stat.TOTALPLAYED, _totalStar);
+		updateStar(Stat.TOTAL_CORRECT, _correctStar);
+		updateStar(Stat.TOTAL_INCORRECT, _incorrectStar);
+		updateStar(Stat.TOTAL_PLAYED, _totalStar);
 	}
 
 	/**

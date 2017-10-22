@@ -72,19 +72,42 @@ public class Student extends User {
 		int value = 0;
 
 		switch (stat) {
-		case TOTALPLAYED:
+		case TOTAL_PLAYED:
 			value = getTotalPlayed(level);
 			break;
-		case TOTALCORRECT:
+		case TOTAL_CORRECT:
 			value = getTotalCorrect(level);
 			break;
-		case TOTALINCORRECT:
+		case TOTAL_INCORRECT:
 			value = getTotalIncorrect(level);
 			break;
 		case AVERAGE:
 			return determineAverageSkill(getAverage(level));
+		case PERSONAL_BEST:
+			return determinePersonalBestSkill(getPersonalBest(level));
 		}
 		return determineTotalSkill(value);
+	}
+
+	/**
+	 * Determines the skill level of a personal best
+	 * 
+	 * @param value
+	 *            the value of the personal best
+	 * @return the corresponding skill level
+	 */
+	protected StatSkill determinePersonalBestSkill(int value) {
+		if (value >= 5 && value < 6) {
+			return StatSkill.BRONZE;
+		} else if (value >= 6 && value < 7) {
+			return StatSkill.SILVER;
+		} else if (value >= 8 && value < 9) {
+			return StatSkill.GOLD;
+		} else if (value == 10) {
+			return StatSkill.PLATINUM;
+		} else {
+			return StatSkill.NONE;
+		}
 	}
 
 	/**
@@ -133,9 +156,13 @@ public class Student extends User {
 	@Override
 	public void unlockLevel(Level level) {
 		switch (level) {
-		case Level2:
-			if (getPersonalBest(Level.Level1) >= 8) {
+		case LEVEL2:
+			if (getPersonalBest(Level.LEVEL1) >= 8) {
 				_level2Unlocked = true;
+			}
+		case LEVEL2_REVERSE:
+			if (getPersonalBest(Level.LEVEL2) >= 8) {
+				_level2ReverseUnlocked = true;
 			}
 			break;
 		default:
@@ -147,18 +174,22 @@ public class Student extends User {
 	@Override
 	public boolean isUnlocked(Level level) {
 		switch (level) {
-		case Level2:
+		case LEVEL2:
 			return _level2Unlocked;
+		case LEVEL2_REVERSE:
+			return _level2ReverseUnlocked;
 		default:
 			return true;
 		}
 	}
-	
+
 	@Override
 	public void updateStats(int played, int correct, int incorrect, int score, Level level) {
 		super.updateStats(played, correct, incorrect, score, level);
-		if (level == Level.Level1) {
-			unlockLevel(Level.Level2);
+		if (level == Level.LEVEL1) {
+			unlockLevel(Level.LEVEL2);
+		} else if (level == Level.LEVEL2) {
+			unlockLevel(Level.LEVEL2_REVERSE);
 		}
 	}
 }

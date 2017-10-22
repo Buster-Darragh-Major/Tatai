@@ -265,7 +265,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_clearButton.setStyle("-fx-background-color: " + style);
 		_submitButton.setStyle("-fx-background-color: " + style);
 		
-		if (Context.getInstance().currentGame().currentLevel() == Level.Level2) {
+		if (Context.getInstance().currentGame().currentLevel() == Level.LEVEL2_REVERSE) {
 			_hearButton.setVisible(false);
 		}
 	}

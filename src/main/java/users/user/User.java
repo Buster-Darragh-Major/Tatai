@@ -280,11 +280,19 @@ public abstract class User {
 		StatisticHandler ts = null;
 
 		switch (l) {
-		case Level1:
+		case LEVEL1:
 			ts = _lvl1Stats;
 			break;
-		case Level2:
+		case LEVEL2:
 			ts = _lvl2Stats;
+			break;
+		case LEVEL1_REVERSE:
+			ts = _lvl1ReverseStats;
+			break;
+		case LEVEL2_REVERSE:
+			ts = _lvl2ReverseStats;
+			break;
+		default:
 			break;
 		}
 		return ts;

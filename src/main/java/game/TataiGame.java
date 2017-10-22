@@ -33,7 +33,7 @@ public class TataiGame {
 	public static final String INCORRECT = "Total Incorrect";
 	public static final String CORRECT = "Total Correct";
 
-	protected Level _level = Level.Level1;
+	protected Level _level = Level.LEVEL1;
 	protected int _questionNo;
 	protected TataiCreationModel _creationModel;
 	protected Translator _translator;
@@ -80,6 +80,9 @@ public class TataiGame {
 		_currentUser = user;
 	}
 
+	/**
+	 * Clears the current user
+	 */
 	public void logout() {
 		_currentUser = null;
 	}
@@ -93,6 +96,9 @@ public class TataiGame {
 		return _classRoom;
 	}
 
+	/**
+	 * @return the total number of questions
+	 */
 	public int totalNumberOfQuestions() {
 		return TOTAL_NUMBER_OF_QUESTIONS;
 	}
@@ -164,9 +170,9 @@ public class TataiGame {
 	 * @return String : header
 	 */
 	public String getLevelHeader() {
-		if (_level == Level.Level1) {
+		if (_level == Level.LEVEL1) {
 			return ("Level 1");
-		} else if (_level == Level.Level2) {
+		} else if (_level == Level.LEVEL2) {
 			return ("Level 2");
 		}
 		return null;
@@ -178,9 +184,9 @@ public class TataiGame {
 	 * @return String : description
 	 */
 	public String getLevelDescription() {
-		if (_level == Level.Level1) {
+		if (_level == Level.LEVEL1) {
 			return ("Ten questions ranging from numbers 1-9");
-		} else if (_level == Level.Level2) {
+		} else if (_level == Level.LEVEL2) {
 			return ("Ten questions ranging from numbers 1-99");
 		}
 		return null;
@@ -275,13 +281,10 @@ public class TataiGame {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
 
-		switch (_level) {
-		case Level1:
+		if (_level == Level.LEVEL1 || _level == Level.LEVEL1_REVERSE) {
 			_creationModel.setLabelingStrategy(new Level1LabelGenerator());
-			break;
-		case Level2:
+		} else if (_level == Level.LEVEL2 || _level == Level.LEVEL2_REVERSE) {
 			_creationModel.setLabelingStrategy(new Level2LabelGenerator());
-			break;
 		}
 
 		_creationModel.updateModel(creationClass);
@@ -382,7 +385,7 @@ public class TataiGame {
 	public int incorrect() {
 		return _currentUser.getTotalIncorrect(_level);
 	}
-	
+
 	/**
 	 * personal Best
 	 */

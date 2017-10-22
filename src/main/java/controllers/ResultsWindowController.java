@@ -43,7 +43,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 	@FXML
 	public void handleLevel2ButtonClick() {
 		// Create new game, set to level 2 and begin game
-		Context.getInstance().currentGame().setLevel(Level.Level2);
+		Context.getInstance().currentGame().setLevel(Level.LEVEL2);
 		Context.getInstance().currentGame().startGame();
 
 		Stage stage = (Stage) _mainMenuButton.getScene().getWindow(); // Get current stage
@@ -75,7 +75,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 		// If on level 1 and got 8 or more correct offer user to play level 2
 		
 		if (!((Context.getInstance().currentGame().questionsCorrect() >= 8)
-				&& (Context.getInstance().currentGame().currentLevel() == Level.Level1))) {
+				&& (Context.getInstance().currentGame().currentLevel() == Level.LEVEL1))) {
 			_level2Button.setVisible(false);
 			
 		    Platform.runLater(new Runnable() {
