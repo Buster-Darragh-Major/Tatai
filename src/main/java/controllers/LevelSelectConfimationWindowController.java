@@ -68,7 +68,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 			Context.getInstance().setGameType(reverseGame);
 			_game = Context.getInstance().currentGame();
 		} else {
-			Context.getInstance().setGameToEquation();
+			Context.getInstance().setGameToEquation(); 
 		}
 		
 		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());

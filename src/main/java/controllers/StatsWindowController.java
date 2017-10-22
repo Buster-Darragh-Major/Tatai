@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyCode;
@@ -46,6 +47,8 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	private Label _statTitleLabel;
 	@FXML
+	private Label _personalBestLabel;
+	@FXML
 	private Button _averageButton;
 	@FXML
 	private Button _correctButton;
@@ -66,8 +69,12 @@ public class StatsWindowController extends TataiController implements Initializa
 	@FXML
 	private FontAwesomeIconView _totalStar;
 	@FXML
+	private FontAwesomeIconView _personalBestStar;
+	@FXML
 	private FontAwesomeIconView _helpButton;
-	
+	@FXML
+	private CheckBox _checkBox;
+
 	Tooltip _tp = new Tooltip();
 
 	/**
@@ -110,6 +117,7 @@ public class StatsWindowController extends TataiController implements Initializa
 		_correctButton.setText("" + _game.correct());
 		_incorrectButton.setText("" + _game.incorrect());
 		_totalButton.setText("" + _game.totalPlayed());
+		_personalBestLabel.setText("" + _game.personalBest());
 	}
 
 	/**
@@ -137,6 +145,29 @@ public class StatsWindowController extends TataiController implements Initializa
 
 		_statTitleLabel.setText(level + descripton + " for " + _firstName);
 		_statTitleLabel.setTextFill(paint);
+	}
+
+	@FXML
+	public void handleCheckBoxClick() {
+		if (_checkBox.isSelected()) {
+			if (_game.currentLevel() == Level.LEVEL1) {
+				_game.setLevel(Level.LEVEL1_REVERSE);
+			} else if (_game.currentLevel() == Level.LEVEL2) {
+				_game.setLevel(Level.LEVEL2_REVERSE);
+			}
+		} else {
+			if (_game.currentLevel() == Level.LEVEL1_REVERSE) {
+				_game.setLevel(Level.LEVEL1);
+			} else if (_game.currentLevel() == Level.LEVEL2_REVERSE) {
+				_game.setLevel(Level.LEVEL2);
+			}
+		}
+		updateValues();
+		handleAverageButtonClick();
+
+		if (_user instanceof Student) {
+			updateStars();
+		}
 	}
 
 	/**
@@ -182,6 +213,7 @@ public class StatsWindowController extends TataiController implements Initializa
 
 	@FXML
 	public void switchLevel() {
+		_checkBox.setSelected(false);
 		if (_switchLevelButton.getText().equals(SEELEVEL2)) {
 			_game.setLevel(Level.LEVEL2);
 			_switchLevelButton.setText(SEELEVEL1);
@@ -212,7 +244,7 @@ public class StatsWindowController extends TataiController implements Initializa
 		Stage stage = (Stage) _averageButton.getScene().getWindow();
 		changeWindow("StatsHelpWindow.fxml", stage);
 	}
-	
+
 	@FXML
 	public void handleIconHover(MouseEvent e) {
 		Node node = (Node) e.getSource();
@@ -229,8 +261,12 @@ public class StatsWindowController extends TataiController implements Initializa
 						"Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTAL_INCORRECT, _game.currentLevel())));
 			} else if (node.equals(_totalStar)) {
 				_tp.setText("Total: " + getSkillText(student.getStatSkill(Stat.TOTAL_PLAYED, _game.currentLevel())));
+			} else if (node.equals(_personalBestStar) || node.equals(_personalBestLabel)) {
+				_tp.setText("Personal Best: "
+						+ getSkillText(student.getStatSkill(Stat.PERSONAL_BEST, _game.currentLevel())));
 			}
 			_tp.setAutoHide(true);
+			_tp.setStyle("-fx-font-size: 20");
 			_tp.show(node, stage.getX() + e.getSceneX(), stage.getY() + e.getSceneY());
 		} else {
 			_tp.hide();
@@ -279,6 +315,8 @@ public class StatsWindowController extends TataiController implements Initializa
 		hideFontAwesomeIcon(_correctStar);
 		hideFontAwesomeIcon(_incorrectStar);
 		hideFontAwesomeIcon(_totalStar);
+		hideFontAwesomeIcon(_personalBestStar);
+		_personalBestLabel.setVisible(false);
 	}
 
 	private void hideFontAwesomeIcon(FontAwesomeIconView fa) {
@@ -293,6 +331,7 @@ public class StatsWindowController extends TataiController implements Initializa
 		updateStar(Stat.TOTAL_CORRECT, _correctStar);
 		updateStar(Stat.TOTAL_INCORRECT, _incorrectStar);
 		updateStar(Stat.TOTAL_PLAYED, _totalStar);
+		updateStar(Stat.PERSONAL_BEST, _personalBestStar);
 	}
 
 	/**

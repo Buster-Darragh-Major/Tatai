@@ -101,7 +101,7 @@ public class Student extends User {
 			return StatSkill.BRONZE;
 		} else if (value >= 6 && value < 7) {
 			return StatSkill.SILVER;
-		} else if (value >= 8 && value < 9) {
+		} else if (value >= 8 && value < 10) {
 			return StatSkill.GOLD;
 		} else if (value == 10) {
 			return StatSkill.PLATINUM;

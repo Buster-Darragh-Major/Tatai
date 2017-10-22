@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -72,37 +73,24 @@
                   <RowConstraints minHeight="20.0" prefHeight="69.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <AnchorPane onMouseEntered="#handleIconHover">
-                     <children>
-                        <JFXButton fx:id="_switchLevelButton" buttonType="RAISED" layoutX="54.0" layoutY="24.0" onAction="#switchLevel" onMouseEntered="#handleIconHover" prefHeight="50.0" prefWidth="100.0" text="See Level 2" />
-                     </children></AnchorPane>
                   <AnchorPane onMouseEntered="#handleIconHover" GridPane.rowIndex="5" />
-                  <FontAwesomeIconView fx:id="_averageStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <FontAwesomeIconView fx:id="_correctStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" text="" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <FontAwesomeIconView fx:id="_incorrectStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                  <FontAwesomeIconView fx:id="_totalStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <FontAwesomeIconView fx:id="_averageStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="90.0" />
+                     </GridPane.margin></FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="_correctStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" text="" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="90.0" />
+                     </GridPane.margin></FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="_incorrectStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="90.0" />
+                     </GridPane.margin></FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="_totalStar" glyphName="STAR" onMouseEntered="#handleIconHover" size="25" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="90.0" />
+                     </GridPane.margin></FontAwesomeIconView>
                   <Button fx:id="_averageButton" mnemonicParsing="false" onAction="#handleAverageButtonClick" onMouseEntered="#handleIconHover" style="-: #383838;" styleClass="statsBackground" stylesheets="@../stylesheets/StatisticsTheme.css" text="\%88.8" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" />
-                     </effect></Button>
-                  <Button fx:id="_totalButton" mnemonicParsing="false" onAction="#handleTotalButtonClick" onMouseEntered="#handleIconHover" styleClass="statsBackground" stylesheets="@../stylesheets/StatisticsTheme.css" text="total" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" />
-                     </effect></Button>
-                  <Button fx:id="_incorrectButton" mnemonicParsing="false" onAction="#handleIncorrectButtonClick" onMouseEntered="#handleIconHover" styleClass="statsBackground" stylesheets="@../stylesheets/StatisticsTheme.css" text="incorrect" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" />
-                     </effect></Button>
-                  <Button fx:id="_correctButton" mnemonicParsing="false" onAction="#handleCorrectButtonClick" onMouseEntered="#handleIconHover" styleClass="statsBackground" stylesheets="@../stylesheets/StatisticsTheme.css" text="correct" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -112,6 +100,39 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Button>
+                  <Button fx:id="_totalButton" mnemonicParsing="false" onAction="#handleTotalButtonClick" onMouseEntered="#handleIconHover" styleClass="statsBackground" stylesheets="@../stylesheets/StatisticsTheme.css" text="total" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" />
+                     </effect>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Button>
+                  <Button fx:id="_incorrectButton" mnemonicParsing="false" onAction="#handleIncorrectButtonClick" onMouseEntered="#handleIconHover" styleClass="statsBackground" stylesheets="@../stylesheets/StatisticsTheme.css" text="incorrect" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" />
+                     </effect>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Button>
+                  <Button fx:id="_correctButton" mnemonicParsing="false" onAction="#handleCorrectButtonClick" onMouseEntered="#handleIconHover" styleClass="statsBackground" stylesheets="@../stylesheets/StatisticsTheme.css" text="correct" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" />
+                     </effect>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+                  <JFXCheckBox fx:id="_checkBox" checkedColor="#cc0404" onAction="#handleCheckBoxClick" styleClass="root" text="Reverse" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="_switchLevelButton" buttonType="RAISED" onAction="#switchLevel" onMouseEntered="#handleIconHover" prefHeight="50.0" prefWidth="100.0" text="See Level 2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>
@@ -149,6 +170,26 @@
                   <Insets right="20.0" top="10.0" />
                </GridPane.margin>
             </FontAwesomeIconView>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <FontAwesomeIconView fx:id="_personalBestStar" glyphName="CERTIFICATE" onMouseEntered="#handleIconHover" size="100" styleClass="icon-none" text="" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label fx:id="_personalBestLabel" onMouseEntered="#handleIconHover" text="8" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
       <FontAwesomeIconView fx:id="_exitButton" glyphName="ARROW_LEFT" onMouseClicked="#handleExitButtonClick" onMousePressed="#handleExitButtonClick" onMouseReleased="#handleExitButtonClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
