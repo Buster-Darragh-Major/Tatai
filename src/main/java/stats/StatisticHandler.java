@@ -30,6 +30,11 @@ public interface StatisticHandler {
 	public double average();
 	
 	/**
+	 * @return personal best
+	 */
+	public int personalBest();
+	
+	/**
 	 * Update the players statistics
 	 * 
 	 * @param played questions answered this session
@@ -37,5 +42,5 @@ public interface StatisticHandler {
 	 * @param correct questions correctly answered this session
 	 * 
 	 */
-	public void updateStats(int played, int correct, int incorrect);
+	public void updateStats(int played, int correct, int incorrect, int personalBest);
 }

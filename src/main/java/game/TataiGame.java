@@ -292,7 +292,7 @@ public class TataiGame {
 	 */
 	public void endGame() {
 		if (_hasStarted) {
-			_currentUser.updateStats(_questionNo - 1, _correct, _incorrect, _level);
+			_currentUser.updateStats(_questionNo - 1, _correct, _incorrect, _correct, _level);
 			_currentUser.saveUser();
 			_hasStarted = false;
 		} else {
@@ -381,5 +381,12 @@ public class TataiGame {
 	 */
 	public int incorrect() {
 		return _currentUser.getTotalIncorrect(_level);
+	}
+	
+	/**
+	 * personal Best
+	 */
+	public int personalBest() {
+		return _currentUser.getPersonalBest(_level);
 	}
 }

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.java.game.Level;
+import main.java.stats.StatisticHandler;
 import main.java.stats.TataiHandler;
 import main.java.stats.TataiStat;
 
@@ -30,17 +31,19 @@ import main.java.stats.TataiStat;
 
     @JsonSubTypes.Type(value = Teacher.class, name = "Teacher") }
 )
-public abstract class User extends TataiHandler {
+public abstract class User {
 	/* MACROS */
-	public static final File USER_DIR = new File(DATA_DIR + System.getProperty("file.separator") + "users");
+	public static final File USER_DIR = new File(TataiHandler.DATA_DIR + System.getProperty("file.separator") + "users");
 
 	@JsonIgnore public final File _userFile;
 	@JsonIgnore protected boolean _writingPrivileges;
 	protected String _firstName;
 	protected String _lastName;
 	protected String _userName;
-	protected TataiStat _lvl1Stats;
-	protected TataiStat _lvl2Stats;
+	protected StatisticHandler _lvl1Stats;
+	protected StatisticHandler _lvl2Stats;
+	protected StatisticHandler _lvl1ReverseStats;
+	protected StatisticHandler _lvl2ReverseStats;
 
 	/**
 	 * Constructor
@@ -75,6 +78,8 @@ public abstract class User extends TataiHandler {
 		
 		_lvl1Stats = new TataiStat();
 		_lvl2Stats = new TataiStat();
+		_lvl1ReverseStats = new TataiStat();
+		_lvl2ReverseStats = new TataiStat();
 
 		_userFile = new File(USER_DIR + System.getProperty("file.separator") + userName);
 	}
@@ -87,11 +92,17 @@ public abstract class User extends TataiHandler {
 	 * @param stat1 their lvl1 stats
 	 * @param stat2
 	 */
-	public User(String firstName, String lastName, String userName, TataiStat stat1, TataiStat stat2) {
+	public User(String firstName, String lastName, String userName, TataiStat stat1, TataiStat stat2, TataiStat stat3, TataiStat stat4) {
 		this(firstName, lastName, userName);
 		_lvl1Stats = stat1;
 		_lvl2Stats = stat2;
+		_lvl1ReverseStats = stat3;
+		_lvl2ReverseStats = stat4;
 	}
+	
+	public abstract void unlockLevel(Level level);
+	
+	public abstract boolean isUnlocked(Level level);
 
 	/**
 	 * Saves the user. Inheritors should decide how a user is saved.
@@ -195,7 +206,7 @@ public abstract class User extends TataiHandler {
 	 * @return total player for l
 	 */
 	public int getTotalPlayed(Level l) {
-		TataiStat ts = determineStatLevel(l);
+		StatisticHandler ts = determineStatLevel(l);
 
 		return ts.totalPlayed();
 	}
@@ -208,7 +219,7 @@ public abstract class User extends TataiHandler {
 	 * @return total correct for l
 	 */
 	public int getTotalCorrect(Level l) {
-		TataiStat ts = determineStatLevel(l);
+		StatisticHandler ts = determineStatLevel(l);
 
 		return ts.totalCorrect();
 	}
@@ -221,7 +232,7 @@ public abstract class User extends TataiHandler {
 	 * @return total incorrect for l
 	 */
 	public int getTotalIncorrect(Level l) {
-		TataiStat ts = determineStatLevel(l);
+		StatisticHandler ts = determineStatLevel(l);
 
 		return ts.totalIncorrect();
 	}
@@ -234,9 +245,15 @@ public abstract class User extends TataiHandler {
 	 * @return average for l
 	 */
 	public double getAverage(Level l) {
-		TataiStat ts = determineStatLevel(l);
+		StatisticHandler ts = determineStatLevel(l);
 
 		return ts.average();
+	}
+	
+	public int getPersonalBest(Level l) {
+		StatisticHandler ts = determineStatLevel(l);
+		
+		return ts.personalBest();
 	}
 	
 	/**
@@ -246,10 +263,10 @@ public abstract class User extends TataiHandler {
 	 * @param incorrect amount incorrect
 	 * @param level the level to add stats to
 	 */
-	public void updateStats(int played, int correct, int incorrect, Level level) {
-		TataiStat ts = determineStatLevel(level);
+	public void updateStats(int played, int correct, int incorrect, int score, Level level) {
+		StatisticHandler ts = determineStatLevel(level);
 		
-		ts.updateStats(played, correct, incorrect);
+		ts.updateStats(played, correct, incorrect, score);
 	}
 
 	/**
@@ -259,8 +276,8 @@ public abstract class User extends TataiHandler {
 	 *            the level
 	 * @return the stats of the apporpriate level
 	 */
-	private TataiStat determineStatLevel(Level l) {
-		TataiStat ts = null;
+	protected StatisticHandler determineStatLevel(Level l) {
+		StatisticHandler ts = null;
 
 		switch (l) {
 		case Level1:

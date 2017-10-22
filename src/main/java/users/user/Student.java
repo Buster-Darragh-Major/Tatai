@@ -17,6 +17,9 @@ import main.java.stats.TataiStat;
  */
 public class Student extends User {
 
+	private boolean _level2Unlocked;
+	private boolean _level2ReverseUnlocked;
+
 	/**
 	 * Constructor
 	 * 
@@ -29,7 +32,7 @@ public class Student extends User {
 	 */
 	public Student(String firstName, String lastName, String userName) throws UserException {
 		super(firstName, lastName, userName);
-		_writingPrivileges = false;
+		lockUser();
 	}
 
 	/**
@@ -37,9 +40,23 @@ public class Student extends User {
 	 */
 	public Student(@JsonProperty("_firstName") String firstName, @JsonProperty("_lastName") String lastName,
 			@JsonProperty("_userName") String userName, @JsonProperty("_lvl1Stats") TataiStat stat1,
-			@JsonProperty("_lvl2Stats") TataiStat stat2) {
-		super(firstName, lastName, userName, stat1, stat2);
+			@JsonProperty("_lvl2Stats") TataiStat stat2, @JsonProperty("_lvl1ReverseStats") TataiStat stat3,
+			@JsonProperty("_lvl2ReverseStats") TataiStat stat4, @JsonProperty("_level2Unlocked") boolean level2Unlocked,
+			@JsonProperty("_level2ReverseUnlocked") boolean level2ReverseUnlocked) {
+		super(firstName, lastName, userName, stat1, stat2, stat3, stat4);
 		_writingPrivileges = false;
+		_level2Unlocked = level2Unlocked;
+		_level2ReverseUnlocked = level2ReverseUnlocked;
+	}
+
+	/**
+	 * Locks the users priveleges. Students do not start with levels unlocked and
+	 * never have writing privileges.
+	 */
+	private void lockUser() {
+		_writingPrivileges = false;
+		_level2Unlocked = false;
+		_level2ReverseUnlocked = false;
 	}
 
 	/**
@@ -110,6 +127,38 @@ public class Student extends User {
 			return StatSkill.PLATINUM;
 		} else {
 			return StatSkill.NONE;
+		}
+	}
+
+	@Override
+	public void unlockLevel(Level level) {
+		switch (level) {
+		case Level2:
+			if (getPersonalBest(Level.Level1) >= 8) {
+				_level2Unlocked = true;
+			}
+			break;
+		default:
+			break;
+		}
+
+	}
+
+	@Override
+	public boolean isUnlocked(Level level) {
+		switch (level) {
+		case Level2:
+			return _level2Unlocked;
+		default:
+			return true;
+		}
+	}
+	
+	@Override
+	public void updateStats(int played, int correct, int incorrect, int score, Level level) {
+		super.updateStats(played, correct, incorrect, score, level);
+		if (level == Level.Level1) {
+			unlockLevel(Level.Level2);
 		}
 	}
 }

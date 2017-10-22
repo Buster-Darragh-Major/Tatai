@@ -12,15 +12,24 @@ public class TataiStat implements StatisticHandler {
 	private int _totalPlayed;
 	private int _totalCorrect;
 	private int _totalIncorrect;
+	private int _personalBest;
 
 	public TataiStat() {
-		this(0, 0, 0);
+		this(0, 0, 0,0);
 	}
-
-	public TataiStat(@JsonProperty("_totalPlayed")int totalPlayed,@JsonProperty("_totalCorrect") int totalCorrect, @JsonProperty("_totalIncorrect") int totalIncorrect) {
+	
+	/**
+	 * Existing statistic constructor
+	 * @param totalPlayed
+	 * @param totalCorrect
+	 * @param totalIncorrect
+	 * @param personalBest
+	 */
+	public TataiStat(@JsonProperty("_totalPlayed")int totalPlayed,@JsonProperty("_totalCorrect") int totalCorrect, @JsonProperty("_totalIncorrect") int totalIncorrect, @JsonProperty("_personalBest") int personalBest) {
 		_totalPlayed = totalPlayed;
 		_totalCorrect = totalCorrect;
 		_totalIncorrect = totalIncorrect;
+		_personalBest = personalBest;
 	}
 
 	@Override
@@ -62,7 +71,7 @@ public class TataiStat implements StatisticHandler {
 	}
 
 	@Override
-	public void updateStats(int played, int correct, int incorrect) {
+	public void updateStats(int played, int correct, int incorrect, int personalBest) {
 		if (played > 10) {
 			throw new StatsException("You can not have answered more than 10 questions in a session");
 		}
@@ -78,6 +87,15 @@ public class TataiStat implements StatisticHandler {
 		_totalPlayed += played;
 		_totalCorrect += correct;
 		_totalIncorrect += incorrect;
+		
+		if (personalBest > _personalBest) {
+			_personalBest = personalBest;
+		}
+	}
+
+	@Override
+	public int personalBest() {
+		return _personalBest;
 	}
 
 }
