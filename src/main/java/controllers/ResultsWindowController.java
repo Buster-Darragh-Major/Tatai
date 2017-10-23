@@ -109,8 +109,6 @@ public class ResultsWindowController extends TataiController implements Initiali
 	 */
 	private boolean isPersonalBest(int oldBest) {
 		int newBest = Context.getInstance().currentGame().personalBest();
-		System.out.println("new " + newBest);
-		System.out.println("old " + oldBest);
 		if (newBest > oldBest) {
 			_personalBestLabel.setVisible(true);
 			return true;
