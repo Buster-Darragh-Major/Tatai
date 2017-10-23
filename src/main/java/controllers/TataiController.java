@@ -34,6 +34,22 @@ public abstract class TataiController {
 	protected static final String WHITE = "#ffffff";
 	protected static final String NEXT = "Next";
 	protected static final String FXML_LOCATION = "/main/resources/view/fxml/";	
+	public static final String CUSTOM_LIST_SELECTION_EDIT_FXML = "CustomListEditView.fxml";
+	public static final String CUSTOM_LIST_SELECTION_FXML = "CustomListSelectionWindow.fxml";
+	public static final String GAME_FXML = "GameWindow.fxml";
+	public static final String LEVEL_SELECT_CONFIRMATION_FXML = "LevelSelectConfirmationWindow.fxml";
+	public static final String LEVEL_SELECT_FXML = "LevelSelectWindow.fxml";
+	public static final String MAIN_FXML = "MainWindow.fxml";
+	public static final String PRATICE_FXML = "PracticeWindow.fxml";
+	public static final String RESULTS_FXML = "ResultsWindow.fxml";
+	public static final String REVERSE_GAME_FXML = "ReverseGamemodeWindow.fxml";
+	public static final String STATS_HELP_FXML = "StatsHelpWindow.fxml";
+	public static final String  STATS_FXML = "StatsWindow.fxml";
+	public static final String TEACHER_INPUT_NAMING_FXML = "TeacherInputNamingWindow.fxml";
+	public static final String TEACHER_INPUT_FXML = "TeacherInputWindow.fxml";
+	public static final String TUTORIAL_FXML = "TutorialWindow.fxml";
+	public static final String USER_FORM_FXML = "UserFormWindow.fxml";
+	public static final String USER_FXML = "UserWindow.fxml";
 	
 	public TataiController() {
 		_game = Context.getInstance().currentGame();
