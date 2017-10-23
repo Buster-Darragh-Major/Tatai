@@ -47,6 +47,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	@FXML private Button _divide;
 	@FXML private Button _enterButton;
 	@FXML private Button _clearButton;
+	@FXML private Button _submitButton;
 	@FXML private FontAwesomeIconView _exitButton;
 	
 	/* Fields */
@@ -140,6 +141,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	@FXML
 	public void handleEnterClick() {
 		_enterButton.setDisable(true);
+		_submitButton.setDisable(false);
 		_handler.writeToFile(_inputLabel.getText() + EQUALS);
 		_inputLabel.setText("");
 		
@@ -232,6 +234,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	public void initialize(URL location, ResourceBundle resources) {
 		_enterButton.setDisable(true);
 		_warningLabel.setVisible(false);
+		_submitButton.setDisable(true);
 		
 		_handler = new TextQuestionListHandler(Context.getInstance().currentQuestionList());
 		_handler.makeList();
