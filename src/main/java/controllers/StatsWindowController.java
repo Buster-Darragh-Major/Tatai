@@ -264,10 +264,12 @@ public class StatsWindowController extends TataiController implements Initializa
 			} else if (node.equals(_personalBestStar) || node.equals(_personalBestLabel)) {
 				displayText = "Personal Best: " + getSkillText(student.getStatSkill(Stat.PERSONAL_BEST, _game.currentLevel()));
 			} 
-			_tp.setText(displayText);
-			_tp.setAutoHide(true);
-			_tp.setStyle("-fx-font-size: 20");
-			_tp.show(node, stage.getX() + e.getSceneX(), stage.getY() + e.getSceneY());
+			if (displayText != null) {
+				_tp.setText(displayText);
+				_tp.setAutoHide(true);
+				_tp.setStyle("-fx-font-size: 20");
+				_tp.show(node, stage.getX() + e.getSceneX(), stage.getY() + e.getSceneY());
+			}
 		} else {
 			_tp.hide();
 		}
