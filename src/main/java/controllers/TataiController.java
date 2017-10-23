@@ -36,6 +36,17 @@ public abstract class TataiController {
 	public static final String NEXT = "Next";
 	public static final String FXML_LOCATION = "/main/resources/view/fxml/";	
 	public static final String TXT = ".txt";
+	public static final String ZERO_TEXT = "0";
+	public static final String ONE_TEXT = "1";
+	public static final String TWO_TEXT = "2";
+	public static final String THREE_TEXT = "3";
+	public static final String FOUR_TEXT = "4";
+	public static final String FIVE_TEXT = "5";
+	public static final String SIX_TEXT = "6";
+	public static final String SEVEN_TEXT = "7";
+	public static final String EIGHT_TEXT = "8";
+	public static final String NINE_TEXT = "9";
+	public static final String RECORDING = "Recording...";
 	
 	/* FXML WINDOWS */
 	public static final String CUSTOM_LIST_SELECTION_EDIT_FXML = "CustomListEditView.fxml";

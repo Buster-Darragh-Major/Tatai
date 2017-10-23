@@ -24,7 +24,6 @@ public class GameWindowController extends TataiController implements Initializab
 	
 	/* MACROS */
 	public static final String FINISH = "Finish!";
-	public static final String RECORDING = "Recording...";
 	public static final String RE_RECORD = "Re Record";
 	public static final String TRY_AGAIN = "Try Again!";
 	public static final String WHOOPS = "Whoops!";

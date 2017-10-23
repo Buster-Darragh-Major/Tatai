@@ -43,60 +43,60 @@ public class PracticeWindowController extends TataiController implements Initial
 	
 	@FXML
 	public void handle0Click() {
-		addToLabel("0");
+		addToLabel(ZERO_TEXT);
 	}
 	
 	@FXML
 	public void handle1Click() {
-		addToLabel("1");
+		addToLabel(ONE_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle2Click() {
-		addToLabel("2");
+		addToLabel(TWO_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle3Click() {
-		addToLabel("3");
+		addToLabel(THREE_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle4Click() {
-		addToLabel("4");
+		addToLabel(FOUR_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle5Click() {
-		addToLabel("5");
+		addToLabel(FIVE_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle6Click() {
-		addToLabel("6");
+		addToLabel(SIX_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle7Click() {
-		addToLabel("7");
+		addToLabel(SEVEN_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle8Click() {
-		addToLabel("8");
+		addToLabel(EIGHT_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle9Click() {
-		addToLabel("9");
+		addToLabel(NINE_TEXT);
 		_recordButton.setDisable(false);
 	}
 	
@@ -122,7 +122,7 @@ public class PracticeWindowController extends TataiController implements Initial
 		
 		_recordButton.setDisable(true);
 		_recordButton.setStyle("-fx-font: 12 System");
-		_recordButton.setText("Recording...");
+		_recordButton.setText(RECORDING);
 		
 		// Create thread for recording process
 		Task<Void> task = new Task<Void>() {
