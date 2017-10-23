@@ -23,7 +23,6 @@ public class ReverseWindowGameController extends TataiController implements Init
 	@FXML private Label _wordLabel;
 	@FXML private Label _intLabel;
 	@FXML private Label _questionNoLabel;
-	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Button _0;
 	@FXML private Button _1;
 	@FXML private Button _2;
@@ -36,7 +35,15 @@ public class ReverseWindowGameController extends TataiController implements Init
 	@FXML private Button _9;
 	@FXML private Button _clearButton;
 	@FXML private Button _submitButton;
-	@FXML FontAwesomeIconView _hearButton;
+	@FXML private FontAwesomeIconView _hearButton;
+	@FXML private FontAwesomeIconView _exitButton;
+	@FXML private FontAwesomeIconView _rightIncorrectFeedbackIcon;
+	@FXML private FontAwesomeIconView _leftIncorrectFeedbackIcon;
+	@FXML private FontAwesomeIconView _rightCorrectFeedbackIcon;
+	@FXML private FontAwesomeIconView _leftCorrectFeedbackIcon;
+	@FXML private Label _rightFeedbackLabel;
+	@FXML private Label _leftFeedbackLabel;
+
 	
 	/* Fields */
 	private String _answer;
@@ -195,6 +202,12 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_intLabel.setStyle("-fx-text-fill: white");
 		_questionNoLabel.setStyle("-fx-text-fill: white");
 		_wordLabel.setStyle("-fx-text-fill: white");
+		
+		// Give user feedback
+		_leftFeedbackLabel.setText("Correct!");
+		_rightFeedbackLabel.setText("Correct!");
+		_leftCorrectFeedbackIcon.setVisible(true);
+		_rightCorrectFeedbackIcon.setVisible(true);
 	}
 	
 	private void questionIncorrect() {
@@ -206,6 +219,12 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_intLabel.setStyle("-fx-text-fill: white");
 		_questionNoLabel.setStyle("-fx-text-fill: white");
 		_wordLabel.setStyle("-fx-text-fill: white");
+		
+		// Give user feedback
+		_leftFeedbackLabel.setText("Bad Luck!");
+		_rightFeedbackLabel.setText("Not Quite!");
+		_leftIncorrectFeedbackIcon.setVisible(true);
+		_rightIncorrectFeedbackIcon.setVisible(true);
 	}
 	
 	@FXML
@@ -266,5 +285,11 @@ public class ReverseWindowGameController extends TataiController implements Init
 		if (Context.getInstance().currentGame().currentLevel() == Level.LEVEL2_REVERSE) {
 			_hearButton.setVisible(false);
 		}
+		
+		// Hide feedback icons
+		_leftCorrectFeedbackIcon.setVisible(false);
+		_rightCorrectFeedbackIcon.setVisible(false);
+		_leftIncorrectFeedbackIcon.setVisible(false);
+		_rightIncorrectFeedbackIcon.setVisible(false);
 	}
 }
