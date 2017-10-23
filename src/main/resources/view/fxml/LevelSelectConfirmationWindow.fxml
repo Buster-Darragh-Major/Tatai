@@ -5,21 +5,22 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane onKeyPressed="#handleKeyPress" styleClass="root" stylesheets="@../stylesheets/TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.LevelSelectConfimationWindowController">
+<GridPane onKeyPressed="#handleKeyPress" prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@../stylesheets/TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.LevelSelectConfimationWindowController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="600.0" prefWidth="600.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="200.0" prefHeight="200.0" valignment="CENTER" />
+      <RowConstraints valignment="CENTER" />
       <RowConstraints minHeight="200.0" prefHeight="200.0" />
    </rowConstraints>
    <children>
-      <GridPane GridPane.rowIndex="1">
+      <GridPane onMouseEntered="#handleHover" GridPane.rowIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="448.0" />
         </columnConstraints>
@@ -28,20 +29,25 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="_back" buttonType="RAISED" onMouseClicked="#handleBackClick" prefHeight="50.0" prefWidth="100.0" text="Back" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <JFXButton fx:id="_back" buttonType="RAISED" onMouseClicked="#handleBackClick" onMouseEntered="#handleHover" prefHeight="50.0" prefWidth="100.0" text="Back" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="_start" buttonType="RAISED" onMouseClicked="#handleStartClick" prefHeight="50.0" prefWidth="100.0" text="Start" textFill="WHITE" GridPane.halignment="CENTER" />
+            <JFXButton fx:id="_start" buttonType="RAISED" onMouseClicked="#handleStartClick" onMouseEntered="#handleHover" prefHeight="50.0" prefWidth="100.0" text="Start" textFill="WHITE" GridPane.halignment="CENTER" />
+            <AnchorPane fx:id="_checkBoxWrap" maxHeight="50.0" maxWidth="100.0" minHeight="50.0" minWidth="100.0" onMouseEntered="#handleHover" prefHeight="50.0" prefWidth="100.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="190.0" />
+               </GridPane.margin>
+            </AnchorPane>
             <JFXCheckBox fx:id="_checkBox" checkedColor="#b20606" onAction="#handleCheckBoxClick" text="Reverse" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets right="150.0" />
+                  <Insets right="200.0" />
                </GridPane.margin>
             </JFXCheckBox>
          </children>
       </GridPane>
-      <GridPane prefHeight="200.0" prefWidth="600.0">
+      <GridPane onDragEntered="#handleHover" prefHeight="200.0" prefWidth="600.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -50,7 +56,7 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="_levelHeader" alignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Label fx:id="_levelHeader" alignment="CENTER" onDragEntered="#handleHover" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <font>
                   <Font size="90.0" />
                </font>
@@ -58,7 +64,7 @@
                   <DropShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Label>
-            <Label fx:id="_levelDescriptor" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Label fx:id="_levelDescriptor" alignment="CENTER" contentDisplay="CENTER" onDragEntered="#handleHover" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <font>
                   <Font size="18.0" />
                </font>
