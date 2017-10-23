@@ -18,11 +18,18 @@ import main.java.game.TataiQuestionTableAdapter;
 public class ResultsWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML private Label _scoreLabel;
-	@FXML private Button _mainMenuButton;
-	@FXML private Button _level2Button;
-	@FXML private TableView<TataiQuestionTableAdapter> _resultsTable;
-	@FXML private TableColumn<TataiQuestionTableAdapter, String> qNo, qInt, qTranslation, qCorrect;
+	@FXML
+	private Label _scoreLabel;
+	@FXML
+	private Button _mainMenuButton;
+	@FXML
+	private Button _level2Button;
+	@FXML
+	private TableView<TataiQuestionTableAdapter> _resultsTable;
+	@FXML
+	private TableColumn<TataiQuestionTableAdapter, String> qNo, qInt, qTranslation, qCorrect;
+	@FXML 
+	private Label _personalBestLabel;
 
 	/* Fields */
 	private int _questionTotal = Context.getInstance().currentGame().totalNumberOfQuestions();
@@ -50,7 +57,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		_mainMenuButton.requestFocus();
-		
+
 		// Set overall questions correct label
 		_scoreLabel
 				.setText("You scored " + Context.getInstance().currentGame().questionsCorrect() + "/" + _questionTotal);
@@ -61,7 +68,8 @@ public class ResultsWindowController extends TataiController implements Initiali
 		ArrayList<String> trans = Context.getInstance().currentGame().getQuestionTrans();
 		ArrayList<String> correct = Context.getInstance().currentGame().getQuestionCorrect();
 		for (int i = 0; i < _questionTotal; i++) {
-			_resultsTable.getItems().add(new TataiQuestionTableAdapter(i + 1 + ")", ints.get(i), trans.get(i), correct.get(i)));
+			_resultsTable.getItems()
+					.add(new TataiQuestionTableAdapter(i + 1 + ")", ints.get(i), trans.get(i), correct.get(i)));
 		}
 
 		// Set up Columns
@@ -70,22 +78,45 @@ public class ResultsWindowController extends TataiController implements Initiali
 		qTranslation.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qTranslation"));
 		qCorrect.setCellValueFactory(new PropertyValueFactory<TataiQuestionTableAdapter, String>("qCorrect"));
 		// If on level 1 and got 8 or more correct offer user to play level 2
-		
+
 		if (!((Context.getInstance().currentGame().questionsCorrect() >= 8)
 				&& (Context.getInstance().currentGame().currentLevel() == Level.LEVEL1))) {
 			_level2Button.setVisible(false);
-			
-		    Platform.runLater(new Runnable() {
-		        @Override
-		        public void run() {
+
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
 					_level2Button.requestFocus();
-		        }
-		    });
+				}
+			});
 		}
-		
-		// All game functionality is complete. Restore default game mode to equation mode so
+
+		// All game functionality is complete. Restore default game mode to equation
+		// mode so
 		// further games are able to be played.
+		int oldBest = Context.getInstance().currentGame().personalBest();
 		Context.getInstance().currentGame().endGame();
 		Context.getInstance().setGameToEquation();
+		isPersonalBest(oldBest);
+	}
+
+	/**
+	 * This method determines whether the user has scored a personal best.
+	 * If they have the personal best label is displayed.
+	 * @param oldBest
+	 *            the users old personal best
+	 * @return whether their new personal best was better than the old
+	 */
+	private boolean isPersonalBest(int oldBest) {
+		int newBest = Context.getInstance().currentGame().personalBest();
+		System.out.println("new " + newBest);
+		System.out.println("old " + oldBest);
+		if (newBest > oldBest) {
+			_personalBestLabel.setVisible(true);
+			return true;
+		} else {
+			_personalBestLabel.setVisible(false);
+			return false;
+		}
 	}
 }
