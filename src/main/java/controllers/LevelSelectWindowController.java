@@ -19,7 +19,9 @@ import main.java.game.Level;
 import main.java.users.user.User;
 
 public class LevelSelectWindowController extends TataiController implements Initializable {
-
+	/* MACROS */
+	public static final String LEVEL2_TOOLTIP = "Score 8 or more\nin Level 1 to unlock";
+	
 	/* FIELDS */
 	private User _user;
 
@@ -55,7 +57,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 		Stage stage = (Stage) _level1.getScene().getWindow();
 		if (node instanceof AnchorPane) {
 			if (node.equals(_level2Wrap) && _level2.isDisabled()) {
-				_tp.setText("Score 8 or more\nin Level 1 to unlock");
+				_tp.setText(LEVEL2_TOOLTIP);
 				_tp.setAutoHide(true);
 				_tp.setStyle("-fx-font-size: 20");
 				_tp.show(node, stage.getX() + e.getSceneX(), stage.getY() + e.getSceneY());

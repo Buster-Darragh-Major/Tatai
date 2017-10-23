@@ -329,8 +329,6 @@ public class GameWindowController extends TataiController implements Initializab
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Context.getInstance().currentGame();
-		
 		// Hide irrelevant buttons / icons
 		_playbackButton.setVisible(false);
 		_skipButton.setVisible(false);
