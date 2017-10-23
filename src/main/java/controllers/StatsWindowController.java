@@ -207,8 +207,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	 */
 	@FXML
 	public void handleExitButtonClick() {
-		Stage stage = (Stage) _exitButton.getScene().getWindow();
-		changeWindow("MainWindow.fxml", stage);
+		changeWindow(MAIN_FXML, _exitButton);
 	}
 
 	@FXML
@@ -241,8 +240,7 @@ public class StatsWindowController extends TataiController implements Initializa
 
 	@FXML
 	public void handleHelpClick() {
-		Stage stage = (Stage) _averageButton.getScene().getWindow();
-		changeWindow("StatsHelpWindow.fxml", stage);
+		changeWindow(STATS_HELP_FXML, _averageButton);
 	}
 
 	@FXML

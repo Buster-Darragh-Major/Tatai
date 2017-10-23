@@ -74,11 +74,10 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		// Populate TataiCreationModel object in singleton
 		_game.startGame();
 
-		Stage stage = (Stage) _start.getScene().getWindow(); // Get current stage
 		if (_checkBox.isSelected()) {
-			changeWindow("ReverseGamemodeWindow.fxml", stage); // Change to ReverseGamemodeWindow.fxml view
+			changeWindow(REVERSE_GAME_FXML, _start); // Change to ReverseGamemodeWindow.fxml view
 		} else {
-			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+			changeWindow(GAME_FXML, _start); // Change to GameWindow.fxml view
 		}
 	}
 
@@ -116,9 +115,8 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	public void handleBackClick() {
 		_checkBox.setSelected(false);
 		handleCheckBoxClick();
-		
-		Stage stage = (Stage) _back.getScene().getWindow(); // Get current stage
-		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
+	
+		changeWindow(LEVEL_SELECT_FXML, _back); // Change to LevelSelectWindow.fxml view
 	}
 
 	/**

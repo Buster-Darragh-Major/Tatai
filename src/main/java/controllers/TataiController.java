@@ -7,6 +7,7 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -60,7 +61,8 @@ public abstract class TataiController {
 	 * points to the file desired to be the root of the new view, and the stage
 	 * refers to the main stage needing to be changed.
 	 */
-	protected void changeWindow(String fxmlFile, Stage stage) {
+	protected void changeWindow(String fxmlFile, Node node) {
+		Stage stage = (Stage) node.getScene().getWindow();
 		Parent root = null;
 		try {
 			// Load root .fxml file for new view

@@ -14,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import main.java.questionlist.TextQuestionListHandler;
 
 public class TeacherInputWindowController extends TataiController implements Initializable {
@@ -119,9 +118,8 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		if (_handler.size() == 0) {
 			_handler.delete();
 		}
-		
-		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
-		changeWindow("TeacherInputNamingWindow.fxml", stage);// Change to MainWindow.fxml view
+
+		changeWindow(TEACHER_INPUT_NAMING_FXML, _exitButton);
 	}
 	
 	@FXML

@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import main.java.game.Level;
 
 public class ReverseWindowGameController extends TataiController implements Initializable {
@@ -168,13 +167,12 @@ public class ReverseWindowGameController extends TataiController implements Init
 	 * Handles user requesting to change view
 	 */
 	public void next() {
-		Stage stage = (Stage) _submitButton.getScene().getWindow(); //Get current stage
-		
+
 		// If button text says finish, finish game.
 		if (_submitButton.getText().equals("Finish")) {
-			changeWindow("ResultsWindow.fxml", stage); // Change to ResultsWindow.fxml view
+			changeWindow(RESULTS_FXML, _submitButton); // Change to ResultsWindow.fxml view
 		} else {
-			changeWindow("ReverseGamemodeWindow.fxml", stage); // Change to GameWindow.fxml view
+			changeWindow(REVERSE_GAME_FXML, _submitButton); 
 		}
 	}
 	
@@ -225,9 +223,8 @@ public class ReverseWindowGameController extends TataiController implements Init
 	 * Method to quit current game gracefully
 	 */
 	public void quitCurrentGame() {
-		Stage stage = (Stage) _exitButton.getScene().getWindow();
 		Context.getInstance().currentGame().endGame();
-		changeWindow("LevelSelectWindow.fxml", stage);
+		changeWindow(LEVEL_SELECT_FXML, _exitButton);
 	}
 	
 	@Override

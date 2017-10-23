@@ -16,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import main.java.game.TataiGameCustomList;
 import main.java.questionlist.TextQuestionListHandler;
 
@@ -30,8 +29,7 @@ public class CustomListSelectionWindowController extends TataiController impleme
 
 	@FXML
 	public void handleExitClick() {
-		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get current stage
-		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml
+		changeWindow(LEVEL_SELECT_FXML, _exitButton); // Change to LevelSelectWindow.fxml
 	}
 	
 	@FXML
@@ -42,8 +40,7 @@ public class CustomListSelectionWindowController extends TataiController impleme
 				new TextQuestionListHandler(_listView.getSelectionModel().getSelectedItem())));
 		Context.getInstance().currentGame().populateModel();
 		
-		Stage stage = (Stage) _playButton.getScene().getWindow(); // Get current stage
-		changeWindow("GameWindow.fxml", stage); // Change to GameokWindow.fxml
+		changeWindow(GAME_FXML, _playButton); // Change to GameokWindow.fxml
 	}
 	
 	@FXML

@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 
 public class MainWindowController extends TataiController  implements Initializable{
 	
@@ -28,8 +27,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	 */
 	@FXML
 	public void handlePlayMenuClick() {
-		Stage stage = (Stage) _mainMenuPlay.getScene().getWindow(); // Get current stage
-		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
+		changeWindow(LEVEL_SELECT_FXML, _mainMenuPlay); // Change to LevelSelectWindow.fxml view
 	}
 	
 	/**
@@ -37,8 +35,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	 */
 	@FXML
 	public void handleStatsMenuClick() {
-		Stage stage = (Stage) _mainMenuStats.getScene().getWindow(); // Get Current stage
-		changeWindow("StatsWindow.fxml", stage);// Change to StatsWindow.fxml view
+		changeWindow(STATS_FXML, _mainMenuStats);// Change to StatsWindow.fxml view
 	}
 	
 	/**
@@ -46,8 +43,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	 */
 	@FXML
 	public void handleTutorialClick() {
-		Stage stage = (Stage) _mainMenuTutorial.getScene().getWindow(); // Get Current stage
-		changeWindow("TutorialWindow.fxml", stage);// Change to TutorialWindow.fxml view
+		changeWindow(TUTORIAL_FXML, _mainMenuTutorial);// Change to TutorialWindow.fxml view
 	}
 	
 	/**
@@ -55,8 +51,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	 */
 	@FXML
 	public void handleTechersClick() {
-		Stage stage = (Stage) _teachersButton.getScene().getWindow(); // Get Current stage
-		changeWindow("TeacherInputNamingWindow.fxml", stage);// Change to TeacherInputNamingWindow.fxml view
+		changeWindow(TEACHER_INPUT_NAMING_FXML, _teachersButton);// Change to TeacherInputNamingWindow.fxml view
 	}
 	
 	/**
@@ -69,8 +64,7 @@ public class MainWindowController extends TataiController  implements Initializa
 		
 		if (confirmation) {
 			Context.getInstance().currentGame().logout();
-			Stage stage = (Stage) _mainMenuQuit.getScene().getWindow();
-			changeWindow("UserWindow.fxml", stage);
+			changeWindow(USER_FXML, _mainMenuQuit);
 		}
 	}
 	

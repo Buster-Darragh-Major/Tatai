@@ -18,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import main.java.HTK.recording.TataiSpeechRecognizer;
 
 public class GameWindowController extends TataiController implements Initializable{
@@ -185,10 +184,9 @@ private static final String FINISH = "Finish!";
 	 * Method to quit current game gracefully
 	 */
 	public void quitCurrentGame() {
-		Stage stage = (Stage) _exitButton.getScene().getWindow();
 		Context.getInstance().currentGame().endGame();
 		Context.getInstance().setGameToEquation();
-		changeWindow("LevelSelectWindow.fxml", stage);
+		changeWindow(LEVEL_SELECT_FXML, _exitButton);
 	}
 	
 	/**
@@ -308,13 +306,11 @@ private static final String FINISH = "Finish!";
 	 * Handles user requesting to change view
 	 */
 	public void nextQuestion() {
-		Stage stage = (Stage) _nextQuestionButton.getScene().getWindow(); //Get current stage
-		
 		// If button text says finish, finish game.
 		if (_nextQuestionButton.getText().equals(FINISH)) {
-			changeWindow("ResultsWindow.fxml", stage); // Change to ResultsWindow.fxml view
+			changeWindow(RESULTS_FXML, _nextQuestionButton); // Change to ResultsWindow.fxml view
 		} else {
-			changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+			changeWindow(GAME_FXML, _nextQuestionButton); // Change to GameWindow.fxml view
 		}
 	}
 	

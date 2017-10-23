@@ -72,8 +72,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	public void handleLevel1Click() {
 		_game.setLevel(Level.LEVEL1);
 
-		Stage stage = (Stage) _level1.getScene().getWindow(); // Get current stage
-		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
+		changeWindow(LEVEL_SELECT_CONFIRMATION_FXML, _level1); 
 	}
 
 	/**
@@ -83,8 +82,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	public void handleLevel2Click() {
 		_game.setLevel(Level.LEVEL2);
 
-		Stage stage = (Stage) _level2.getScene().getWindow(); // Get current stage
-		changeWindow("LevelSelectConfirmationWindow.fxml", stage); // Change to GameWindow.fxml view
+		changeWindow(LEVEL_SELECT_CONFIRMATION_FXML, _level2); 
 	}
 
 	/**
@@ -92,8 +90,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 */
 	@FXML
 	public void handlePracticeClick() {
-		Stage stage = (Stage) _practice.getScene().getWindow(); // Get current stage
-		changeWindow("PracticeWindow.fxml", stage); // Change to GameWindow.fxml view
+		changeWindow(PRATICE_FXML, _practice); 
 	}
 
 	/**
@@ -101,8 +98,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 */
 	@FXML
 	public void handleMenuButtonClick() {
-		Stage stage = (Stage) _menuButton.getScene().getWindow(); // Get current stage
-		changeWindow("MainWindow.fxml", stage); // Change to MainWindow.fxml
+		changeWindow(MAIN_FXML, _menuButton); 
 	}
 
 	/**
@@ -110,8 +106,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 */
 	@FXML
 	public void handleCustomListClick() {
-		Stage stage = (Stage) _customList.getScene().getWindow(); // Get current stage
-		changeWindow("CustomListSelectionWindow.fxml", stage); // Change to CustomListSelectionWindow.fxml
+		changeWindow(CUSTOM_LIST_SELECTION_FXML, _customList); // Change to CustomListSelectionWindow.fxml
 	}
 
 	/**

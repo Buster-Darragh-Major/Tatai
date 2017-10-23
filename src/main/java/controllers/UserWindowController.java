@@ -17,7 +17,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import main.java.users.user.User;
 
 public class UserWindowController extends TataiController implements Initializable {
@@ -53,8 +52,8 @@ public class UserWindowController extends TataiController implements Initializab
 			if (user != null) {
 				Context.getInstance().setUser(user);
 				Context.getInstance().currentGame().setCurrentUser(user);
-				Stage stage = (Stage) _continueButton.getScene().getWindow();
-				changeWindow("MainWindow.fxml", stage);
+				
+				changeWindow(MAIN_FXML, _continueButton);
 			}
 		} else {
 			showWarningDialog("No User selected", "Please select a user");
@@ -93,8 +92,7 @@ public class UserWindowController extends TataiController implements Initializab
 	 */
 	@FXML
 	public void handleAddClick() {
-		Stage stage = (Stage) _addButton.getScene().getWindow();
-		changeWindow("UserFormWindow.fxml", stage);
+		changeWindow(USER_FORM_FXML, _addButton);
 	}
 
 	/**

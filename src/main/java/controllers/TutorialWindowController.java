@@ -15,7 +15,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 
 public class TutorialWindowController  extends TataiController implements Initializable {
 	/* MACROS */
@@ -65,8 +64,7 @@ public class TutorialWindowController  extends TataiController implements Initia
 			clearSlide();
 			_titleLabel.setText("YOU ARE READY \nTO PLAY!");
 		} else {
-			Stage stage = (Stage) _nextButton.getScene().getWindow();
-			changeWindow("MainWindow.fxml", stage);
+			changeWindow(MAIN_FXML, _nextButton);
 		}
 	}
 	
@@ -102,8 +100,7 @@ public class TutorialWindowController  extends TataiController implements Initia
 			clearSlide();
 			_titleLabel.setText("YOU ARE READY \nTO PLAY!");
 		} else {
-			Stage stage = (Stage) _nextButton.getScene().getWindow();
-			changeWindow("MainWindow.fxml", stage);
+			changeWindow(MAIN_FXML, _nextButton);
 		}
 	}
 	
@@ -134,8 +131,7 @@ public class TutorialWindowController  extends TataiController implements Initia
 	}
 	
 	@FXML public void handleExitClick() {
-		Stage stage = (Stage) _exitButton.getScene().getWindow();
-		changeWindow("MainWindow.fxml", stage);
+		changeWindow(MAIN_FXML, _exitButton);
 	}
 	
 	@FXML public void handleKeyPress(KeyEvent e) {

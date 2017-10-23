@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import main.java.users.classroom.ClassRoomException;
 import main.java.users.user.Student;
 import main.java.users.user.Teacher;
@@ -59,8 +58,7 @@ public class UserFormWindowController extends TataiController implements Initial
 		};
 
 		addTask.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, e -> {
-			Stage stage = (Stage) _confirmButton.getScene().getWindow();
-			changeWindow("UserWindow.fxml", stage);
+			changeWindow(USER_FXML, _confirmButton);
 		});
 
 		addTask.setOnFailed(e -> {
@@ -84,8 +82,7 @@ public class UserFormWindowController extends TataiController implements Initial
 
 	@FXML
 	public void handleBackClick() {
-		Stage stage = (Stage) _confirmButton.getScene().getWindow();
-		changeWindow("UserWindow.fxml", stage);
+		changeWindow(USER_FXML, _confirmButton);
 	}
 
 	@Override

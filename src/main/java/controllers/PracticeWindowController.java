@@ -16,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import main.java.HTK.recording.TataiSpeechRecognizer;
 import main.java.translator.TataiTranslator;
 
@@ -115,11 +114,8 @@ public class PracticeWindowController extends TataiController implements Initial
 	
 	@FXML
 	public void handleExitClick() {
-		Stage stage = (Stage) _exitButton.getScene().getWindow(); // Get Current stage
-		changeWindow("LevelSelectWindow.fxml", stage);// Change to StatsWindow.fxml view
+		changeWindow(LEVEL_SELECT_FXML, _exitButton);
 	}
-	
-	
 	
 	private void record() {
 		TataiSpeechRecognizer speech = new TataiSpeechRecognizer();

@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import main.java.game.Level;
 import main.java.game.TataiQuestionTableAdapter;
 
@@ -33,8 +32,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 	 */
 	@FXML
 	public void handleMainMenuButtonClick() {
-		Stage stage = (Stage) _level2Button.getScene().getWindow(); // Get current Stage
-		changeWindow("LevelSelectWindow.fxml", stage); // Change to MainWindow.fxml view
+		changeWindow(LEVEL_SELECT_FXML, _level2Button); // Change to MainWindow.fxml view
 	}
 
 	/**
@@ -46,8 +44,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 		Context.getInstance().currentGame().setLevel(Level.LEVEL2);
 		Context.getInstance().currentGame().startGame();
 
-		Stage stage = (Stage) _mainMenuButton.getScene().getWindow(); // Get current stage
-		changeWindow("GameWindow.fxml", stage); // Change to GameWindow.fxml view
+		changeWindow(GAME_FXML, _mainMenuButton); // Change to GameWindow.fxml view
 	}
 
 	@Override

@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 
 public class StatsHelpWindowController extends TataiController implements Initializable {
 	
@@ -17,8 +16,7 @@ public class StatsHelpWindowController extends TataiController implements Initia
 	
 	@FXML
 	public void handleBackClick() {
-		Stage stage = (Stage) _backButton.getScene().getWindow();
-		changeWindow("StatsWindow.fxml", stage);
+		changeWindow(STATS_FXML, _backButton);
 	}
 	
 	@FXML
