@@ -114,6 +114,9 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleBackClick() {
+		_checkBox.setSelected(false);
+		handleCheckBoxClick();
+		
 		Stage stage = (Stage) _back.getScene().getWindow(); // Get current stage
 		changeWindow("LevelSelectWindow.fxml", stage); // Change to LevelSelectWindow.fxml view
 	}
