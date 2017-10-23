@@ -33,9 +33,9 @@
             <Insets top="20.0" />
          </GridPane.margin>
       </Label>
-      <JFXButton fx:id="_playButton" buttonType="RAISED" minHeight="50.0" minWidth="100.0" onAction="#handlePlayClick" prefHeight="50.0" prefWidth="100.0" text="Play" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <JFXButton fx:id="_playButton" buttonType="RAISED" minHeight="50.0" minWidth="100.0" onAction="#handlePlayClick" prefHeight="50.0" prefWidth="100.0" text="Play" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="10.0" right="10.0" top="10.0" />
+            <Insets bottom="10.0" top="10.0" />
          </GridPane.margin></JFXButton>
       <Label fx:id="_warningLabel" alignment="CENTER" minWidth="543.0" prefHeight="25.0" prefWidth="543.0" text="You currently have no custom lists. These can be created in the teachers tab." textFill="#b50303" GridPane.halignment="CENTER" GridPane.valignment="TOP">
          <GridPane.margin>
