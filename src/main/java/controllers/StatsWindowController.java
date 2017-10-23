@@ -74,8 +74,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	private FontAwesomeIconView _helpButton;
 	@FXML
 	private CheckBox _checkBox;
-
-	Tooltip _tp = new Tooltip();
+	private Tooltip _tp;
 
 	/**
 	 * Constructor
@@ -83,6 +82,7 @@ public class StatsWindowController extends TataiController implements Initializa
 	public StatsWindowController() {
 		_user = _game.getCurrentUser();
 		_firstName = _user.firstName();
+		_tp = new Tooltip();
 	}
 
 	/**
@@ -250,21 +250,21 @@ public class StatsWindowController extends TataiController implements Initializa
 		Node node = (Node) e.getSource();
 		Stage stage = (Stage) _averageButton.getScene().getWindow();
 
-		if (node instanceof FontAwesomeIconView) {
+		if (node instanceof FontAwesomeIconView || node.equals(_personalBestLabel)) {
 			Student student = (Student) _user;
+			String displayText = null;
 			if (node.equals(_averageStar)) {
-				_tp.setText("Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel())));
+				displayText = "Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel()));
 			} else if (node.equals(_correctStar)) {
-				_tp.setText("Correct: " + getSkillText(student.getStatSkill(Stat.TOTAL_CORRECT, _game.currentLevel())));
+				displayText = "Correct: " + getSkillText(student.getStatSkill(Stat.TOTAL_CORRECT, _game.currentLevel()));
 			} else if (node.equals(_incorrectStar)) {
-				_tp.setText(
-						"Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTAL_INCORRECT, _game.currentLevel())));
+				displayText = "Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTAL_INCORRECT, _game.currentLevel()));
 			} else if (node.equals(_totalStar)) {
-				_tp.setText("Total: " + getSkillText(student.getStatSkill(Stat.TOTAL_PLAYED, _game.currentLevel())));
+				displayText = "Total: " + getSkillText(student.getStatSkill(Stat.TOTAL_PLAYED, _game.currentLevel()));
 			} else if (node.equals(_personalBestStar) || node.equals(_personalBestLabel)) {
-				_tp.setText("Personal Best: "
-						+ getSkillText(student.getStatSkill(Stat.PERSONAL_BEST, _game.currentLevel())));
-			}
+				displayText = "Personal Best: " + getSkillText(student.getStatSkill(Stat.PERSONAL_BEST, _game.currentLevel()));
+			} 
+			_tp.setText(displayText);
 			_tp.setAutoHide(true);
 			_tp.setStyle("-fx-font-size: 20");
 			_tp.show(node, stage.getX() + e.getSceneX(), stage.getY() + e.getSceneY());
