@@ -123,7 +123,10 @@
             <Insets top="15.0" />
          </GridPane.margin>
       </Label>
-      <FontAwesomeIconView fx:id="_hearButton" fill="WHITE" glyphName="VOLUME_UP" onMouseClicked="#handleHearClick" size="30" styleClass="icon-standard-clickable" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_hearButton" fill="WHITE" glyphName="VOLUME_UP" onMouseClicked="#handleHearClick" size="30" styleClass="icon-standard-clickable" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="50.0" />
+         </GridPane.margin></FontAwesomeIconView>
       <FontAwesomeIconView fx:id="_exitButton" glyphName="TIMES" onMouseClicked="#handleExitClick" size="35" styleClass="icon-white-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="15.0" top="15.0" />
@@ -132,6 +135,26 @@
             <DropShadow />
          </effect>
       </FontAwesomeIconView>
+      <Label fx:id="_leftFeedbackLabel" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="60.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="_rightFeedbackLabel" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="60.0" />
+         </GridPane.margin>
+      </Label>
+      <FontAwesomeIconView fx:id="_leftIncorrectFeedbackIcon" fill="WHITE" glyphName="EXCLAMATION" size="40" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_rightIncorrectFeedbackIcon" fill="WHITE" glyphName="EXCLAMATION" size="40" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_leftCorrectFeedbackIcon" fill="WHITE" glyphName="THUMBS_UP" size="40" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_rightCorrectFeedbackIcon" fill="WHITE" glyphName="THUMBS_UP" size="40" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
    </children>
    <effect>
       <DropShadow />
