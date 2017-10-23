@@ -162,14 +162,6 @@
                   <DropShadow blurType="ONE_PASS_BOX" />
                </effect>
             </Text>
-            <FontAwesomeIconView fx:id="_helpButton" glyphName="QUESTION" onMouseClicked="#handleHelpClick" onMousePressed="#handleHelpClick" onMouseReleased="#handleHelpClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" />
-               </effect>
-               <GridPane.margin>
-                  <Insets right="20.0" top="10.0" />
-               </GridPane.margin>
-            </FontAwesomeIconView>
             <GridPane>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" />
@@ -190,6 +182,14 @@
                   </Label>
                </children>
             </GridPane>
+            <FontAwesomeIconView fx:id="_helpButton" glyphName="QUESTION" onMouseClicked="#handleHelpClick" onMousePressed="#handleHelpClick" onMouseReleased="#handleHelpClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" />
+               </effect>
+               <GridPane.margin>
+                  <Insets right="20.0" top="10.0" />
+               </GridPane.margin>
+            </FontAwesomeIconView>
          </children>
       </GridPane>
       <FontAwesomeIconView fx:id="_exitButton" glyphName="ARROW_LEFT" onMouseClicked="#handleExitButtonClick" onMousePressed="#handleExitButtonClick" onMouseReleased="#handleExitButtonClick" size="35" styleClass="icon-standard-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">

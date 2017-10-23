@@ -97,9 +97,9 @@ public class Student extends User {
 	 * @return the corresponding skill level
 	 */
 	protected StatSkill determinePersonalBestSkill(int value) {
-		if (value >= 5 && value < 6) {
+		if (value == 6) {
 			return StatSkill.BRONZE;
-		} else if (value >= 6 && value < 7) {
+		} else if (value == 7) {
 			return StatSkill.SILVER;
 		} else if (value >= 8 && value < 10) {
 			return StatSkill.GOLD;

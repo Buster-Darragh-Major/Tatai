@@ -151,3 +151,6 @@
 .text-area:hover {
 	-fx-cursor: default;
 }
+.text-area .scroll-bar:vertical:disabled {
+    -fx-opacity: 0;
+}
