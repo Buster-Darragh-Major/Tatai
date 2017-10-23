@@ -24,15 +24,13 @@ import main.java.HTK.recording.TataiSpeechRecognizer;
 public class GameWindowController extends TataiController implements Initializable{
 
 private static final String FINISH = "Finish!";
-	
-	// TODO ***************************************************************
-	// make play back and submit buttons disabled while recording occurs
-	// TODO ***************************************************************
 
 	/* FXML Nodes */
 	@FXML private Label _intLabel;
 	@FXML private Label _translatedLabel;
 	@FXML private Label _questionNoLabel;
+	@FXML private Label _rightFeedbackLabel;
+	@FXML private Label _leftFeedbackLabel;
 	@FXML private Pane _pane;
 	@FXML private Pane _childPane;
 	@FXML private Button _recordButton;
@@ -41,6 +39,10 @@ private static final String FINISH = "Finish!";
 	@FXML private Button _tryAgainButton;
 	@FXML private Button _skipButton;
 	@FXML private FontAwesomeIconView _exitButton;
+	@FXML private FontAwesomeIconView _rightIncorrectFeedbackIcon;
+	@FXML private FontAwesomeIconView _leftIncorrectFeedbackIcon;
+	@FXML private FontAwesomeIconView _rightCorrectFeedbackIcon;
+	@FXML private FontAwesomeIconView _leftCorrectFeedbackIcon;
 	
 	/* Fields */
 	private TataiSpeechRecognizer _speech;
@@ -228,6 +230,12 @@ private static final String FINISH = "Finish!";
 		_intLabel.setStyle("-fx-text-fill: white");
 		_questionNoLabel.setStyle("-fx-text-fill: white");
 		
+		// Give incorrect feedback
+		_rightFeedbackLabel.setText("Try Again!");
+		_leftFeedbackLabel.setText("Whoops!");
+		_rightIncorrectFeedbackIcon.setVisible(true);
+		_leftIncorrectFeedbackIcon.setVisible(true);
+		
 		// Display skip/try again buttons
 		_skipButton.setVisible(true);
 		_tryAgainButton.setVisible(true);
@@ -242,6 +250,10 @@ private static final String FINISH = "Finish!";
 			// Hide irrelevant buttons
 			_skipButton.setVisible(false);
 			_tryAgainButton.setVisible(false);
+			
+			// Give incorrect feedback
+			_rightFeedbackLabel.setText("Bad Luck!");
+			_leftFeedbackLabel.setText("Not Quite!");
 			
 			// Show relevant buttons
 			_nextQuestionButton.setVisible(true);
@@ -265,6 +277,14 @@ private static final String FINISH = "Finish!";
 	public void questionCorrect() {
 		// Tell game object question correctly answered
 		Context.getInstance().currentGame().answerQuestion(true);
+		
+		// Give correct feedback
+		_rightFeedbackLabel.setText("Correct!");
+		_leftFeedbackLabel.setText("Correct!");
+		_leftIncorrectFeedbackIcon.setVisible(false);
+		_rightIncorrectFeedbackIcon.setVisible(false);
+		_leftCorrectFeedbackIcon.setVisible(true);
+		_rightCorrectFeedbackIcon.setVisible(true);
 		
 		// If shown, hide try again/skip and show answer
 		_skipButton.setVisible(false);
@@ -305,11 +325,15 @@ private static final String FINISH = "Finish!";
 	public void initialize(URL location, ResourceBundle resources) {
 		Context.getInstance().currentGame();
 		
-		// Hide irrelevant buttons
+		// Hide irrelevant buttons / icons
 		_playbackButton.setVisible(false);
 		_skipButton.setVisible(false);
 		_tryAgainButton.setVisible(false);
 		_nextQuestionButton.setVisible(false);
+		_leftIncorrectFeedbackIcon.setVisible(false);
+		_rightIncorrectFeedbackIcon.setVisible(false);
+		_leftCorrectFeedbackIcon.setVisible(false);
+		_rightCorrectFeedbackIcon.setVisible(false);
 		
 		// Set answer label with correct answer and hide
 		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
