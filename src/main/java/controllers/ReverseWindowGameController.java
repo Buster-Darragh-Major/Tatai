@@ -125,6 +125,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
 		builder.directory(new File(AUDIO_FILE_PATH));
 		
+		@SuppressWarnings("unused")
 		Process process;
 		try {
 			process = builder.start();
