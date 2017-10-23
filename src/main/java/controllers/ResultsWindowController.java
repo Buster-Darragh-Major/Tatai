@@ -88,6 +88,7 @@ public class ResultsWindowController extends TataiController implements Initiali
 		
 		// All game functionality is complete. Restore default game mode to equation mode so
 		// further games are able to be played.
+		Context.getInstance().currentGame().endGame();
 		Context.getInstance().setGameToEquation();
 	}
 }

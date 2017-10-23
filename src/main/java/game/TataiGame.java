@@ -156,12 +156,7 @@ public class TataiGame {
 	 */
 	protected void nextQuestion() {
 		_firstAttempt = false;
-		if ((_questionNo < TOTAL_NUMBER_OF_QUESTIONS) && (_questionNo > 0)) {
-			_questionNo++;
-		} else {
-			_questionNo++;
-			endGame();
-		}
+		_questionNo++;
 	}
 
 	/**
