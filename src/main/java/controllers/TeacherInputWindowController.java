@@ -18,6 +18,15 @@ import main.java.questionlist.TextQuestionListHandler;
 
 public class TeacherInputWindowController extends TataiController implements Initializable {
 
+	/* MACROS */
+	public static final String PLUS = "+";
+	public static final String MINUS = "-";
+	public static final String DIVISION = "÷";
+	public static final String MULTIPLICATION = "x";
+	public static final String EQUALS = "=";
+	public static final String QUESTION = "Question";
+	public static final String QUESTIONS = "Questions";
+	
 	/* FXML Nodes */
 	@FXML private Label _inputLabel;
 	@FXML private Label _warningLabel;
@@ -45,72 +54,72 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	
 	@FXML
 	public void handle0Click() {
-		addToLabel("0");
+		addToLabel(ZERO_TEXT);
 	}
 	
 	@FXML
 	public void handle1Click() {
-		addToLabel("1");
+		addToLabel(ONE_TEXT);
 	}
 	
 	@FXML
 	public void handle2Click() {
-		addToLabel("2");
+		addToLabel(TWO_TEXT);
 	}
 	
 	@FXML
 	public void handle3Click() {
-		addToLabel("3");
+		addToLabel(THREE_TEXT);
 	}
 	
 	@FXML
 	public void handle4Click() {
-		addToLabel("4");
+		addToLabel(FOUR_TEXT);
 	}
 	
 	@FXML
 	public void handle5Click() {
-		addToLabel("5");
+		addToLabel(FIVE_TEXT);
 	}
 	
 	@FXML
 	public void handle6Click() {
-		addToLabel("6");
+		addToLabel(SIX_TEXT);
 	}
 	
 	@FXML
 	public void handle7Click() {
-		addToLabel("7");
+		addToLabel(SEVEN_TEXT);
 	}
 	
 	@FXML
 	public void handle8Click() {
-		addToLabel("8");
+		addToLabel(EIGHT_TEXT);
 	}
 	
 	@FXML
 	public void handle9Click() {
-		addToLabel("9");
+		addToLabel(NINE_TEXT);
 	}
 	
 	@FXML
 	public void handlePlusClick() {
-		addToLabel("+");
+		addToLabel(PLUS);
 	}
 	
 	@FXML
 	public void handleMinusClick() {
-		addToLabel("-");
+		addToLabel(MINUS);
 	}
 	
 	@FXML
 	public void handleTimesClick() {
-		addToLabel("x");
+		addToLabel(MULTIPLICATION);
 	}
 	
 	@FXML
 	public void handleDivideClick() {
-		addToLabel("÷");
+		addToLabel(DIVISION);
 	}
 	
 	@FXML
@@ -131,13 +140,13 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	@FXML
 	public void handleEnterClick() {
 		_enterButton.setDisable(true);
-		_handler.writeToFile(_inputLabel.getText() + "=");
+		_handler.writeToFile(_inputLabel.getText() + EQUALS);
 		_inputLabel.setText("");
 		
 		if (_handler.size() == 1) {
-			_questionNoLabel.setText(_handler.size() + " Question");
+			_questionNoLabel.setText(_handler.size() + " " + QUESTION);
 		} else {
-			_questionNoLabel.setText(_handler.size() + " Questions");
+			_questionNoLabel.setText(_handler.size() + " " + QUESTIONS);
 		}
 	}
 	
@@ -148,9 +157,9 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	private void addToLabel(String character) {
 		String equation = _inputLabel.getText();
 		
-		if (character.equals("+") || character.equals("-") || character.equals("x") || character.equals("÷")) {
-			if ((!equation.contains("+")) && (!equation.contains("-")) && 
-					(!equation.contains("x")) && (!equation.contains("÷")) && (equation.length() > 0)) {
+		if (character.equals(PLUS) || character.equals(MINUS) || character.equals(MULTIPLICATION) || character.equals(DIVISION)) {
+			if ((!equation.contains(PLUS)) && (!equation.contains(MINUS)) && 
+					(!equation.contains(MULTIPLICATION)) && (!equation.contains(DIVISION)) && (equation.length() > 0)) {
 				_inputLabel.setText(_inputLabel.getText() + character);
 			} else {
 				flashText(_inputLabel);
@@ -172,8 +181,8 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	 * @return
 	 */
 	private boolean isValid(String equation) {
-		if ((!equation.contains("+")) && (!equation.contains("-")) && 
-				(!equation.contains("x")) && (!equation.contains("÷"))) {
+		if ((!equation.contains(PLUS)) && (!equation.contains(MINUS)) && 
+				(!equation.contains(MULTIPLICATION)) && (!equation.contains(DIVISION))) {
 			return true;
 		}
 		
@@ -193,22 +202,22 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		int operand1 = Integer.parseInt(nums.get(0));
 		int operand2 = Integer.parseInt(nums.get(1));
 		
-		if (equation.contains("+")) {
+		if (equation.contains(PLUS)) {
 			if ((operand1 + operand2 <= 99) && (operand1 + operand2 >= 1)) {
 				_enterButton.setDisable(false);
 				return true;
 			}
-		} else if (equation.contains("-")) {
+		} else if (equation.contains(MINUS)) {
 			if ((operand1 - operand2 <= 99) && (operand1 - operand2 >= 1)) {
 				_enterButton.setDisable(false);
 				return true;
 			}
-		} else if (equation.contains("x")) {
+		} else if (equation.contains(MULTIPLICATION)) {
 			if ((operand1 * operand2 <= 99) && (operand1 * operand2 >= 1)) {
 				_enterButton.setDisable(false);
 				return true;
 			}
-		} else if (equation.contains("÷")) {
+		} else if (equation.contains(DIVISION)) {
 			if ((operand1 / operand2 <= 99) && (operand1 / operand2 >= 1) && (operand1 % operand2 == 0)) {
 				_enterButton.setDisable(false);
 				return true;
@@ -227,7 +236,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		_handler = new TextQuestionListHandler(Context.getInstance().currentQuestionList());
 		_handler.makeList();
 		
-		_questionNoLabel.setText(_handler.size() + " Questions");
+		_questionNoLabel.setText(_handler.size() + " " + QUESTIONS);
 	}
 	
 	/**

@@ -36,7 +36,24 @@ public class StatsWindowController extends TataiController implements Initializa
 	public final static String SEELEVEL2 = "See Level 2";
 	public final static String LEVEL1 = "Level 1: ";
 	public final static String LEVEL2 = "Level 2: ";
-
+	public final static String AVERAGE_FOR = "Average Score for ";
+	public final static String AVERAGE = "Average: ";
+	public final static String CORRECT = "Correct: ";
+	public final static String INCORRECT = "Incorrect: ";
+	public final static String TOTAL = "Total: ";
+	public final static String PERSONAL_BEST = "Personal Best: ";
+	public final static String PLATINUM = "Platinum";
+	public final static String GOLD = "Gold";
+	public final static String SILVER = "Silver";
+	public final static String BRONZE = "Bronze";
+	public final static String NONE = "No";
+	public final static String LEVEL = "Level";
+	public final static String PLATNIUM_CLASS = "icon-platnium";
+	public final static String GOLD_CLASS = "icon-gold";
+	public final static String SILVER_CLASS = "icon-silver";
+	public final static String BRONZE_CLASS = "icon-bronze";
+	public final static String NONE_CLASS = "icon-none";
+	
 	/* Fields */
 	private String _firstName;
 	private User _user;
@@ -112,7 +129,7 @@ public class StatsWindowController extends TataiController implements Initializa
 		}
 
 		_statLabel.setText(_game.averageAsPercent());
-		_statTitleLabel.setText(level + "Average Score for " + _firstName);
+		_statTitleLabel.setText(level + AVERAGE_FOR + _firstName);
 		_averageButton.setText(_game.averageAsPercent());
 		_correctButton.setText("" + _game.correct());
 		_incorrectButton.setText("" + _game.incorrect());
@@ -252,15 +269,15 @@ public class StatsWindowController extends TataiController implements Initializa
 			Student student = (Student) _user;
 			String displayText = null;
 			if (node.equals(_averageStar)) {
-				displayText = "Average: " + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel()));
+				displayText = AVERAGE + getSkillText(student.getStatSkill(Stat.AVERAGE, _game.currentLevel()));
 			} else if (node.equals(_correctStar)) {
-				displayText = "Correct: " + getSkillText(student.getStatSkill(Stat.TOTAL_CORRECT, _game.currentLevel()));
+				displayText = CORRECT + getSkillText(student.getStatSkill(Stat.TOTAL_CORRECT, _game.currentLevel()));
 			} else if (node.equals(_incorrectStar)) {
-				displayText = "Incorrect: " + getSkillText(student.getStatSkill(Stat.TOTAL_INCORRECT, _game.currentLevel()));
+				displayText = INCORRECT + getSkillText(student.getStatSkill(Stat.TOTAL_INCORRECT, _game.currentLevel()));
 			} else if (node.equals(_totalStar)) {
-				displayText = "Total: " + getSkillText(student.getStatSkill(Stat.TOTAL_PLAYED, _game.currentLevel()));
+				displayText = TOTAL + getSkillText(student.getStatSkill(Stat.TOTAL_PLAYED, _game.currentLevel()));
 			} else if (node.equals(_personalBestStar) || node.equals(_personalBestLabel)) {
-				displayText = "Personal Best: " + getSkillText(student.getStatSkill(Stat.PERSONAL_BEST, _game.currentLevel()));
+				displayText = PERSONAL_BEST + getSkillText(student.getStatSkill(Stat.PERSONAL_BEST, _game.currentLevel()));
 			} 
 			if (displayText != null) {
 				_tp.setText(displayText);
@@ -286,25 +303,25 @@ public class StatsWindowController extends TataiController implements Initializa
 
 		switch (skill) {
 		case BRONZE:
-			skillText = "Bronze";
+			skillText = BRONZE;
 			break;
 		case GOLD:
-			skillText = "Gold";
+			skillText = GOLD;
 			break;
 		case NONE:
-			skillText = "No";
+			skillText = NONE;
 			break;
 		case PLATINUM:
-			skillText = "Platinum";
+			skillText = PLATINUM;
 			break;
 		case SILVER:
-			skillText = "Silver";
+			skillText = SILVER;
 			break;
 		default:
 			break;
 		}
 
-		return skillText + " Level";
+		return skillText + " " + LEVEL;
 	}
 
 	/**
@@ -361,15 +378,15 @@ public class StatsWindowController extends TataiController implements Initializa
 
 		switch (skill) {
 		case PLATINUM:
-			return "icon-platnium";
+			return PLATNIUM_CLASS;
 		case GOLD:
-			return "icon-gold";
+			return GOLD_CLASS;
 		case SILVER:
-			return "icon-silver";
+			return SILVER_CLASS;
 		case BRONZE:
-			return "icon-bronze";
+			return BRONZE_CLASS;
 		default:
-			return "icon-none";
+			return NONE_CLASS;
 		}
 	}
 

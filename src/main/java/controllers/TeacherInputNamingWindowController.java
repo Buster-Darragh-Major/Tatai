@@ -22,7 +22,10 @@ import javafx.stage.StageStyle;
 import main.java.questionlist.TextQuestionListHandler;
 
 public class TeacherInputNamingWindowController extends TataiController implements Initializable {
-
+	/* MACROS */
+	public static final String TITLE = "Edit Lists";
+	
+	/* FXML Nodes */
 	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Button _createButton;
 	@FXML private Button _editButton;
@@ -37,13 +40,13 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 	@FXML
 	public void handleEditClick() {
 		try {
-			FXMLLoader fxml = new FXMLLoader(getClass().getResource(FXML_LOCATION + "CustomListEditView.fxml"));
+			FXMLLoader fxml = new FXMLLoader(getClass().getResource(FXML_LOCATION + CUSTOM_LIST_SELECTION_EDIT_FXML));
 			Parent root = (Parent) fxml.load();
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			Scene scene = new Scene(root);
 			scene.getRoot().requestFocus();
-			stage.setTitle("Edit Lists");
+			stage.setTitle(TITLE);
 			stage.setScene(scene);
 			stage.setResizable(false);
 			stage.initStyle(StageStyle.UNDECORATED);
