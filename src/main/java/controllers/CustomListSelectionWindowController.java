@@ -71,8 +71,8 @@ public class CustomListSelectionWindowController extends TataiController impleme
 			ArrayList<String> items = new ArrayList<String>();
 			for (File f : files) {
 				String name = f.getName();
-				if (name.contains(".txt")) {
-					items.add(f.getName().replaceAll(".txt", ""));
+				if (name.contains(TXT)) {
+					items.add(f.getName().replaceAll(TXT, ""));
 				}
 			}
 			

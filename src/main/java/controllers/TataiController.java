@@ -30,11 +30,14 @@ public abstract class TataiController {
 	protected TataiGame _game;
 	
 	/* Macros */
-	protected static final String INCORRECT_RED = "#f73333";
-	protected static final String CORRECT_GREEN = "#00d10a";
-	protected static final String WHITE = "#ffffff";
-	protected static final String NEXT = "Next";
-	protected static final String FXML_LOCATION = "/main/resources/view/fxml/";	
+	public static final String INCORRECT_RED = "#f73333";
+	public static final String CORRECT_GREEN = "#00d10a";
+	public static final String WHITE = "#ffffff";
+	public static final String NEXT = "Next";
+	public static final String FXML_LOCATION = "/main/resources/view/fxml/";	
+	public static final String TXT = ".txt";
+	
+	/* FXML WINDOWS */
 	public static final String CUSTOM_LIST_SELECTION_EDIT_FXML = "CustomListEditView.fxml";
 	public static final String CUSTOM_LIST_SELECTION_FXML = "CustomListSelectionWindow.fxml";
 	public static final String GAME_FXML = "GameWindow.fxml";
@@ -51,6 +54,7 @@ public abstract class TataiController {
 	public static final String TUTORIAL_FXML = "TutorialWindow.fxml";
 	public static final String USER_FORM_FXML = "UserFormWindow.fxml";
 	public static final String USER_FXML = "UserWindow.fxml";
+	
 	
 	public TataiController() {
 		_game = Context.getInstance().currentGame();

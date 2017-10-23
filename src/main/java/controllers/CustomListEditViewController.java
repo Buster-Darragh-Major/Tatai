@@ -20,8 +20,6 @@ import javafx.stage.Stage;
 import main.java.questionlist.TextQuestionListHandler;
 
 public class CustomListEditViewController extends TataiController implements Initializable {
-	/* MACROS */
-	public static final String TXT = ".txt";
 	
 	/* FXML nodes */
 	@FXML private FontAwesomeIconView _exitButton;
