@@ -47,6 +47,16 @@ public abstract class TataiController {
 	public static final String EIGHT_TEXT = "8";
 	public static final String NINE_TEXT = "9";
 	public static final String RECORDING = "Recording...";
+	public static final String FINISH = "Finish!";
+	public static final String RE_RECORD = "Re Record";
+	public static final String TRY_AGAIN = "Try Again!";
+	public static final String WHOOPS = "Whoops!";
+	public static final String BAD_LUCK = "Bad Luck!";
+	public static final String NOT_QUITE = "Not Quite!";
+	public static final String CORRECT = "Correct!";
+	public static final String CONFIRMATION_QUIT_DIALOG = "Confirmation Dialog";
+	public static final String CONFIRMATION_QUIT_DIALOG_MESSAGE = "Are you sure you want to quit your current game";
+	public final static String SUBMIT = "Submit";
 	
 	/* FXML WINDOWS */
 	public static final String CUSTOM_LIST_SELECTION_EDIT_FXML = "CustomListEditView.fxml";

@@ -23,15 +23,6 @@ import main.java.HTK.recording.TataiSpeechRecognizer;
 public class GameWindowController extends TataiController implements Initializable{
 	
 	/* MACROS */
-	public static final String FINISH = "Finish!";
-	public static final String RE_RECORD = "Re Record";
-	public static final String TRY_AGAIN = "Try Again!";
-	public static final String WHOOPS = "Whoops!";
-	public static final String BAD_LUCK = "Bad Luck!";
-	public static final String NOT_QUITE = "Not Quite!";
-	public static final String CORRECT = "Correct!";
-	public static final String CONFIRMATION_DIALOG = "Confirmation Dialog";
-	public static final String CONFIRMATION_DIALOG_MESSAGE = "Are you sure you want to quit your current game";
 	
 	/* FXML Nodes */
 	@FXML private Label _intLabel;
@@ -181,7 +172,7 @@ public class GameWindowController extends TataiController implements Initializab
 	public void handleQuitClick() {
 		// Prompt user with quit confirmation window 
 		
-		boolean quit = showWarningDialogConfirmation(CONFIRMATION_DIALOG, CONFIRMATION_DIALOG_MESSAGE);
+		boolean quit = showWarningDialogConfirmation(CONFIRMATION_QUIT_DIALOG, CONFIRMATION_QUIT_DIALOG_MESSAGE);
 		
 		if (quit) {
 			// Quit the game
@@ -238,8 +229,8 @@ public class GameWindowController extends TataiController implements Initializab
 		_questionNoLabel.setStyle("-fx-text-fill: white");
 		
 		// Give incorrect feedback
-		_rightFeedbackLabel.setText("Try Again!");
-		_leftFeedbackLabel.setText("Whoops!");
+		_rightFeedbackLabel.setText(TRY_AGAIN);
+		_leftFeedbackLabel.setText(WHOOPS);
 		_rightIncorrectFeedbackIcon.setVisible(true);
 		_leftIncorrectFeedbackIcon.setVisible(true);
 		

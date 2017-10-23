@@ -16,7 +16,8 @@ import main.java.game.Level;
 public class ReverseWindowGameController extends TataiController implements Initializable {
 
 	/* Macros */
-	public final static String AUDIO_FILE_PATH = "src/main/resources/audio/NumberRecordings/";
+	public static final String AUDIO_FILE_PATH = "src/main/resources/audio/NumberRecordings/";
+	public static final String FX_BACKGROUND_COLOR = "-fx-background-color: ";
 	
 	/* FXML Nodes */
 	@FXML private Pane _pane;
@@ -50,60 +51,60 @@ public class ReverseWindowGameController extends TataiController implements Init
 	
 	@FXML
 	public void handle0Click() {
-		addToLabel("0");
+		addToLabel(ZERO_TEXT);
 	}
 	
 	@FXML
 	public void handle1Click() {
-		addToLabel("1");
+		addToLabel(ONE_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle2Click() {
-		addToLabel("2");
+		addToLabel(TWO_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle3Click() {
-		addToLabel("3");
+		addToLabel(THREE_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle4Click() {
-		addToLabel("4");
+		addToLabel(FOUR_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle5Click() {
-		addToLabel("5");
+		addToLabel(FIVE_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle6Click() {
-		addToLabel("6");
+		addToLabel(SIX_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle7Click() {
-		addToLabel("7");
+		addToLabel(SEVEN_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle8Click() {
-		addToLabel("8");
+		addToLabel(EIGHT_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
 	@FXML
 	public void handle9Click() {
-		addToLabel("9");
+		addToLabel(NINE_TEXT);
 		_submitButton.setDisable(false);
 	}
 	
@@ -115,7 +116,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 	
 	@FXML
 	public void handlesubmitClick() {
-		if (_submitButton.getText().equals("Submit")) {
+		if (_submitButton.getText().equals(SUBMIT)) {
 			submit();
 		} else {
 			next();
@@ -164,9 +165,9 @@ public class ReverseWindowGameController extends TataiController implements Init
 		// If game state is onto last question set the nextQuestion button text to indicate finishing
 		if (Context.getInstance().currentGame().currentQuestion() - 1 == // game class increments q. no. one too soon
 				Context.getInstance().currentGame().totalNumberOfQuestions()) {
-			_submitButton.setText("Finish");
+			_submitButton.setText(FINISH);
 		} else {
-			_submitButton.setText("Next");
+			_submitButton.setText(NEXT);
 		}
 	}
 	
@@ -176,7 +177,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 	public void next() {
 
 		// If button text says finish, finish game.
-		if (_submitButton.getText().equals("Finish")) {
+		if (_submitButton.getText().equals(FINISH)) {
 			changeWindow(RESULTS_FXML, _submitButton); // Change to ResultsWindow.fxml view
 		} else {
 			changeWindow(REVERSE_GAME_FXML, _submitButton); 
@@ -186,7 +187,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 	private void addToLabel(String num) {
 		if (_intLabel.getText().length() == 2) {
 			flashText(_intLabel);
-		} else if (_intLabel.getText().equals("0")) {
+		} else if (_intLabel.getText().equals(ZERO_TEXT)) {
 			_intLabel.setText(num);
 		} else {
 			_intLabel.setText(_intLabel.getText() + num);
@@ -204,8 +205,8 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_wordLabel.setStyle("-fx-text-fill: white");
 		
 		// Give user feedback
-		_leftFeedbackLabel.setText("Correct!");
-		_rightFeedbackLabel.setText("Correct!");
+		_leftFeedbackLabel.setText(CORRECT);
+		_rightFeedbackLabel.setText(CORRECT);
 		_leftCorrectFeedbackIcon.setVisible(true);
 		_rightCorrectFeedbackIcon.setVisible(true);
 	}
@@ -221,8 +222,8 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_wordLabel.setStyle("-fx-text-fill: white");
 		
 		// Give user feedback
-		_leftFeedbackLabel.setText("Bad Luck!");
-		_rightFeedbackLabel.setText("Not Quite!");
+		_leftFeedbackLabel.setText(BAD_LUCK);
+		_rightFeedbackLabel.setText(NOT_QUITE);
 		_leftIncorrectFeedbackIcon.setVisible(true);
 		_rightIncorrectFeedbackIcon.setVisible(true);
 	}
@@ -230,7 +231,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 	@FXML
 	public void handleExitClick() {
 		// Prompt user with quit confirmation window 
-		boolean quit = showWarningDialogConfirmation("Confirmation Dialog", "Are you sure you want to quit your current game");
+		boolean quit = showWarningDialogConfirmation(CONFIRMATION_QUIT_DIALOG, CONFIRMATION_QUIT_DIALOG_MESSAGE);
 		
 		if (quit) {
 			// Quit the game
@@ -268,19 +269,19 @@ public class ReverseWindowGameController extends TataiController implements Init
 		
 		style = style.split(": ")[1];
 		
-		_0.setStyle("-fx-background-color: " + style);
-		_1.setStyle("-fx-background-color: " + style);
-		_2.setStyle("-fx-background-color: " + style);
-		_3.setStyle("-fx-background-color: " + style);
-		_4.setStyle("-fx-background-color: " + style);
-		_5.setStyle("-fx-background-color: " + style);
-		_6.setStyle("-fx-background-color: " + style);
-		_7.setStyle("-fx-background-color: " + style);
-		_8.setStyle("-fx-background-color: " + style);
-		_9.setStyle("-fx-background-color: " + style);
+		_0.setStyle(FX_BACKGROUND_COLOR + style);
+		_1.setStyle(FX_BACKGROUND_COLOR + style);
+		_2.setStyle(FX_BACKGROUND_COLOR + style);
+		_3.setStyle(FX_BACKGROUND_COLOR + style);
+		_4.setStyle(FX_BACKGROUND_COLOR + style);
+		_5.setStyle(FX_BACKGROUND_COLOR + style);
+		_6.setStyle(FX_BACKGROUND_COLOR + style);
+		_7.setStyle(FX_BACKGROUND_COLOR + style);
+		_8.setStyle(FX_BACKGROUND_COLOR + style);
+		_9.setStyle(FX_BACKGROUND_COLOR + style);
 		
-		_clearButton.setStyle("-fx-background-color: " + style);
-		_submitButton.setStyle("-fx-background-color: " + style);
+		_clearButton.setStyle(FX_BACKGROUND_COLOR + style);
+		_submitButton.setStyle(FX_BACKGROUND_COLOR + style);
 		
 		if (Context.getInstance().currentGame().currentLevel() == Level.LEVEL2_REVERSE) {
 			_hearButton.setVisible(false);
