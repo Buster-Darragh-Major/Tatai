@@ -21,9 +21,19 @@ import javafx.scene.layout.Pane;
 import main.java.HTK.recording.TataiSpeechRecognizer;
 
 public class GameWindowController extends TataiController implements Initializable{
-
-private static final String FINISH = "Finish!";
-
+	
+	/* MACROS */
+	public static final String FINISH = "Finish!";
+	public static final String RECORDING = "Recording...";
+	public static final String RE_RECORD = "Re Record";
+	public static final String TRY_AGAIN = "Try Again!";
+	public static final String WHOOPS = "Whoops!";
+	public static final String BAD_LUCK = "Bad Luck!";
+	public static final String NOT_QUITE = "Not Quite!";
+	public static final String CORRECT = "Correct!";
+	public static final String CONFIRMATION_DIALOG = "Confirmation Dialog";
+	public static final String CONFIRMATION_DIALOG_MESSAGE = "Are you sure you want to quit your current game";
+	
 	/* FXML Nodes */
 	@FXML private Label _intLabel;
 	@FXML private Label _translatedLabel;
@@ -57,7 +67,7 @@ private static final String FINISH = "Finish!";
 		_playbackButton.setVisible(false);
 		_nextQuestionButton.setVisible(false);
 		_recordButton.setDisable(true);
-		_recordButton.setText("Recording...");
+		_recordButton.setText(RECORDING);
 		
 		// Create thread for recording process
 		_speech = new TataiSpeechRecognizer();
@@ -80,7 +90,7 @@ private static final String FINISH = "Finish!";
 				_playbackButton.setVisible(true);
 				_nextQuestionButton.setVisible(true);
 				_recordButton.setDisable(false);
-				_recordButton.setText("Re Record");
+				_recordButton.setText(RE_RECORD);
 				_nextQuestionButton.requestFocus();
 			}
 		});
@@ -172,7 +182,7 @@ private static final String FINISH = "Finish!";
 	public void handleQuitClick() {
 		// Prompt user with quit confirmation window 
 		
-		boolean quit = showWarningDialogConfirmation("Confirmation Dialog", "Are you sure you want to quit your current game");
+		boolean quit = showWarningDialogConfirmation(CONFIRMATION_DIALOG, CONFIRMATION_DIALOG_MESSAGE);
 		
 		if (quit) {
 			// Quit the game
@@ -250,8 +260,8 @@ private static final String FINISH = "Finish!";
 			_tryAgainButton.setVisible(false);
 			
 			// Give incorrect feedback
-			_rightFeedbackLabel.setText("Bad Luck!");
-			_leftFeedbackLabel.setText("Not Quite!");
+			_rightFeedbackLabel.setText(BAD_LUCK);
+			_leftFeedbackLabel.setText(NOT_QUITE);
 			
 			// Show relevant buttons
 			_nextQuestionButton.setVisible(true);
@@ -277,8 +287,8 @@ private static final String FINISH = "Finish!";
 		Context.getInstance().currentGame().answerQuestion(true);
 		
 		// Give correct feedback
-		_rightFeedbackLabel.setText("Correct!");
-		_leftFeedbackLabel.setText("Correct!");
+		_rightFeedbackLabel.setText(CORRECT);
+		_leftFeedbackLabel.setText(CORRECT);
 		_leftIncorrectFeedbackIcon.setVisible(false);
 		_rightIncorrectFeedbackIcon.setVisible(false);
 		_leftCorrectFeedbackIcon.setVisible(true);
