@@ -16,7 +16,26 @@ import main.java.stats.TataiStat;
  *
  */
 public class Student extends User {
+	/* MACROS */
+	private static final int UNLOCK = 8;
+	
+	public static final double BRONZE_AVG_LOWER = 6.0;
+	public static final double SILVER_AVG_LOWER = 7.5;
+	public static final double GOLD_AVG_LOWER = 8.5;
+	public static final double PLATINUM_AVG_LOWER = 9.5;
+	public static final double AVG_MAX = 10.0;
+	
+	public static final int BRONZE_TOTAL_LOWER = 25;
+	public static final int SILVER_TOTAL_LOWER = 50;
+	public static final int GOLD_TOTAL_LOWER = 100;
+	public static final int PLATINUM_TOTAL_LOWER = 1000;
+	
+	public static final int PERSONAL_BRONZE = 6;
+	public static final int PERSONAL_SILVER = 7;
+	public static final int PERSONAL_GOLD_LOWER = 8;
+	public static final int PERSONAL_PLATINUM = 10;
 
+	/* FIELDS */
 	private boolean _level2Unlocked;
 	private boolean _level2ReverseUnlocked;
 
@@ -97,19 +116,19 @@ public class Student extends User {
 	 * @return the corresponding skill level
 	 */
 	protected StatSkill determinePersonalBestSkill(int value) {
-		if (value == 6) {
+		if (value == PERSONAL_BRONZE) {
 			return StatSkill.BRONZE;
-		} else if (value == 7) {
+		} else if (value == PERSONAL_SILVER) {
 			return StatSkill.SILVER;
-		} else if (value >= 8 && value < 10) {
+		} else if (value >= PERSONAL_GOLD_LOWER && value < PERSONAL_PLATINUM) {
 			return StatSkill.GOLD;
-		} else if (value == 10) {
+		} else if (value == PERSONAL_PLATINUM) {
 			return StatSkill.PLATINUM;
 		} else {
 			return StatSkill.NONE;
 		}
 	}
-
+	
 	/**
 	 * Determines the the stat skill level for the three "total" stats. i.e Total
 	 * played, total correct & total incorrect.
@@ -119,19 +138,19 @@ public class Student extends User {
 	 * @return the skill level
 	 */
 	protected StatSkill determineTotalSkill(int value) {
-		if (value >= 25 && value < 50) {
+		if (value >= BRONZE_TOTAL_LOWER && value < SILVER_TOTAL_LOWER) {
 			return StatSkill.BRONZE;
-		} else if (value >= 50 && value < 100) {
+		} else if (value >= SILVER_TOTAL_LOWER && value < GOLD_TOTAL_LOWER) {
 			return StatSkill.SILVER;
-		} else if (value >= 100 && value < 1000) {
+		} else if (value >= GOLD_TOTAL_LOWER && value < PLATINUM_TOTAL_LOWER) {
 			return StatSkill.GOLD;
-		} else if (value >= 1000) {
+		} else if (value >= PLATINUM_TOTAL_LOWER) {
 			return StatSkill.PLATINUM;
 		} else {
 			return StatSkill.NONE;
 		}
 	}
-
+	
 	/**
 	 * Determines the stat skill level for the students average.
 	 * 
@@ -140,28 +159,28 @@ public class Student extends User {
 	 * @return the stat skill level of the student's average
 	 */
 	protected StatSkill determineAverageSkill(double value) {
-		if (value >= 6.0 && value < 7.5) {
+		if (value >= BRONZE_AVG_LOWER && value < SILVER_AVG_LOWER) {
 			return StatSkill.BRONZE;
-		} else if (value >= 7.5 && value < 8.5) {
+		} else if (value >= SILVER_AVG_LOWER && value < GOLD_AVG_LOWER) {
 			return StatSkill.SILVER;
-		} else if (value >= 8.5 && value < 9.5) {
+		} else if (value >= GOLD_AVG_LOWER && value < PLATINUM_AVG_LOWER) {
 			return StatSkill.GOLD;
-		} else if (value >= 9.5 && value <= 10.0) {
+		} else if (value >= PLATINUM_AVG_LOWER && value <= AVG_MAX) {
 			return StatSkill.PLATINUM;
 		} else {
 			return StatSkill.NONE;
 		}
 	}
-
+	
 	@Override
 	public void unlockLevel(Level level) {
 		switch (level) {
 		case LEVEL2:
-			if (getPersonalBest(Level.LEVEL1) >= 8) {
+			if (getPersonalBest(Level.LEVEL1) >= UNLOCK) {
 				_level2Unlocked = true;
 			}
 		case LEVEL2_REVERSE:
-			if (getPersonalBest(Level.LEVEL2) >= 8) {
+			if (getPersonalBest(Level.LEVEL2) >= UNLOCK) {
 				_level2ReverseUnlocked = true;
 			}
 			break;

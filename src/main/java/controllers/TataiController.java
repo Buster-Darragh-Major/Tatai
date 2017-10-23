@@ -83,8 +83,8 @@ public abstract class TataiController {
 	
 	/**
 	 * Changes the current view embedded in the desired stage. The fxml String
-	 * points to the file desired to be the root of the new view, and the stage
-	 * refers to the main stage needing to be changed.
+	 * points to the file desired to be the root of the new view, and the node 
+	 * is used to find the stage needing to be changed.
 	 */
 	protected void changeWindow(String fxmlFile, Node node) {
 		Stage stage = (Stage) node.getScene().getWindow();

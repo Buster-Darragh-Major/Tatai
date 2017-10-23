@@ -9,10 +9,11 @@ public class Level2EquationLabelGenerator extends Level1EquationLabelGenerator {
 	public static final int MIN = 1;
 	public static final int MAX = 99;
 	public static final int[] NON_PRIMES = {4,6,8,9,10,12};
+	private static final int RANDOM_OPERATOR_CONST = 4;
 	
 	@Override
 	public void chooseOperator(int maximum, int minimum) {
-		int rand = (int) (4 * Math.random());
+		int rand = (int) (RANDOM_OPERATOR_CONST * Math.random());
 		
 		if (rand == 0) {
 			generateAddition(MAX, MIN);

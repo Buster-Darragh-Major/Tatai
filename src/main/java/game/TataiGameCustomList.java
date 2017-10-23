@@ -13,6 +13,11 @@ import main.java.questionlist.TextQuestionListHandler;
 
 public class TataiGameCustomList extends TataiGameEquation {
 
+	/* MACROS */
+	private static final String CORRECT = "Correct";
+	private static final String INCORRECT = "Incorrect";
+	
+	/* FIELDS */
 	private TataiCreationModel _creationModel;
 	private TextQuestionListHandler _handler;
 	public final int TOTAL_NUMBER_OF_QUESTIONS;
@@ -46,7 +51,7 @@ public class TataiGameCustomList extends TataiGameEquation {
 	
 	@Override
 	public Level currentLevel() {
-		throw new GameException("Custm game has no level");
+		throw new GameException("Custom game has no level");
 	}
 	
 	@Override
@@ -58,13 +63,13 @@ public class TataiGameCustomList extends TataiGameEquation {
 	public boolean answerQuestion(boolean answer) {
 
 		if (answer) {
-			_questionsCorrect.add("Correct");
+			_questionsCorrect.add(CORRECT);
 			_correct++;
 			nextQuestion();	
 			return true;
 		} else {
 			if (_firstAttempt) {
-				_questionsCorrect.add("Incorrect");
+				_questionsCorrect.add(INCORRECT);
 				_incorrect++;
 				nextQuestion();
 			} else {
