@@ -23,6 +23,9 @@ import main.java.users.user.User;
 
 public class LevelSelectConfimationWindowController extends TataiController implements Initializable {
 
+	/* MACROS */
+	public static final String CHECKBOX_HELP = "Score 8 or more\nin Level 2 to unlock";
+	
 	/* FIELDS */
 	private User _user;
 
