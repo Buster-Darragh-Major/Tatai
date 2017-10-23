@@ -13,6 +13,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class MainWindowController extends TataiController  implements Initializable{
+	/* MACROS */
+	public static final String LOGGING_OUT = "Logging out";
+	public static final String LOGGING_OUT_MESSAGE = "Are you sure you want log out?"; 
 	
 	/* FXML Nodes */
 	@FXML private Button _mainMenuPlay;
@@ -60,7 +63,7 @@ public class MainWindowController extends TataiController  implements Initializa
 	@FXML
 	public void handleQuitClick() {
 		
-		boolean confirmation = showWarningDialogConfirmation("Logging out", "Are you sure you want log out?");
+		boolean confirmation = showWarningDialogConfirmation(LOGGING_OUT, LOGGING_OUT_MESSAGE);
 		
 		if (confirmation) {
 			Context.getInstance().currentGame().logout();
