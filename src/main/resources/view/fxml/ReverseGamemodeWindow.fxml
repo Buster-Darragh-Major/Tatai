@@ -115,11 +115,6 @@
             <Font size="60.0" />
          </font>
       </Label>
-      <JFXButton fx:id="_exitButton" buttonType="RAISED" onAction="#handleExitClick" text="X" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets left="10.0" top="10.0" />
-         </GridPane.margin>
-      </JFXButton>
       <Label fx:id="_questionNoLabel" text="/10" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
          <font>
             <Font size="25.0" />
@@ -129,6 +124,14 @@
          </GridPane.margin>
       </Label>
       <FontAwesomeIconView fx:id="_hearButton" fill="WHITE" glyphName="VOLUME_UP" onMouseClicked="#handleHearClick" size="30" styleClass="icon-standard-clickable" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_exitButton" glyphName="TIMES" onMouseClicked="#handleExitClick" size="35" styleClass="icon-white-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="15.0" top="15.0" />
+         </GridPane.margin>
+         <effect>
+            <DropShadow />
+         </effect>
+      </FontAwesomeIconView>
    </children>
    <effect>
       <DropShadow />
