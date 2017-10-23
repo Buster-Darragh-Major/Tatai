@@ -6,10 +6,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import main.java.game.Level;
 
@@ -292,5 +295,47 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_rightCorrectFeedbackIcon.setVisible(false);
 		_leftIncorrectFeedbackIcon.setVisible(false);
 		_rightIncorrectFeedbackIcon.setVisible(false);
+		
+		Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	_submitButton.requestFocus();
+	        }
+	    });
+	}
+	
+	/**
+	 * Handles key presses
+	 * @param e The Key Event
+	 */
+	@FXML public void onKeyPress(KeyEvent e) {
+		KeyCode code = e.getCode();
+		if (code == KeyCode.ESCAPE) {
+			handleExitClick();
+		} else if (code == KeyCode.DIGIT0 || code == KeyCode.NUMPAD0) {
+			handle0Click();
+		} else if (code == KeyCode.DIGIT1 || code == KeyCode.NUMPAD1) {
+			handle1Click();
+		} else if (code == KeyCode.DIGIT2 || code == KeyCode.NUMPAD2) {
+			handle2Click();
+		} else if (code == KeyCode.DIGIT3 || code == KeyCode.NUMPAD3) {
+			handle3Click();
+		} else if (code == KeyCode.DIGIT4 || code == KeyCode.NUMPAD4) {
+			handle4Click();
+		} else if (code == KeyCode.DIGIT5 || code == KeyCode.NUMPAD5) {
+			handle5Click();
+		} else if (code == KeyCode.DIGIT6 || code == KeyCode.NUMPAD6) {
+			handle6Click();
+		} else if (code == KeyCode.DIGIT7 || code == KeyCode.NUMPAD7) {
+			handle7Click();
+		} else if (code == KeyCode.DIGIT8 || code == KeyCode.NUMPAD8) {
+			handle8Click();
+		} else if (code == KeyCode.DIGIT9 || code == KeyCode.NUMPAD9) {
+			handle9Click();
+		} else if (code == KeyCode.BACK_SPACE) {
+			handleDeleteClick();
+		} else if ((code == KeyCode.SPACE || code == KeyCode.ENTER) && !_submitButton.isDisable()) {
+			handlesubmitClick();
+		}
 	}
 }
