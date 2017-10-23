@@ -20,7 +20,9 @@ import javafx.stage.Stage;
 import main.java.questionlist.TextQuestionListHandler;
 
 public class CustomListEditViewController extends TataiController implements Initializable {
-
+	/* MACROS */
+	public static final String TXT = ".txt";
+	
 	/* FXML nodes */
 	@FXML private FontAwesomeIconView _exitButton;
 	@FXML private Button _editButton;
@@ -117,8 +119,8 @@ public class CustomListEditViewController extends TataiController implements Ini
 			ArrayList<String> items = new ArrayList<String>();
 			for (File f : files) {
 				String name = f.getName();
-				if (name.contains(".txt")) {
-					items.add(f.getName().replaceAll(".txt", ""));
+				if (name.contains(TXT)) {
+					items.add(f.getName().replaceAll(TXT, ""));
 				}
 			}
 			
