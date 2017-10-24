@@ -99,7 +99,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 			} else {
 				level = Level.LEVEL2_REVERSE;
 			}
-			Context.getInstance().currentGame().setLevel(level);
+			
 			reverseGame.setLevel(level);
 			reverseGame.setCurrentUser(Context.getInstance().getUser());
 			Context.getInstance().setGameType(reverseGame);
