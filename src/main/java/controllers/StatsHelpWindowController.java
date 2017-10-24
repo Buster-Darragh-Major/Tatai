@@ -11,14 +11,22 @@ import javafx.scene.input.KeyEvent;
 
 public class StatsHelpWindowController extends TataiController implements Initializable {
 	
+	/* FXML Nodes */
 	@FXML
 	private FontAwesomeIconView _backButton;
 	
+	/**
+	 * Handles user pressing back
+	 */
 	@FXML
 	public void handleBackClick() {
 		changeWindow(STATS_FXML, _backButton);
 	}
 	
+	/**
+	 * Handles key binding
+	 * @param e : KeyEvent
+	 */
 	@FXML
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {

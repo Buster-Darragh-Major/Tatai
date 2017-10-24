@@ -53,6 +53,9 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	/* Fields */
 	private TextQuestionListHandler _handler;
 	
+	/**
+	 * The following methods handle input from on screen keyboard
+	 */
 	@FXML
 	public void handle0Click() {
 		addToLabel(ZERO_TEXT);
@@ -123,28 +126,41 @@ public class TeacherInputWindowController extends TataiController implements Ini
 		addToLabel(DIVISION);
 	}
 	
+	/**
+	 * Handles user pressing exit button
+	 */
 	@FXML
 	public void handleExitClick() {
 		if (_handler.size() == 0) {
-			_handler.delete();
+			_handler.delete(); // If user has deleted all questions, delete file.
 		}
 
 		changeWindow(TEACHER_INPUT_NAMING_FXML, _exitButton);
 	}
 	
+	/**
+	 * Handles user pressing clear button
+	 */
 	@FXML
 	public void handleClearClick() {
 		_inputLabel.setText("");
 		addToLabel("");
 	}
 	
+	/**
+	 * Handles user pressing enter
+	 */
 	@FXML
 	public void handleEnterClick() {
+		// Alter buttons and label
 		_enterButton.setDisable(true);
 		_submitButton.setDisable(false);
-		_handler.writeToFile(_inputLabel.getText() + EQUALS);
 		_inputLabel.setText("");
 		
+		// Write contents of label to custom list file
+		_handler.writeToFile(_inputLabel.getText() + EQUALS);
+		
+		// Update label in lower corner
 		if (_handler.size() == 1) {
 			_questionNoLabel.setText(_handler.size() + " " + QUESTION);
 		} else {

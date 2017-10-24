@@ -41,6 +41,9 @@ public class PracticeWindowController extends TataiController implements Initial
 	private ArrayList<String> _userAnswer;
 	private String _trueAnswer;
 	
+	/**
+	 * The following methods handle corresponding keys in the on screen keyboard being pressed.
+	 */
 	@FXML
 	public void handle0Click() {
 		addToLabel(ZERO_TEXT);
@@ -112,14 +115,21 @@ public class PracticeWindowController extends TataiController implements Initial
 		record();
 	}
 	
+	/**
+	 * Handles user pressing exit button
+	 */
 	@FXML
 	public void handleExitClick() {
 		changeWindow(LEVEL_SELECT_FXML, _exitButton);
 	}
 	
+	/**
+	 * Records user
+	 */
 	private void record() {
 		TataiSpeechRecognizer speech = new TataiSpeechRecognizer();
 		
+		// Change button disabilities
 		_recordButton.setDisable(true);
 		_recordButton.setStyle("-fx-font: 12 System");
 		_recordButton.setText(RECORDING);
@@ -139,14 +149,17 @@ public class PracticeWindowController extends TataiController implements Initial
 		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent event) {
+				// Change button disabilities
 				_recordButton.setDisable(false);
 				_recordButton.setStyle("-fx-font: 16 System");
 				_recordButton.setText("Record");
 				
+				// Read outupt
 				speech.readFile();
 				_userAnswer = speech.getText();
 				speech.cleanup();
 				
+				// Give visual feedback
 				if (compareAnswers()) {
 					giveFeedback(true);
 				} else {
@@ -160,7 +173,10 @@ public class PracticeWindowController extends TataiController implements Initial
 		th.start();		
 	}
 	
-	
+	/**
+	 * Handles visual on screen feedback
+	 * @param correct
+	 */
 	private void giveFeedback(boolean correct) {
 		if (correct) {
 			_inputLabel.setStyle("-fx-background-color: " + CORRECT_GREEN);
@@ -189,14 +205,19 @@ public class PracticeWindowController extends TataiController implements Initial
 	}
 	
 	
-	
+	/**
+	 * Translate input speech answer
+	 */
 	private void translate() {
 		TataiTranslator translator = new TataiTranslator();
 		_trueAnswer = translator.translate(_inputLabel.getText());
 	}
 	
 	
-	
+	/**
+	 * Add to the label what has been pressed on the keyboard
+	 * @param num
+	 */
 	private void addToLabel(String num) {
 		if (_inputLabel.getText().length() == 2) {
 			flashText(_inputLabel);
@@ -208,7 +229,10 @@ public class PracticeWindowController extends TataiController implements Initial
 	}
 	
 	
-	
+	/**
+	 * Compares validity of speech recognized answer with translated answer.
+	 * @return
+	 */
 	private boolean compareAnswers() {
 		_trueAnswer = _trueAnswer.replace("mā", "maa");
 		_trueAnswer = _trueAnswer.replace("whā", "whaa");

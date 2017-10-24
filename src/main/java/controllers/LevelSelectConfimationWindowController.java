@@ -150,6 +150,10 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		});
 	}
 
+	/**
+	 * Handles key binding
+	 * @param e : KeyEvent
+	 */
 	@FXML
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {

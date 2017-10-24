@@ -171,6 +171,11 @@ public abstract class TataiController {
 		}
 	}
 	
+	/**
+	 * Shows a warning dialogue on the current window where called
+	 * @param title : String
+	 * @param message : String
+	 */
 	public void showWarningDialog(String title, String message) {
 		Label l = new Label(message);
 		l.setWrapText(true);

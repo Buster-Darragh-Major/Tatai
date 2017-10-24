@@ -13,6 +13,10 @@ import java.util.ArrayList;
  * audio, outputting the data to a file recout.mlf. Playing capabilities come from playing off
  * a temporary foo.wax file storing the recording.
  * 
+ * When using it is intended that record() is first called, followed by readFile() and getText()
+ * in that order. (The last two of which can be called as many times on the same recording set.)
+ * Finally it is advised cleanUp() be called to ensure all waste files are dealt with.
+ * 
  * @author Buster Major
  */
 public class TataiSpeechRecognizer implements SpeechRecognizer{

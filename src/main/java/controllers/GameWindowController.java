@@ -22,8 +22,6 @@ import main.java.HTK.recording.TataiSpeechRecognizer;
 
 public class GameWindowController extends TataiController implements Initializable{
 	
-	/* MACROS */
-	
 	/* FXML Nodes */
 	@FXML private Label _intLabel;
 	@FXML private Label _translatedLabel;
@@ -352,6 +350,10 @@ public class GameWindowController extends TataiController implements Initializab
 	    });
 	}
 	
+	/**
+	 * Handles key bindings for window
+	 * @param e : KeyEvent
+	 */
 	@FXML 
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {

@@ -32,13 +32,20 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 	@FXML private Label _warningLabel;
 	@FXML private JFXTextField _textField;
 	
+	/**
+	 * Handles user pressing exit button
+	 */
 	@FXML
 	public void handleExitCick() {
 		changeWindow(MAIN_FXML, _exitButton);// Change to MainWindow.fxml view
 	}
 	
+	/**
+	 * Handles user pressing edit button
+	 */
 	@FXML
 	public void handleEditClick() {
+		// Create new stage and window for edit view
 		try {
 			FXMLLoader fxml = new FXMLLoader(getClass().getResource(FXML_LOCATION + CUSTOM_LIST_SELECTION_EDIT_FXML));
 			Parent root = (Parent) fxml.load();
@@ -57,10 +64,14 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 		
 	}
 	
+	/**
+	 * Handles user entering key in text field, updates buttons accordingly
+	 */
 	@FXML
 	public void handleTextFieldKeystroke() {
 		TextQuestionListHandler handler = new TextQuestionListHandler(_textField.getText());
 		
+		// Change button visibility
 		if (_textField.getText().equals("")) {
 			_warningLabel.setVisible(false);
 			_createButton.setDisable(true);
@@ -73,6 +84,10 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 		}
 	}
 	
+	/**
+	 * Handles key binding
+	 * @param e : KeyEvent
+	 */
 	@FXML
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {
@@ -82,6 +97,9 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 		}
 	}
 	
+	/**
+	 * Handles user pressing create
+	 */
 	@FXML
 	public void handleCreateClick() {
 		Context.getInstance().setQuestionList(_textField.getText());

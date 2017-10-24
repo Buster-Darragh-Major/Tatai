@@ -52,6 +52,9 @@ public class ReverseWindowGameController extends TataiController implements Init
 	/* Fields */
 	private String _answer;
 	
+	/**
+	 * The following methods handle input from on screen keyboard
+	 */
 	@FXML
 	public void handle0Click() {
 		addToLabel(ZERO_TEXT);
@@ -126,8 +129,12 @@ public class ReverseWindowGameController extends TataiController implements Init
 		}
 	}
 	
+	/**
+	 * Handles user pressing speaker button, where number is read out to them
+	 */
 	@FXML
 	public void handleHearClick() {
+		// Construct record playing process on bash
 		String number = _wordLabel.getText();
 		number = number.replaceAll("ā", "a");
 		String command = "aplay " + number + ".wav";
@@ -144,6 +151,9 @@ public class ReverseWindowGameController extends TataiController implements Init
 		}
 	}
 	
+	/**
+	 * Handles user submitting answer typed on keyboard, compares with untranslated integer from Maori string
+	 */
 	private void submit() {
 		if (_intLabel.getText().equals(_answer)) {
 			_submitButton.setStyle("-fx-background-color: white;" + " -fx-text-fill: " + CORRECT_GREEN);
@@ -153,6 +163,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 			questionIncorrect();
 		}
 		
+		// Hide keyboard
 		_0.setVisible(false);
 		_1.setVisible(false);
 		_2.setVisible(false);
@@ -187,11 +198,16 @@ public class ReverseWindowGameController extends TataiController implements Init
 		}
 	}
 	
+	/**
+	 * Determines whether appropriate to add to label given current text and current input
+	 * @param num
+	 */
 	private void addToLabel(String num) {
-		if (!_0.isVisible()) {
+		if (!_0.isVisible()) { // If keyboard non visible do not allow
 			return;
 		}
 		
+		// Only allow if length < 2
 		if (_intLabel.getText().length() == 2) {
 			flashText(_intLabel);
 		} else if (_intLabel.getText().equals(ZERO_TEXT)) {
@@ -201,6 +217,9 @@ public class ReverseWindowGameController extends TataiController implements Init
 		}
 	}
 	
+	/**
+	 * Gives visual feedback on answer correctness
+	 */
 	private void questionCorrect() {
 		// Tell game object question correctly answered
 		Context.getInstance().currentGame().answerQuestion(true);
@@ -235,6 +254,9 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_rightIncorrectFeedbackIcon.setVisible(true);
 	}
 	
+	/**
+	 * Handles user pressing exit button
+	 */
 	@FXML
 	public void handleExitClick() {
 		// Prompt user with quit confirmation window 

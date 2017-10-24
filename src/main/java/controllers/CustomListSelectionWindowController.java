@@ -27,11 +27,17 @@ public class CustomListSelectionWindowController extends TataiController impleme
 	@FXML private JFXListView<String> _listView;
 	@FXML private Label _warningLabel;
 
+	/**
+	 * Handles user pressing exit button
+	 */
 	@FXML
 	public void handleExitClick() {
 		changeWindow(LEVEL_SELECT_FXML, _exitButton); // Change to LevelSelectWindow.fxml
 	}
 	
+	/**
+	 * Handles user pressing play button
+	 */
 	@FXML
 	public void handlePlayClick() {
 		// Set game type and list to read off for Context singleton
@@ -43,8 +49,12 @@ public class CustomListSelectionWindowController extends TataiController impleme
 		changeWindow(GAME_FXML, _playButton); // Change to GameokWindow.fxml
 	}
 	
+	/**
+	 * Handles user selecting list item
+	 */
 	@FXML
 	public void handleListSelection() {
+		// Change button disabilities
 		if (_listView.getSelectionModel().getSelectedItem() == null) {
 			_playButton.setDisable(true);
 		} else {
@@ -52,6 +62,10 @@ public class CustomListSelectionWindowController extends TataiController impleme
 		}
 	}
 	
+	/**
+	 * Handles key bindings for window 
+	 * @param e : KeyEvent
+	 */
 	@FXML
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {

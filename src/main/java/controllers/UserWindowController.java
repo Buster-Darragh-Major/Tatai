@@ -20,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 import main.java.users.user.User;
 
 public class UserWindowController extends TataiController implements Initializable {
+	
+	/* FXML Nodes */
 	@FXML
 	Button _continueButton;
 	@FXML
@@ -56,6 +58,7 @@ public class UserWindowController extends TataiController implements Initializab
 				changeWindow(MAIN_FXML, _continueButton);
 			}
 		} else {
+			// Tell user no user is selected
 			showWarningDialog("No User selected", "Please select a user");
 		}
 	}
@@ -81,6 +84,10 @@ public class UserWindowController extends TataiController implements Initializab
 		}
 	}
 	
+	/**
+	 * Handles double click of cell
+	 * @param e : KeyEvent
+	 */
 	public void doubleClickCell(MouseEvent e) {
         if (e.getClickCount() == 2) {
             handleContinueClick();
@@ -110,6 +117,7 @@ public class UserWindowController extends TataiController implements Initializab
 					"Are you sure you want to delete: " + userName);
 		}
 
+		// Create new thread for deletion task
 		if (confirmation) {
 			Task<Void> deletionTask = new Task<Void>() {
 

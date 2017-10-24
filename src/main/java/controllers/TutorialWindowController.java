@@ -38,6 +38,9 @@ public class TutorialWindowController  extends TataiController implements Initia
 	/* Fields */
 	private int _page = 1;
 	
+	/**
+	 * Handles user pressing next button
+	 */
 	@FXML public void handleNextClick() {
 		_page++;
 		if (_page == 2) {
@@ -68,6 +71,9 @@ public class TutorialWindowController  extends TataiController implements Initia
 		}
 	}
 	
+	/**
+	 * Handles user pressing previous button
+	 */
 	@FXML public void handleBackClick() {
 		_page--;
 		
@@ -104,12 +110,20 @@ public class TutorialWindowController  extends TataiController implements Initia
 		}
 	}
 	
+	/**
+	 * Updates slide with current picture
+	 * @param imageFilepath
+	 * @param description
+	 */
 	private void updateSlide(String imageFilepath, String description) {
 		Image img = new Image(imageFilepath);
 		_imageView.setImage(img);
 		_textArea.setText(description);
 	}
 	
+	/**
+	 * Clears the slide of an inames
+	 */
 	private void clearSlide() {
 		_imageView.setImage(null);
 		_textArea.clear();
@@ -130,10 +144,17 @@ public class TutorialWindowController  extends TataiController implements Initia
 	    });
 	}
 	
+	/**
+	 * Handles user pressing exit button.
+	 */
 	@FXML public void handleExitClick() {
 		changeWindow(MAIN_FXML, _exitButton);
 	}
 	
+	/**
+	 * Handles key binding
+	 * @param e : KeyEvent
+	 */
 	@FXML public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {
 			handleExitClick();

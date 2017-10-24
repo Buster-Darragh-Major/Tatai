@@ -20,6 +20,8 @@ import main.java.users.user.User;
 import main.java.users.user.UserException;
 
 public class UserFormWindowController extends TataiController implements Initializable {
+	
+	/* FXML Nodes */
 	@FXML
 	private JFXTextField _firstNameField;
 	@FXML
@@ -33,12 +35,16 @@ public class UserFormWindowController extends TataiController implements Initial
 	@FXML
 	private JFXCheckBox _teacherCheckBox;
 
+	/**
+	 * Handles user pressing confirm button
+	 */
 	@FXML
 	public void handleConfirmClick() {
 		String firstName = _firstNameField.getText().toString();
 		String lastName = _lastNameField.getText().toString();
 		String userName = _userNameField.getText().toString();
 
+		// Create new user file in new thread
 		Task<Void> addTask = new Task<Void>() {
 
 			@Override
@@ -68,6 +74,9 @@ public class UserFormWindowController extends TataiController implements Initial
 		startBackgroundThread(addTask);
 	}
 	
+	/**
+	 * Handles kay stroke in text field, will dynamically change button disabilities
+	 */
 	@FXML
 	public void handleFormKeystroke() {
 		if ((_firstNameField.getText().trim().equals("")) || 
@@ -80,6 +89,9 @@ public class UserFormWindowController extends TataiController implements Initial
 		}
 	}
 
+	/**
+	 * Handles user pressin back button
+	 */
 	@FXML
 	public void handleBackClick() {
 		changeWindow(USER_FXML, _confirmButton);
