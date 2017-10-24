@@ -11,6 +11,19 @@ import main.java.creations.labelgenerator.CustomEquationLabelGenerator;
 import main.java.creations.model.TataiCreationModel;
 import main.java.questionlist.TextQuestionListHandler;
 
+/**
+ * Game class describing custom list game mode. Identical to parent
+ * class except for number of questions, which is determined by length
+ * of list being read off. setLevel() and currentLevel() are nullified
+ * and only throw exceptions.
+ * 
+ * Ending the game does not update stats also, no stats are tracked in
+ * this game mode. 
+ * 
+ * Uncommented methods have same description as parent method **
+ * 
+ * @author Buster-Darragh-Major
+ */
 public class TataiGameCustomList extends TataiGameEquation {
 
 	/* MACROS */
@@ -32,23 +45,36 @@ public class TataiGameCustomList extends TataiGameEquation {
 		_hasStarted = true;
 	}
 	
+	/**
+	 * Return dynamic value of total number of questions
+	 */
 	@Override
 	public int totalNumberOfQuestions() {
 		return TOTAL_NUMBER_OF_QUESTIONS;
 	}
 	
+	/**
+	 * translates the current question by retrieving current line number of custom
+	 * list file.
+	 */
 	@Override
 	public String translateCurrentQuestion() {
-		String label = _handler.getLine(_questionNo + 1);
+		String label = _handler.getLine(_questionNo + 1); // File lines start at 1, _questionNo at 0
 		
 		return _translator.translate(label);
 	}
 	
+	/**
+	 * Throw exception when called
+	 */
 	@Override
 	public void setLevel(Level level) {
 		throw new GameException("Cannot set level in custom game");
 	}
 	
+	/**
+	 * Throw exception when called
+	 */
 	@Override
 	public Level currentLevel() {
 		throw new GameException("Custom game has no level");
@@ -94,6 +120,9 @@ public class TataiGameCustomList extends TataiGameEquation {
 		return "Play questions from your custom lists";
 	}
 	
+	/**
+	 * Overwrite population process, read off file instead of random generation
+	 */
 	public <T extends Creation> void populateModel() {
 		@SuppressWarnings("unchecked")
 		Class<T> creationClass = (Class<T>) TataiCreation.class;
@@ -103,6 +132,9 @@ public class TataiGameCustomList extends TataiGameEquation {
 		_creationModel.updateModel(creationClass);
 	}
 	
+	/**
+	 * Overwrite endgame, do not update stats
+	 */
 	@Override
 	public void endGame() {
 		if (_hasStarted) {

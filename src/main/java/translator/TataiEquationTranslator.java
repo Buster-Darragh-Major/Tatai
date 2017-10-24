@@ -5,6 +5,16 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class is responsible for evaluating equations in the form of strings to
+ * their integer equivalence. For example: the string "4+2=" evaluates to int : 6.
+ * Inout strings must be in the format of an integer x, followed by one of the
+ * following operators: "+, -, x, or ÷", then followed by another integer. Anything
+ * after the second integer is not considered.
+ * 
+ * @author Buster Darragh-Major
+ *
+ */
 public class TataiEquationTranslator implements Translator {
 
 	private Translator _translator = new TataiTranslator();

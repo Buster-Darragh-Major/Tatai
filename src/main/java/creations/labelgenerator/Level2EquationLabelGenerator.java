@@ -3,6 +3,15 @@ package main.java.creations.labelgenerator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class deals with the responsibility of generating random strings of equations
+ * in the form "x(+or-)y=", where x and y are integers between 1 and 9, and the equation
+ * evaluates to an integer between 1 and 99. Calling the GenerateLabel() method will return
+ * this String. Addition and subtraction occurs in parent class
+ * 
+ * @author Buster Darragh-Major
+ * @author Nathan Cairns
+ */
 public class Level2EquationLabelGenerator extends Level1EquationLabelGenerator {
 
 	/* Macros */
@@ -11,6 +20,9 @@ public class Level2EquationLabelGenerator extends Level1EquationLabelGenerator {
 	public static final int[] NON_PRIMES = {4,6,8,9,10,12};
 	private static final int RANDOM_OPERATOR_CONST = 4;
 	
+	/**
+	 * H=Randomly chooses operator for equation to be
+	 */
 	@Override
 	public void chooseOperator(int maximum, int minimum) {
 		int rand = (int) (RANDOM_OPERATOR_CONST * Math.random());
@@ -26,6 +38,12 @@ public class Level2EquationLabelGenerator extends Level1EquationLabelGenerator {
 		}
 	}
 	
+	/**
+	 * Randomly generate multiplication equation with answer between 1 and 99.
+	 * operands themselves cannot be more than 12 in this implementation
+	 * @param maximum
+	 * @param minimum
+	 */
 	protected void generateMultiplication(int maximum , int minimum) {
 		int operand1 = getRandomInteger(12, MIN);
 		
@@ -42,7 +60,12 @@ public class Level2EquationLabelGenerator extends Level1EquationLabelGenerator {
 		_label = operand1 + MULTIPLICATION + operand2 + EQUALS;
 	}
 	
-	
+	/**
+	 * Generate a random division equation with first operand being non prime <= 12. 
+	 * Question only tests multiples of 12 at max.
+	 * @param maximum
+	 * @param minimum
+	 */
 	protected void generateDivision(int maximum , int minimum) {
 		int rand = (int) (NON_PRIMES.length * Math.random());
 		

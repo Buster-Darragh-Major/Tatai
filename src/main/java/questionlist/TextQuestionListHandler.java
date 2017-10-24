@@ -10,6 +10,18 @@ import java.io.Writer;
 
 import main.java.stats.TataiHandler;
 
+/**
+ * This class deals with writing custom list equations to particular files. On construction
+ * the object takes a String relating to the file name it is to read/write off. (Note: the input
+ * string should not include the '.txt' suffix in the file name). Once created, the objects
+ * methods can be called as many times as desired and the file will be written to / read
+ * accordingly, with the exception of the delete() method, where the file will be erased.
+ * Use of the object then becomes nullified, and a new one must be created. If the relevant
+ * files does not exist on creation, the object will create one in the constructor method.
+ * This can only be done once in the constructor.
+ * 
+ * @author Buster-Darragh-Major
+ */
 public class TextQuestionListHandler extends TataiHandler implements ListHandler {
 
 	/* Macros */
@@ -21,6 +33,10 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	private final String _fileName;
 	private final File _textFile;	
 	
+	/**
+	 * Constructor
+	 * @param listName : String
+	 */
 	public TextQuestionListHandler(String listName) {
 		if (!LIST_DIRECTORY.exists()) {
 			LIST_DIRECTORY.mkdirs();
@@ -58,7 +74,10 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	}
 	
 	
-	
+	/**
+	 * Writes the input string to the file. Every call of this method
+	 * will write to the file on a new line.
+	 */
 	@Override
 	public void writeToFile(String appendable) {
 		try {
@@ -106,7 +125,9 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	}
 
 	
-	
+	/**
+	 * Deletes the line number of the file, pushes all subsequent lines up to fill hole
+	 */
 	@Override
 	public void delete(int lineNo) {
 		try {
@@ -140,7 +161,9 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	}
 
 	
-	
+	/**
+	 * Returns the size of the file list in number of lines
+	 */
 	@Override
 	public int size() {
 		int lineNo = 0;
@@ -162,7 +185,9 @@ public class TextQuestionListHandler extends TataiHandler implements ListHandler
 	}
 
 	
-	
+	/**
+	 * Gets the line of the file by line number (line numbering starts at 1)
+	 */
 	@Override
 	public String getLine(int lineNo) {
 		String line  = null;

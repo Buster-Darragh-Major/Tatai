@@ -35,6 +35,8 @@ public class TataiQuestionTableAdapter {
 		qCorrect = new SimpleStringProperty(questCorrect);
 	}
 	
+	// Following method are volatile, do not touch**
+	
 	public StringProperty qNoProperty() {
 		return qNo;
 	}

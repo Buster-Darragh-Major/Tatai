@@ -1,5 +1,13 @@
 package main.java.game;
 
+/**
+ * Class representing the reverse game mode, where the labels are swapped around
+ * and the user is shown the Maori word and must input the string. Is a child of
+ * the TataiGame superclass. Overwrites very few methods, the key difference is
+ * in the level descriptors and headings, and the way of updating user statistics
+ * 
+ * @author buster
+ */
 public class TataiGameReverse extends TataiGame {
 	
 	public TataiGameReverse() {

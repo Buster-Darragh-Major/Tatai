@@ -10,6 +10,14 @@ import main.java.creations.model.TataiCreationModel;
 import main.java.translator.TataiEquationTranslator;
 import main.java.translator.Translator;
 
+/**
+ * After TataiGame type has become degraded, this is the default game mode set in
+ * Tatai on open. Games should always revert the game mode back to a TataiEquationGame
+ * when any other game type is finished. Do not create another instance of this class,
+ * one object should last an entire session.
+ * 
+ * @author buster
+ */
 public class TataiGameEquation extends TataiGame {
 
 	/* Fields */
