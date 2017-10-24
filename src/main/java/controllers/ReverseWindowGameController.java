@@ -188,6 +188,10 @@ public class ReverseWindowGameController extends TataiController implements Init
 	}
 	
 	private void addToLabel(String num) {
+		if (!_0.isVisible()) {
+			return;
+		}
+		
 		if (_intLabel.getText().length() == 2) {
 			flashText(_intLabel);
 		} else if (_intLabel.getText().equals(ZERO_TEXT)) {
