@@ -1,0 +1,35 @@
+.statsBackground {
+	-fx-background-color: transparent;
+}
+
+#_statLabel {
+	-fx-text-fill: white;
+	-fx-border-width:  0 2 0 0;
+	-fx-border-color: white;
+}
+
+#_averageButton {
+	-fx-text-fill: white;
+}
+
+#_averageButton:hover, #_correctButton:hover, #_incorrectButton:hover, #_totalButton:hover {
+	-fx-background-color: transparent;
+	-fx-cursor: hand;
+	-fx-effect: dropshadow( one-pass-box , white, 2, 0.0, 0, 0 );
+}
+
+#_correctButton {
+	-fx-text-fill: #8ff243;
+}
+
+#_incorrectButton {
+	-fx-text-fill: #e7412e;
+}
+
+#_totalButton {
+	-fx-text-fill: #71aef2;
+}
+
+#_exitButton {
+	-fx-text-fill: #e22e1a;
+}

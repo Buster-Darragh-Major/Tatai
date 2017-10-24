@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPress" prefHeight="500.0" prefWidth="800.0" stylesheets="@../stylesheets/TataiTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.ReverseWindowGameController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" />
+    <ColumnConstraints hgrow="SOMETIMES" />
+      <ColumnConstraints hgrow="SOMETIMES" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints vgrow="SOMETIMES" />
+    <RowConstraints vgrow="SOMETIMES" />
+    <RowConstraints vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane prefHeight="167.0" prefWidth="369.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="68.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <JFXButton fx:id="_0" buttonType="RAISED" onAction="#handle0Click" prefHeight="80.0" prefWidth="80.0" text="0" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_1" buttonType="RAISED" onAction="#handle1Click" prefHeight="80.0" prefWidth="80.0" text="1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_2" buttonType="RAISED" onAction="#handle2Click" prefHeight="80.0" prefWidth="80.0" text="2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_3" buttonType="RAISED" onAction="#handle3Click" prefHeight="80.0" prefWidth="80.0" text="3" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_4" buttonType="RAISED" onAction="#handle4Click" prefHeight="80.0" prefWidth="80.0" text="4" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_5" buttonType="RAISED" onAction="#handle5Click" prefHeight="80.0" prefWidth="80.0" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_6" buttonType="RAISED" onAction="#handle6Click" prefHeight="80.0" prefWidth="80.0" text="6" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_7" buttonType="RAISED" onAction="#handle7Click" prefHeight="80.0" prefWidth="80.0" text="7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_8" buttonType="RAISED" onAction="#handle8Click" prefHeight="80.0" prefWidth="80.0" text="8" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_9" buttonType="RAISED" onAction="#handle9Click" prefHeight="80.0" prefWidth="80.0" text="9" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_clearButton" buttonType="RAISED" onAction="#handleDeleteClick" prefHeight="80.0" prefWidth="95.0" text="Clear" GridPane.columnIndex="6" GridPane.halignment="RIGHT">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton fx:id="_submitButton" buttonType="RAISED" onAction="#handlesubmitClick" prefHeight="80.0" prefWidth="95.0" text="Submit" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+         </children>
+      </GridPane>
+      <Label fx:id="_wordLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <font>
+            <Font size="50.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="_intLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Label>
+      <Label fx:id="_questionNoLabel" text="/10" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="15.0" />
+         </GridPane.margin>
+      </Label>
+      <FontAwesomeIconView fx:id="_hearButton" fill="WHITE" glyphName="VOLUME_UP" onMouseClicked="#handleHearClick" size="30" styleClass="icon-standard-clickable" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="50.0" />
+         </GridPane.margin></FontAwesomeIconView>
+      <FontAwesomeIconView fx:id="_exitButton" glyphName="TIMES" onMouseClicked="#handleExitClick" size="35" styleClass="icon-white-clickable" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="15.0" top="15.0" />
+         </GridPane.margin>
+         <effect>
+            <DropShadow />
+         </effect>
+      </FontAwesomeIconView>
+      <Label fx:id="_leftFeedbackLabel" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="60.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="_rightFeedbackLabel" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="60.0" />
+         </GridPane.margin>
+      </Label>
+      <FontAwesomeIconView fx:id="_leftIncorrectFeedbackIcon" fill="WHITE" glyphName="EXCLAMATION" size="40" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_rightIncorrectFeedbackIcon" fill="WHITE" glyphName="EXCLAMATION" size="40" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_leftCorrectFeedbackIcon" fill="WHITE" glyphName="THUMBS_UP" size="40" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+      <FontAwesomeIconView fx:id="_rightCorrectFeedbackIcon" fill="WHITE" glyphName="THUMBS_UP" size="40" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</GridPane>
