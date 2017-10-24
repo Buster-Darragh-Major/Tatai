@@ -11,16 +11,14 @@ import main.java.controllers.Context;
 
 public class App extends Application {
 
-	/* THIS IS WHERE THE FUN BEGINS */
+	/* APP MAIN ENTRY POINT */
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Context.getInstance().newGame();
 			Context.getInstance().setGameToEquation();
-		
-			//Parent root = FXMLLoader.load(getClass().getResource("UserWindow.fxml"));
-			
+					
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/fxml/UserWindow.fxml"));
 			Parent root = loader.load(); 
 		    
