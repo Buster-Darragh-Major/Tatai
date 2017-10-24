@@ -154,3 +154,6 @@
 .text-area .scroll-bar:vertical:disabled {
     -fx-opacity: 0;
 }
+.text-correct-green {
+	-fx-text-fill: 00d10a !important;
+}
