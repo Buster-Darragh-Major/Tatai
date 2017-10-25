@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.game.Level;
+import main.java.game.TataiGame;
 import main.java.game.TataiGameReverse;
 import main.java.users.user.User;
 
@@ -28,6 +29,8 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	
 	/* FIELDS */
 	private User _user;
+	private String _eqDesc;
+	private String _revDesc;
 
 	/* FXML Nodes */
 	@FXML
@@ -91,25 +94,14 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML
 	public void handleCheckBoxClick() {
 		if (_checkBox.isSelected()) { // Set game type to reverse game and set to current level
-			TataiGameReverse reverseGame = new TataiGameReverse();
-
-			Level level;
-			if (_game.currentLevel() == Level.LEVEL1 || _game.currentLevel() == Level.LEVEL1_REVERSE) {
-				level = Level.LEVEL1_REVERSE;
-			} else {
-				level = Level.LEVEL2_REVERSE;
-			}
+			_levelDescriptor.setText(_revDesc);
 			
-			reverseGame.setLevel(level);
-			reverseGame.setCurrentUser(Context.getInstance().getUser());
-			Context.getInstance().setGameType(reverseGame);
 			_game = Context.getInstance().currentGame();
 		} else {
+			_levelDescriptor.setText(_eqDesc);
+			
 			Context.getInstance().setGameToEquation();
 		}
-
-		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
-
 	}
 
 	/**
@@ -132,9 +124,11 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		_game = Context.getInstance().currentGame();
 
 		// Set header and description labels to be that representing the current game
-		// objects set difficulty.
+		// objects set difficulty, unpack level headers.
 		_levelHeader.setText(_game.getLevelHeader());
 		_levelDescriptor.setText(_game.getLevelDescription());
+		getLevelHeaders();
+		
 
 		if (_game.currentLevel() == Level.LEVEL2 && !_user.isUnlocked(Level.LEVEL2_REVERSE)) {
 			_checkBox.setDisable(true);
@@ -150,6 +144,26 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		});
 	}
 
+	/**
+	 * Helper method for pre-loading level description headers in preparation for
+	 * being able to switch between when check box is ticked / unticked. Implemented
+	 * as solution to game starting bug where, initially new games were being
+	 * instantiated every button checkbox click.
+	 */
+	private void getLevelHeaders() {
+		_eqDesc = Context.getInstance().currentGame().getLevelDescription();
+		
+		TataiGame tempRevGame = new TataiGameReverse(); 
+
+		if (_game.currentLevel() == Level.LEVEL2 || _game.currentLevel() == Level.LEVEL2_REVERSE) {
+			tempRevGame.setLevel(Level.LEVEL2_REVERSE);
+		} else {
+			tempRevGame.setLevel(Level.LEVEL1_REVERSE);
+		}
+		
+		_revDesc = tempRevGame.getLevelDescription();
+	}
+	
 	/**
 	 * Handles key binding
 	 * @param e : KeyEvent
