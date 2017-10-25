@@ -1,6 +1,7 @@
 package main.java.controllers;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -20,7 +21,7 @@ import javafx.scene.input.MouseEvent;
 import main.java.users.user.User;
 
 public class UserWindowController extends TataiController implements Initializable {
-	
+
 	/* FXML Nodes */
 	@FXML
 	Button _continueButton;
@@ -54,7 +55,7 @@ public class UserWindowController extends TataiController implements Initializab
 			if (user != null) {
 				Context.getInstance().setUser(user);
 				Context.getInstance().currentGame().setCurrentUser(user);
-				
+
 				changeWindow(MAIN_FXML, _continueButton);
 			}
 		} else {
@@ -83,15 +84,17 @@ public class UserWindowController extends TataiController implements Initializab
 			_userList2.requestFocus();
 		}
 	}
-	
+
 	/**
 	 * Handles double click of cell
-	 * @param e : KeyEvent
+	 * 
+	 * @param e
+	 *            : KeyEvent
 	 */
 	public void doubleClickCell(MouseEvent e) {
-        if (e.getClickCount() == 2) {
-            handleContinueClick();
-         }
+		if (e.getClickCount() == 2) {
+			handleContinueClick();
+		}
 	}
 
 	/**
@@ -206,7 +209,7 @@ public class UserWindowController extends TataiController implements Initializab
 			if (!_continueButton.isDisabled()) {
 				handleContinueClick();
 			}
-		// This seems a bit weird but the only way to fix issues with list selection. 
+			// This seems a bit weird but the only way to fix issues with list selection.
 		} else if (e.getCode() == KeyCode.RIGHT) {
 			clearListSelection(_userList1);
 		} else if (e.getCode() == KeyCode.LEFT) {
@@ -223,6 +226,9 @@ public class UserWindowController extends TataiController implements Initializab
 				.observableArrayList(Context.getInstance().currentGame().getClassRoom().listTeachers());
 		ObservableList<String> students = FXCollections
 				.observableArrayList(Context.getInstance().currentGame().getClassRoom().listStudents());
+
+		Collections.sort(teachers);
+		Collections.sort(students);
 
 		_userList1.setItems(students);
 		_userList2.setItems(teachers);

@@ -96,8 +96,8 @@ public class ResultsWindowController extends TataiController implements Initiali
 		// further games are able to be played.
 		int oldBest = Context.getInstance().currentGame().personalBest();
 		Context.getInstance().currentGame().endGame();
-		Context.getInstance().setGameToEquation();
 		isPersonalBest(oldBest);
+		Context.getInstance().setGameToEquation();
 	}
 
 	/**
