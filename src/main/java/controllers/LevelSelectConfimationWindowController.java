@@ -31,6 +31,7 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	private User _user;
 	private String _eqDesc;
 	private String _revDesc;
+	private TataiGame _revGame;
 
 	/* FXML Nodes */
 	@FXML
@@ -77,12 +78,19 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleStartClick() {
-		// Populate TataiCreationModel object in singleton
-		_game.startGame();
-
 		if (_checkBox.isSelected()) {
+			User user = Context.getInstance().currentGame().getCurrentUser();
+			_revGame.setCurrentUser(user);
+			
+			// Set reverse mode to current level and set context to read off game mode
+			if(_game.currentLevel() == Level.LEVEL2 || _game.currentLevel() == Level.LEVEL2_REVERSE) {
+				_revGame.setLevel(Level.LEVEL2_REVERSE);
+			}
+			Context.getInstance().setGameType(_revGame);
+			Context.getInstance().currentGame().startGame(); // Populate TataiCreationModel object in singleton
 			changeWindow(REVERSE_GAME_FXML, _start); // Change to ReverseGamemodeWindow.fxml view
 		} else {
+			_game.startGame(); // Populate TataiCreationModel object in singleton
 			changeWindow(GAME_FXML, _start); // Change to GameWindow.fxml view
 		}
 	}
@@ -122,6 +130,8 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	public void initialize(URL location, ResourceBundle resources) {
 		Context.getInstance().setGameToEquation();
 		_game = Context.getInstance().currentGame();
+		_revGame = new TataiGameReverse(); // Reverse game object if needed, default is equation mode
+		 								   // so no object is needed.
 
 		// Set header and description labels to be that representing the current game
 		// objects set difficulty, unpack level headers.
@@ -153,15 +163,13 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	private void getLevelHeaders() {
 		_eqDesc = Context.getInstance().currentGame().getLevelDescription();
 		
-		TataiGame tempRevGame = new TataiGameReverse(); 
-
 		if (_game.currentLevel() == Level.LEVEL2 || _game.currentLevel() == Level.LEVEL2_REVERSE) {
-			tempRevGame.setLevel(Level.LEVEL2_REVERSE);
+			_revGame.setLevel(Level.LEVEL2_REVERSE);
 		} else {
-			tempRevGame.setLevel(Level.LEVEL1_REVERSE);
+			_revGame.setLevel(Level.LEVEL1_REVERSE);
 		}
 		
-		_revDesc = tempRevGame.getLevelDescription();
+		_revDesc = _revGame.getLevelDescription();
 	}
 	
 	/**
