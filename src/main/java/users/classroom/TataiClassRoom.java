@@ -190,7 +190,7 @@ public class TataiClassRoom implements ClassRoom {
 			try {
 				User user = mapper.readValue(f, User.class);
 				
-				if (user.hasWritingPrivileges()) {
+				if (user instanceof Teacher) {
 					addTeacher((Teacher) user);
 				} else {
 					addStudent((Student) user);

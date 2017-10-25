@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import main.java.game.TataiGameCustomList;
 import main.java.questionlist.TextQuestionListHandler;
 
@@ -53,13 +54,24 @@ public class CustomListSelectionWindowController extends TataiController impleme
 	 * Handles user selecting list item
 	 */
 	@FXML
-	public void handleListSelection() {
+	public void handleListSelection(MouseEvent e) {
+		doubleClickCell(e);
 		// Change button disabilities
 		if (_listView.getSelectionModel().getSelectedItem() == null) {
 			_playButton.setDisable(true);
 		} else {
 			_playButton.setDisable(false);
 		}
+	}
+	
+	/**
+	 * Handles double click of cell
+	 * @param e : KeyEvent
+	 */
+	public void doubleClickCell(MouseEvent e) {
+        if (e.getClickCount() == 2) {
+            handlePlayClick();
+         }
 	}
 	
 	/**
@@ -74,7 +86,7 @@ public class CustomListSelectionWindowController extends TataiController impleme
 			handlePlayClick();
 		}
 	}
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		_playButton.setDisable(true);
