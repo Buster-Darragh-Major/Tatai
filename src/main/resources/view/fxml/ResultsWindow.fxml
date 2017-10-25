@@ -34,9 +34,9 @@
       </Label>
       <TableView fx:id="_resultsTable" styleClass="table" stylesheets="@../stylesheets/TataiTheme.css" GridPane.rowIndex="1">
          <columns>
-            <TableColumn fx:id="qNo" editable="false" minWidth="-Infinity" prefWidth="57.0" sortable="false" styleClass="tableheader" text="Q." />
-            <TableColumn fx:id="qInt" editable="false" prefWidth="85.0" sortable="false" styleClass="tableheader" text="Number" />
-            <TableColumn fx:id="qTranslation" editable="false" prefWidth="361.0" sortable="false" styleClass="tableheader" text="Translation" />
+            <TableColumn fx:id="qNo" editable="false" minWidth="-Infinity" prefWidth="57.0" sortable="false" styleClass="tableheader" text="Q.NO" />
+            <TableColumn fx:id="qInt" editable="false" prefWidth="85.0" sortable="false" styleClass="tableheader" text="Question" />
+            <TableColumn fx:id="qTranslation" editable="false" prefWidth="361.0" sortable="false" styleClass="tableheader" text="Translation / Answer" />
             <TableColumn fx:id="qCorrect" editable="false" prefWidth="296.0" sortable="false" styleClass="tableheader" text="Your Answer was..." />
          </columns>
          <columnResizePolicy>
