@@ -1,9 +1,15 @@
 package main.java.controllers;
 
-import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
@@ -19,8 +25,9 @@ import main.java.game.Level;
 public class ReverseWindowGameController extends TataiController implements Initializable {
 
 	/* Macros */
-	public static final String AUDIO_FILE_PATH = "src/main/resources/audio/NumberRecordings/";
+	public static final String AUDIO_FILE_PATH = "/main/resources/audio/NumberRecordings/";
 	public static final String FX_BACKGROUND_COLOR = "-fx-background-color: ";
+	public static final String WAV = ".wav";
 	
 	/* FXML Nodes */
 	@FXML private Pane _pane;
@@ -131,24 +138,24 @@ public class ReverseWindowGameController extends TataiController implements Init
 	
 	/**
 	 * Handles user pressing speaker button, where number is read out to them
+	 * @throws IOException 
+	 * @throws UnsupportedAudioFileException 
+	 * @throws LineUnavailableException 
+	 * @throws URISyntaxException 
 	 */
 	@FXML
-	public void handleHearClick() {
-		// Construct record playing process on bash
+	public void handleHearClick() throws UnsupportedAudioFileException, IOException, LineUnavailableException, URISyntaxException {
+		// Get number file format name
 		String number = _wordLabel.getText();
 		number = number.replaceAll("ā", "a");
-		String command = "aplay " + number + ".wav";
 		
-		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
-		builder.directory(new File(AUDIO_FILE_PATH));
+		URL sound = getClass().getResource(AUDIO_FILE_PATH + number + WAV);
 		
-		@SuppressWarnings("unused")
-		Process process;
-		try {
-			process = builder.start();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// Start audio playback
+		AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sound);
+		Clip clip = AudioSystem.getClip();
+		clip.open(audioInputStream);
+		clip.start();
 	}
 	
 	/**

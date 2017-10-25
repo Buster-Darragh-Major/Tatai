@@ -23,6 +23,12 @@ import main.java.users.user.User;
  * amount correct, incorrect, references to the CreationModel storing the
  * answered/unanswered creations, etc.
  * 
+ * The way in which this class and its children is rather particular. On application
+ * startup there is to be a TataiGame instance created, so as to allow for user to
+ * be created and stored. This class should not be overwritten with a further instantiation,
+ * keep object throughout session. new games are to be created with newGame(), ensure games
+ * are ended with endGame() before starting new one.
+ * 
  * @author Buster Major
  * @author Nathan Cairns
  */

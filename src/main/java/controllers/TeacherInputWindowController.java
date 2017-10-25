@@ -152,13 +152,14 @@ public class TeacherInputWindowController extends TataiController implements Ini
 	 */
 	@FXML
 	public void handleEnterClick() {
+		// Write contents of label to custom list file
+		_handler.writeToFile(_inputLabel.getText() + EQUALS);
+		
 		// Alter buttons and label
 		_enterButton.setDisable(true);
 		_submitButton.setDisable(false);
 		_inputLabel.setText("");
-		
-		// Write contents of label to custom list file
-		_handler.writeToFile(_inputLabel.getText() + EQUALS);
+
 		
 		// Update label in lower corner
 		if (_handler.size() == 1) {

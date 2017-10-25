@@ -16,6 +16,8 @@ import main.java.translator.Translator;
  * when any other game type is finished. Do not create another instance of this class,
  * one object should last an entire session.
  * 
+ * Uncommented methods have same description as parent method **
+ * 
  * @author buster
  */
 public class TataiGameEquation extends TataiGame {
@@ -23,6 +25,9 @@ public class TataiGameEquation extends TataiGame {
 	/* Fields */
 	protected Translator _translator = new TataiEquationTranslator();
 
+	/**
+	 * Constructor
+	 */
 	public TataiGameEquation() {
 		super();
 	}
