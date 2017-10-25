@@ -6,6 +6,9 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
@@ -20,6 +23,8 @@ import main.java.users.user.User;
 import main.java.users.user.UserException;
 
 public class UserFormWindowController extends TataiController implements Initializable {
+	/* MACROS */
+	public final static int MAX_VALUE = 20;
 	
 	/* FXML Nodes */
 	@FXML
@@ -96,10 +101,37 @@ public class UserFormWindowController extends TataiController implements Initial
 	public void handleBackClick() {
 		changeWindow(USER_FXML, _confirmButton);
 	}
-
+	
+	private class textDelimiter implements ChangeListener<String> {
+		private JFXTextField textField;
+		
+		public textDelimiter(JFXTextField tf) {
+			textField = tf;
+		}
+		
+		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+			if (textField.getText().length() > MAX_VALUE)	{
+				String s = textField.getText().substring(0, MAX_VALUE);
+				textField.setText(s);
+			}
+		}
+		
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		_confirmButton.setDisable(true);
+		
+		_firstNameField.textProperty().addListener(new textDelimiter(_firstNameField));
+		_lastNameField.textProperty().addListener(new textDelimiter(_lastNameField));
+		_userNameField.textProperty().addListener(new textDelimiter(_userNameField));
+		
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	_firstNameField.requestFocus();
+	        }
+	    });
 	}
 
 	/**
