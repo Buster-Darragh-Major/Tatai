@@ -1,6 +1,7 @@
 package main.java.controllers;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -223,7 +224,10 @@ public class UserWindowController extends TataiController implements Initializab
 				.observableArrayList(Context.getInstance().currentGame().getClassRoom().listTeachers());
 		ObservableList<String> students = FXCollections
 				.observableArrayList(Context.getInstance().currentGame().getClassRoom().listStudents());
-
+		
+		Collections.sort(teachers);
+		Collections.sort(students);
+		
 		_userList1.setItems(students);
 		_userList2.setItems(teachers);
 
