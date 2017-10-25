@@ -13,6 +13,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -151,11 +154,30 @@ public class ReverseWindowGameController extends TataiController implements Init
 		
 		URL sound = getClass().getResource(AUDIO_FILE_PATH + number + WAV);
 		
-		// Start audio playback
+		// Start audio playback, disable sound button for duration
 		AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sound);
 		Clip clip = AudioSystem.getClip();
-		clip.open(audioInputStream);
-		clip.start();
+		
+		_hearButton.setDisable(true);
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				clip.open(audioInputStream);
+				clip.start();
+				
+				return null;
+			}
+		};
+		
+		// Re enable sound button functionality on success
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				_hearButton.setDisable(false);
+			}
+		});
+		
+		startBackgroundThread(task);
 	}
 	
 	/**
