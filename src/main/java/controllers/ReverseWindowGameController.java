@@ -258,6 +258,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_intLabel.setStyle("-fx-text-fill: white");
 		_questionNoLabel.setStyle("-fx-text-fill: white");
 		_wordLabel.setStyle("-fx-text-fill: white");
+		_hearButton.setStyle("-fx-fill: white");
 		
 		// Give user feedback
 		_leftFeedbackLabel.setText(CORRECT);
@@ -275,6 +276,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_intLabel.setStyle("-fx-text-fill: white");
 		_questionNoLabel.setStyle("-fx-text-fill: white");
 		_wordLabel.setStyle("-fx-text-fill: white");
+		_hearButton.setStyle("-fx-fill: white");
 		
 		// Give user feedback
 		_leftFeedbackLabel.setText(BAD_LUCK);
@@ -338,6 +340,7 @@ public class ReverseWindowGameController extends TataiController implements Init
 		_8.setStyle(FX_BACKGROUND_COLOR + style);
 		_9.setStyle(FX_BACKGROUND_COLOR + style);
 		
+		_hearButton.setStyle("-fx-fill: " + style);
 		_clearButton.setStyle(FX_BACKGROUND_COLOR + style);
 		_submitButton.setStyle(FX_BACKGROUND_COLOR + style);
 		
