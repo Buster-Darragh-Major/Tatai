@@ -30,7 +30,7 @@ public abstract class TataiController {
 	protected TataiGame _game;
 	
 	/* Macros */
-	public static final String INCORRECT_RED = "#f73333";
+	public static final String INCORRECT_RED = "#023587";  // Blue: #023587 Red: #f73333 Orange: #E1711B
 	public static final String CORRECT_GREEN = "#00d10a";
 	public static final String WHITE = "#ffffff";
 	public static final String NEXT = "Next";
