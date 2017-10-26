@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import main.java.HTK.recording.TataiSpeechRecognizer;
-import main.java.stats.TataiPaths;
 import main.java.translator.TataiTranslator;
 
 public class PracticeWindowController extends TataiController implements Initializable {
