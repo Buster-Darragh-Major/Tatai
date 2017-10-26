@@ -16,12 +16,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.game.Level;
+import main.java.stats.TataiPaths;
 import main.java.users.user.User;
 
 public class LevelSelectWindowController extends TataiController implements Initializable {
 	/* MACROS */
 	public static final String LEVEL2_TOOLTIP = "Score 8 or more\nin Level 1 to unlock";
-	
+
 	/* FIELDS */
 	private User _user;
 
@@ -39,7 +40,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	@FXML
 	private AnchorPane _level2Wrap;
 	private Tooltip _tp;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -74,7 +75,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	public void handleLevel1Click() {
 		_game.setLevel(Level.LEVEL1);
 
-		changeWindow(LEVEL_SELECT_CONFIRMATION_FXML, _level1); 
+		changeWindow(LEVEL_SELECT_CONFIRMATION_FXML, _level1);
 	}
 
 	/**
@@ -84,7 +85,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	public void handleLevel2Click() {
 		_game.setLevel(Level.LEVEL2);
 
-		changeWindow(LEVEL_SELECT_CONFIRMATION_FXML, _level2); 
+		changeWindow(LEVEL_SELECT_CONFIRMATION_FXML, _level2);
 	}
 
 	/**
@@ -92,7 +93,11 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 */
 	@FXML
 	public void handlePracticeClick() {
-		changeWindow(PRATICE_FXML, _practice); 
+		if (TataiPaths.htkResourcesExists()) {
+			changeWindow(PRATICE_FXML, _practice);
+		} else {
+			showWarningDialog(FILE_NOT_FOUND_DIALOG, FILE_NOT_FOUND_DIALOG_MESSAGE);
+		}
 	}
 
 	/**
@@ -100,7 +105,7 @@ public class LevelSelectWindowController extends TataiController implements Init
 	 */
 	@FXML
 	public void handleMenuButtonClick() {
-		changeWindow(MAIN_FXML, _menuButton); 
+		changeWindow(MAIN_FXML, _menuButton);
 	}
 
 	/**

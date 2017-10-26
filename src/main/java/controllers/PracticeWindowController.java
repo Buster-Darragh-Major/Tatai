@@ -143,7 +143,6 @@ public class PracticeWindowController extends TataiController implements Initial
 	 * Records user
 	 */
 	private void record() {
-		if (TataiPaths.htkResourcesExists()) {
 			TataiSpeechRecognizer speech = new TataiSpeechRecognizer();
 
 			// Change button disabilities
@@ -188,9 +187,6 @@ public class PracticeWindowController extends TataiController implements Initial
 			// Run thread
 			Thread th = new Thread(task);
 			th.start();
-		} else {
-			showWarningDialog(FILE_NOT_FOUND_DIALOG, FILE_NOT_FOUND_DIALOG_MESSAGE);
-		}
 	}
 
 	/**
