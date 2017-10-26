@@ -1,5 +1,6 @@
 package main.java.controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import main.java.HTK.recording.TataiSpeechRecognizer;
+import main.java.stats.TataiPaths;
 
 public class GameWindowController extends TataiController implements Initializable{
 	
@@ -51,6 +53,7 @@ public class GameWindowController extends TataiController implements Initializab
 	 */
 	@FXML
 	public void handleRecordClick() {
+		if (maoriNumbersExists()) {
 		// Temporarily remove unnecessary buttons and disable recording
 		_playbackButton.setVisible(false);
 		_nextQuestionButton.setVisible(false);
@@ -86,6 +89,20 @@ public class GameWindowController extends TataiController implements Initializab
 		// Run thread
 		Thread th = new Thread(task);
 		th.start();
+		} else {
+			showWarningDialog("Directory not Found", "The MaoriNumbers directory could not be found.\n"
+					+ "Please make sure the directory exists and is the right location.\n"
+					+ "Refer to the user manual for further information.");
+		}
+	}
+	
+	private boolean maoriNumbersExists() {
+		File file = new File(TataiPaths.TATAI_DIR.toString() + System.getProperty("file.separator") + "MaoriNumbers");
+		
+		if (file.exists()) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
