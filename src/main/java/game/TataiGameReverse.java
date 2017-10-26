@@ -37,7 +37,7 @@ public class TataiGameReverse extends TataiGame {
 		if (_level == Level.LEVEL1_REVERSE) {
 			return ("See and hear the number in Māori, then type it! Answers range from 1-9");
 		} else if (_level == Level.LEVEL2_REVERSE) {
-			return ("See and hear the number in Māori, then type it! Answers range from 1-99");
+			return ("See the number in Māori, then type it! Answers range from 1-99");
 		}
 		return null;
 	}

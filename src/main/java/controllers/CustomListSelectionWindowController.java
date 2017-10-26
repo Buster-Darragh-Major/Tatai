@@ -89,9 +89,11 @@ public class CustomListSelectionWindowController extends TataiController impleme
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// Disable buttons
 		_playButton.setDisable(true);
 		_warningLabel.setVisible(false);
 		
+		// Populate lists
 		try {
 			ArrayList<File> files = new ArrayList<File>(Arrays.asList(TextQuestionListHandler.LIST_DIRECTORY.listFiles()));
 			ArrayList<String> items = new ArrayList<String>();
@@ -103,6 +105,9 @@ public class CustomListSelectionWindowController extends TataiController impleme
 			}
 			
 			_listView.setItems(FXCollections.observableArrayList(items));
+			if (items.isEmpty()) {
+				_warningLabel.setVisible(true);
+			}
 		} catch (NullPointerException e) {
 			_warningLabel.setVisible(true);
 		}
