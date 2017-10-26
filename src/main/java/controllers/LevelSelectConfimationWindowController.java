@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.game.Level;
+import main.java.game.TataiGame;
 import main.java.game.TataiGameReverse;
 import main.java.users.user.User;
 
@@ -28,6 +29,9 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	
 	/* FIELDS */
 	private User _user;
+	private String _eqDesc;
+	private String _revDesc;
+	private TataiGame _revGame;
 
 	/* FXML Nodes */
 	@FXML
@@ -74,12 +78,19 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	 */
 	@FXML
 	public void handleStartClick() {
-		// Populate TataiCreationModel object in singleton
-		_game.startGame();
-
 		if (_checkBox.isSelected()) {
+			User user = Context.getInstance().currentGame().getCurrentUser();
+			_revGame.setCurrentUser(user);
+			
+			// Set reverse mode to current level and set context to read off game mode
+			if(_game.currentLevel() == Level.LEVEL2 || _game.currentLevel() == Level.LEVEL2_REVERSE) {
+				_revGame.setLevel(Level.LEVEL2_REVERSE);
+			}
+			Context.getInstance().setGameType(_revGame);
+			Context.getInstance().currentGame().startGame(); // Populate TataiCreationModel object in singleton
 			changeWindow(REVERSE_GAME_FXML, _start); // Change to ReverseGamemodeWindow.fxml view
 		} else {
+			_game.startGame(); // Populate TataiCreationModel object in singleton
 			changeWindow(GAME_FXML, _start); // Change to GameWindow.fxml view
 		}
 	}
@@ -91,25 +102,14 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	@FXML
 	public void handleCheckBoxClick() {
 		if (_checkBox.isSelected()) { // Set game type to reverse game and set to current level
-			TataiGameReverse reverseGame = new TataiGameReverse();
-
-			Level level;
-			if (_game.currentLevel() == Level.LEVEL1 || _game.currentLevel() == Level.LEVEL1_REVERSE) {
-				level = Level.LEVEL1_REVERSE;
-			} else {
-				level = Level.LEVEL2_REVERSE;
-			}
+			_levelDescriptor.setText(_revDesc);
 			
-			reverseGame.setLevel(level);
-			reverseGame.setCurrentUser(Context.getInstance().getUser());
-			Context.getInstance().setGameType(reverseGame);
 			_game = Context.getInstance().currentGame();
 		} else {
+			_levelDescriptor.setText(_eqDesc);
+			
 			Context.getInstance().setGameToEquation();
 		}
-
-		_levelDescriptor.setText(Context.getInstance().currentGame().getLevelDescription());
-
 	}
 
 	/**
@@ -130,11 +130,15 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 	public void initialize(URL location, ResourceBundle resources) {
 		Context.getInstance().setGameToEquation();
 		_game = Context.getInstance().currentGame();
+		_revGame = new TataiGameReverse(); // Reverse game object if needed, default is equation mode
+		 								   // so no object is needed.
 
 		// Set header and description labels to be that representing the current game
-		// objects set difficulty.
+		// objects set difficulty, unpack level headers.
 		_levelHeader.setText(_game.getLevelHeader());
 		_levelDescriptor.setText(_game.getLevelDescription());
+		getLevelHeaders();
+		
 
 		if (_game.currentLevel() == Level.LEVEL2 && !_user.isUnlocked(Level.LEVEL2_REVERSE)) {
 			_checkBox.setDisable(true);
@@ -150,6 +154,24 @@ public class LevelSelectConfimationWindowController extends TataiController impl
 		});
 	}
 
+	/**
+	 * Helper method for pre-loading level description headers in preparation for
+	 * being able to switch between when check box is ticked / unticked. Implemented
+	 * as solution to game starting bug where, initially new games were being
+	 * instantiated every button checkbox click.
+	 */
+	private void getLevelHeaders() {
+		_eqDesc = Context.getInstance().currentGame().getLevelDescription();
+		
+		if (_game.currentLevel() == Level.LEVEL2 || _game.currentLevel() == Level.LEVEL2_REVERSE) {
+			_revGame.setLevel(Level.LEVEL2_REVERSE);
+		} else {
+			_revGame.setLevel(Level.LEVEL1_REVERSE);
+		}
+		
+		_revDesc = _revGame.getLevelDescription();
+	}
+	
 	/**
 	 * Handles key binding
 	 * @param e : KeyEvent

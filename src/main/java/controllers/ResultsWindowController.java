@@ -91,13 +91,20 @@ public class ResultsWindowController extends TataiController implements Initiali
 			});
 		}
 
-		// All game functionality is complete. Restore default game mode to equation
-		// mode so
-		// further games are able to be played.
-		int oldBest = Context.getInstance().currentGame().personalBest();
-		Context.getInstance().currentGame().endGame();
-		isPersonalBest(oldBest);
-		Context.getInstance().setGameToEquation();
+		// Try check if personal best exists for game type. If not, ignore and end game.
+		try {
+			// All game functionality is complete. Restore default game mode to equation
+			// mode so further games are able to be played.
+			int oldBest = Context.getInstance().currentGame().personalBest();
+			Context.getInstance().currentGame().endGame();
+			isPersonalBest(oldBest);
+			Context.getInstance().setGameToEquation();
+			
+		} catch (NullPointerException e) {
+			
+			Context.getInstance().currentGame().endGame();
+			Context.getInstance().setGameToEquation();
+		}
 	}
 
 	/**
