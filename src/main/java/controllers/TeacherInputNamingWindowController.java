@@ -56,6 +56,10 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 			stage.setTitle(TITLE);
 			stage.setScene(scene);
 			stage.setResizable(false);
+			stage.setMaxHeight(420);
+			stage.setMaxWidth(550);
+			stage.setMinHeight(420);
+			stage.setMinWidth(550);
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.show();
 		} catch (IOException e) {
