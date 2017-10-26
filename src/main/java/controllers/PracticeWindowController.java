@@ -17,104 +17,120 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import main.java.HTK.recording.TataiSpeechRecognizer;
+import main.java.stats.TataiPaths;
 import main.java.translator.TataiTranslator;
 
 public class PracticeWindowController extends TataiController implements Initializable {
 
 	/* FXML Nodes */
-	@FXML private Label _inputLabel;
-	@FXML private Label _feedbackLabel;
-	@FXML private Button _0;
-	@FXML private Button _1;
-	@FXML private Button _2;
-	@FXML private Button _3;
-	@FXML private Button _4;
-	@FXML private Button _5;
-	@FXML private Button _6;
-	@FXML private Button _7;
-	@FXML private Button _8;
-	@FXML private Button _9;
-	@FXML private Button _recordButton;
-	@FXML private FontAwesomeIconView _exitButton;
-	
+	@FXML
+	private Label _inputLabel;
+	@FXML
+	private Label _feedbackLabel;
+	@FXML
+	private Button _0;
+	@FXML
+	private Button _1;
+	@FXML
+	private Button _2;
+	@FXML
+	private Button _3;
+	@FXML
+	private Button _4;
+	@FXML
+	private Button _5;
+	@FXML
+	private Button _6;
+	@FXML
+	private Button _7;
+	@FXML
+	private Button _8;
+	@FXML
+	private Button _9;
+	@FXML
+	private Button _recordButton;
+	@FXML
+	private FontAwesomeIconView _exitButton;
+
 	/* Fields */
 	private ArrayList<String> _userAnswer;
 	private String _trueAnswer;
-	
+
 	/**
-	 * The following methods handle corresponding keys in the on screen keyboard being pressed.
+	 * The following methods handle corresponding keys in the on screen keyboard
+	 * being pressed.
 	 */
 	@FXML
 	public void handle0Click() {
 		addToLabel(ZERO_TEXT);
 	}
-	
+
 	@FXML
 	public void handle1Click() {
 		addToLabel(ONE_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle2Click() {
 		addToLabel(TWO_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle3Click() {
 		addToLabel(THREE_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle4Click() {
 		addToLabel(FOUR_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle5Click() {
 		addToLabel(FIVE_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle6Click() {
 		addToLabel(SIX_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle7Click() {
 		addToLabel(SEVEN_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle8Click() {
 		addToLabel(EIGHT_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handle9Click() {
 		addToLabel(NINE_TEXT);
 		_recordButton.setDisable(false);
 	}
-	
+
 	@FXML
 	public void handleDeleteClick() {
 		_inputLabel.setText("");
 		_recordButton.setDisable(true);
 	}
-	
+
 	@FXML
 	public void handleRecordClick() {
 		translate();
 		record();
 	}
-	
+
 	/**
 	 * Handles user pressing exit button
 	 */
@@ -122,59 +138,64 @@ public class PracticeWindowController extends TataiController implements Initial
 	public void handleExitClick() {
 		changeWindow(LEVEL_SELECT_FXML, _exitButton);
 	}
-	
+
 	/**
 	 * Records user
 	 */
 	private void record() {
-		TataiSpeechRecognizer speech = new TataiSpeechRecognizer();
-		
-		// Change button disabilities
-		_recordButton.setDisable(true);
-		_recordButton.setStyle("-fx-font: 12 System");
-		_recordButton.setText(RECORDING);
-		
-		// Create thread for recording process
-		Task<Void> task = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				// Begin recording process
-				speech.record();
-				
-				return null;
-			}
-		};
-		
-		// Once recording task is complete reconfigure GUI
-		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-			@Override
-			public void handle(WorkerStateEvent event) {
-				// Change button disabilities
-				_recordButton.setDisable(false);
-				_recordButton.setStyle("-fx-font: 16 System");
-				_recordButton.setText("Record");
-				
-				// Read outupt
-				speech.readFile();
-				_userAnswer = speech.getText();
-				speech.cleanup();
-				
-				// Give visual feedback
-				if (compareAnswers()) {
-					giveFeedback(true);
-				} else {
-					giveFeedback(false);
+		if (TataiPaths.htkResourcesExists()) {
+			TataiSpeechRecognizer speech = new TataiSpeechRecognizer();
+
+			// Change button disabilities
+			_recordButton.setDisable(true);
+			_recordButton.setStyle("-fx-font: 12 System");
+			_recordButton.setText(RECORDING);
+
+			// Create thread for recording process
+			Task<Void> task = new Task<Void>() {
+				@Override
+				protected Void call() throws Exception {
+					// Begin recording process
+					speech.record();
+
+					return null;
 				}
-			}
-		});
-		
-		// Run thread
-		Thread th = new Thread(task);
-		th.start();		
+			};
+
+			// Once recording task is complete reconfigure GUI
+			task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+				@Override
+				public void handle(WorkerStateEvent event) {
+					// Change button disabilities
+					_recordButton.setDisable(false);
+					_recordButton.setStyle("-fx-font: 16 System");
+					_recordButton.setText("Record");
+
+					// Read outupt
+					speech.readFile();
+					_userAnswer = speech.getText();
+					speech.cleanup();
+
+					// Give visual feedback
+					if (compareAnswers()) {
+						giveFeedback(true);
+					} else {
+						giveFeedback(false);
+					}
+				}
+			});
+
+			// Run thread
+			Thread th = new Thread(task);
+			th.start();
+		} else {
+			showWarningDialog(FILE_NOT_FOUND_DIALOG, FILE_NOT_FOUND_DIALOG_MESSAGE);
+		}
 	}
-	
+
 	/**
 	 * Handles visual on screen feedback
+	 * 
 	 * @param correct
 	 */
 	private void giveFeedback(boolean correct) {
@@ -183,7 +204,7 @@ public class PracticeWindowController extends TataiController implements Initial
 		} else {
 			_inputLabel.setStyle("-fx-background-color: " + INCORRECT_RED);
 		}
-		
+
 		// Create thread for flashing process
 		Task<Void> task = new Task<Void>() {
 			@Override
@@ -192,19 +213,18 @@ public class PracticeWindowController extends TataiController implements Initial
 				return null;
 			}
 		};
-		
+
 		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent event) {
 				_inputLabel.setStyle("-fx-background-color: " + "null");
 			}
 		});
-		
+
 		Thread th = new Thread(task);
 		th.start();
 	}
-	
-	
+
 	/**
 	 * Translate input speech answer
 	 */
@@ -212,10 +232,10 @@ public class PracticeWindowController extends TataiController implements Initial
 		TataiTranslator translator = new TataiTranslator();
 		_trueAnswer = translator.translate(_inputLabel.getText());
 	}
-	
-	
+
 	/**
 	 * Add to the label what has been pressed on the keyboard
+	 * 
 	 * @param num
 	 */
 	private void addToLabel(String num) {
@@ -227,10 +247,10 @@ public class PracticeWindowController extends TataiController implements Initial
 			_inputLabel.setText(_inputLabel.getText() + num);
 		}
 	}
-	
-	
+
 	/**
 	 * Compares validity of speech recognized answer with translated answer.
+	 * 
 	 * @return
 	 */
 	private boolean compareAnswers() {
@@ -238,9 +258,9 @@ public class PracticeWindowController extends TataiController implements Initial
 		_trueAnswer = _trueAnswer.replace("whā", "whaa");
 		_trueAnswer = _trueAnswer.replace("ā", "a");
 		List<String> answerList = Arrays.asList(_trueAnswer.split(" "));
-		
+
 		ArrayList<String> concatList = new ArrayList<String>();
-		
+
 		for (int i = 0; i < answerList.size(); i++) {
 			for (int j = 0; j < _userAnswer.size(); j++) {
 				if (_userAnswer.get(j).equals(answerList.get(i))) {
@@ -249,19 +269,22 @@ public class PracticeWindowController extends TataiController implements Initial
 				}
 			}
 		}
-		
+
 		if (concatList.equals(answerList)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Handles key presses
-	 * @param e The Key Event
+	 * 
+	 * @param e
+	 *            The Key Event
 	 */
-	@FXML public void onKeyPress(KeyEvent e) {
+	@FXML
+	public void onKeyPress(KeyEvent e) {
 		KeyCode code = e.getCode();
 		if (code == KeyCode.ESCAPE) {
 			handleExitClick();
@@ -291,7 +314,7 @@ public class PracticeWindowController extends TataiController implements Initial
 			handleRecordClick();
 		}
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		_recordButton.setDisable(true);

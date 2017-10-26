@@ -1,6 +1,5 @@
 package main.java.controllers;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,7 +68,7 @@ public class GameWindowController extends TataiController implements Initializab
 	 */
 	@FXML
 	public void handleRecordClick() {
-		if (maoriNumbersExists()) {
+		if (TataiPaths.htkResourcesExists()) {
 			// Temporarily remove unnecessary buttons and disable recording
 			_playbackButton.setVisible(false);
 			_nextQuestionButton.setVisible(false);
@@ -106,33 +105,9 @@ public class GameWindowController extends TataiController implements Initializab
 			Thread th = new Thread(task);
 			th.start();
 		} else {
-			showWarningDialog("File not Found",
-					"The MaoriNumbers directory could not be found.\n"
-							+ "Please make sure the directory exists and is the right location.\n"
-							+ "Please make sure the contents of MaoriNumbers/HMMs and MaoriNumbers/user\n"
-							+ "have not been changed. Refer to the user manual for further information.");
+			showWarningDialog(FILE_NOT_FOUND_DIALOG, FILE_NOT_FOUND_DIALOG_MESSAGE
+);
 		}
-	}
-
-	/**
-	 * Checks whether the maori numbers dir exists and required files are present.
-	 * 
-	 * @return returns true if all files are present returns false otherwise
-	 */
-	private boolean maoriNumbersExists() {
-		File maoriNumbDir = TataiPaths.MAORI_NUMBERS_DIR;
-		File hmmdefs = new File(TataiPaths.HMM15_DIR.toString() + System.getProperty("file.separator") + "hmmdefs");
-		File macros = new File(TataiPaths.HMM15_DIR.toString() + System.getProperty("file.separator") + "macros");
-		File configLR = new File(TataiPaths.HMM_USER_DIR.toString() + System.getProperty("file.separator") + "configLR");
-		File dictionaryD = new File(TataiPaths.HMM_USER_DIR.toString() + System.getProperty("file.separator") + "dictionaryD");
-		File tiedList = new File(TataiPaths.HMM_USER_DIR.toString() + System.getProperty("file.separator") + "tiedList");
-		File wordNetworkNum = new File(TataiPaths.HMM_USER_DIR.toString() + System.getProperty("file.separator") + "wordNetworkNum");
-		
-		if (maoriNumbDir.exists() && hmmdefs.exists() && macros.exists() && configLR.exists() && dictionaryD.exists() && 
-				tiedList.exists() && wordNetworkNum.exists()) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
