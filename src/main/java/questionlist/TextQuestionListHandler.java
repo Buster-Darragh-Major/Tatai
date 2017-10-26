@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-import main.java.stats.TataiHandler;
+import main.java.stats.TataiPaths;
 
 /**
  * This class deals with writing custom list equations to particular files. On construction
@@ -22,11 +22,11 @@ import main.java.stats.TataiHandler;
  * 
  * @author Buster-Darragh-Major
  */
-public class TextQuestionListHandler extends TataiHandler implements ListHandler {
+public class TextQuestionListHandler implements ListHandler {
 
 	/* Macros */
 	public final static String TEMP_FILE_NAME = "temp.txt";
-	public final static File LIST_DIRECTORY = new File(DATA_DIR + System.getProperty("file.separator") + "lst");
+	public final static File LIST_DIRECTORY = new File(TataiPaths.DATA_DIR + System.getProperty("file.separator") + "lst");
 	public final static File TEMP_FILE = new File(LIST_DIRECTORY + System.getProperty("file.separator") + TEMP_FILE_NAME);
 	
 	/* Fields */

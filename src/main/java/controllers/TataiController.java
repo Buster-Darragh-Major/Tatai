@@ -56,7 +56,12 @@ public abstract class TataiController {
 	public static final String CORRECT = "Correct!";
 	public static final String CONFIRMATION_QUIT_DIALOG = "Confirmation Dialog";
 	public static final String CONFIRMATION_QUIT_DIALOG_MESSAGE = "Are you sure you want to quit your current game";
-	public final static String SUBMIT = "Submit";
+	public static final String SUBMIT = "Submit";
+	public static final String FILE_NOT_FOUND_DIALOG = "File not Found";
+	public static final String FILE_NOT_FOUND_DIALOG_MESSAGE = 					"The MaoriNumbers directory could not be found.\n"
+			+ "Please make sure the directory exists and is the right location.\n"
+			+ "Please make sure the contents of MaoriNumbers/HMMs and MaoriNumbers/user\n"
+			+ "have not been changed. Refer to the user manual for further information.";
 	
 	/* FXML WINDOWS */
 	public static final String CUSTOM_LIST_SELECTION_EDIT_FXML = "CustomListEditView.fxml";

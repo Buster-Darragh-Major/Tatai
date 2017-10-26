@@ -19,75 +19,97 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import main.java.HTK.recording.TataiSpeechRecognizer;
+import main.java.stats.TataiPaths;
 
-public class GameWindowController extends TataiController implements Initializable{
-	
+public class GameWindowController extends TataiController implements Initializable {
+
 	/* FXML Nodes */
-	@FXML private Label _intLabel;
-	@FXML private Label _translatedLabel;
-	@FXML private Label _questionNoLabel;
-	@FXML private Label _rightFeedbackLabel;
-	@FXML private Label _leftFeedbackLabel;
-	@FXML private Pane _pane;
-	@FXML private Pane _childPane;
-	@FXML private Button _recordButton;
-	@FXML private Button _playbackButton;
-	@FXML private Button _nextQuestionButton;
-	@FXML private Button _tryAgainButton;
-	@FXML private Button _skipButton;
-	@FXML private FontAwesomeIconView _exitButton;
-	@FXML private FontAwesomeIconView _rightIncorrectFeedbackIcon;
-	@FXML private FontAwesomeIconView _leftIncorrectFeedbackIcon;
-	@FXML private FontAwesomeIconView _rightCorrectFeedbackIcon;
-	@FXML private FontAwesomeIconView _leftCorrectFeedbackIcon;
-	
+	@FXML
+	private Label _intLabel;
+	@FXML
+	private Label _translatedLabel;
+	@FXML
+	private Label _questionNoLabel;
+	@FXML
+	private Label _rightFeedbackLabel;
+	@FXML
+	private Label _leftFeedbackLabel;
+	@FXML
+	private Pane _pane;
+	@FXML
+	private Pane _childPane;
+	@FXML
+	private Button _recordButton;
+	@FXML
+	private Button _playbackButton;
+	@FXML
+	private Button _nextQuestionButton;
+	@FXML
+	private Button _tryAgainButton;
+	@FXML
+	private Button _skipButton;
+	@FXML
+	private FontAwesomeIconView _exitButton;
+	@FXML
+	private FontAwesomeIconView _rightIncorrectFeedbackIcon;
+	@FXML
+	private FontAwesomeIconView _leftIncorrectFeedbackIcon;
+	@FXML
+	private FontAwesomeIconView _rightCorrectFeedbackIcon;
+	@FXML
+	private FontAwesomeIconView _leftCorrectFeedbackIcon;
+
 	/* Fields */
 	private TataiSpeechRecognizer _speech;
 	private ArrayList<String> _output;
-	
 
 	/**
 	 * Handles pressing of the record button
 	 */
 	@FXML
 	public void handleRecordClick() {
-		// Temporarily remove unnecessary buttons and disable recording
-		_playbackButton.setVisible(false);
-		_nextQuestionButton.setVisible(false);
-		_recordButton.setDisable(true);
-		_recordButton.setText(RECORDING);
-		
-		// Create thread for recording process
-		_speech = new TataiSpeechRecognizer();
-		Task<Void> task = new Task<Void>() {
-			@Override
-			protected Void call() throws Exception {
-				// Begin recording process
-				_speech.record();
-				
-				return null;
-			}
-			
-		};
-		
-		// Once recording task is complete reconfigure GUI
-		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-			@Override
-			public void handle(WorkerStateEvent event) {
-				// Reinstate play back and next question buttons and record ability
-				_playbackButton.setVisible(true);
-				_nextQuestionButton.setVisible(true);
-				_recordButton.setDisable(false);
-				_recordButton.setText(RE_RECORD);
-				_nextQuestionButton.requestFocus();
-			}
-		});
-		
-		// Run thread
-		Thread th = new Thread(task);
-		th.start();
+		if (TataiPaths.htkResourcesExists()) {
+			// Temporarily remove unnecessary buttons and disable recording
+			_playbackButton.setVisible(false);
+			_nextQuestionButton.setVisible(false);
+			_recordButton.setDisable(true);
+			_recordButton.setText(RECORDING);
+
+			// Create thread for recording process
+			_speech = new TataiSpeechRecognizer();
+			Task<Void> task = new Task<Void>() {
+				@Override
+				protected Void call() throws Exception {
+					// Begin recording process
+					_speech.record();
+
+					return null;
+				}
+
+			};
+
+			// Once recording task is complete reconfigure GUI
+			task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+				@Override
+				public void handle(WorkerStateEvent event) {
+					// Reinstate play back and next question buttons and record ability
+					_playbackButton.setVisible(true);
+					_nextQuestionButton.setVisible(true);
+					_recordButton.setDisable(false);
+					_recordButton.setText(RE_RECORD);
+					_nextQuestionButton.requestFocus();
+				}
+			});
+
+			// Run thread
+			Thread th = new Thread(task);
+			th.start();
+		} else {
+			showWarningDialog(FILE_NOT_FOUND_DIALOG, FILE_NOT_FOUND_DIALOG_MESSAGE
+);
+		}
 	}
-	
+
 	/**
 	 * Handles pressing of play back button
 	 */
@@ -97,16 +119,16 @@ public class GameWindowController extends TataiController implements Initializab
 		Task<Void> task = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
-				_speech.playback();					
+				_speech.playback();
 				return null;
 			}
 		};
-		
+
 		Thread th = new Thread(task);
 		th.start();
 		_nextQuestionButton.requestFocus();
 	}
-	
+
 	/**
 	 * Handles pressing of try again button
 	 */
@@ -115,26 +137,26 @@ public class GameWindowController extends TataiController implements Initializab
 		// Hide unnecessary buttons
 		_tryAgainButton.setVisible(false);
 		_skipButton.setVisible(false);
-		
+
 		// Display record button
 		_recordButton.setVisible(true);
 		_recordButton.requestFocus();
 	}
-	
+
 	/**
 	 * Handles pressing of submit button
 	 */
 	@FXML
 	public void handleSubmitClick() {
-		// If game state is onto last question set the nextQuestion button text to indicate finishing
+		// If game state is onto last question set the nextQuestion button text to
+		// indicate finishing
 		if (Context.getInstance().currentGame().currentQuestion() - 1 == // game class increments q. no. one too soon
-				Context.getInstance().currentGame().totalNumberOfQuestions()) {
+		Context.getInstance().currentGame().totalNumberOfQuestions()) {
 			_nextQuestionButton.setText(FINISH);
 		}
-		
+
 		// If button says next or finish call nextquesion()
-		if (_nextQuestionButton.getText().equals(NEXT) || 
-				_nextQuestionButton.getText().equals(FINISH)) {
+		if (_nextQuestionButton.getText().equals(NEXT) || _nextQuestionButton.getText().equals(FINISH)) {
 			nextQuestion();
 		} else { // Else button says 'Submit', in which case undergo recording strategy
 			// get readout from speech object
@@ -148,7 +170,7 @@ public class GameWindowController extends TataiController implements Initializab
 				questionIncorrect();
 			}
 		}
-		
+
 		// New thread for cleaning up folder contents
 		Task<Void> task = new Task<Void>() {
 			@Override
@@ -158,26 +180,26 @@ public class GameWindowController extends TataiController implements Initializab
 				return null;
 			}
 		};
-		
+
 		Thread th = new Thread(task);
 		th.start();
 	}
-	
+
 	/**
 	 * Handles pressing of quit button
 	 */
 	@FXML
 	public void handleQuitClick() {
-		// Prompt user with quit confirmation window 
-		
+		// Prompt user with quit confirmation window
+
 		boolean quit = showWarningDialogConfirmation(CONFIRMATION_QUIT_DIALOG, CONFIRMATION_QUIT_DIALOG_MESSAGE);
-		
+
 		if (quit) {
 			// Quit the game
 			quitCurrentGame();
-		} 
+		}
 	}
-	
+
 	/**
 	 * Method to quit current game gracefully
 	 */
@@ -186,9 +208,10 @@ public class GameWindowController extends TataiController implements Initializab
 		Context.getInstance().setGameToEquation();
 		changeWindow(LEVEL_SELECT_FXML, _exitButton);
 	}
-	
+
 	/**
 	 * Determines correctness of answer given through speech
+	 * 
 	 * @return isCorrect : boolean
 	 */
 	private boolean isCorrect() {
@@ -197,9 +220,9 @@ public class GameWindowController extends TataiController implements Initializab
 		answer = answer.replace("whā", "whaa");
 		answer = answer.replace("ā", "a");
 		List<String> answerList = Arrays.asList(answer.split(" "));
-		
+
 		ArrayList<String> concatList = new ArrayList<String>();
-		
+
 		for (int i = 0; i < answerList.size(); i++) {
 			for (int j = 0; j < _output.size(); j++) {
 				if (_output.get(j).equals(answerList.get(i))) {
@@ -208,30 +231,30 @@ public class GameWindowController extends TataiController implements Initializab
 				}
 			}
 		}
-		
+
 		if (concatList.equals(answerList)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	/**
-	 * Method intended to be called when question is answered incorrectly, alters GUI appropriately
-	 * to reflect answer.
-	 */ 
+	 * Method intended to be called when question is answered incorrectly, alters
+	 * GUI appropriately to reflect answer.
+	 */
 	public void questionIncorrect() {
 		// Set color scheme to be white text on red background
 		_pane.setStyle("-fx-background-color: " + INCORRECT_RED);
 		_intLabel.setStyle("-fx-text-fill: white");
 		_questionNoLabel.setStyle("-fx-text-fill: white");
-		
+
 		// Give incorrect feedback
 		_rightFeedbackLabel.setText(TRY_AGAIN);
 		_leftFeedbackLabel.setText(WHOOPS);
 		_rightIncorrectFeedbackIcon.setVisible(true);
 		_leftIncorrectFeedbackIcon.setVisible(true);
-		
+
 		// Display skip/try again buttons
 		_skipButton.setVisible(true);
 		_tryAgainButton.setVisible(true);
@@ -246,34 +269,34 @@ public class GameWindowController extends TataiController implements Initializab
 			// Hide irrelevant buttons
 			_skipButton.setVisible(false);
 			_tryAgainButton.setVisible(false);
-			
+
 			// Give incorrect feedback
 			_rightFeedbackLabel.setText(BAD_LUCK);
 			_leftFeedbackLabel.setText(NOT_QUITE);
-			
+
 			// Show relevant buttons
 			_nextQuestionButton.setVisible(true);
 			_translatedLabel.setVisible(true);
-			
+
 			// If next button does not currently display finish, set text to next
 			if (!_nextQuestionButton.getText().equals(FINISH)) {
 				_nextQuestionButton.setText(NEXT);
 				_nextQuestionButton.requestFocus();
 			}
 		}
-		
+
 		// Tell game object question incorrectly answered
 		Context.getInstance().currentGame().answerQuestion(false);
 	}
-	
+
 	/**
-	 * Method intended to be called when question is answered correctly, alters GUI appropriately
-	 * to reflect answer.
+	 * Method intended to be called when question is answered correctly, alters GUI
+	 * appropriately to reflect answer.
 	 */
 	public void questionCorrect() {
 		// Tell game object question correctly answered
 		Context.getInstance().currentGame().answerQuestion(true);
-		
+
 		// Give correct feedback
 		_rightFeedbackLabel.setText(CORRECT);
 		_leftFeedbackLabel.setText(CORRECT);
@@ -281,14 +304,14 @@ public class GameWindowController extends TataiController implements Initializab
 		_rightIncorrectFeedbackIcon.setVisible(false);
 		_leftCorrectFeedbackIcon.setVisible(true);
 		_rightCorrectFeedbackIcon.setVisible(true);
-		
+
 		// If shown, hide try again/skip and show answer
 		_skipButton.setVisible(false);
 		_tryAgainButton.setVisible(false);
 		_translatedLabel.setVisible(true);
 		_recordButton.setVisible(false);
 		_playbackButton.setVisible(false);
-		
+
 		// Change color scheme to white text on green background
 		_pane.setStyle("-fx-background-color: " + CORRECT_GREEN);
 		_intLabel.setStyle("-fx-text-fill: white");
@@ -299,7 +322,7 @@ public class GameWindowController extends TataiController implements Initializab
 			_nextQuestionButton.requestFocus();
 		}
 	}
-	
+
 	/**
 	 * Handles user requesting to change view
 	 */
@@ -311,7 +334,7 @@ public class GameWindowController extends TataiController implements Initializab
 			changeWindow(GAME_FXML, _nextQuestionButton); // Change to GameWindow.fxml view
 		}
 	}
-	
+
 	/**
 	 * Initializes state of the scene on open
 	 */
@@ -326,38 +349,40 @@ public class GameWindowController extends TataiController implements Initializab
 		_rightIncorrectFeedbackIcon.setVisible(false);
 		_leftCorrectFeedbackIcon.setVisible(false);
 		_rightCorrectFeedbackIcon.setVisible(false);
-		
+
 		// Set answer label with correct answer and hide
 		_translatedLabel.setText(Context.getInstance().currentGame().translateCurrentQuestion());
 		_translatedLabel.setVisible(false);
-		
+
 		// Display question integer
 		Context.getInstance().currentGame().displayCurrentQuestion(_intLabel, _pane);
 		_childPane.setBackground(_pane.getBackground());
-		
+
 		// Set question number label
-		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/" + 
-				Context.getInstance().currentGame().totalNumberOfQuestions());
-		
+		_questionNoLabel.setText(Context.getInstance().currentGame().currentQuestion() + "/"
+				+ Context.getInstance().currentGame().totalNumberOfQuestions());
+
 		String style = _intLabel.getStyle();
 		_questionNoLabel.setStyle(style);
-		
-	    Platform.runLater(new Runnable() {
-	        @Override
-	        public void run() {
-	        	_recordButton.requestFocus();
-	        }
-	    });
+
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				_recordButton.requestFocus();
+			}
+		});
 	}
-	
+
 	/**
 	 * Handles key bindings for window
-	 * @param e : KeyEvent
+	 * 
+	 * @param e
+	 *            : KeyEvent
 	 */
-	@FXML 
+	@FXML
 	public void handleKeyPress(KeyEvent e) {
 		if (e.getCode() == KeyCode.ESCAPE) {
 			handleQuitClick();
-		} 
+		}
 	}
 }

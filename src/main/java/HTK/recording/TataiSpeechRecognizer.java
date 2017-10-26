@@ -1,11 +1,12 @@
 package main.java.HTK.recording;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import main.java.stats.TataiPaths;
 
 /**
  * An implementation of the SpeechRecognizer interface intended to read speech for the Tatai
@@ -20,10 +21,6 @@ import java.util.ArrayList;
  * @author Buster Major
  */
 public class TataiSpeechRecognizer implements SpeechRecognizer{
-
-	/* Macros */
-	public static final File FILEPATH = new File(System.getProperty("user.dir") 
-			+ System.getProperty("file.separator") + "MaoriNumbers");
 	
 	/* Fields */
 	private ArrayList<String> _output = new ArrayList<String>();
@@ -41,7 +38,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
 		
 		// Change working location of builder to work in the directory containing HTK script
-		builder.directory(FILEPATH);
+		builder.directory(TataiPaths.MAORI_NUMBERS_DIR);
 		
 		try {
 			Process process = builder.start();
@@ -62,7 +59,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 			BufferedReader reader = null;
 			try {
 				// Ensure file exists, if skip has been pressed file will not.
-				reader = new BufferedReader(new FileReader(FILEPATH + 
+				reader = new BufferedReader(new FileReader(TataiPaths.MAORI_NUMBERS_DIR + 
 						System.getProperty("file.separator") + "recout.mlf"));
 			} catch (FileNotFoundException e) {
 			}
@@ -104,7 +101,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
 		
 		// Change working location directory of builder to be correct directory
-		builder.directory(FILEPATH);
+		builder.directory(TataiPaths.MAORI_NUMBERS_DIR);
 		
 		Process process;
 		try {
@@ -129,7 +126,7 @@ public class TataiSpeechRecognizer implements SpeechRecognizer{
 		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", command);
 		
 		// Change working location directory of builder to be correct directory
-		builder.directory(FILEPATH);
+		builder.directory(TataiPaths.MAORI_NUMBERS_DIR);
 		
 		Process process;
 		try {

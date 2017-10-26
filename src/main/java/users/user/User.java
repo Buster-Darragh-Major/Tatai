@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.java.game.Level;
 import main.java.stats.StatisticHandler;
-import main.java.stats.TataiHandler;
+import main.java.stats.TataiPaths;
 import main.java.stats.TataiStat;
 
 /**
@@ -33,7 +33,7 @@ import main.java.stats.TataiStat;
 )
 public abstract class User {
 	/* MACROS */
-	public static final File USER_DIR = new File(TataiHandler.DATA_DIR + System.getProperty("file.separator") + "users");
+	public static final File USER_DIR = new File(TataiPaths.DATA_DIR + System.getProperty("file.separator") + "users");
 
 	@JsonIgnore public final File _userFile;
 	@JsonIgnore protected boolean _writingPrivileges;
