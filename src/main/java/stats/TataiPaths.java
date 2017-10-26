@@ -16,6 +16,9 @@ public interface TataiPaths {
 			System.getProperty("user.dir") + System.getProperty("file.separator") + "TataiData");
 	public static final File MAORI_NUMBERS_DIR = new File(
 			TATAI_DIR.toString() + System.getProperty("file.separator") + "MaoriNumbers");
+	public static final File HMMs_DIR = new File(MAORI_NUMBERS_DIR.toString() + System.getProperty("file.separator") + "HMMs");
+	public static final File HMM15_DIR = new File(HMMs_DIR.toString() + System.getProperty("file.separator") + "hmm15");
+	public static final File HMM_USER_DIR = new File(MAORI_NUMBERS_DIR.toString() + System.getProperty("file.separator") + "user");
 	public static final File DATA_DIR = new File(TATAI_DIR.toString() + System.getProperty("file.separator") + "data");
 
 }
