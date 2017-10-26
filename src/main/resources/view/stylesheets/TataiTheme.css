@@ -186,3 +186,14 @@
     -fx-background-color: white;
     -fx-background-radius: 5em;
 }
+.reverse-button:hover {
+	-fx-text-fill: #383838;
+	-fx-background-color: white !important; 
+}
+.reverse-icon {
+	-fx-effect: dropshadow( one-pass-box , #383838, 10, 0.0, 0, 0 );
+}
+.reverse-icon:hover {
+	-fx-fill: white !important;
+	-fx-cursor: hand;	
+}
