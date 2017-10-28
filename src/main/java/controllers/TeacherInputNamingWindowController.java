@@ -7,6 +7,9 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTextField;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +27,7 @@ import main.java.questionlist.TextQuestionListHandler;
 public class TeacherInputNamingWindowController extends TataiController implements Initializable {
 	/* MACROS */
 	public static final String TITLE = "Edit Lists";
+	public static final int MAX_VALUE = 30;
 	
 	/* FXML Nodes */
 	@FXML private FontAwesomeIconView _exitButton;
@@ -56,6 +60,10 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 			stage.setTitle(TITLE);
 			stage.setScene(scene);
 			stage.setResizable(false);
+			stage.setMaxHeight(420);
+			stage.setMaxWidth(550);
+			stage.setMinHeight(420);
+			stage.setMinWidth(550);
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.show();
 		} catch (IOException e) {
@@ -111,6 +119,24 @@ public class TeacherInputNamingWindowController extends TataiController implemen
 	public void initialize(URL location, ResourceBundle resources) {
 		_warningLabel.setVisible(false);
 		_createButton.setDisable(true);
+		
+		_textField.textProperty().addListener(new ChangeListener<String>() {
+			
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (_textField.getText().length() > MAX_VALUE)	{
+					String s = _textField.getText().substring(0, MAX_VALUE);
+					_textField.setText(s);
+				}
+			}
+		});
+		
+		
+	    Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	_textField.requestFocus();
+	        }
+	    });
 	}
 	
 }

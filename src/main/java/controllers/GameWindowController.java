@@ -19,7 +19,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import main.java.HTK.recording.TataiSpeechRecognizer;
-import main.java.stats.TataiPaths;
 
 public class GameWindowController extends TataiController implements Initializable {
 
@@ -68,7 +67,6 @@ public class GameWindowController extends TataiController implements Initializab
 	 */
 	@FXML
 	public void handleRecordClick() {
-		if (TataiPaths.htkResourcesExists()) {
 			// Temporarily remove unnecessary buttons and disable recording
 			_playbackButton.setVisible(false);
 			_nextQuestionButton.setVisible(false);
@@ -104,10 +102,7 @@ public class GameWindowController extends TataiController implements Initializab
 			// Run thread
 			Thread th = new Thread(task);
 			th.start();
-		} else {
-			showWarningDialog(FILE_NOT_FOUND_DIALOG, FILE_NOT_FOUND_DIALOG_MESSAGE
-);
-		}
+		
 	}
 
 	/**

@@ -297,7 +297,7 @@ public class TeacherInputWindowController extends TataiController implements Ini
 			handleMinusClick();
 		} else if (code == KeyCode.BACK_SPACE) {
 			handleClearClick();
-		} else if (code == KeyCode.ENTER) {
+		} else if (code == KeyCode.ENTER && !_enterButton.isDisabled()) {
 			handleEnterClick();
 		}
 	}
